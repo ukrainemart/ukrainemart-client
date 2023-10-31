@@ -9,10 +9,16 @@ export default defineNuxtConfig({
     '@nuxt/ui',
   ],
   devtools: { enabled: true },
+  css: ['~/assets/css/fonts.css'],
   svgo: {
     autoImportPath: './assets/images/svg/',
   },
   colorMode: {
     preference: 'light',
+  },
+  app: {
+    head: {
+      title: 'Ukrainemart',
+    },
   },
 });
