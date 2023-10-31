@@ -6,7 +6,8 @@
       "error",
       {
         "singleQuote": true
-      }
+      },
+      { "allow": ["foo_", "_bar"] }
     ]
   },
   "overrides": [

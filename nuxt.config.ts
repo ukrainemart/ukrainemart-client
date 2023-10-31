@@ -16,6 +16,9 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light',
   },
+  alias: {
+    '@global': './global',
+  },
   app: {
     head: {
       title: 'Ukrainemart',

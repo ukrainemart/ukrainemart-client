@@ -1,6 +1,7 @@
 <script setup lang="ts">
   const tests = ['H', 'E', 1, 'P'];
   let a: string | number = 0;
+
   a = 'me';
 </script>
 
@@ -15,6 +16,7 @@
   >
     T: {{ tests }} {{ a }}
   </h1>
+  <p class="text-red-700">qwdqqwdwqdqwdwq</p>
   <div class="flex items-center bg-gray-800">
     <li v-for="test in tests" :key="test" class="p-1 uppercase text-white">test</li>
   </div>

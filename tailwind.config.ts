@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss';
 
+import VAR from './global/variables';
+
 export default <Partial<Config>>{
   content: [
     './components/**/*.{js,vue,ts}',
@@ -17,14 +19,14 @@ export default <Partial<Config>>{
       },
     },
     screens: {
-      xs: '320px',
-      sm: '576px',
-      md: '768px',
-      lg: '992px',
-      xl: '1200px',
-      '2xl': '1400px',
-      '3xl': '1600px',
-      '4xl': '1780px',
+      xs: VAR.BREAKPOINTS_XS,
+      sm: VAR.BREAKPOINTS_SM,
+      md: VAR.BREAKPOINTS_MD,
+      lg: VAR.BREAKPOINTS_LG,
+      xl: VAR.BREAKPOINTS_XL,
+      '2xl': VAR.BREAKPOINTS_2XL,
+      '3xl': VAR.BREAKPOINTS_3XL,
+      '4xl': VAR.BREAKPOINTS_4XL,
     },
     fontFamily: {
       montserrat: ['Montserrat', 'sans'],
@@ -36,6 +38,9 @@ export default <Partial<Config>>{
       },
       screens: {
         'is-hover': { raw: '(hover: hover)' },
+      },
+      colors: {
+        test: '#E33629',
       },
     },
   },
