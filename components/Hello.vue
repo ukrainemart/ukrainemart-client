@@ -1,24 +1,45 @@
 <script setup lang="ts">
-  const tests = ['H', 'E', 1, 'P'];
-  let a: string | number = 0;
-
-  a = 'me';
+  import IconEnvelop from '~/assets/images/svg/Envelop.svg';
 </script>
 
 <template>
-  <h1
-    :class="
-      cn('h-10 bg-red-800 p-2', {
-        'bg-sky-500': typeof a === 'number',
-        'bg-green-500': typeof a === 'string',
-      })
-    "
-  >
-    T: {{ tests }} {{ a }}
-  </h1>
-  <p class="text-red-700">qwdqqwdwqdqwdwq</p>
-  <div class="flex items-center bg-gray-800">
-    <li v-for="test in tests" :key="test" class="p-1 uppercase text-white">test</li>
+  <div class="flex flex-wrap gap-4 p-5">
+    <div>
+      <UIButton text="Зв'язатися" size="lg">
+        <template #icon>
+          <IconEnvelop class="!h-[15px] !w-[19px]" />
+        </template>
+      </UIButton>
+    </div>
+
+    <div>
+      <UIButton text="Зв'язатися" size="lg" variant="outline">
+        <template #icon>
+          <IconEnvelop class="!h-[15px] !w-[19px]" />
+        </template>
+      </UIButton>
+    </div>
+
+    <div>
+      <UIButton text="Детальніше" variant="outline" styles="bg-green-600" />
+    </div>
+    <div>
+      <UIButton text="Детальніше" />
+    </div>
+
+    <div>
+      <UIButton text="Увійти" size="lg" />
+    </div>
+    <div>
+      <UIButton text="Увійти" size="lg" variant="outline" styles="text-orange-400" />
+    </div>
+
+    <div>
+      <UIButton text="Увійти" />
+    </div>
+
+    <div>
+      <UIButton text="Увійти" variant="outline" />
+    </div>
   </div>
-  <UButton :ui="{ rounded: 'rounded-full' }" class="mx-auto block">UButton</UButton>
 </template>
