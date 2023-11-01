@@ -41,8 +41,11 @@ export default <Partial<Config>>{
       },
       colors: {
         test: '#E33629',
+        black: '#111111',
+        'color-gray': '#B6B6B6',
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line global-require
+  plugins: [require('@tailwindcss/line-clamp')],
 };

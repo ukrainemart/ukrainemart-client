@@ -54,8 +54,7 @@
             "order": ["script", "template", "style"]
           }
         ],
-        "vue/padding-line-between-blocks": ["error"],
-        "vue/html-self-closing": ["error"]
+        "vue/padding-line-between-blocks": ["error"]
       }
     }
   ]
