@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   alias: {
     '@global': './global',
-    '@img': './assets/img',
+    '@img': './assets/images',
   },
   app: {
     head: {

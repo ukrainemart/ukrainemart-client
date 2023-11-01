@@ -3,7 +3,7 @@
 <template>
   <div>
     <Hello />
-    <div class="m-auto grid max-w-[1780px] grid-cols-5 bg-white p-10">
+    <div class="container m-auto grid grid-cols-5 bg-white p-10">
       <CommonCardProduct />
       <CommonCardProduct />
       <CommonCardProduct />

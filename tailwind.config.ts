@@ -36,6 +36,9 @@ export default <Partial<Config>>{
       opacity: {
         hover: '60%',
       },
+      transitionDuration: {
+        hover: '200ms',
+      },
       screens: {
         'is-hover': { raw: '(hover: hover)' },
       },

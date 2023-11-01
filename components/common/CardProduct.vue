@@ -19,7 +19,7 @@
     >
       100-150<CommonCurrency />
     </p>
-    <div class="mt-[20px] hidden justify-center is-hover:flex">
+    <div class="mt-[20px] hidden justify-center lg:flex">
       <button class="rounded-[50px] border-[2px] border-black px-[35px] py-[13px]">
         <UiTextPortalPrimary>Детальніше</UiTextPortalPrimary>
       </button>
