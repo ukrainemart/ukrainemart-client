@@ -45,6 +45,7 @@ export default <Partial<Config>>{
       colors: {
         test: '#E33629',
         black: '#111111',
+        'background-primary': '#F1F1F1',
         'color-gray': '#B6B6B6',
       },
     },

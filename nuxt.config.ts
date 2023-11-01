@@ -8,6 +8,17 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxt/ui',
   ],
+  swiper: {
+    modules: [
+      'navigation',
+      'pagination',
+      'thumbs',
+      'free-mode',
+      'controller',
+      'autoplay',
+      'effect-creative',
+    ],
+  },
   devtools: { enabled: true },
   css: ['~/assets/css/fonts.css'],
   svgo: {

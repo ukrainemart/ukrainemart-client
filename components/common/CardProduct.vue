@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="relative rounded-[20px] p-[7px] shadow-black is-hover:hover:shadow-2xl lg:is-hover:px-[20px] lg:is-hover:py-[15px] 2xl:is-hover:px-[30px] 2xl:is-hover:py-[20px]"
+    class="relative rounded-[20px] p-[7px] shadow-black duration-hover hover:bg-white is-hover:hover:shadow-2xl lg:is-hover:px-[20px] lg:is-hover:py-[15px] 2xl:is-hover:px-[30px] 2xl:is-hover:py-[20px]"
   >
     <a class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden" href="#"></a>
     <div class="relative pt-[130%]">

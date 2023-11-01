@@ -3,12 +3,26 @@
 <template>
   <div>
     <Hello />
-    <div class="container m-auto grid grid-cols-5 bg-white p-10">
-      <CommonCardProduct />
-      <CommonCardProduct />
-      <CommonCardProduct />
-      <CommonCardProduct />
-      <CommonCardProduct />
-    </div>
+    <PagesCategoriesSection></PagesCategoriesSection>
+    <UiSectionTitleXl>
+      <template #title> Інші товари від цього продавця </template>
+      <template #content>
+        <Swiper
+          class="products_swiper !overflow-y-visible"
+          :modules="[SwiperAutoplay]"
+          :slides-per-view="5"
+        >
+          <SwiperSlide v-for="slide in 10" :key="slide">
+            <CommonCardProduct />
+          </SwiperSlide>
+        </Swiper>
+      </template>
+    </UiSectionTitleXl>
   </div>
 </template>
+
+<style>
+  .products_swiper {
+
+  }
+</style>
