@@ -6,7 +6,7 @@
   >
     <a class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden" href="#"></a>
     <div class="relative pt-[130%]">
-      <img class="absolute left-0 top-0 h-full w-full rounded-[10px]" src="@img/oil.jpg" alt="" />
+      <img class="absolute left-0 top-0 h-full w-full rounded-[7px]" src="@img/oil.jpg" alt="" />
     </div>
     <h5 class="mt-[5px] line-clamp-2 font-medium text-black md:mt-[15px] xl:mt-[20px]">
       <UiTextPortalPrimaryXl>Соняшникова олія Деревина Зерно пшениці</UiTextPortalPrimaryXl>
@@ -19,10 +19,8 @@
     >
       100-150<CommonCurrency />
     </p>
-    <div class="flex justify-center">
-      <button
-        class="mt-[25px] hidden rounded-[50px] border-[2px] border-black px-[35px] py-[13px] is-hover:inline-block"
-      >
+    <div class="mt-[20px] hidden justify-center is-hover:flex">
+      <button class="rounded-[50px] border-[2px] border-black px-[35px] py-[13px]">
         <UiTextPortalPrimary>Детальніше</UiTextPortalPrimary>
       </button>
     </div>
