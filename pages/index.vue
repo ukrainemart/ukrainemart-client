@@ -3,11 +3,11 @@
 <template>
   <div>
     <CommonHeroSection />
-    <CommonSectionCategories></CommonSectionCategories>
+    <CommonSectionCategories />
     <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]">
       <template #title> Товари від українських експортерів </template>
     </CommonSectionProductsSlider>
-    <CommonSectionFaq> </CommonSectionFaq>
+    <CommonSectionFaq />
     <CommonSectionOurPartners class="hidden xl:block" />
   </div>
 </template>

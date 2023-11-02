@@ -2,11 +2,11 @@
 
 <template>
   <LayoutBase>
-    <LayoutHeader></LayoutHeader>
+    <LayoutHeader />
     <div class="flex-1">
-      <nuxtPage></nuxtPage>
+      <nuxtPage />
     </div>
-    <LayoutFooter></LayoutFooter>
+    <LayoutFooter />
   </LayoutBase>
 </template>
 
