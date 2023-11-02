@@ -2,9 +2,9 @@
 
 <template>
   <UiButtonOpacity class="flex items-center gap-[10px]">
-    <slot name="icon"></slot>
+    <slot name="icon" />
     <UiTextPortalPrimary>
-      <slot name="title"></slot>
+      <slot name="title" />
     </UiTextPortalPrimary>
   </UiButtonOpacity>
 </template>

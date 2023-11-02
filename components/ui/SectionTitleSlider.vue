@@ -11,14 +11,16 @@
 <template>
   <div class="py-[35px] md:py-[50px] 4xl:py-[75px]">
     <UiSectionTitle class="!p-0">
-      <template #title> <slot name="title"></slot></template>
+      <template #title>
+        <slot name="title" />
+      </template>
       <template #additional_elements>
         <div class="hidden gap-[50px] md:flex">
           <button ref="prev">
-            <UiButtonOpacityIconPrev class="text-[50px]"></UiButtonOpacityIconPrev>
+            <UiButtonOpacityIconPrev class="text-[50px]" />
           </button>
           <button ref="next">
-            <UiButtonOpacityIconNext class="text-[50px]"></UiButtonOpacityIconNext>
+            <UiButtonOpacityIconNext class="text-[50px]" />
           </button>
         </div>
       </template>
@@ -40,7 +42,7 @@
         :rows="2"
       >
         <SwiperSlide v-for="slide in slides" :key="slide" class="self-stretch">
-          <slot name="slide" :slide="slide"></slot>
+          <slot name="slide" :slide="slide" />
         </SwiperSlide>
       </Swiper>
     </div>

@@ -23,7 +23,7 @@
     }"
   >
     <template #title>
-      <slot name="title"></slot>
+      <slot name="title" />
     </template>
     <template #slide="{ slide }">
       <CommonCardProduct :product="slide" />

@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <p class="text-[15px] font-medium text-black lg:text-[20px]"><slot /></p>
+  <p class="text-[15px] font-medium text-black lg:text-[20px]">
+    <slot />
+  </p>
 </template>

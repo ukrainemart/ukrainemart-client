@@ -11,7 +11,7 @@
             <CommonCategoryItem>
               <template #title> Продукти та агрокультура </template>
               <template #icon>
-                <SvgoAgriculture class="!h-full !w-full"></SvgoAgriculture>
+                <SvgoAgriculture class="!h-full !w-full" />
               </template>
             </CommonCategoryItem>
           </li>
@@ -19,7 +19,7 @@
             <CommonCategoryItem>
               <template #title> Електроніка </template>
               <template #icon>
-                <SvgoElectronics class="!h-full !w-full"></SvgoElectronics>
+                <SvgoElectronics class="!h-full !w-full" />
               </template>
             </CommonCategoryItem>
           </li>
@@ -27,7 +27,7 @@
             <CommonCategoryItem>
               <template #title> Ліки та добавки </template>
               <template #icon>
-                <SvgoMedicine class="!h-full !w-full"></SvgoMedicine>
+                <SvgoMedicine class="!h-full !w-full" />
               </template>
             </CommonCategoryItem>
           </li>
@@ -35,7 +35,7 @@
             <CommonCategoryItem>
               <template #title> Добрива </template>
               <template #icon>
-                <SvgoFertilizers class="!h-full !w-full"></SvgoFertilizers>
+                <SvgoFertilizers class="!h-full !w-full" />
               </template>
             </CommonCategoryItem>
           </li>
@@ -43,7 +43,7 @@
             <CommonCategoryItem>
               <template #title> Автозапчастини </template>
               <template #icon>
-                <SvgoAutoPart class="!h-full !w-full"></SvgoAutoPart>
+                <SvgoAutoPart class="!h-full !w-full" />
               </template>
             </CommonCategoryItem>
           </li>
@@ -51,7 +51,7 @@
             <CommonCategoryItem>
               <template #title> Будівельні матеріали </template>
               <template #icon>
-                <SvgoBuilding class="!h-full !w-full"></SvgoBuilding>
+                <SvgoBuilding class="!h-full !w-full" />
               </template>
             </CommonCategoryItem>
           </li>
@@ -59,7 +59,7 @@
         <CommonCategoryItem class="flex-row-reverse text-right">
           <template #title> Більше категорій </template>
           <template #icon>
-            <SvgoArrowRightSecond class="!h-full !w-full"></SvgoArrowRightSecond>
+            <SvgoArrowRightSecond class="!h-full !w-full" />
           </template>
         </CommonCategoryItem>
       </div>

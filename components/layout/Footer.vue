@@ -21,7 +21,7 @@
             <PagesFooterText>Реєстрація</PagesFooterText>
           </UiButtonOpacity>
         </li>
-        <UiHr class="md:hidden"></UiHr>
+        <UiHr class="md:hidden" />
         <li>
           <UiButtonOpacity>
             <PagesFooterText>Каталог</PagesFooterText>
@@ -37,7 +37,7 @@
             <PagesFooterText>Міжнародним імпортерам</PagesFooterText>
           </UiButtonOpacity>
         </li>
-        <UiHr class="md:hidden"></UiHr>
+        <UiHr class="md:hidden" />
         <li>
           <UiButtonOpacity>
             <PagesFooterText>Питання і відповіді</PagesFooterText>
@@ -64,17 +64,17 @@
           <UiButtonOpacity to="/">
             <SvgoViber
               class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px] 3xl:!h-[45px] 3xl:!w-[45px]"
-            ></SvgoViber>
+            />
           </UiButtonOpacity>
           <UiButtonOpacity to="/">
             <SvgoFacebook
               class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px] 3xl:!h-[45px] 3xl:!w-[45px]"
-            ></SvgoFacebook>
+            />
           </UiButtonOpacity>
           <UiButtonOpacity to="/">
             <SvgoInstagram
               class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px] 3xl:!h-[45px] 3xl:!w-[45px]"
-            ></SvgoInstagram>
+            />
           </UiButtonOpacity>
         </div>
       </div>

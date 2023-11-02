@@ -4,7 +4,7 @@
   <div
     class="group relative rounded-[20px] p-padding-x-card-product-xs shadow-black duration-hover hover:is-hover:bg-white is-hover:hover:shadow-2xl lg:is-hover:px-padding-x-card-product-lg lg:is-hover:py-[15px] 2xl:is-hover:px-padding-x-card-product-2xl 2xl:is-hover:py-[20px]"
   >
-    <a class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden" href="#"></a>
+    <a class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden" href="#" />
     <div class="relative pt-[130%]">
       <img class="absolute left-0 top-0 h-full w-full rounded-[7px]" src="@img/oil.jpg" alt="" />
     </div>

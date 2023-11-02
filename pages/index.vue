@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <UiHeroSection />
+    <CommonHeroSection />
     <CommonSectionCategories></CommonSectionCategories>
     <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]">
       <template #title> Товари від українських експортерів </template>
