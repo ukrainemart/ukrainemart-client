@@ -14,8 +14,8 @@ export default <Partial<Config>>{
     container: {
       center: true,
       padding: {
-        DEFAULT: '15px',
-        xl: '20px',
+        DEFAULT: '20px',
+        md: '40px',
       },
     },
     screens: {
@@ -33,6 +33,14 @@ export default <Partial<Config>>{
       namu: ['Namu'],
     },
     extend: {
+      maxWidth: {
+        'cards-product-slider-container':`calc(${VAR.BREAKPOINTS_4XL} + ${})`,
+      },
+      spacing: {
+        'padding-card-product-xs': VAR.PADDING_CARD_XS,
+        'padding-card-product-lg': VAR.PADDING_CARD_LG,
+        'padding-card-product-xl': VAR.PADDING_CARD_XL,
+      },
       opacity: {
         hover: '60%',
       },

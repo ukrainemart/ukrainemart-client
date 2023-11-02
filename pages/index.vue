@@ -4,9 +4,11 @@
   <div>
     <Hello />
     <PagesCategoriesSection></PagesCategoriesSection>
-    <UiSectionTitleXl>
-      <template #title> Інші товари від цього продавця </template>
-      <template #content>
+    <div>
+      <UiSectionTitleXl>
+        <template #title> Інші товари від цього продавця </template>
+      </UiSectionTitleXl>
+      <div class="container max-w-[1787px] lg:max-w-[1820px] xl:max-w-[1840px]">
         <Swiper
           class="products_swiper !overflow-y-visible"
           :modules="[SwiperAutoplay]"
@@ -16,13 +18,12 @@
             <CommonCardProduct />
           </SwiperSlide>
         </Swiper>
-      </template>
-    </UiSectionTitleXl>
+      </div>
+    </div>
   </div>
 </template>
 
 <style>
   .products_swiper {
-
   }
 </style>
