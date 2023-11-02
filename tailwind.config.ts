@@ -73,5 +73,5 @@ export default <Partial<Config>>{
     },
   },
   // eslint-disable-next-line global-require
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [require('@tailwindcss/line-clamp'), require('tailwind-hamburgers')],
 };

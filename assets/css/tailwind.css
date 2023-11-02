@@ -2,27 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  body {
-    font-family: 'Montserrat', sans-serif;
-    @apply bg-background-primary;
-  }
+body {
+  font-family: 'Montserrat', sans-serif;
+  @apply bg-background-primary;
+}
 
-  * {
-    line-height: 100%;
-  }
+* {
+  line-height: 100%;
+}
 
-  .container {
-    @apply max-w-screen-4xl;
-  }
+.container {
+  @apply max-w-screen-4xl;
+}
 
-  @variants responsive {
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+@variants responsive {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
 }

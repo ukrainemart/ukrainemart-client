@@ -55,7 +55,8 @@
           }
         ],
         "vue/padding-line-between-blocks": ["error"],
-        "tailwindcss/no-custom-classname": "off"
+        "tailwindcss/no-custom-classname": "off",
+        "vue/attribute-hyphenation": "off"
       }
     }
   ]

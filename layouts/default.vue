@@ -2,6 +2,7 @@
 
 <template>
   <LayoutBase>
+    <LayoutHeader></LayoutHeader>
     <div class="flex-1">
       <nuxtPage></nuxtPage>
     </div>
