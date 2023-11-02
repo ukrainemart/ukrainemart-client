@@ -1,11 +1,7 @@
-<script setup lang="ts">
-  defineProps<{
-    items: any[]
-  }>();
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <UTabs :items="items" />
+  <UTabs />
 </template>
 
 <style scoped></style>
