@@ -4,7 +4,7 @@
   <div class="bg-white py-[15px] md:py-[23px] 4xl:py-[35px]">
     <div class="no-scrollbar overflow-scroll lg:container">
       <div
-        class="flex items-center gap-[20px] md:gap-[35px] 4xl:w-auto 2xl:justify-between 4xl:gap-[0px]"
+        class="flex items-center gap-[20px] md:gap-[35px] 2xl:justify-between 4xl:w-auto 4xl:gap-[0px]"
       >
         <ul class="flex items-center gap-[20px] md:gap-[35px] 4xl:gap-[55px]">
           <li>
@@ -59,7 +59,7 @@
         <CommonCategoryItem class="flex-row-reverse text-right">
           <template #title> Більше категорій </template>
           <template #icon>
-            <SvgoArrowNext class="!h-full !w-full"></SvgoArrowNext>
+            <SvgoArrowRightSecond class="!h-full !w-full"></SvgoArrowRightSecond>
           </template>
         </CommonCategoryItem>
       </div>

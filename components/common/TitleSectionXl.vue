@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h4 class="font-namu text-[23px] text-black md:text-[35px] xl:text-[50px]"><slot /></h4>
+  <UiTitleNamu class="text-[23px] md:text-[35px] xl:text-[50px]"><slot /></UiTitleNamu>
 </template>
 
 <style scoped></style>

@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <UiSection class="">
+  <UiSection>
     <template #title>
-      <CommonTitleSectionXl><slot name="title"></slot></CommonTitleSectionXl>
+      <CommonTitleSectionXl class="flex-1"><slot name="title"></slot></CommonTitleSectionXl>
     </template>
     <template #additional_elements>
       <slot name="additional_elements"></slot>

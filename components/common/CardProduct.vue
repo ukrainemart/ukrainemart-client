@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="2xl:is-hover:px-padding-x-card-product-2xl p-padding-x-card-product-xs lg:is-hover:px-padding-x-card-product-lg group relative rounded-[20px] shadow-black duration-hover hover:is-hover:bg-white is-hover:hover:shadow-2xl lg:is-hover:py-[15px] 2xl:is-hover:py-[20px]"
+    class="group relative rounded-[20px] p-padding-x-card-product-xs shadow-black duration-hover hover:is-hover:bg-white is-hover:hover:shadow-2xl lg:is-hover:px-padding-x-card-product-lg lg:is-hover:py-[15px] 2xl:is-hover:px-padding-x-card-product-2xl 2xl:is-hover:py-[20px]"
   >
     <a class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden" href="#"></a>
     <div class="relative pt-[130%]">
@@ -11,7 +11,7 @@
     <h5 class="mt-[5px] line-clamp-2 font-medium text-black md:mt-[15px] xl:mt-[20px]">
       <UiTextPortalPrimaryXl>Соняшникова олія Деревина Зерно пшениці</UiTextPortalPrimaryXl>
     </h5>
-    <UiTextPortalPrimaryXl class="text-color-gray mt-[7px] xl:mt-[10px]"
+    <UiTextPortalPrimaryXl class="mt-[7px] text-color-gray xl:mt-[10px]"
       >200 л</UiTextPortalPrimaryXl
     >
     <p
