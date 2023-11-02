@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="relative rounded-[20px] p-[7px] shadow-black duration-hover hover:bg-white is-hover:hover:shadow-2xl lg:is-hover:px-[20px] lg:is-hover:py-[15px] 2xl:is-hover:px-[30px] 2xl:is-hover:py-[20px]"
+    class="2xl:is-hover:px-padding-x-card-product-2xl p-padding-x-card-product-xs lg:is-hover:px-padding-x-card-product-lg group relative rounded-[20px] shadow-black duration-hover hover:is-hover:bg-white is-hover:hover:shadow-2xl lg:is-hover:py-[15px] 2xl:is-hover:py-[20px]"
   >
     <a class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden" href="#"></a>
     <div class="relative pt-[130%]">
@@ -11,7 +11,7 @@
     <h5 class="mt-[5px] line-clamp-2 font-medium text-black md:mt-[15px] xl:mt-[20px]">
       <UiTextPortalPrimaryXl>Соняшникова олія Деревина Зерно пшениці</UiTextPortalPrimaryXl>
     </h5>
-    <UiTextPortalPrimaryXl class="mt-[7px] text-color-gray xl:mt-[10px]"
+    <UiTextPortalPrimaryXl class="text-color-gray mt-[7px] xl:mt-[10px]"
       >200 л</UiTextPortalPrimaryXl
     >
     <p
@@ -19,7 +19,9 @@
     >
       100-150<CommonCurrency />
     </p>
-    <div class="mt-[20px] hidden justify-center lg:flex">
+    <div
+      class="invisible mt-[20px] hidden justify-center is-hover:flex group-hover:is-hover:visible"
+    >
       <button class="rounded-[50px] border-[2px] border-black px-[35px] py-[13px]">
         <UiTextPortalPrimary>Детальніше</UiTextPortalPrimary>
       </button>

@@ -17,6 +17,8 @@ export default defineNuxtConfig({
       'controller',
       'autoplay',
       'effect-creative',
+      'scrollbar',
+      'grid',
     ],
   },
   devtools: { enabled: true },

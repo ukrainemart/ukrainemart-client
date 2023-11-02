@@ -2,15 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  @apply bg-background-primary;
-}
+@layer utilities {
+  body {
+    font-family: 'Montserrat', sans-serif;
+    @apply bg-background-primary;
+  }
 
-* {
-  line-height: 100%;
-}
+  * {
+    line-height: 100%;
+  }
 
-.container {
-  @apply max-w-screen-4xl;
+  .container {
+    @apply max-w-screen-4xl;
+  }
+
+  @variants responsive {
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  }
 }

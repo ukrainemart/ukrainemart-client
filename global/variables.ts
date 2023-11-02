@@ -9,7 +9,8 @@ const VAR = {
   BREAKPOINTS_4XL: '1780px',
   PADDING_CARD_XS: '7px',
   PADDING_CARD_LG: '20px',
-  PADDING_CARD_XL: '30px',
+  PADDING_CARD_2XL: '30px',
+  CONTAINER_PADDING_XS: '20px',
+  CONTAINER_PADDING_MD: '40px',
 };
-
 export default VAR;

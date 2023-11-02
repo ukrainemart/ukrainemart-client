@@ -3,7 +3,7 @@
 <template>
   <div class="bg-transparent">
     <div class="container">
-      <div class="mb-[20px]">
+      <div class="mb-[20px] flex items-center justify-between">
         <slot name="title"></slot>
         <slot name="additional_elements"></slot>
       </div>
