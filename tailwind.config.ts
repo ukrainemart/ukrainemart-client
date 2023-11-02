@@ -44,5 +44,6 @@ export default <Partial<Config>>{
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line global-require
+  plugins: [require('tailwind-hamburgers')],
 };

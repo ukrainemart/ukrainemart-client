@@ -1,3 +1,6 @@
 <template>
-  <Hello />
+  <div>
+    <LayoutHeader />
+    <UIHeroSection />
+  </div>
 </template>
