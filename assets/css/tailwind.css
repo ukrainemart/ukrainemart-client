@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  @apply max-w-screen-4xl;
+  @apply !max-w-screen-4xl;
 }
 
 @variants responsive {

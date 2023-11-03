@@ -2,65 +2,44 @@
 
 <template>
   <div class="bg-white py-[15px] md:py-[23px] 4xl:py-[35px]">
-    <div class="no-scrollbar overflow-scroll lg:container">
+    <div class="container no-scrollbar  overflow-scroll ">
       <div
         class="flex items-center gap-[20px] md:gap-[35px] 2xl:justify-between 4xl:w-auto 4xl:gap-[0px]"
       >
-        <ul class="flex items-center gap-[20px] md:gap-[35px] 4xl:gap-[55px]">
+        <ul class="flex items-center gap-[20px] md:gap-[35px] lg:gap-[15px] xl:gap-[25px] 4xl:gap-[35px]">
           <li>
-            <CommonCategoryItem>
-              <template #title> Продукти та агрокультура </template>
-              <template #icon>
-                <SvgoAgriculture class="!h-full !w-full" />
-              </template>
+            <CommonCategoryItem title="Продукти та агрокультура">
+              <SvgoAgriculture class="!h-full !w-full" />
             </CommonCategoryItem>
           </li>
           <li>
-            <CommonCategoryItem>
-              <template #title> Електроніка </template>
-              <template #icon>
-                <SvgoElectronics class="!h-full !w-full" />
-              </template>
+            <CommonCategoryItem title="Електроніка">
+              <SvgoElectronics class="!h-full !w-full" />
             </CommonCategoryItem>
           </li>
           <li>
-            <CommonCategoryItem>
-              <template #title> Ліки та добавки </template>
-              <template #icon>
-                <SvgoMedicine class="!h-full !w-full" />
-              </template>
+            <CommonCategoryItem title="Ліки та добавки">
+              <SvgoMedicine class="!h-full !w-full" />
             </CommonCategoryItem>
           </li>
           <li>
-            <CommonCategoryItem>
-              <template #title> Добрива </template>
-              <template #icon>
-                <SvgoFertilizers class="!h-full !w-full" />
-              </template>
+            <CommonCategoryItem title="Добрива">
+              <SvgoFertilizers class="!h-full !w-full" />
             </CommonCategoryItem>
           </li>
           <li>
-            <CommonCategoryItem>
-              <template #title> Автозапчастини </template>
-              <template #icon>
-                <SvgoAutoPart class="!h-full !w-full" />
-              </template>
+            <CommonCategoryItem title="Авто запчастини">
+              <SvgoAutoPart class="!h-full !w-full" />
             </CommonCategoryItem>
           </li>
           <li>
-            <CommonCategoryItem>
-              <template #title> Будівельні матеріали </template>
-              <template #icon>
-                <SvgoBuilding class="!h-full !w-full" />
-              </template>
+            <CommonCategoryItem title="Будівельні матеріали">
+              <SvgoBuilding class="!h-full !w-full" />
             </CommonCategoryItem>
           </li>
         </ul>
-        <CommonCategoryItem class="flex-row-reverse text-right">
-          <template #title> Більше категорій </template>
-          <template #icon>
-            <SvgoArrowRightSecond class="!h-full !w-full" />
-          </template>
+        <CommonCategoryItem title="Більше категорій" class="flex-row-reverse text-right">
+          <SvgoArrowRightSecond class="!h-full !w-full" />
         </CommonCategoryItem>
       </div>
     </div>
