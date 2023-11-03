@@ -1,6 +1,5 @@
 <script setup lang="ts">
   type Props = {
-    text: string; // The text to display on the button
     styles?: string; // Additional custom styles for the button
   };
 
@@ -10,16 +9,14 @@
 </script>
 
 <template>
-  <button
+  <UiButtonOpacity
     :class="
       cn(
-        'font-montserrat text-[12px] font-medium leading-4 text-black transition-opacity duration-100 ease-linear hover:opacity-70 focus:outline-none disabled:cursor-not-allowed lg:text-[20px] lg:leading-6',
+        'flex items-center font-montserrat text-[12px] font-medium leading-[14px] text-black transition-opacity duration-100 ease-linear hover:opacity-70 focus:outline-none disabled:cursor-not-allowed md:text-[16px] md:leading-[19px] lg:text-[20px] lg:leading-6',
         styles
       )
     "
   >
-    <slot name="icon" />
-
-    {{ text }}
-  </button>
+    <slot />
+  </UiButtonOpacity>
 </template>
