@@ -1,12 +1,18 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="rounded-[20px] bg-white px-[20px] py-[15px] md:p-[30px]">
+  <div class="flex flex-col items-start rounded-[20px] bg-white px-[20px] py-[15px] md:p-[30px]">
     <div class="flex items-center gap-[10px]">
-      <img class="w-[21px] h-[14px] md:w-[29px] md:h-[19px] 4xl:w-[36px] 4xl:h-[24px]" src="@img/flag_spain.png" alt="flag spain" />
+      <img
+        class="h-[14px] w-[21px] md:h-[19px] md:w-[29px] 4xl:h-[24px] 4xl:w-[36px]"
+        src="@img/flag_spain.png"
+        alt="flag spain"
+      />
       <UiTextPortalPrimary>Іспанія</UiTextPortalPrimary>
     </div>
-    <h3 class="mt-[5px] font-medium text-[17px] md:mt-[12px] md:text-[24px] 4xl:mt-[21px] 4xl:text-[30px]">
+    <h3
+      class="mt-[5px] text-[17px] font-medium md:mt-[12px] md:text-[24px] 4xl:mt-[21px] 4xl:text-[30px]"
+    >
       Ми потребуємо соняшникову олію
     </h3>
     <UiTextPortalPrimary class="mt-[2px] text-color-gray md:mt-[8px] 4xl:mt-[15px]"
@@ -28,6 +34,7 @@
         <span class="text-color-gray">до 03.11.2023 </span>
       </UiTextPortalPrimaryXl>
     </div>
+    <UiButtonOutline class="mt-[15px] md:mt-[35px] 4xl:mt-[25px] self-center">Детальніше</UiButtonOutline>
   </div>
 </template>
 
