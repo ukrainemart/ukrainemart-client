@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="group relative rounded-[20px] p-padding-x-card-product-xs shadow-black duration-hover hover:is-hover:bg-white is-hover:hover:shadow-2xl lg:is-hover:px-padding-x-card-product-lg lg:is-hover:py-[15px] 2xl:is-hover:px-padding-x-card-product-2xl 2xl:is-hover:py-[20px]"
+    class="group relative rounded-[20px] p-padding-x-card-product-xs shadow-black duration-hover hover:is-hover:bg-white is-hover:hover:shadow-2xl lg:px-padding-x-card-product-lg lg:is-hover:py-[15px] 2xl:px-padding-x-card-product-2xl 2xl:is-hover:py-[20px]"
   >
     <a class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden" href="#" />
     <div class="relative pt-[130%]">
@@ -20,11 +20,11 @@
       100-150<CommonCurrency />
     </p>
     <div
-      class="invisible mt-[20px] hidden justify-center is-hover:flex group-hover:is-hover:visible"
+      class="invisible relative z-20 mt-[20px] hidden justify-center is-hover:flex group-hover:is-hover:visible"
     >
-      <button class="rounded-[50px] border-[2px] border-black px-[35px] py-[13px]">
-        <UiTextPortalPrimary>Детальніше</UiTextPortalPrimary>
-      </button>
+    <UiButtonOutline>
+      <UiTextPortalPrimary>Детальніше</UiTextPortalPrimary>
+    </UiButtonOutline>
     </div>
   </div>
 </template>

@@ -1,4 +1,14 @@
 <script setup lang="ts">
+  const { width } = useWindowSize();
+  const { BREAKPOINTS_4XL } = useVariables();
+
+  const showAllSlides = computed(() => {
+    if (width.value >= BREAKPOINTS_4XL) {
+      return false;
+    }
+    return true;
+  });
+
   defineProps<{
     products: any[];
   }>();
@@ -6,7 +16,10 @@
 
 <template>
   <UiSectionTitleSlider
+    :showAll="showAllSlides"
     :slides="products"
+    :centeredSlides="showAllSlides"
+    type="products"
     :breakpoints="{
       375: {
         slidesPerView: 2,

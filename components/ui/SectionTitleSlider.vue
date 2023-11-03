@@ -4,18 +4,21 @@
 
   defineProps<{
     slides?: any[];
-    breakpoints?: object;
+    breakpoints?: any;
+    showAll?: boolean;
+    type?: string;
+    centeredSlides?: boolean;
   }>();
 </script>
 
 <template>
-  <div class="py-[35px] md:py-[50px] 4xl:py-[75px]">
+  <div class="no-scrollbar overflow-y-hidden py-[35px] md:py-[50px] 4xl:py-[75px]">
     <UiSectionTitle class="!p-0">
       <template #title>
         <slot name="title" />
       </template>
       <template #additional_elements>
-        <div class="hidden gap-[50px] md:flex">
+        <div class="hidden gap-[50px] 4xl:flex">
           <button ref="prev">
             <UiButtonOpacityIconPrev class="text-[50px]" />
           </button>
@@ -26,18 +29,29 @@
       </template>
     </UiSectionTitle>
     <div
-      class="container max-w-cards-product-slider-container-xs px-padding-x-slider-container-xs md:px-padding-x-slider-container-md lg:max-w-cards-product-slider-container-lg lg:px-padding-x-slider-container-lg 2xl:max-w-cards-product-slider-container-2xl 2xl:px-padding-x-slider-container-2xl 4xl:max-w-screen-4xl"
+      :class="
+        cn('container', {
+          'container max-w-cards-product-slider-container-xs px-padding-x-slider-container-xs md:px-padding-x-slider-container-md lg:max-w-cards-product-slider-container-lg lg:px-padding-x-slider-container-lg 2xl:max-w-cards-product-slider-container-2xl 2xl:px-padding-x-slider-container-2xl 4xl:max-w-screen-4xl':
+            type === 'products',
+        })
+      "
     >
       <Swiper
-        class="products_swiper !overflow-y-visible"
+        :class="
+          cn('products_swiper !overflow-y-visible', {
+            '!overflow-x-visible': showAll,
+          })
+        "
         :modules="[SwiperAutoplay, SwiperScrollbar, SwiperNavigation, SwiperGrid]"
         :scrollbar="{
           enabled: true,
           draggable: true,
           dragSize: 65,
         }"
-        :breakpoints="breakpoints || false"
-        :navigation="{ nextEl: next, prevEl: prev }"
+        :breakpoints="breakpoints"
+        :centered-slides="centeredSlides"
+        :centered-slides-bounds="centeredSlides"
+        :navigation="centeredSlides ? false : { nextEl: next, prevEl: prev }"
         :fill="'column'"
         :rows="2"
       >

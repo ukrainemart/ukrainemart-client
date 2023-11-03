@@ -1,12 +1,15 @@
 <script setup lang="ts">
+  import AccordionFaqExporters from '../pages/AccordionFaqExporters.vue';
+  import AccordionFaqImporters from '../pages/AccordionFaqImporters.vue';
+
   const items = [
     {
       label: 'Для експортерів',
-      content: 'This is the content shown for Tab1',
+      content: AccordionFaqExporters,
     },
     {
       label: 'Для імпортерів',
-      content: 'And, this is the content for Tab2',
+      content: AccordionFaqImporters,
     },
   ];
 </script>
@@ -17,7 +20,7 @@
   >
     <template #title> Питання і відповіді </template>
     <template #content>
-      <UiTabs :items="items" class="mt-[20px] md:mt-[25px] 4xl:mt-[40px]" />
+      <UiTabs :items="items" class="mt-[20px] md:mt-[25px] 4xl:mt-[40px]"> </UiTabs>
     </template>
   </UiSectionTitle>
 </template>

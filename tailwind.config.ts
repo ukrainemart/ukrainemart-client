@@ -19,14 +19,14 @@ export default <Partial<Config>>{
       },
     },
     screens: {
-      xs: VAR.BREAKPOINTS_XS,
-      sm: VAR.BREAKPOINTS_SM,
-      md: VAR.BREAKPOINTS_MD,
-      lg: VAR.BREAKPOINTS_LG,
-      xl: VAR.BREAKPOINTS_XL,
-      '2xl': VAR.BREAKPOINTS_2XL,
-      '3xl': VAR.BREAKPOINTS_3XL,
-      '4xl': VAR.BREAKPOINTS_4XL,
+      xs: `${VAR.BREAKPOINTS_XS}px`,
+      sm: `${VAR.BREAKPOINTS_SM}px`,
+      md: `${VAR.BREAKPOINTS_MD}px`,
+      lg: `${VAR.BREAKPOINTS_LG}px`,
+      xl: `${VAR.BREAKPOINTS_XL}px`,
+      '2xl': `${VAR.BREAKPOINTS_2XL}px`,
+      '3xl': `${VAR.BREAKPOINTS_3XL}px`,
+      '4xl': `${VAR.BREAKPOINTS_4XL}px`,
     },
     fontFamily: {
       montserrat: ['Montserrat', 'sans'],
@@ -34,15 +34,15 @@ export default <Partial<Config>>{
     },
     extend: {
       width: {
-        'screen-4xl': VAR.BREAKPOINTS_4XL,
+        'screen-4xl': `${VAR.BREAKPOINTS_4XL}px`,
       },
       gridTemplateColumns: {
         'category-item': 'repeat(6, minmax(0, 275px))',
       },
       maxWidth: {
-        'cards-product-slider-container-xs': `calc(${VAR.BREAKPOINTS_4XL} + (${VAR.PADDING_CARD_XS} * 2))`,
-        'cards-product-slider-container-lg': `calc(${VAR.BREAKPOINTS_4XL} + (${VAR.PADDING_CARD_LG} * 2))`,
-        'cards-product-slider-container-2xl': `calc(${VAR.BREAKPOINTS_4XL} + (${VAR.PADDING_CARD_2XL} * 2))`,
+        'cards-product-slider-container-xs': `calc(${VAR.BREAKPOINTS_4XL}px + (${VAR.PADDING_CARD_XS} * 2))`,
+        'cards-product-slider-container-lg': `calc(${VAR.BREAKPOINTS_4XL}px + (${VAR.PADDING_CARD_LG} * 2))`,
+        'cards-product-slider-container-2xl': `calc(${VAR.BREAKPOINTS_4XL}px + (${VAR.PADDING_CARD_2XL} * 2))`,
       },
       spacing: {
         'padding-x-card-product-xs': VAR.PADDING_CARD_XS,
@@ -64,7 +64,6 @@ export default <Partial<Config>>{
         'is-hover': { raw: '(hover: hover)' },
       },
       colors: {
-        test: '#E33629',
         black: '#111111',
         red: '#CF0000',
         'background-primary': '#F1F1F1',
