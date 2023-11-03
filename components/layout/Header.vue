@@ -16,7 +16,7 @@
   <header class="relative">
     <div class="mx-auto max-w-[1780px] px-5 py-[25px] md:px-10 md:py-[30px] lg:py-10">
       <div class="flex justify-between">
-        <div class="hidden gap-[35px] xl:flex">
+        <div class="hidden gap-[35px] 2xl:flex">
           <UiButtonText styles="">Каталог</UiButtonText>
 
           <UiButtonTextIconArrowDown>Для українських експортерів</UiButtonTextIconArrowDown>
@@ -24,12 +24,13 @@
           <UiButtonTextIconArrowDown>Для міжнародних імпортерів</UiButtonTextIconArrowDown>
         </div>
 
-        <div class="flex gap-5 xl:flex-row-reverse">
+        <div class="flex gap-5 2xl:flex-row-reverse">
           <UiButtonPrimary>Увійти</UiButtonPrimary>
           <UiButtonText>Зареєструватися</UiButtonText>
+          <UiButtonTextIconArrowDown class="hidden 2xl:flex">UA</UiButtonTextIconArrowDown>
         </div>
 
-        <div class="relative z-50 flex xl:hidden">
+        <div class="relative z-50 flex 2xl:hidden">
           <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
         </div>
       </div>
