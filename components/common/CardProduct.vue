@@ -11,7 +11,7 @@
     <h5 class="mt-[5px] line-clamp-2 font-medium text-black md:mt-[15px] xl:mt-[20px]">
       <UiTextPortalPrimaryXl>Соняшникова олія Деревина Зерно пшениці</UiTextPortalPrimaryXl>
     </h5>
-    <UiTextPortalPrimaryXl class="mt-[7px] text-color-gray xl:mt-[10px]"
+    <UiTextPortalPrimaryXl class="mt-[7px] text-status_gray xl:mt-[10px]"
       >200 л</UiTextPortalPrimaryXl
     >
     <p

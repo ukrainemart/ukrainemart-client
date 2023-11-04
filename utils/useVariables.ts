@@ -1,4 +1,5 @@
-import VAR from "~/global/variables";
+import VAR from '~/global/variables';
+
 export function useVariables() {
   return VAR;
 }

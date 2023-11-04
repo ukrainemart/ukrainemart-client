@@ -1,9 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      url: process.env.NUXT_URL,
+    },
+  },
   modules: [
     '@nuxt/image',
     'nuxt-swiper',
     'nuxt-svgo',
+    '@pinia/nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/eslint-module',
     '@nuxt/ui',
@@ -28,6 +34,9 @@ export default defineNuxtConfig({
   },
   colorMode: {
     preference: 'light',
+  },
+  imports: {
+    dirs: ['stores'],
   },
   alias: {
     '@global': './global',

@@ -15,7 +15,7 @@
     >
       Ми потребуємо соняшникову олію
     </h3>
-    <UiTextPortalPrimary class="mt-[2px] text-color-gray md:mt-[8px] 4xl:mt-[15px]"
+    <UiTextPortalPrimary class="mt-[2px] text-status_gray md:mt-[8px] 4xl:mt-[15px]"
       >28.10.2023</UiTextPortalPrimary
     >
     <div
@@ -23,15 +23,15 @@
     >
       <UiTextPortalPrimaryXl>
         Доставка:
-        <span class="text-color-gray">10-14 днів</span>
+        <span class="text-status_gray">10-14 днів</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
         Кількість:
-        <span class="text-color-gray">150 л</span>
+        <span class="text-status_gray">150 л</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
         Запит діє:
-        <span class="text-color-gray">до 03.11.2023 </span>
+        <span class="text-status_gray">до 03.11.2023 </span>
       </UiTextPortalPrimaryXl>
     </div>
     <UiButtonOutline class="mt-[15px] md:mt-[35px] 4xl:mt-[25px] self-center">Детальніше</UiButtonOutline>

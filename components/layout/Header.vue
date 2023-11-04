@@ -4,6 +4,17 @@
   }>();
 
   const isMobileMenu = ref(false);
+  const isAuthModal = ref(false);
+  const typeAuth = ref<SwitchAuth>('login');
+
+  const switchTypeAuth = (type: SwitchAuth) => {
+    typeAuth.value = type;
+  };
+
+  const switchAuth = (value: boolean, type: SwitchAuth) => {
+    isAuthModal.value = value;
+    switchTypeAuth(type);
+  };
 
   const switchMenu = (value: boolean) => {
     isMobileMenu.value = value;
@@ -25,15 +36,16 @@
         </div>
 
         <div class="flex gap-5 2xl:flex-row-reverse">
-          <UiButtonPrimary>Увійти</UiButtonPrimary>
-          <UiButtonText>Зареєструватися</UiButtonText>
-          <UiButtonTextIconArrowDown class="hidden 2xl:flex">UA</UiButtonTextIconArrowDown>
+          <UiButtonPrimary @click="switchAuth(true, 'login')">Увійти</UiButtonPrimary>
+          <UiButtonText @click="switchAuth(true, 'register')">Зареєструватися</UiButtonText>
+          <UiButtonTextIconArrowDown class="2xl:flex">UA</UiButtonTextIconArrowDown>
         </div>
 
         <div class="relative z-50 flex 2xl:hidden">
           <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
         </div>
       </div>
+      <AuthBase v-model="isAuthModal" :type="typeAuth" @switchTypeAuth="switchTypeAuth" />
     </div>
 
     <CommonBurgerMenu :isActive="isMobileMenu" />
