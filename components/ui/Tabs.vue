@@ -25,7 +25,7 @@
     }"
   >
     <template #item="{ item }">
-      <component :is="item.content"></component>
+      <component :is="item.content" />
     </template>
   </UTabs>
 </template>

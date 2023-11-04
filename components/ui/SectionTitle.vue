@@ -3,7 +3,7 @@
 <template>
   <UiSection>
     <template #title>
-      <CommonTitleSectionXl class="flex-1 mb-[20px] md:mb-[30px] 4xl:mb-[40px]">
+      <CommonTitleSectionXl class="mb-[20px] flex-1 md:mb-[30px] 4xl:mb-[40px]">
         <slot name="title" />
       </CommonTitleSectionXl>
     </template>

@@ -12,7 +12,7 @@
         { 'after:rotate-0': open }
       )
     "
-  ></span>
+  />
 </template>
 
 <style scoped></style>
