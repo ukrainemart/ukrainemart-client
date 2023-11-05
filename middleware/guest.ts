@@ -5,5 +5,5 @@ export default defineNuxtRouteMiddleware(() => {
     return navigateTo('/profile', { replace: true });
   }
 
-  return false;
+  return true;
 });

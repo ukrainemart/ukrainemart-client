@@ -6,6 +6,5 @@ export default defineNuxtRouteMiddleware(() => {
   if (!auth.isLoggedIn) {
     return navigateTo('/', { replace: true });
   }
-
-  return false;
+  return true;
 });

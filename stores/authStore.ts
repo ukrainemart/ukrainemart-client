@@ -26,12 +26,6 @@ export const useAuthStore = defineStore('authStore', () => {
       await fetchUser();
       navigateTo('/profile');
     }
-
-    // @ts-ignore
-    // if (response.data.value.status_error === 1) {
-    //   await fetchUser();
-    // }
-    // return response.data.value;
   }
 
   async function register(credentials: RegisterCredentials) {

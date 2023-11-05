@@ -5,6 +5,9 @@ export default defineNuxtConfig({
       url: process.env.NUXT_URL,
     },
   },
+  routeRules: {
+    '/profile/**': { ssr: false },
+  },
   modules: [
     '@nuxt/image',
     'nuxt-swiper',
