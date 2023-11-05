@@ -11,14 +11,15 @@
 </script>
 
 <template>
-  <UiButtonOpacity
+  <button
+    type="button"
     :class="
       cn(
-        'flex items-center justify-center gap-[9px] rounded-[50px] bg-black px-[28px] py-[8px] font-montserrat text-[12px] font-medium leading-4 text-white transition-opacity duration-100 ease-linear hover:opacity-70 focus:outline-none disabled:cursor-not-allowed md:py-[10px] md:text-[16px] md:leading-[19px] lg:px-[35px] lg:py-[13px] lg:text-[20px] lg:leading-6',
+        'flex items-center justify-center gap-[9px] rounded-[50px] border border-solid border-black bg-black px-[27px] py-[7px] font-montserrat text-[12px] font-medium leading-4 text-white transition-colors duration-100 ease-in hover:bg-white hover:text-black focus:outline-none disabled:cursor-not-allowed md:px-[33px] md:py-[9px] md:text-[16px] md:leading-[19px] xl:border-[2px] xl:px-[38px] xl:py-[11px] xl:text-[20px] xl:leading-6',
         styles
       )
     "
   >
     <slot />
-  </UiButtonOpacity>
+  </button>
 </template>
