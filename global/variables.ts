@@ -1,3 +1,10 @@
+const HEADER_HEIGHT = {
+  HEADER_SM: '82px',
+  HEADER_MD: '99px',
+  HEADER_XL: '110px',
+  HEADER_2XL: '130px',
+};
+
 const VAR = {
   BREAKPOINTS_XS: 375,
   BREAKPOINTS_SM: 576,
@@ -12,5 +19,6 @@ const VAR = {
   PADDING_CARD_2XL: '30px',
   CONTAINER_PADDING_XS: '20px',
   CONTAINER_PADDING_MD: '40px',
+  ...HEADER_HEIGHT,
 };
 export default VAR;

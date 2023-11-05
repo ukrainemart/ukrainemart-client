@@ -2,7 +2,7 @@
 
 <template>
   <LayoutBase>
-    <LayoutHeader isLogo />
+    <LayoutHeader />
     <LayoutContent />
     <LayoutFooter />
   </LayoutBase>

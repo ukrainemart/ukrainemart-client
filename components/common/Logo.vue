@@ -9,12 +9,13 @@
     to="/"
     :class="
       cn(
-        'font-namu text-[20px] font-light leading-[24px] md:text-[27px] md:leading-[32px] lg:text-[35px] lg:leading-[42px]',
+        'font-namu text-[20px] font-light leading-[24px] text-black md:text-[27px] md:leading-[32px] lg:text-[35px] lg:leading-[42px]',
         styles
       )
     "
-    >Ukrainemart</NuxtLink
   >
+    Ukrainemart
+  </NuxtLink>
 </template>
 
 <style></style>

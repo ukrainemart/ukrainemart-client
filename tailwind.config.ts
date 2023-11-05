@@ -36,6 +36,12 @@ export default <Partial<Config>>{
       width: {
         'screen-4xl': `${VAR.BREAKPOINTS_4XL}px`,
       },
+      height: {
+        'header-sm': `calc(100vh - ${VAR.HEADER_SM})`,
+        'header-md': `calc(100vh - ${VAR.HEADER_MD})`,
+        'header-xl': `calc(100vh - ${VAR.HEADER_XL})`,
+        'header-2xl': `calc(100vh - ${VAR.HEADER_2XL})`,
+      },
       gridTemplateColumns: {
         'category-item': 'repeat(6, minmax(0, 275px))',
       },
