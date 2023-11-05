@@ -6,7 +6,9 @@ export const useAuthStore = defineStore('authStore', () => {
 
   async function fetchUser() {
     try {
-      const { data } = await useApiFetch(`${useUrlApi()}/user`);
+      const { data } = await useApiFetch(`${useUrlApi()}/user`, {
+        method: 'GET',
+      });
       user.value = data.value;
     } catch (err) {
       console.log(err);
@@ -19,12 +21,17 @@ export const useAuthStore = defineStore('authStore', () => {
       method: 'POST',
       body: credentials,
     });
+
+    if (response.data.value === '1') {
+      await fetchUser();
+      navigateTo('/profile');
+    }
+
     // @ts-ignore
     // if (response.data.value.status_error === 1) {
     //   await fetchUser();
     // }
-    // @ts-ignore
-    return response.data.value.status_error;
+    // return response.data.value;
   }
 
   async function register(credentials: RegisterCredentials) {

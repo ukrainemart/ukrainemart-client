@@ -12,10 +12,7 @@
   });
 
   const login = () => {
-    auth.login(credentials).then((res: any) => {
-      navigateTo('/profile');
-      console.log(res);
-    });
+    auth.login(credentials);
   };
 </script>
 
