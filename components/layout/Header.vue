@@ -24,7 +24,8 @@
 </script>
 
 <template>
-  <header class="bg-background-primary sticky inset-x-0 top-0 z-50">
+  <header class="sticky inset-x-0 top-0 z-50 bg-background-primary">
+    <PagesMobileMenuBottom />
     <div class="mx-auto max-w-[1780px] px-5 py-[25px] md:px-10 md:py-[30px] 2xl:py-10">
       <div v-if="isLogo" class="flex items-center justify-between">
         <div class="flex items-center gap-10">
