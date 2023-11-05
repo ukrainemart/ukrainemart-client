@@ -15,6 +15,7 @@ export function useApi<T>(url: string, options: any = {}) {
   }
 
   return $fetch<T>(url, {
+    credentials: 'include',
     ...options,
     headers: {
       ...headers,
