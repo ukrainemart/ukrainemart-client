@@ -14,14 +14,15 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   async function login(credentials: LoginCredentials) {
+    await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
     const response = await useApiFetch(`${useUrlApi()}/login`, {
       method: 'POST',
       body: credentials,
     });
     // @ts-ignore
-    if (response.data.value.status_error === 1) {
-      await fetchUser();
-    }
+    // if (response.data.value.status_error === 1) {
+    //   await fetchUser();
+    // }
     // @ts-ignore
     return response.data.value.status_error;
   }
