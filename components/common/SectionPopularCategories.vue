@@ -31,7 +31,7 @@
         <CommonPopularCategoryItem
           image="~/assets/images/metal.jpg"
           altImage="metal"
-          class="md:row-span-1"
+          class="md:row-span-1 4xl:row-span-2"
         >
           Папір та картон
         </CommonPopularCategoryItem>
