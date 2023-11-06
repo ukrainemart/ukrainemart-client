@@ -19,8 +19,6 @@
   const switchMenu = (value: boolean) => {
     isMobileMenu.value = value;
   };
-
-  // provide('switchMenu', switchMenu); // REVIEW why do we need this?
 </script>
 
 <template>
@@ -31,9 +29,13 @@
         <div class="flex items-center gap-10">
           <CommonLogo to="/" />
 
-          <UiButtonText styles="text-red md:hover:before:bg-red hidden 2xl:flex">
-            Каталог
-          </UiButtonText>
+          <div class="my-auto">
+            <UiButtonTextUnderline
+              styles="md:hover:text-status_red md:hover:before:bg-status_red hidden 2xl:flex"
+            >
+              Каталог
+            </UiButtonTextUnderline>
+          </div>
           <UiButtonTextIconArrowDown class="hidden 2xl:flex">
             Для українських експортерів
           </UiButtonTextIconArrowDown>
@@ -45,7 +47,9 @@
         <div class="hidden items-center gap-[30px] 2xl:flex">
           <SvgoHearth class="h-[28px] w-[30px] text-black" :fontControlled="false" />
           <UiButtonTextIconArrowDown>UA</UiButtonTextIconArrowDown>
-          <UiButtonText @click="switchAuth(true, 'register')">Зареєструватися</UiButtonText>
+          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
+            Зареєструватися
+          </UiButtonTextUnderline>
           <UiButtonPrimary @click="switchAuth(true, 'login')">Увійти</UiButtonPrimary>
         </div>
 
@@ -56,7 +60,11 @@
 
       <div v-else class="flex justify-between">
         <div class="hidden gap-[35px] 2xl:flex">
-          <UiButtonText styles="text-red md:hover:before:bg-red">Каталог</UiButtonText>
+          <div class="my-auto">
+            <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
+              Каталог
+            </UiButtonTextUnderline>
+          </div>
 
           <UiButtonTextIconArrowDown>Для українських експортерів</UiButtonTextIconArrowDown>
 
@@ -65,7 +73,9 @@
 
         <div class="flex items-center gap-5 2xl:flex-row-reverse">
           <UiButtonPrimary @click="switchAuth(true, 'login')">Увійти</UiButtonPrimary>
-          <UiButtonText @click="switchAuth(true, 'register')">Зареєструватися</UiButtonText>
+          <UiButtonTextUnderline @click="switchAuth(true, 'register')"
+            >Зареєструватися</UiButtonTextUnderline
+          >
           <UiButtonTextIconArrowDown class="hidden 2xl:flex">UA</UiButtonTextIconArrowDown>
           <SvgoHearth
             class="hidden h-[28px] w-[30px] text-black 2xl:block"

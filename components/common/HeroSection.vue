@@ -24,7 +24,7 @@
           <label for="Search" class="absolute right-[15px] top-1/2 -translate-y-1/2">
             <SvgoSearch
               :fontControlled="false"
-              class="!mb-0 h-[12px] w-[12px] cursor-text text-color-gray md:h-[17px] md:w-[17px] lg:h-5 lg:w-5"
+              class="!mb-0 h-[12px] w-[12px] cursor-text text-status_gray md:h-[17px] md:w-[17px] lg:h-5 lg:w-5"
             />
           </label>
 
@@ -33,7 +33,7 @@
             type="search"
             name="Search"
             placeholder="Почніть пошук"
-            class="w-full bg-transparent py-[9px] pl-[15px] pr-8 text-[10px] text-black outline-none placeholder:text-color-gray md:py-[12px] md:pl-[18px] md:pr-[36px] md:text-[14px] lg:py-[15px] lg:pl-[21px] lg:pr-10 lg:text-[17px]"
+            class="w-full bg-transparent py-[9px] pl-[15px] pr-8 text-[10px] text-black outline-none placeholder:text-status_gray md:py-[12px] md:pl-[18px] md:pr-[36px] md:text-[14px] lg:py-[15px] lg:pl-[21px] lg:pr-10 lg:text-[17px]"
           />
         </div>
 

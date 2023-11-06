@@ -20,7 +20,7 @@
   >
     <template #title> Питання і відповіді </template>
     <template #content>
-      <UiTabs :items="items" class="mt-[20px] md:mt-[25px] 4xl:mt-[40px]"> </UiTabs>
+      <UiTabs :items="items" class="mt-[20px] md:mt-[25px] 4xl:mt-[40px]" />
     </template>
   </UiSectionTitle>
 </template>

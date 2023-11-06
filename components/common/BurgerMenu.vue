@@ -10,7 +10,7 @@
   <div
     :class="
       cn(
-        'fixed inset-x-0 -top-full z-40 h-fit rounded-b-[10px] bg-white px-5 py-[25px] text-black transition-all delay-0 duration-[200ms] ease-linear md:top-[-400px] md:px-10 md:py-[30px]',
+        'fixed inset-x-0 -top-full z-40 h-fit rounded-b-[10px] bg-white px-5 py-[25px] text-black transition-all delay-0 duration-[200ms] ease-linear md:top-[-400px] md:px-10 md:py-[30px] 2xl:hidden',
         {
           'top-0 md:top-0': isActive,
         }
@@ -24,18 +24,20 @@
         <UiButtonText>UA</UiButtonText>
       </li>
       <li>
-        <UiButtonText>Каталог</UiButtonText>
+        <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
+          Каталог
+        </UiButtonTextUnderline>
       </li>
       <li>
-        <UiButtonText> Для українських експортерів </UiButtonText>
+        <UiButtonTextIconArrowDown>Для українських експортерів</UiButtonTextIconArrowDown>
       </li>
       <li>
-        <UiButtonText>Для міжнародних імпортерів</UiButtonText>
+        <UiButtonTextIconArrowDown>Для міжнародних імпортерів</UiButtonTextIconArrowDown>
       </li>
     </ul>
 
-    <UiButtonPrimary class="mx-auto mb-[15px]">Увійти</UiButtonPrimary>
-    <UiButtonText class="mx-auto">Зареєструватися</UiButtonText>
+    <UiButtonPrimary styles="mx-auto mb-[15px]">Увійти</UiButtonPrimary>
+    <UiButtonTextUnderline styles="mx-auto">Зареєструватися</UiButtonTextUnderline>
   </div>
 </template>
 
