@@ -14,7 +14,7 @@
 <template>
   <input
     :value="modelValue"
-    class="text-[10px] font-medium text-black md:text-[15px] 4xl:text-[20px]"
+    class="rounded-[50px] border border-black px-[15px] py-[11px] text-[7px] font-medium text-black focus:outline-none md:px-[20px] md:py-[14px] md:text-[10px] xl:px-[25px] xl:py-[16px] xl:text-[14px]"
     @input="handleInput"
   />
 </template>

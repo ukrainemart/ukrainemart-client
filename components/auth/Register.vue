@@ -39,13 +39,13 @@
           <UiInputOutline v-model="credentials.email" required />
         </UiLabel>
         <UiLabel label="Пароль:" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.password" required type="password" />
+          <UiInputOutlinePassword v-model="credentials.password" required />
         </UiLabel>
         <UiLabel label="Повторіть пароль:" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.c_password" required type="password" />
+          <UiInputOutlinePassword v-model="credentials.c_password" required />
         </UiLabel>
       </div>
-      <div class="flex items-center justify-between">
+      <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">
         <UiLabel
           label="Приєднуючись, я погоджуюся з умовами використання та політикою конфіденційності."
           class="!flex-row-reverse items-center justify-end whitespace-normal"
