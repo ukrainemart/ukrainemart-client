@@ -2,11 +2,13 @@
 
 <template>
   <div class="bg-white py-[15px] md:py-[23px] 4xl:py-[35px]">
-    <div class="container no-scrollbar overflow-scroll ">
+    <div class="no-scrollbar container overflow-scroll">
       <div
         class="flex items-center gap-[20px] md:gap-[35px] 2xl:justify-between 4xl:w-auto 4xl:gap-[0px]"
       >
-        <ul class="flex items-center gap-[20px] md:gap-[35px] lg:gap-[15px] xl:gap-[25px] 4xl:gap-[35px]">
+        <ul
+          class="flex items-center gap-[20px] md:gap-[35px] lg:gap-[15px] xl:gap-[25px] 4xl:gap-[35px]"
+        >
           <li>
             <CommonCategoryItem title="Продукти та агрокультура">
               <SvgoAgriculture class="!h-full !w-full" />

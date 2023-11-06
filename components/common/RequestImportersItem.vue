@@ -15,9 +15,9 @@
     >
       Ми потребуємо соняшникову олію
     </h3>
-    <UiTextPortalPrimary class="mt-[2px] text-status_gray md:mt-[8px] 4xl:mt-[15px]"
-      >28.10.2023</UiTextPortalPrimary
-    >
+    <UiTextPortalPrimary class="mt-[2px] text-status_gray md:mt-[8px] 4xl:mt-[15px]">
+      28.10.2023
+    </UiTextPortalPrimary>
     <div
       class="mt-[7px] flex flex-col gap-[5px] md:mt-[20px] md:gap-[10px] 4xl:mt-[30px] 4xl:gap-[15px]"
     >
@@ -34,7 +34,9 @@
         <span class="text-status_gray">до 03.11.2023 </span>
       </UiTextPortalPrimaryXl>
     </div>
-    <UiButtonOutline class="mt-[15px] md:mt-[35px] 4xl:mt-[25px] self-center">Детальніше</UiButtonOutline>
+    <UiButtonOutline class="mt-[15px] self-center md:mt-[35px] 4xl:mt-[25px]">
+      Детальніше
+    </UiButtonOutline>
   </div>
 </template>
 

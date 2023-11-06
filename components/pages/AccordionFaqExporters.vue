@@ -29,7 +29,7 @@
 </script>
 
 <template>
-  <UiAccordion :items="items"> </UiAccordion>
+  <UiAccordion :items="items" />
 </template>
 
 <style scoped></style>
