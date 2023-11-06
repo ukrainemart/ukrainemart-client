@@ -15,7 +15,7 @@
     type="button"
     :class="
       cn(
-        'flex items-center justify-center gap-[9px] rounded-[50px] border border-solid border-black bg-black px-[27px] py-[7px] font-montserrat text-[12px] font-medium leading-4 text-white transition-colors duration-100 ease-in hover:bg-white hover:text-black focus:outline-none disabled:cursor-not-allowed md:px-[33px] md:py-[9px] md:text-[16px] md:leading-[19px] xl:border-[2px] xl:px-[38px] xl:py-[11px] xl:text-[20px] xl:leading-6',
+        'group flex items-center justify-center gap-[9px] rounded-[50px] border border-solid border-black bg-black px-[27px] py-[7px] font-montserrat text-[12px] font-medium leading-4 text-white transition-colors duration-100 ease-in hover:bg-white hover:text-black focus:outline-none disabled:cursor-not-allowed md:px-[33px] md:py-[9px] md:text-[16px] md:leading-[19px] xl:border-[2px] xl:px-[38px] xl:py-[11px] xl:text-[20px] xl:leading-6',
         styles
       )
     "

@@ -4,8 +4,8 @@
   <div>
     <CommonBreadcrumbs />
     <CommonStarRating />
-    <!-- <UiButtonPrimaryIconEnvelop>Зв’язатися</UiButtonPrimaryIconEnvelop> -->
-    <!-- <UiButtonOutlineIconEnvelop>Зв’язатися</UiButtonOutlineIconEnvelop> -->
+    <UiButtonPrimaryIconEnvelop>Зв’язатися</UiButtonPrimaryIconEnvelop>
+    <UiButtonOutlineIconEnvelop>Зв’язатися</UiButtonOutlineIconEnvelop>
   </div>
 </template>
 
