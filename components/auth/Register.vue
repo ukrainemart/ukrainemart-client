@@ -22,9 +22,12 @@
 <template>
   <UiTitleNamu
     class="mb-[20px] text-center text-[23px] md:mb-[22px] md:text-[35px] xl:mb-[25px] xl:text-[50px]"
-    >Реєстрація</UiTitleNamu
   >
-  <CommonButtonGoogle>Увійти через Google</CommonButtonGoogle>
+    {{ $t('registration') }}
+  </UiTitleNamu>
+  <CommonButtonGoogle>
+    {{ $t('logInWithGoogle') }}
+  </CommonButtonGoogle>
   <UiDivider
     :label="'або'"
     class="my-[10px] w-[100px] self-center md:my-[17px] md:w-[139px] xl:my-[15px] xl:w-[181px]"
@@ -32,38 +35,43 @@
   <form action="#" @submit.prevent="register">
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
-        <UiLabel label="Ім'я:" type="text" class="!text-status_gray">
+        <UiLabel :label="$t('name')" type="text" class="!text-status_gray">
           <UiInputOutline v-model="credentials.name" required />
         </UiLabel>
-        <UiLabel label="Email:" type="email" class="!text-status_gray">
+        <UiLabel :label="$t('email')" type="email" class="!text-status_gray">
           <UiInputOutline v-model="credentials.email" required />
         </UiLabel>
-        <UiLabel label="Пароль:" class="!text-status_gray">
+        <UiLabel :label="$t('password')" class="!text-status_gray">
           <UiInputOutlinePassword v-model="credentials.password" required />
         </UiLabel>
-        <UiLabel label="Повторіть пароль:" class="!text-status_gray">
+        <UiLabel :label="$t('repeatPassword')" class="!text-status_gray">
           <UiInputOutlinePassword v-model="credentials.c_password" required />
         </UiLabel>
       </div>
       <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">
         <UiLabel
-          label="Приєднуючись, я погоджуюся з умовами використання та політикою конфіденційності."
+          :label="$t('consentStatement')"
           class="!flex-row-reverse items-center justify-end whitespace-normal"
         >
           <UiCheckbox required />
         </UiLabel>
       </div>
-      <UiButtonPrimary class="mt-[20px] md:mt-[25px] xl:mt-[30px]">Зареєструватися</UiButtonPrimary>
+      <UiButtonPrimary class="mt-[20px] md:mt-[25px] xl:mt-[30px]">
+        {{ $t('signup') }}
+      </UiButtonPrimary>
       <div
         class="mt-[15px] flex items-center justify-center gap-[5px] text-[7px] font-medium md:mt-[22px] md:text-[10px] xl:mt-[20px] xl:text-[14px]"
       >
-        <span>Вже зареєстровані?</span>
+        <span>
+          {{ $t('alreadyRegistered') }}
+        </span>
         <UiButtonText
           type="button"
           class="gap-[5px] !text-[7px] font-semibold md:!text-[10px] xl:!text-[14px]"
           @click="switchTypeAuth('login')"
-          >Увійти</UiButtonText
         >
+          {{ $t('login') }}
+        </UiButtonText>
       </div>
     </div>
   </form>

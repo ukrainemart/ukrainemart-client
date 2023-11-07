@@ -33,5 +33,17 @@
   "home": "Головна",
   "favorites": "Вибране",
   "myAccount": "Мій кабінет",
-  "goodsFromUaExporters": "Товари від українських експортерів"
+  "goodsFromUaExporters": "Товари від українських експортерів",
+  "forgotPassword": "Забули пароль?",
+  "notRegistered": "Ще не зареєстровані?",
+  "authorization": "Авторизація",
+  "logInWithGoogle": "Увійти через Google",
+  "rememberMe": "Запам’ятати мене",
+  "email": "Електронна пошта:",
+  "password": "Пароль:",
+  "registration": "Реєстрація",
+  "alreadyRegistered": "Вже зареєстровані?",
+  "repeatPassword": "Повторіть пароль:",
+  "name": "Ім'я:",
+  "consentStatement": "Приєднуючись, я погоджуюся з умовами використання та політикою конфіденційності."
 }

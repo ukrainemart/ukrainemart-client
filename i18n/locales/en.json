@@ -33,5 +33,17 @@
   "home": "Home",
   "favorites": "Favorites",
   "myAccount": "My Account",
-  "goodsFromUaExporters": "Goods from Ukrainian exporters"
+  "goodsFromUaExporters": "Goods from Ukrainian exporters",
+  "forgotPassword": "Forgot password?",
+  "notRegistered": "Not registered yet?",
+  "authorization": "Authorization",
+  "logInWithGoogle": "Log in with Google",
+  "rememberMe": "Remember me",
+  "email": "Email:",
+  "password": "Password:",
+  "registration": "Registration",
+  "alreadyRegistered": "Already registered?",
+  "repeatPassword": "Repeat password:",
+  "name": "Name:",
+  "consentStatement": "By joining, I agree to the terms of use and privacy policy."
 }
