@@ -8,7 +8,7 @@
   <UiButtonText
     :styles="
       cn(
-        'relative before:absolute before:bottom-[-3px] md:hover:before:bg-black before:left-2 before:h-[2px] before:w-full before:bg-transparent before:content-[\'\']',
+        'relative before:absolute before:bottom-[-3px] before:bg-black before:transition-all before:duration-100 before:h-[2px] before:ease-in md:hover:before:w-full before:left-2 before:w-0 before:content-[\'\']',
         styles
       )
     "

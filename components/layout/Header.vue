@@ -24,78 +24,64 @@
 <template>
   <header class="sticky inset-x-0 top-0 z-50 bg-background-primary">
     <PagesMobileMenuBottom />
-    <div class="mx-auto max-w-[1780px] px-5 py-[25px] md:px-10 md:py-[30px] 2xl:py-10">
-      <div v-if="isLogo" class="flex items-center justify-between">
-        <div class="flex items-center gap-10">
-          <CommonLogo to="/" />
+    <div class="container mx-auto py-[25px] md:px-10 md:py-[30px] 4xl:py-10">
+      <!-- mobile start -->
+      <div class="flex justify-between xl:hidden">
+        <CommonLogo v-if="isLogo" to="/" />
 
-          <div class="my-auto">
-            <UiButtonTextUnderline
-              styles="md:hover:text-status_red md:hover:before:bg-status_red hidden 2xl:flex"
-            >
-              {{ $t('catalog') }}
-            </UiButtonTextUnderline>
-          </div>
-          <UiButtonTextIconArrowDown class="hidden 2xl:flex">
-            {{ $t('forUaExporters') }}
-          </UiButtonTextIconArrowDown>
-          <UiButtonTextIconArrowDown class="hidden 2xl:flex">
-            {{ $t('forIntlImporters') }}
-          </UiButtonTextIconArrowDown>
-        </div>
-
-        <div class="hidden items-center gap-[30px] 2xl:flex">
-          <SvgoHearth class="h-[28px] w-[30px] text-black" :fontControlled="false" />
-          <UiButtonTextIconArrowDown>UA</UiButtonTextIconArrowDown>
-          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
-            {{ $t('signup') }}
-          </UiButtonTextUnderline>
+        <div v-else class="flex items-center gap-5">
           <UiButtonPrimary @click="switchAuth(true, 'login')">
             {{ $t('login') }}
           </UiButtonPrimary>
+          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
+            {{ $t('signup') }}
+          </UiButtonTextUnderline>
         </div>
 
-        <div class="relative z-50 flex 2xl:hidden">
+        <div class="relative z-50 flex">
           <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
         </div>
       </div>
+      <!-- mobile end -->
 
-      <div v-else class="flex justify-between">
-        <div class="hidden gap-[35px] 2xl:flex">
-          <div class="my-auto">
-            <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
-              {{ $t('catalog') }}
-            </UiButtonTextUnderline>
-          </div>
+      <!-- desktop start -->
+      <div class="hidden items-center justify-between xl:flex">
+        <div class="flex items-center gap-[15px] 4xl:gap-10">
+          <CommonLogo v-if="isLogo" to="/" />
 
+          <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
+            {{ $t('catalog') }}
+          </UiButtonTextUnderline>
           <UiButtonTextIconArrowDown>
             {{ $t('forUaExporters') }}
           </UiButtonTextIconArrowDown>
-
           <UiButtonTextIconArrowDown>
             {{ $t('forIntlImporters') }}
           </UiButtonTextIconArrowDown>
         </div>
 
-        <div class="flex items-center gap-5 2xl:flex-row-reverse">
-          <UiButtonPrimary @click="switchAuth(true, 'login')">
-            {{ $t('login') }}
-          </UiButtonPrimary>
-          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
-            {{ $t('signup') }}
-          </UiButtonTextUnderline>
-          <UiButtonTextIconArrowDown class="hidden 2xl:flex">UA</UiButtonTextIconArrowDown>
-          <SvgoHearth
-            class="hidden h-[28px] w-[30px] text-black 2xl:block"
+        <div class="flex items-center gap-[15px] 4xl:gap-[30px]">
+          <SvgoSearchMobileMenu
+            v-if="isLogo"
+            class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
             :fontControlled="false"
           />
-        </div>
-
-        <div class="relative z-50 flex 2xl:hidden">
-          <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
+          <SvgoHearth
+            class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
+            :fontControlled="false"
+          />
+          <UiButtonTextIconArrowDown>
+            {{ $t('ua') }}
+          </UiButtonTextIconArrowDown>
+          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
+            {{ $t('signup') }}
+          </UiButtonTextUnderline>
+          <UiButtonPrimary @click="switchAuth(true, 'login')">
+            {{ $t('login') }}
+          </UiButtonPrimary>
         </div>
       </div>
-
+      <!-- desktop end -->
       <CommonBurgerMenu :isActive="isMobileMenu" />
     </div>
     <AuthBase v-model="isAuthModal" :type="typeAuth" @switchTypeAuth="switchTypeAuth" />

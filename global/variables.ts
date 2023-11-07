@@ -1,6 +1,6 @@
 const HEADER_HEIGHT = {
-  HEADER_SM: '82px',
-  HEADER_MD: '99px',
+  HEADER_SM: '82px', // 74 with logo
+  HEADER_MD: '99px', // 102 with logo
   HEADER_XL: '110px',
   HEADER_2XL: '130px',
 };
