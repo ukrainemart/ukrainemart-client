@@ -22,20 +22,20 @@
       class="mt-[7px] flex flex-col gap-[5px] md:mt-[20px] md:gap-[10px] 4xl:mt-[30px] 4xl:gap-[15px]"
     >
       <UiTextPortalPrimaryXl>
-        Доставка:
+        {{ $t('delivery') }}
         <span class="text-status_gray">10-14 днів</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
-        Кількість:
+        {{ $t('quantity') }}
         <span class="text-status_gray">150 л</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
-        Запит діє:
+        {{ $t('requestIsValid') }}
         <span class="text-status_gray">до 03.11.2023 </span>
       </UiTextPortalPrimaryXl>
     </div>
     <UiButtonOutline class="mt-[15px] self-center md:mt-[35px] 4xl:mt-[25px]">
-      Детальніше
+      {{ $t('details') }}
     </UiButtonOutline>
   </div>
 </template>

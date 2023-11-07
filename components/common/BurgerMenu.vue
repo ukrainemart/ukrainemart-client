@@ -1,5 +1,3 @@
-<!-- // TODO: consider the negative value of the top top-[-310px] -->
-
 <script setup lang="ts">
   defineProps<{
     isActive?: boolean;
@@ -21,23 +19,33 @@
 
     <ul class="my-[25px] flex flex-col gap-[15px]">
       <li>
-        <UiButtonText>UA</UiButtonText>
+        <UiButtonText>
+          {{ $t('ua') }}
+        </UiButtonText>
       </li>
       <li>
         <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
-          Каталог
+          {{ $t('catalog') }}
         </UiButtonTextUnderline>
       </li>
       <li>
-        <UiButtonTextIconArrowDown>Для українських експортерів</UiButtonTextIconArrowDown>
+        <UiButtonTextIconArrowDown>
+          {{ $t('forUaExporters') }}
+        </UiButtonTextIconArrowDown>
       </li>
       <li>
-        <UiButtonTextIconArrowDown>Для міжнародних імпортерів</UiButtonTextIconArrowDown>
+        <UiButtonTextIconArrowDown>
+          {{ $t('forIntlImporters') }}
+        </UiButtonTextIconArrowDown>
       </li>
     </ul>
 
-    <UiButtonPrimary styles="mx-auto mb-[15px]">Увійти</UiButtonPrimary>
-    <UiButtonTextUnderline styles="mx-auto">Зареєструватися</UiButtonTextUnderline>
+    <UiButtonPrimary styles="mx-auto mb-[15px]">
+      {{ $t('login') }}
+    </UiButtonPrimary>
+    <UiButtonTextUnderline styles="mx-auto">
+      {{ $t('signup') }}
+    </UiButtonTextUnderline>
   </div>
 </template>
 

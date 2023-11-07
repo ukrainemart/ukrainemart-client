@@ -8,7 +8,9 @@
   <div>
     <CommonHeroSection />
     <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]">
-      <template #title> Товари від українських експортерів </template>
+      <template #title>
+        {{ $t('goodsFromUaExporters') }}
+      </template>
     </CommonSectionProductsSlider>
     <CommonSectionRequestsImporters />
     <CommonSectionPopularCategories />

@@ -1,5 +1,3 @@
-<!-- // TODO: add disabled styles -->
-
 <script setup lang="ts">
   type Props = {
     styles?: string; // Additional custom styles for the button

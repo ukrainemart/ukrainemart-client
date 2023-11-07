@@ -33,14 +33,14 @@
             <UiButtonTextUnderline
               styles="md:hover:text-status_red md:hover:before:bg-status_red hidden 2xl:flex"
             >
-              Каталог
+              {{ $t('catalog') }}
             </UiButtonTextUnderline>
           </div>
           <UiButtonTextIconArrowDown class="hidden 2xl:flex">
-            Для українських експортерів
+            {{ $t('forUaExporters') }}
           </UiButtonTextIconArrowDown>
           <UiButtonTextIconArrowDown class="hidden 2xl:flex">
-            Для міжнародних імпортерів
+            {{ $t('forIntlImporters') }}
           </UiButtonTextIconArrowDown>
         </div>
 
@@ -48,9 +48,11 @@
           <SvgoHearth class="h-[28px] w-[30px] text-black" :fontControlled="false" />
           <UiButtonTextIconArrowDown>UA</UiButtonTextIconArrowDown>
           <UiButtonTextUnderline @click="switchAuth(true, 'register')">
-            Зареєструватися
+            {{ $t('signup') }}
           </UiButtonTextUnderline>
-          <UiButtonPrimary @click="switchAuth(true, 'login')">Увійти</UiButtonPrimary>
+          <UiButtonPrimary @click="switchAuth(true, 'login')">
+            {{ $t('login') }}
+          </UiButtonPrimary>
         </div>
 
         <div class="relative z-50 flex 2xl:hidden">
@@ -62,20 +64,26 @@
         <div class="hidden gap-[35px] 2xl:flex">
           <div class="my-auto">
             <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
-              Каталог
+              {{ $t('catalog') }}
             </UiButtonTextUnderline>
           </div>
 
-          <UiButtonTextIconArrowDown>Для українських експортерів</UiButtonTextIconArrowDown>
+          <UiButtonTextIconArrowDown>
+            {{ $t('forUaExporters') }}
+          </UiButtonTextIconArrowDown>
 
-          <UiButtonTextIconArrowDown>Для міжнародних імпортерів</UiButtonTextIconArrowDown>
+          <UiButtonTextIconArrowDown>
+            {{ $t('forIntlImporters') }}
+          </UiButtonTextIconArrowDown>
         </div>
 
         <div class="flex items-center gap-5 2xl:flex-row-reverse">
-          <UiButtonPrimary @click="switchAuth(true, 'login')">Увійти</UiButtonPrimary>
-          <UiButtonTextUnderline @click="switchAuth(true, 'register')"
-            >Зареєструватися</UiButtonTextUnderline
-          >
+          <UiButtonPrimary @click="switchAuth(true, 'login')">
+            {{ $t('login') }}
+          </UiButtonPrimary>
+          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
+            {{ $t('signup') }}
+          </UiButtonTextUnderline>
           <UiButtonTextIconArrowDown class="hidden 2xl:flex">UA</UiButtonTextIconArrowDown>
           <SvgoHearth
             class="hidden h-[28px] w-[30px] text-black 2xl:block"

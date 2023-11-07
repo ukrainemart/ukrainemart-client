@@ -8,13 +8,13 @@
       <h1
         class="mb-2.5 font-namu text-[55px] font-light leading-[66px] text-black md:mb-[13px] md:text-[95px] md:leading-[114px] lg:mb-[15px] lg:text-[130px] lg:leading-[156px]"
       >
-        Ukrainemart
+        {{ $t('logo') }}
       </h1>
 
       <p
         class="mx-auto mb-[15px] max-w-[1182px] text-[10px] font-medium text-black md:mb-[30px] md:text-[14px] lg:mb-10 lg:text-[17px]"
       >
-        Перша в Україні B2B платформа для українських експортерів та міжнародних імпортерів
+        {{ $t('companyDescription') }}
       </p>
 
       <div>
@@ -32,7 +32,7 @@
             id="Search"
             type="search"
             name="Search"
-            placeholder="Почніть пошук"
+            :placeholder="$t('startYourSearch')"
             class="w-full bg-transparent py-[9px] pl-[15px] pr-8 text-[10px] text-black outline-none placeholder:text-status_gray md:py-[12px] md:pl-[18px] md:pr-[36px] md:text-[14px] lg:py-[15px] lg:pl-[21px] lg:pr-10 lg:text-[17px]"
           />
         </div>
@@ -40,7 +40,8 @@
         <p
           class="ld:mt-[5px] ml-[18px] mt-[3px] text-left text-[7px] font-medium text-black md:mt-[7px] md:text-[13px] lg:text-[17px]"
         >
-          Наприклад: <span class="underline">Зерно</span> або <span class="underline">Олія</span>
+          {{ $t('example') }} <span class="underline">{{ $t('grain') }}</span> {{ $t('or') }}
+          <span class="underline">{{ $t('oil') }}</span>
         </p>
       </div>
     </div>

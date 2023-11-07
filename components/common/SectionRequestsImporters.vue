@@ -22,7 +22,9 @@
       },
     }"
   >
-    <template #title> Запити від міжнародних імпортерів </template>
+    <template #title>
+      {{ $t('requestsFromIntlImporters') }}
+    </template>
     <template #slide="{ slide }">
       <CommonRequestImportersItem class="mb-[20px]" :item="slide" />
     </template>

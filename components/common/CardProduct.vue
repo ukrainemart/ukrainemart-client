@@ -26,7 +26,9 @@
     <div
       class="invisible relative z-20 mt-[20px] hidden justify-center is-hover:flex group-hover:is-hover:visible"
     >
-      <UiButtonOutline @click="navigateTo(`/product/product_id`)">Детальніше </UiButtonOutline>
+      <UiButtonOutline @click="navigateTo(`/product/product_id`)">
+        {{ $t('details') }}
+      </UiButtonOutline>
     </div>
   </div>
 </template>

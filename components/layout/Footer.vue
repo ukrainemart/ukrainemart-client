@@ -8,55 +8,75 @@
       >
         <li>
           <UiButtonOpacity>
-            <PagesFooterText>Що таке Ukrainemart?</PagesFooterText>
+            <PagesFooterText>
+              {{ $t('whatIsUkrainemart') }}
+            </PagesFooterText>
           </UiButtonOpacity>
         </li>
         <li>
           <UiButtonOpacity>
-            <PagesFooterText>Особистий кабінет</PagesFooterText>
+            <PagesFooterText>
+              {{ $t('personalAccount') }}
+            </PagesFooterText>
           </UiButtonOpacity>
         </li>
         <li>
           <UiButtonOpacity>
-            <PagesFooterText>Реєстрація</PagesFooterText>
-          </UiButtonOpacity>
-        </li>
-        <UiHr class="md:hidden" />
-        <li>
-          <UiButtonOpacity>
-            <PagesFooterText>Каталог</PagesFooterText>
-          </UiButtonOpacity>
-        </li>
-        <li>
-          <UiButtonOpacity>
-            <PagesFooterText>Українським експортерам</PagesFooterText>
-          </UiButtonOpacity>
-        </li>
-        <li>
-          <UiButtonOpacity>
-            <PagesFooterText>Міжнародним імпортерам</PagesFooterText>
+            <PagesFooterText>
+              {{ $t('signup') }}
+            </PagesFooterText>
           </UiButtonOpacity>
         </li>
         <UiHr class="md:hidden" />
         <li>
           <UiButtonOpacity>
-            <PagesFooterText>Питання і відповіді</PagesFooterText>
+            <PagesFooterText>
+              {{ $t('catalog') }}
+            </PagesFooterText>
           </UiButtonOpacity>
         </li>
         <li>
           <UiButtonOpacity>
-            <PagesFooterText>Супровід контрактів</PagesFooterText>
+            <PagesFooterText>
+              {{ $t('toUaExporters') }}
+            </PagesFooterText>
           </UiButtonOpacity>
         </li>
         <li>
           <UiButtonOpacity>
-            <PagesFooterText>Технічна підтримка</PagesFooterText>
+            <PagesFooterText>
+              {{ $t('toIntlImporters') }}
+            </PagesFooterText>
+          </UiButtonOpacity>
+        </li>
+        <UiHr class="md:hidden" />
+        <li>
+          <UiButtonOpacity>
+            <PagesFooterText>
+              {{ $t('faq') }}
+            </PagesFooterText>
+          </UiButtonOpacity>
+        </li>
+        <li>
+          <UiButtonOpacity>
+            <PagesFooterText>
+              {{ $t('contractSupport') }}
+            </PagesFooterText>
+          </UiButtonOpacity>
+        </li>
+        <li>
+          <UiButtonOpacity>
+            <PagesFooterText>
+              {{ $t('technicalSupport') }}
+            </PagesFooterText>
           </UiButtonOpacity>
         </li>
       </ul>
       <div class="mt-[35px] flex flex-col items-center md:mt-[45px] lg:mt-0">
         <h5>
-          <PagesFooterText>Наші соц мережі:</PagesFooterText>
+          <PagesFooterText>
+            {{ $t('ourSocialNetworks') }}
+          </PagesFooterText>
         </h5>
         <div
           class="mt-[5px] flex max-w-[120px] justify-between gap-[25px] md:mt-[10px] lg:max-w-none 3xl:mt-[20px] 3xl:gap-[50px]"

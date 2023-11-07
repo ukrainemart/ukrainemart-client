@@ -3,7 +3,9 @@
 <template>
   <UiSectionTitle class="lg:!pb-[100px] lg:!pt-[130xp] xl:!pb-[178px]">
     <template #title>
-      <span class="m-auto block w-fit">Наші партнери</span>
+      <span class="m-auto block w-fit">
+        {{ $t('ourPartners') }}
+      </span>
     </template>
     <template #content>
       <div
