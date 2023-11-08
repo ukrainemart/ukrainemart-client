@@ -2,13 +2,15 @@
   import AccordionFaqExporters from '../pages/AccordionFaqExporters.vue';
   import AccordionFaqImporters from '../pages/AccordionFaqImporters.vue';
 
+  const { t } = useI18n();
+
   const items = [
     {
-      label: 'Для експортерів', // $t('forExporters')
+      label: t('forExporters'),
       content: AccordionFaqExporters,
     },
     {
-      label: 'Для імпортерів', // $t('forImporters')
+      label: t('forImporters'),
       content: AccordionFaqImporters,
     },
   ];

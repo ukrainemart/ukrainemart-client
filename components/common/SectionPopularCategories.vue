@@ -2,7 +2,9 @@
 
 <template>
   <UiSectionTitle>
-    <template #title> Популярні категорії </template>
+    <template #title>
+      {{ $t('popularCategory') }}
+    </template>
     <template #content>
       <div
         class="grid min-h-[560px] grid-rows-4 gap-[20px] md:grid-cols-2 md:gap-[5px] 4xl:min-h-[1081px] 4xl:gap-[10px]"

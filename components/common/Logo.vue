@@ -14,7 +14,7 @@
       )
     "
   >
-    Ukrainemart
+    {{ $t('logo') }}
   </NuxtLink>
 </template>
 

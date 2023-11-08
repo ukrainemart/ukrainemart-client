@@ -25,10 +25,10 @@
   <form action="#" @submit.prevent="login">
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
-        <UiLabel :label="$t('email')" type="text" class="!text-status_gray">
+        <UiLabel :label="`${$t('email')}:`" type="text" class="!text-status_gray">
           <UiInputOutline v-model="credentials.email" />
         </UiLabel>
-        <UiLabel :label="$t('password')" class="!text-status_gray">
+        <UiLabel :label="`${$t('password')}:`" class="!text-status_gray">
           <UiInputOutlinePassword v-model="credentials.password" />
         </UiLabel>
       </div>

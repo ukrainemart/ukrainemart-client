@@ -75,7 +75,7 @@
       <div class="mt-[35px] flex flex-col items-center md:mt-[45px] lg:mt-0">
         <h5>
           <PagesFooterText>
-            {{ $t('ourSocialNetworks') }}
+            {{ `${$t('ourSocialNetworks')}:` }}
           </PagesFooterText>
         </h5>
         <div

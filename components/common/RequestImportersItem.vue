@@ -22,15 +22,15 @@
       class="mt-[7px] flex flex-col gap-[5px] md:mt-[20px] md:gap-[10px] 4xl:mt-[30px] 4xl:gap-[15px]"
     >
       <UiTextPortalPrimaryXl>
-        {{ $t('delivery') }}
+        {{ `${$t('delivery')}:` }}
         <span class="text-status_gray">10-14 днів</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
-        {{ $t('quantity') }}
+        {{ `${$t('quantity')}:` }}
         <span class="text-status_gray">150 л</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
-        {{ $t('requestIsValid') }}
+        {{ `${$t('requestIsValid')}:` }}
         <span class="text-status_gray">до 03.11.2023 </span>
       </UiTextPortalPrimaryXl>
     </div>
