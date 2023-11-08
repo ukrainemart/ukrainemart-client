@@ -10,6 +10,7 @@
   });
 
   const rating = ref(props.ratingValue);
+  const numberOfStars = ref(5);
 
   const updateRating = (newRating: number) => {
     if (!props.isReadOnly) {
@@ -21,7 +22,7 @@
 <template>
   <div class="flex gap-[3px]">
     <button
-      v-for="index in 5"
+      v-for="index in numberOfStars"
       :key="index"
       type="button"
       :class="{ 'text-black': index <= rating, 'text-transparent': index > rating }"
