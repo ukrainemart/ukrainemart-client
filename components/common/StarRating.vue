@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <div class="flex gap-[3px]">
+  <div class="flex gap-[2px] 2xl:gap-[3px]">
     <button
       v-for="index in numberOfStars"
       :key="index"
@@ -29,7 +29,10 @@
       :disabled="props.isReadOnly"
       @click="updateRating(index)"
     >
-      <SvgoStar :fontControlled="false" class="w-[25px]" />
+      <SvgoStar
+        :fontControlled="false"
+        class="h-[15px] w-[15px] md:h-[20px] md:w-[20px] 2xl:h-[25px] 2xl:w-[25px]"
+      />
     </button>
   </div>
 </template>
