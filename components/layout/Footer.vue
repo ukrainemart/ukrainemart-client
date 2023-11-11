@@ -1,7 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-  <footer class="bg-black py-[30px] lg:pb-[100px] lg:pt-[70px] xl:pb-[140px]">
+  <footer
+    class="pb-padding-b-footer-xs bg-black pt-[30px] lg:pb-[100px] lg:pt-[70px] xl:pb-[140px]"
+  >
     <div class="container justify-between lg:flex">
       <ul
         class="grid justify-between gap-[15px] md:grid-cols-3 lg:w-full lg:max-w-[80%] xl:gap-y-[30px]"

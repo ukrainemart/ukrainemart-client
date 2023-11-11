@@ -19,6 +19,7 @@ const VAR = {
   PADDING_CARD_2XL: '30px',
   CONTAINER_PADDING_XS: '20px',
   CONTAINER_PADDING_MD: '40px',
+  MOBILE_BOTTOM_MENU_HEIGHT: '64px',
   ...HEADER_HEIGHT,
 };
 export default VAR;

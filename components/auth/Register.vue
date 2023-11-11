@@ -56,7 +56,7 @@
           <UiCheckbox required />
         </UiLabel>
       </div>
-      <UiButtonPrimary class="mt-[20px] md:mt-[25px] xl:mt-[30px]">
+      <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]">
         {{ $t('signup') }}
       </UiButtonPrimary>
       <div

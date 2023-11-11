@@ -41,6 +41,8 @@ export default <Partial<Config>>{
         'header-md': `calc(100vh - ${VAR.HEADER_MD})`,
         'header-xl': `calc(100vh - ${VAR.HEADER_XL})`,
         'header-2xl': `calc(100vh - ${VAR.HEADER_2XL})`,
+
+        'mobile-menu': `${VAR.MOBILE_BOTTOM_MENU_HEIGHT}`,
       },
       gridTemplateColumns: {
         'category-item': 'repeat(6, minmax(0, 275px))',
@@ -59,6 +61,8 @@ export default <Partial<Config>>{
         'padding-x-slider-container-md': `calc(${VAR.CONTAINER_PADDING_MD} - ${VAR.PADDING_CARD_XS})`,
         'padding-x-slider-container-lg': `calc(${VAR.CONTAINER_PADDING_MD} - ${VAR.PADDING_CARD_LG})`,
         'padding-x-slider-container-2xl': `calc(${VAR.CONTAINER_PADDING_MD} - ${VAR.PADDING_CARD_2XL})`,
+
+        'padding-b-footer-xs': `calc(30px + ${VAR.MOBILE_BOTTOM_MENU_HEIGHT})`,
       },
       opacity: {
         hover: '60%',
