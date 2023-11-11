@@ -46,5 +46,15 @@
   "repeatPassword": "Повторіть пароль",
   "name": "Ім'я",
   "consentStatement": "Приєднуючись, я погоджуюся з умовами використання та політикою конфіденційності.",
-  "popularCategory": "Популярні категорії"
+  "popularCategory": "Популярні категорії",
+  "send_request": "Відправити заявку",
+
+  "create_company": {
+    "application_submission": "Подача заявки на створення компанії",
+    "name_legal_entity": "Введіть назву юридичної особи",
+    "enter_edrpou_code": "Введіть код ЄДРПОУ",
+    "contact_person_number": "Номер контактної особи",
+    "describe_plan_using_platform": "Опишіть ваш план застосування платформи",
+    "have__experience_export_import": "Чи мали ви досвід у експорті/імпорті?"
+  }
 }

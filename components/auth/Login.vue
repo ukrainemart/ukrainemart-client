@@ -14,9 +14,10 @@
     password: '',
   });
 
-  const login = async () => {
-    await auth.login(credentials);
-    switchModal(false);
+  const login = () => {
+    auth.login(credentials).then(() => {
+      switchModal(false);
+    });
   };
 </script>
 
