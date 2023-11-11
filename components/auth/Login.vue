@@ -1,9 +1,12 @@
 <script setup lang="ts">
   const auth = useAuthStore();
-  const emits = defineEmits(['switchTypeAuth']);
+  const emits = defineEmits(['switchTypeAuth', 'switchModal']);
 
   const switchTypeAuth = (type: SwitchAuth) => {
     emits('switchTypeAuth', type);
+  };
+  const switchModal = (value: boolean) => {
+    emits('switchModal', value);
   };
 
   const credentials = reactive<LoginCredentials>({
@@ -11,8 +14,9 @@
     password: '',
   });
 
-  const login = () => {
-    auth.login(credentials);
+  const login = async () => {
+    await auth.login(credentials);
+    switchModal(false);
   };
 </script>
 

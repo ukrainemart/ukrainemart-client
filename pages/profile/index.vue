@@ -6,14 +6,16 @@
 
 <template>
   <div
-    class="container mb-[70px] mt-[35px] grid grid-cols-12 items-start md:mb-[100px] md:mt-[45px] xl:mb-[111px] xl:mt-[97px]"
+    class="container mb-[70px] mt-[25px] grid grid-cols-12 items-start md:mb-[100px] md:mt-[45px] xl:mb-[111px] xl:mt-[97px]"
   >
     <div class="col-span-3 hidden border-r border-status_gray lg:block xl:col-span-2">
       <CommonUserIconName name="Andriy Ivanov" />
 
       <CommonProfileMenuList class="mt-[10px] md:mt-[12px] xl:mt-[15px]" />
     </div>
-    <div class="col-span-12 lg:col-span-9 lg:pl-[20px] xl:col-span-10 xl:pl-[40px]">content</div>
+    <div class="col-span-12 lg:col-span-9 lg:pl-[20px] lg:pt-[30px] xl:col-span-10 xl:pl-[40px]">
+      <NuxtPage />
+    </div>
   </div>
 </template>
 

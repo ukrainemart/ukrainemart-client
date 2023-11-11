@@ -11,8 +11,12 @@
     typeAuth.value = type;
   };
 
-  const switchAuth = (value: boolean, type: SwitchAuth) => {
+  const switchAuthModal = (value: boolean) => {
     isAuthModal.value = value;
+  };
+
+  const switchAuth = (value: boolean, type: SwitchAuth) => {
+    switchAuthModal(value);
     switchTypeAuth(type);
   };
 
@@ -84,6 +88,11 @@
       <!-- desktop end -->
       <CommonBurgerMenu :isActive="isMobileMenu" />
     </div>
-    <AuthBase v-model="isAuthModal" :type="typeAuth" @switchTypeAuth="switchTypeAuth" />
+    <AuthBase
+      v-model="isAuthModal"
+      :type="typeAuth"
+      @switchTypeAuth="switchTypeAuth"
+      @switchModal="switchAuthModal"
+    />
   </header>
 </template>
