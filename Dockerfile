@@ -12,9 +12,9 @@ COPY . .
 RUN npm install
 
 # Собираем проект
-RUN npm run build
+# RUN npm run build
 
 # Команда для запуска Nuxt.js
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
 
 EXPOSE 3000
