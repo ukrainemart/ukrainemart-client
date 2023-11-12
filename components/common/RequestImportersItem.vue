@@ -13,7 +13,7 @@
     <h3 class="mt-[5px] text-[17px] font-medium md:mt-[12px] md:text-[20px] 4xl:mt-[21px]">
       Ми потребуємо соняшникову олію
     </h3>
-    <UiTextPortalPrimary class="mt-[2px] text-status_gray md:mt-[8px] 4xl:mt-[15px]">
+    <UiTextPortalPrimary class="mt-[10px] text-status_gray 4xl:mt-[15px]">
       28.10.2023
     </UiTextPortalPrimary>
     <div
