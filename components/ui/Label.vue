@@ -6,7 +6,7 @@
 
 <template>
   <label
-    class="flex flex-col gap-[5px] truncate text-[7px] font-medium text-black md:gap-[7px] md:text-[10px] 4xl:gap-[10px] 4xl:text-[14px]"
+    class="flex flex-col gap-[5px] truncate text-[7px] font-medium text-status_gray md:gap-[7px] md:text-[10px] 4xl:gap-[10px] 4xl:text-[14px]"
     for=""
   >
     <p>

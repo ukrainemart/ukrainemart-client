@@ -47,7 +47,8 @@
   "name": "Name",
   "consentStatement": "By joining, I agree to the terms of use and privacy policy.",
   "popularCategory": "Popular category",
-
+  "yes": "Yes",
+  "no": "No",
   "send_request": "Send a request",
 
   "create_company": {
