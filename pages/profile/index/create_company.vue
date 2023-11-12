@@ -8,7 +8,7 @@
   });
 
   watch(inputs, () => {
-    console.log(inputs);
+    
   });
 </script>
 
