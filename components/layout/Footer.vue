@@ -2,7 +2,7 @@
 
 <template>
   <footer
-    class="bg-black pb-padding-b-footer-xs pt-[30px] lg:pb-[100px] lg:pt-[70px] xl:pb-[140px]"
+    class="bg-black pb-padding-b-footer-xs pt-[30px] lg:pb-[100px] lg:pt-[70px]"
   >
     <div class="container justify-between lg:flex">
       <ul
