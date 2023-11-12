@@ -19,7 +19,6 @@
     :items="items"
     :ui="{
       wrapper: 'overflow-hidden mb-[25px] text-[12px] md:mb-[100px] md:text-[16px]',
-      content: 'leading-[15px] md:leading-[20px] 2xl:leading-[24px]',
     }"
   />
 </template>
