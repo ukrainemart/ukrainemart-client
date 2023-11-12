@@ -2,22 +2,32 @@
   const { width } = useWindowSize();
   const { BREAKPOINTS_MD } = useVariables();
 
+  const mainSlider = ref(null);
+  const sideSwiper = ref(null);
   const showSideSlider = computed(() => width.value >= BREAKPOINTS_MD);
+
+  const setThumbsSwiper = (swiper: any) => {
+    sideSwiper.value = swiper;
+  };
+
+  const setControlledMainSwiper = (swiper: any) => {
+    mainSlider.value = swiper;
+  };
 </script>
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
     <CommonBreadcrumbs />
-    <div class="container flex flex-wrap 2xl:justify-between">
-      <div class="flex flex-col md:flex-row md:gap-x-5 2xl:gap-x-10">
+    <div class="container grid 2xl:grid-cols-[1fr_min-content] 2xl:gap-x-5">
+      <div class="flex w-full flex-col md:flex-row md:gap-x-5 xl:w-fit 2xl:gap-x-10">
         <div class="mb-[20px] flex gap-[5px] md:mb-[35px] 2xl:mb-[80px] 2xl:gap-[10px]">
-          <CommonProductSideSlider v-if="showSideSlider" />
-          <CommonProductSlider />
+          <CommonProductSideSlider v-if="showSideSlider" @swiper="setThumbsSwiper" />
+          <CommonProductSlider :thumbs="{ swiper: sideSwiper }" @swiper="setControlledMainSwiper" />
         </div>
         <CommonProductInfo />
       </div>
 
-      <CommonProductDetails class="order-2" />
+      <CommonProductDetails class="md:order-2 2xl:col-span-2" />
       <CommonSellerInfo />
     </div>
 
@@ -25,7 +35,7 @@
       <template #title> Інші товари від цього продавця </template>
     </CommonSectionProductsSlider>
 
-    <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]" class="">
+    <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]">
       <template #title> Інші товари з цієї категорії </template>
     </CommonSectionProductsSlider>
 

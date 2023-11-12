@@ -22,6 +22,8 @@
       },
     }"
     class="product_side_swiper"
+    centeredSlidesBounds
+    :pagination="{ clickable: true }"
   >
     <SwiperSlide v-for="slide in slides" :key="slide" class="">
       <div class="h-full">
