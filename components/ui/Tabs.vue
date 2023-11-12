@@ -1,6 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     items: any;
+    ui?: any;
   }>();
 </script>
 
@@ -22,6 +23,7 @@
             'before:absolute before:w-full before:h-[1px] 3xl:before:h-[2px] before:bg-black before:bottom-[-5px] before:left-[10px]',
         },
       },
+      ...ui,
     }"
   >
     <template #item="{ item }">
