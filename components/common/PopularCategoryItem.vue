@@ -7,13 +7,13 @@
 
 <template>
   <div
-    class="relative flex items-end overflow-hidden rounded-[8px] px-[15px] py-[30px] md:px-[25px] md:py-[35px] 4xl:px-[40px] 4xl:py-[50px]"
+    class="group relative flex items-end overflow-hidden rounded-[8px] px-[15px] py-[30px] md:px-[25px] md:py-[35px] 4xl:px-[40px] 4xl:py-[50px]"
   >
     <div
       class="absolute left-0 top-0 z-10 h-full w-full bg-gradient-to-t from-black to-transparent"
     />
     <img
-      class="absolute left-0 top-0 h-full w-full object-cover"
+      class="absolute left-0 top-0 h-full w-full object-cove duration-hove group-hover:hover:scale-125"
       src="../../assets/images/metal.jpg"
       :alt="altImage"
     />
