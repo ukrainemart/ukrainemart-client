@@ -2,6 +2,12 @@
   defineProps<{
     isActive?: boolean;
   }>();
+
+  const emits = defineEmits(['switchAuth']);
+
+  const switchAuth = (value: boolean, type: SwitchAuth) => {
+    emits('switchAuth', value, type);
+  };
 </script>
 
 <template>
@@ -40,10 +46,10 @@
       </li>
     </ul>
 
-    <UiButtonPrimary styles="mx-auto mb-[15px]">
+    <UiButtonPrimary styles="mx-auto mb-[15px]" @click="switchAuth(true, 'login')">
       {{ $t('login') }}
     </UiButtonPrimary>
-    <UiButtonTextUnderline styles="mx-auto">
+    <UiButtonTextUnderline styles="mx-auto" @click="switchAuth(true, 'register')">
       {{ $t('signup') }}
     </UiButtonTextUnderline>
   </div>

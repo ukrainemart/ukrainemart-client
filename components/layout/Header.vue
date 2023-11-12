@@ -86,7 +86,7 @@
         </div>
       </div>
       <!-- desktop end -->
-      <CommonBurgerMenu :isActive="isMobileMenu" />
+      <CommonBurgerMenu :isActive="isMobileMenu" @switchAuth="switchAuth" />
     </div>
     <AuthBase
       v-model="isAuthModal"
