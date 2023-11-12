@@ -53,15 +53,7 @@
         <div class="flex items-center gap-[15px] 4xl:gap-10">
           <CommonLogo v-if="isLogo" to="/" />
 
-          <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
-            {{ $t('catalog') }}
-          </UiButtonTextUnderline>
-          <UiButtonTextIconArrowDown>
-            {{ $t('forUaExporters') }}
-          </UiButtonTextIconArrowDown>
-          <UiButtonTextIconArrowDown>
-            {{ $t('forIntlImporters') }}
-          </UiButtonTextIconArrowDown>
+          <CommonSubHeader v-if="!isLogo" />
         </div>
 
         <div class="flex items-center gap-[15px] 4xl:gap-[30px]">
