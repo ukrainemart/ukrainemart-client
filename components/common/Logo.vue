@@ -14,7 +14,7 @@
       )
     "
   >
-    {{ $t('logo') }}dwqd
+    {{ $t('logo') }}
   </NuxtLink>
 </template>
 
