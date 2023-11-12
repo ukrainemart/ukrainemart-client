@@ -1,9 +1,8 @@
 <script setup lang="ts"></script>
 
 <template>
-  <!-- REVIEW: remove w-full when it's on the first row -->
   <div
-    class="mb-[70px] flex h-fit w-full flex-col rounded-[5px] bg-white px-[15px] py-5 md:mb-[50px] md:flex-row md:rounded-[7px] md:px-[30px] 2xl:mb-0 2xl:flex-col 2xl:rounded-[10px] 2xl:pb-[15px] 2xl:pt-[30px]"
+    class="mb-[70px] flex h-fit w-full flex-col rounded-[5px] bg-white px-[15px] py-5 md:mb-[50px] md:flex-row md:rounded-[7px] md:px-[30px] 2xl:mb-0 2xl:w-auto 2xl:flex-col 2xl:rounded-[10px] 2xl:pb-[15px] 2xl:pt-[30px]"
   >
     <div class="mb-[13px] md:mb-0 md:mr-[50px] 2xl:mb-[30px] 2xl:mr-0">
       <p
