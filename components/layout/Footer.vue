@@ -81,22 +81,16 @@
           </PagesFooterText>
         </h5>
         <div
-          class="mt-[5px] flex max-w-[120px] justify-between gap-[25px] md:mt-[10px] lg:max-w-none 3xl:mt-[20px] 3xl:gap-[50px]"
+          class="mt-[5px] flex max-w-[120px] justify-between gap-[25px] md:mt-[10px] lg:max-w-none 3xl:mt-[20px]"
         >
           <UiButtonOpacity to="/">
-            <SvgoViber
-              class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px] 3xl:!h-[45px] 3xl:!w-[45px]"
-            />
+            <SvgoViber class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px]" />
           </UiButtonOpacity>
           <UiButtonOpacity to="/">
-            <SvgoFacebook
-              class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px] 3xl:!h-[45px] 3xl:!w-[45px]"
-            />
+            <SvgoFacebook class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px]" />
           </UiButtonOpacity>
           <UiButtonOpacity to="/">
-            <SvgoInstagram
-              class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px] 3xl:!h-[45px] 3xl:!w-[45px]"
-            />
+            <SvgoInstagram class="!h-[20px] !w-[20px] text-white lg:!h-[25px] lg:!w-[25px]" />
           </UiButtonOpacity>
         </div>
       </div>

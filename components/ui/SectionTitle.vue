@@ -3,9 +3,9 @@
 <template>
   <UiSection>
     <template #title>
-      <CommonTitleSectionXl class="mb-[20px] flex-1 md:mb-[30px] 4xl:mb-[40px]">
+      <CommonTitleSection class="mb-[20px] flex-1 md:mb-[30px] 4xl:mb-[40px]">
         <slot name="title" />
-      </CommonTitleSectionXl>
+      </CommonTitleSection>
     </template>
     <template #additional_elements>
       <slot name="additional_elements" />

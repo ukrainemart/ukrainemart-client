@@ -18,7 +18,7 @@
   >
     <template #default="{ item, open }">
       <UiButtonOpacity
-        class="flex w-full items-center justify-between border-b border-black py-[20px] text-left text-[16px] font-semibold md:text-[22px] 4xl:border-b-[2px] 4xl:py-[25px] 4xl:text-[27px]"
+        class="flex w-full items-center justify-between border-b border-black py-[20px] text-left text-[16px] font-semibold md:text-[17px] 4xl:border-b-[2px] 4xl:py-[25px]"
         :ui="{ rounded: 'rounded-none', padding: { sm: 'p-3' } }"
       >
         <span>{{ item.label }}</span>
