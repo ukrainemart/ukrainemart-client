@@ -5,9 +5,7 @@
 </script>
 
 <template>
-  <div
-    class="container mb-[70px] mt-[25px] grid grid-cols-12 items-start md:mb-[100px] md:mt-[45px] xl:mb-[111px] xl:mt-[97px]"
-  >
+  <div class="container mb-[70px] grid grid-cols-12 items-start md:mb-[100px] xl:mb-[111px]">
     <div class="col-span-3 hidden border-r border-status_gray lg:block xl:col-span-2">
       <CommonUserIconName name="Andriy Ivanov" />
 
