@@ -29,7 +29,7 @@
         @click.stop=""
       >
         <CommonUserIconName name="Andriy Ivanov" />
-        <CommonProfileMenuList @switchMenu="switchMenu" class="mt-[20px] md:mt-[26px]" />
+        <CommonProfileMenuList class="mt-[20px] md:mt-[26px]" @switchMenu="switchMenu" />
       </div>
     </div>
   </Transition>

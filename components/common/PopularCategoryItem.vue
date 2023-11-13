@@ -13,7 +13,7 @@
       class="absolute left-0 top-0 z-10 h-full w-full bg-gradient-to-t from-black to-transparent"
     />
     <img
-      class="absolute left-0 top-0 h-full w-full object-cove duration-hove group-hover:hover:scale-125"
+      class="absolute left-0 top-0 h-full w-full object-cover duration-hover group-hover:hover:scale-125"
       src="../../assets/images/metal.jpg"
       :alt="altImage"
     />

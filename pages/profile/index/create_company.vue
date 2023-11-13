@@ -7,9 +7,7 @@
     experience: false,
   });
 
-  watch(inputs, () => {
-    
-  });
+  watch(inputs, () => {});
 </script>
 
 <template>

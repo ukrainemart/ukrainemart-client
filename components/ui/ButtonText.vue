@@ -6,6 +6,7 @@
 
   withDefaults(defineProps<Props>(), {
     styles: '',
+    to: '',
   });
 </script>
 
