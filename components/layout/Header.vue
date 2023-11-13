@@ -87,4 +87,5 @@
       @switchModal="switchAuthModal"
     />
   </header>
+  <CommonSubHeader v-if="isLogo" class="container mb-[40px] hidden xl:flex" />
 </template>
