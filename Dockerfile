@@ -11,10 +11,10 @@ COPY . .
 # Устанавливаем зависимости
 RUN npm install
 
-# Собираем проект
-# RUN npm run build
+# Глобально устанавливаем nodemon
+RUN npm install -g nodemon
 
-# Команда для запуска Nuxt.js
-CMD ["npm", "run", "dev"]
+# Команда для запуска Nuxt.js с nodemon
+CMD ["nodemon", "--exec", "npm", "run", "dev"]
 
 EXPOSE 3000
