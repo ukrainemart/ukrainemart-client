@@ -25,9 +25,7 @@
 
     <ul class="my-[25px] flex flex-col gap-[15px]">
       <li>
-        <UiButtonText>
-          {{ $t('ua') }}
-        </UiButtonText>
+        <CommonLangSwitcher isMobile />
       </li>
       <li>
         <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">

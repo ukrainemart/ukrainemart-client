@@ -66,9 +66,7 @@
             class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
             :fontControlled="false"
           />
-          <UiButtonTextIconArrowDown>
-            {{ $t('ua') }}
-          </UiButtonTextIconArrowDown>
+          <CommonLangSwitcher />
           <UiButtonTextUnderline @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
