@@ -31,10 +31,10 @@
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
         <UiLabel :label="`${$t('email')}:`" type="text" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.email" />
+          <UiInputOutline v-model="credentials.email" tabindex="1" />
         </UiLabel>
         <UiLabel :label="`${$t('password')}:`" class="!text-status_gray">
-          <UiInputOutlinePassword v-model="credentials.password" />
+          <UiInputOutlinePassword v-model="credentials.password" tabindex="2" />
         </UiLabel>
       </div>
       <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">

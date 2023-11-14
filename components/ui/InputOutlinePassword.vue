@@ -2,6 +2,7 @@
   defineProps<{
     modelValue?: string;
     required?: boolean;
+    tabindex?: string;
   }>();
 
   const showPassword = ref(false);
@@ -33,6 +34,7 @@
       />
     </UiButtonOpacity>
     <UiInputOutline
+      :tabindex="tabindex"
       :value="modelValue"
       :required="required"
       class="w-full pr-[26px] md:pr-[35px] xl:pr-[47px]"

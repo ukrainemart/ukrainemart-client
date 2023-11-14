@@ -36,16 +36,16 @@
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
         <UiLabel :label="`${$t('name')}:`" type="text" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.name" required />
+          <UiInputOutline tabindex="1" v-model="credentials.name" required />
         </UiLabel>
         <UiLabel :label="`${$t('email')}:`" type="email" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.email" required />
+          <UiInputOutline tabindex="2" v-model="credentials.email" required />
         </UiLabel>
         <UiLabel :label="`${$t('password')}:`" class="!text-status_gray">
-          <UiInputOutlinePassword v-model="credentials.password" required />
+          <UiInputOutlinePassword tabindex="3" v-model="credentials.password" required />
         </UiLabel>
         <UiLabel :label="`${$t('repeatPassword')}:`" class="!text-status_gray">
-          <UiInputOutlinePassword v-model="credentials.c_password" required />
+          <UiInputOutlinePassword tabindex="4" v-model="credentials.c_password" required />
         </UiLabel>
       </div>
       <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">
