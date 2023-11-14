@@ -1,1 +1,1 @@
-declare type LoginCredentials = 'noCreate' | 'moderation';
+declare type CompanyStatus = 'noCreate' | 'moderation';
