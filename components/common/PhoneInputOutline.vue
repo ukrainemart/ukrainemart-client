@@ -1,4 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    modelValue?: string;
+  }>();
+
+  const emits = defineEmits(['update:modelValue']);
+
+  const handleInput = (event: Event) => {
+    const inputValue = (event.target as HTMLInputElement).value;
+    emits('update:modelValue', inputValue);
+  };
+</script>
 
 <template>
   <div
@@ -6,10 +17,12 @@
   >
     <UiButtonTextOpacity class="h-full border-r border-black pr-[20px]">+38</UiButtonTextOpacity>
     <input
-      type="text"
-      class="basis-full bg-transparent py-[11px] pl-[15px] focus:outline-none md:py-[14px] md:pl-[20px] xl:py-[16px] xl:pl-[25px]"
+      :value="modelValue"
+      type="number"
+      class="input_without_arrow basis-full bg-transparent py-[11px] pl-[15px] focus:outline-none md:py-[14px] md:pl-[20px] xl:py-[16px] xl:pl-[25px]"
+      @input="handleInput"
     />
   </div>
 </template>
 
-<style scoped></style>
+<style></style>

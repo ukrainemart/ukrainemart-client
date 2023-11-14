@@ -7,7 +7,6 @@
     <NuxtLink
       :to="'/product/product_id'"
       class="absolute left-0 top-0 z-10 h-full w-full is-hover:hidden"
-      href="#"
     />
     <div class="relative pt-[130%]">
       <img class="absolute left-0 top-0 h-full w-full rounded-[7px]" src="@img/oil.jpg" alt="" />

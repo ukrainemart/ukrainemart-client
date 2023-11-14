@@ -7,11 +7,12 @@
 <template>
   <UModal
     :ui="{
-      ...ui,
-      container: 'items-start sm:items-start mt-[125px]',
+      container: 'items-start sm:items-start',
       base: '!p-[25px] md:!px-[39px] md:!py-[30px] 4xl:!py-[35px] 4xl:!px-[54px]',
       overlay: { background: 'bg-dark-transparent' },
       rounded: 'rounded-[5px] md:rounded-[10px]',
+      inner: 'overflow-visible',
+      ...ui,
     }"
   >
     <slot />
