@@ -51,12 +51,21 @@
   "no": "No",
   "send_request": "Send a request",
 
+  "profile": {
+    "personal_data": "Personal data",
+    "my_orders": "My orders",
+    "my_products": "My products",
+    "apply_company_creation": "Apply for a company creation",
+    "sign_out": "Sign out"
+  },
+
   "create_company": {
     "application_submission": "Submitting an application for company formation",
     "name_legal_entity": "Enter the name of the legal entity",
     "enter_edrpou_code": "Enter the EDRPOU code",
     "contact_person_number": "Number of the contact person",
     "describe_plan_using_platform": "Describe your plan for using the platform",
-    "have__experience_export_import": "Do you have any experience in export/import?"
+    "have__experience_export_import": "Do you have any experience in export/import?",
+    "your_application_moderated": "Your application is being moderated"
   }
 }

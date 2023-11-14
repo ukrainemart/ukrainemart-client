@@ -52,7 +52,7 @@
 <template>
   <LayoutProfilePage v-if="isCheck" :title="$t('create_company.application_submission')">
     <UiAlertSuccess v-if="companyStatus === 'moderation'">
-      Ваша заявка знаходиться на модерації
+      {{ $t('create_company.your_application_moderated') }}
     </UiAlertSuccess>
 
     <form v-if="companyStatus === 'noCreate'" action="#" @submit.prevent="sendRequest">

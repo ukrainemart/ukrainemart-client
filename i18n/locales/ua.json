@@ -51,12 +51,21 @@
   "yes": "Так",
   "no": "Ні",
 
+  "profile": {
+    "personal_data": "Особисті дані",
+    "my_orders": "Мої замовлення",
+    "my_products": "Мої товари",
+    "apply_company_creation": "Подати заявку на створення компанії",
+    "sign_out": "Вийти"
+  },
+
   "create_company": {
     "application_submission": "Подача заявки на створення компанії",
     "name_legal_entity": "Введіть назву юридичної особи",
     "enter_edrpou_code": "Введіть код ЄДРПОУ",
     "contact_person_number": "Номер контактної особи",
     "describe_plan_using_platform": "Опишіть ваш план застосування платформи",
-    "have__experience_export_import": "Чи мали ви досвід у експорті/імпорті?"
+    "have__experience_export_import": "Чи мали ви досвід у експорті/імпорті?",
+    "your_application_moderated": "Ваша заявка знаходиться на модерації"
   }
 }
