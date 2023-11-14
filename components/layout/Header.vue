@@ -42,7 +42,18 @@
           </UiButtonTextUnderline>
         </div>
 
-        <div class="relative z-50 flex">
+        <div class="relative z-50 flex items-center gap-5">
+          <SvgoSearchMobileMenu
+            v-if="isLogo"
+            class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
+            :fontControlled="false"
+          />
+
+          <SvgoHearth
+            class="hidden h-5 w-[22px] text-black lg:block xl:hidden 4xl:h-[28px] 4xl:w-[30px]"
+            :fontControlled="false"
+          />
+
           <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
         </div>
       </div>
@@ -66,9 +77,7 @@
             class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
             :fontControlled="false"
           />
-          <UiButtonTextIconArrowDown>
-            {{ $t('ua') }}
-          </UiButtonTextIconArrowDown>
+          <CommonLangSwitcher />
           <UiButtonTextUnderline @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
@@ -87,4 +96,5 @@
       @switchModal="switchAuthModal"
     />
   </header>
+  <CommonSubHeader v-if="isLogo" class="container mb-[40px] hidden xl:flex" />
 </template>

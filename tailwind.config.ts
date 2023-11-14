@@ -38,9 +38,8 @@ export default <Partial<Config>>{
       },
       height: {
         'header-sm': `calc(100vh - ${VAR.HEADER_SM})`,
-        'header-md': `calc(100vh - ${VAR.HEADER_MD})`,
-        'header-xl': `calc(100vh - ${VAR.HEADER_XL})`,
-        'header-2xl': `calc(100vh - ${VAR.HEADER_2XL})`,
+        'header-lg': `calc(100vh - ${VAR.HEADER_LG})`,
+        'header-4xl': `calc(100vh - ${VAR.HEADER_4XL})`,
 
         'mobile-menu': `${VAR.MOBILE_BOTTOM_MENU_HEIGHT}`,
       },
