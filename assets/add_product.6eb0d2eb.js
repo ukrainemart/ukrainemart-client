@@ -1,1 +1,0 @@
-import{_ as t}from"./ProfilePage.vue.5b62e4fe.js";import{_ as r}from"./entry.7de112f3.js";import{N as c,M as e}from"./swiper-vue.a0cc9e67.js";const _={};function a(n,s){const o=t;return e(),c(o,{title:"Додати товари"})}const p=r(_,[["render",a]]);export{p as default};
