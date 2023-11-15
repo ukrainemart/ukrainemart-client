@@ -44,7 +44,7 @@
       </li>
     </ul>
 
-    <UiButtonPrimary styles="mx-auto mb-[15px]" @click="switchAuth(true, 'login')">
+    <UiButtonPrimary styles="mx-auto block mb-[15px]" @click="switchAuth(true, 'login')">
       {{ $t('login') }}
     </UiButtonPrimary>
     <UiButtonTextUnderline styles="mx-auto" @click="switchAuth(true, 'register')">
