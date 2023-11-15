@@ -35,7 +35,7 @@
 </script>
 
 <template>
-  <div class="input_outline flex items-center !p-0">
+  <div class="input_outline flex items-stretch !p-0">
     <input
       :value="modelValue"
       type="number"
@@ -48,7 +48,7 @@
       :options="people"
       value-attribute="id"
       option-attribute="name"
-      class="h-full border-l border-black"
+      class="border-l border-black"
       :uiMenu="{
         background: 'bg-background-primary',
         padding: 'p-0',
