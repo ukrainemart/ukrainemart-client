@@ -50,6 +50,28 @@
   "send_request": "Відправити заявку",
   "yes": "Так",
   "no": "Ні",
+  "add_photo": "Додати фото",
+
+  "price": "Ціна",
+  "from": "від",
+  "to": "до",
+  "analytics": "Аналітика",
+
+  "add_product": {
+    "add_product": "Додати товар",
+    "enter_your_product_name": "Введіть назву вашого товару",
+    "select_category": "Оберіть категорію",
+    "enter_product_description": "Введіть опис товару",
+    "minimum_order": "Мінімальне замовлення",
+    "unit_measurement": "Одиниця виміру",
+    "type_packaging": "Тип пакування",
+    "expiration_date": "Термін придатності",
+    "enter_price": "Введіть ціну",
+    "select_price_format": "Оберіть формат ціни",
+    "add_new_price": "Додати нову ціну"
+  },
+
+
 
   "profile": {
     "personal_data": "Особисті дані",

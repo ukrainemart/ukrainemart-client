@@ -57,7 +57,7 @@
             href="#"
             class="text-[10px] text-status_gray underline underline-offset-2 transition-colors duration-150 hover:text-black lg:text-[14px]"
           >
-            Аналітика
+            {{ $t('analytics') }}
           </a>
         </div>
       </div>

@@ -32,7 +32,7 @@
         <span
           class="relative h-[12px] w-[12px] before:absolute before:inset-0 before:m-auto before:h-[100%] before:w-[1px] before:bg-black after:absolute after:inset-0 after:m-auto after:h-[100%] after:w-[1px] after:rotate-[90deg] after:bg-black md:h-[16px] md:w-[16px] xl:h-[20px] xl:w-[20px]"
         />
-        <p class="text_xs font-medium">Додати фото</p>
+        <p class="text_xs font-medium">{{ $t('add_photo') }}</p>
       </div>
     </div>
   </div>

@@ -50,6 +50,28 @@
   "yes": "Yes",
   "no": "No",
   "send_request": "Send a request",
+  "add_photo": "Add a photo",
+
+  "price": "Price",
+  "from": "from",
+  "to": "to",
+  "analytics": "Analytics",
+
+  "add_product": {
+    "add_product": "Add a product",
+    "enter_your_product_name": "Enter the name of your product",
+    "select_category": "Select a category",
+    "enter_product_description": "Enter a product description",
+    "minimum_order": "Minimum order",
+    "unit_measurement": "Unit of measurement",
+    "type_packaging": "Type of packaging",
+    "expiration_date": "Expiration date",
+    "enter_price": "Enter the price",
+    "select_price_format": "Select a price format",
+    "add_new_price": "Add a new price"
+  },
+
+
 
   "profile": {
     "personal_data": "Personal data",
