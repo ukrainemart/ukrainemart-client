@@ -10,7 +10,7 @@
   });
 
   const defaultStyles =
-    'flex items-center font-montserrat text-[12px] font-medium leading-[14px] text-black duration-hover ease-in focus:outline-none focus:outline-0 disabled:cursor-not-allowed md:text-[16px] md:leading-[19px] 4xl:text-[20px] 4xl:leading-6';
+    'flex items-center font-montserrat text-[12px] font-medium  text-black duration-hover ease-in focus:outline-none focus:outline-0 disabled:cursor-not-allowed md:text-[16px] 4xl:text-[20px]';
 </script>
 
 <template>

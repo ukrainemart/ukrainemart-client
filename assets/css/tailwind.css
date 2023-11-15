@@ -41,6 +41,22 @@ input[type='search']::-webkit-search-results-decoration {
 .input_without_arrow::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.input_without_arrow[type="number"] {
+.input_without_arrow[type='number'] {
   -moz-appearance: textfield;
+}
+
+.input_outline {
+  @apply input_outline_text input_outline_padding rounded-[50px] border border-black bg-transparent  focus:outline-none;
+}
+
+.input_outline_text {
+  @apply !text-[7px] font-medium text-black md:!text-[10px] xl:!text-[14px];
+}
+
+.input_outline_padding {
+  @apply px-[15px] py-[11px] md:px-[20px]  md:py-[14px] xl:px-[25px] xl:py-[16px];
+}
+
+.text_xs {
+  @apply text-[7px] md:text-[10px] xl:text-[14px];
 }
