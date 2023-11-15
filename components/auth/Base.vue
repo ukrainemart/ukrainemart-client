@@ -15,7 +15,7 @@
 </script>
 
 <template>
-  <UiModal :ui="{ width: 'max-w-[490px] 2xl:max-w-[622px]', container: 'items-center'}">
+  <UiModal :ui="{ width: 'max-w-[490px] 2xl:max-w-[622px]', container: 'items-center' }">
     <div class="flex flex-col">
       <AuthLogin
         v-if="type === 'login'"
