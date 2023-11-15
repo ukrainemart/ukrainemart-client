@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const companyStatus = ref<LoginCredentials>('noCreate');
+  const companyStatus = ref<CompanyStatus>('noCreate');
   const isCheck = ref<boolean>(false);
 
   const inputs = reactive({
@@ -41,10 +41,6 @@
       console.log(res);
     });
   };
-
-  watch(inputs, () => {
-    console.log(inputs);
-  });
 
   checkStatus();
 </script>

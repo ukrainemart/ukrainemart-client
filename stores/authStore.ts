@@ -17,14 +17,17 @@ export const useAuthStore = defineStore('authStore', () => {
 
   async function login(credentials: LoginCredentials) {
     await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
-    const response = await useApiFetch(`${useUrlApi()}/login`, {
-      method: 'POST',
-      body: credentials,
-    });
-
-    if (response.data.value === '1') {
-      await fetchUser();
-      navigateTo('/profile');
+    try {
+      const response: any = await useApiFetch(`${useUrlApi()}/login`, {
+        method: 'POST',
+        body: credentials,
+      });
+      if (response.data.value.status === 1) {
+        await fetchUser();
+        navigateTo('/profile');
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 

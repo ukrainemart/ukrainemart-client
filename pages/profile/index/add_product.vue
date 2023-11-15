@@ -2,7 +2,7 @@
 
 <template>
   <LayoutProfilePage title="Додати товари">
-    <!--  -->
+    
   </LayoutProfilePage>
 </template>
 

@@ -34,7 +34,7 @@
       }}</CommonProfileMenuLink>
     </li>
     <li>
-      <CommonProfileMenuLink to="/profile/my_products"  @click="closeMenu">{{
+      <CommonProfileMenuLink to="/profile/my_products" @click="closeMenu">{{
         $t('profile.my_products')
       }}</CommonProfileMenuLink>
     </li>
