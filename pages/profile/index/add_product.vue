@@ -37,13 +37,21 @@
   };
 
   const formData = () => {
+    const amount: any = 22;
+    const price: any = 34;
+    const unitId: any = 0;
+
     const data = new FormData();
     data.append('title_ua', 'Test Product');
     data.append('title_en', 'Test Product');
     data.append('description_ua', 'Test Product');
     data.append('description_en', 'Test Product');
     data.append('category_id', categoryId.value);
-    data.append('product_type', 'fixed');
+    data.append('price_type', 'fixed');
+    data.append('amount', amount);
+    data.append('price', price);
+    data.append('unit_id', unitId);
+
     data.append('product_images', productImages.value);
 
     return data;
