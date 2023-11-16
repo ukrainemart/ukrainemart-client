@@ -1,0 +1,1 @@
+import{_ as e}from"./entry.a620eb8f.js";import{X as r,M as c}from"./swiper-vue.c9be8dfa.js";const n={};function o(t,s){return c(),r("div",null,"Особисті дані")}const f=e(n,[["render",o]]);export{f as default};
