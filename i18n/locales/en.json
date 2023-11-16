@@ -51,12 +51,10 @@
   "no": "No",
   "send_request": "Send a request",
   "add_photo": "Add a photo",
-
   "price": "Price",
   "from": "from",
   "to": "to",
   "analytics": "Analytics",
-
   "add_product": {
     "add_product": "Add a product",
     "enter_your_product_name": "Enter the name of your product",
@@ -70,9 +68,6 @@
     "select_price_format": "Select a price format",
     "add_new_price": "Add a new price"
   },
-
-
-
   "profile": {
     "personal_data": "Personal data",
     "my_orders": "My orders",
@@ -80,7 +75,6 @@
     "apply_company_creation": "Apply for a company creation",
     "sign_out": "Sign out"
   },
-
   "create_company": {
     "application_submission": "Submitting an application for company formation",
     "name_legal_entity": "Enter the name of the legal entity",
@@ -89,5 +83,10 @@
     "describe_plan_using_platform": "Describe your plan for using the platform",
     "have__experience_export_import": "Do you have any experience in export/import?",
     "your_application_moderated": "Your application is being moderated"
-  }
+  },
+  "password_length_min": "Password must be at least 8 characters long",
+  "password_length_max": "Password must not exceed 22 characters",
+  "password_match": "Password confirmation does not match",
+  "password_required": "Password is required",
+  "password_confirmation": "Please confirm your password"
 }
