@@ -56,6 +56,7 @@
   "from": "from",
   "to": "to",
   "analytics": "Analytics",
+  "fixed_price": "Fixed price",
 
   "add_product": {
     "add_product": "Add a product",

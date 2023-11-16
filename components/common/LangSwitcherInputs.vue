@@ -35,7 +35,7 @@
         )
       "
     />
-    <button
+    <UiButton
       :class="
         cn(
           'text_xs relative z-10 px-[9px] py-[5px] text-black md:px-[10px] md:py-[8px] xl:px-[12px] xl:py-[10px]',
@@ -47,8 +47,8 @@
       @click="switchLang('ua')"
     >
       ua
-    </button>
-    <button
+    </UiButton>
+    <UiButton
       :class="
         cn(
           'text_xs  relative z-10 px-[9px] py-[5px] text-black md:px-[10px] md:py-[8px] xl:px-[12px] xl:py-[10px]',
@@ -60,7 +60,7 @@
       @click="switchLang('en')"
     >
       en
-    </button>
+    </UiButton>
   </div>
 </template>
 

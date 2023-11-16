@@ -2,42 +2,35 @@
   defineProps<{
     modelValue?: string;
   }>();
+  const valueInput = ref('');
 
-  const emits = defineEmits(['update:modelValue']);
-
-  const handleInput = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value;
-    emits('update:modelValue', inputValue);
-  };
-
-  const people = [
+  const currency = [
     {
-      id: 1,
-      name: 'Wade',
+      value: 'UAH',
+      name: 'UAH',
     },
     {
-      id: 2,
-      name: 'Arlene',
-    },
-    {
-      id: 3,
-      name: 'Devon',
-    },
-    {
-      id: 4,
-      name: 'Tom',
+      value: 'USD',
+      name: 'USD',
     },
   ];
 
-  const selected = ref(people[0].id);
+  const selected = ref(currency[0].value);
 
-  const current = computed(() => people.find((person) => person.id === selected.value));
+  const current = computed(() => currency.find((el) => el.value === selected.value));
+
+  const emits = defineEmits(['update:modelValue']);
+
+  const handleInput = () => {
+    const inputValue = valueInput.value + selected.value;
+    emits('update:modelValue', inputValue);
+  };
 </script>
 
 <template>
   <div class="input_outline flex items-stretch !p-0">
     <input
-      :value="modelValue"
+      v-model="valueInput"
       type="number"
       class="input_without_arrow input_outline_padding w-full basis-full bg-transparent focus:outline-none"
       @input="handleInput"
@@ -45,8 +38,8 @@
     <USelectMenu
       v-slot="{ open }"
       v-model="selected"
-      :options="people"
-      value-attribute="id"
+      :options="currency"
+      value-attribute="value"
       option-attribute="name"
       class="border-l border-black"
       :uiMenu="{
@@ -64,7 +57,7 @@
       }"
     >
       <UiButtonTextOpeningArrow
-        class="input_outline_padding normal-case 4xl:!text-[14px]"
+        class="input_outline_padding input_outline_height normal-case 4xl:!text-[14px]"
         :label="current?.name"
         :open="open"
       />

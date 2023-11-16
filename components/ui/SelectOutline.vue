@@ -1,35 +1,12 @@
 <script setup lang="ts">
-  const people = [
-    {
-      id: 1,
-      name: 'Wade',
-    },
-    {
-      id: 2,
-      name: 'Arlene',
-    },
-    {
-      id: 3,
-      name: 'Devon',
-    },
-    {
-      id: 4,
-      name: 'Tom Cook',
-    },
-  ];
-
-  const selected = ref(people[0].id);
-
-  const current = computed(() => people.find((person) => person.id === selected.value));
+  defineProps<{
+    currentValue: any;
+  }>();
 </script>
 
 <template>
   <USelectMenu
     v-slot="{ open }"
-    v-model="selected"
-    :options="people"
-    value-attribute="id"
-    option-attribute="name"
     class="input_outline !p-0"
     :uiMenu="{
       background: 'bg-background-primary',
@@ -48,8 +25,9 @@
     }"
   >
     <UiButtonTextOpeningArrow
-      class="input_outline_text input_outline_padding relative z-40 w-full justify-between !px-[9px] text-[7px] normal-case md:!px-[14px] xl:!px-[19px]"
-      :label="current?.name"
+      style="text-transform: inherit"
+      class="input_outline_text input_outline_height relative z-40 w-full justify-between !px-[9px] text-[7px] normal-case md:!px-[14px] xl:!px-[19px]"
+      :label="currentValue"
       :open="open"
     />
   </USelectMenu>

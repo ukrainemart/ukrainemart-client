@@ -1,21 +1,9 @@
-<script setup lang="ts">
-  defineProps<{
-    to?: string;
-    type?: 'button' | 'submit' | 'reset' | undefined;
-  }>();
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <nuxtLink v-if="to" :to="to" class="cursor-pointer text-black duration-hover hover:opacity-hover">
+  <UiButton class="cursor-pointer text-black duration-hover hover:opacity-hover">
     <slot />
-  </nuxtLink>
-  <button
-    v-else
-    :type="type || 'button'"
-    class="cursor-pointer text-black duration-hover hover:opacity-hover"
-  >
-    <slot />
-  </button>
+  </UiButton>
 </template>
 
 <style scoped></style>

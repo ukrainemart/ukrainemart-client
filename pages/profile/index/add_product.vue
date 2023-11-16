@@ -2,6 +2,39 @@
   const language = ref<Language>();
   const productImages = ref<any>([]);
   const categoryId = ref<any>(1);
+  const priceType = ref<PriceProduct['type']>('');
+  const fixedPrice = ref<PriceProduct['fixedPrice']>();
+
+  const variatedPrices = ref<PriceProduct['variatedPrice'][]>([
+    {
+      id: 1,
+      minAmount: '',
+      maxAmount: '',
+      price: '',
+      unitId: 0,
+    },
+  ]);
+
+  const addNewPrice = () => {
+    const newPrice: PriceProduct['variatedPrice'] = {
+      id: variatedPrices.value[variatedPrices.value.length - 1].id + 1,
+      minAmount: '',
+      maxAmount: '',
+      price: '',
+      unitId: 0,
+    };
+
+    variatedPrices.value = [...variatedPrices.value, newPrice];
+  };
+
+  const updateVariationPrice = (price: PriceProduct['variatedPrice']) => {
+    variatedPrices.value = variatedPrices.value.map((el: PriceProduct['variatedPrice']) => {
+      if (el.id === price.id) {
+        return price;
+      }
+      return el;
+    });
+  };
 
   const formData = () => {
     const data = new FormData();
@@ -24,6 +57,13 @@
       console.log(res);
     });
   };
+
+  watchDeep(
+    () => variatedPrices.value,
+    () => {
+      console.log(variatedPrices.value);
+    }
+  );
 </script>
 
 <template>
@@ -70,7 +110,7 @@
                 <UiInputOutline class="max-w-[110px] md:max-w-[220px] xl:max-w-[200px]" />
               </UiLabel>
               <UiLabel :label="$t('add_product.unit_measurement') + ':'">
-                <UiSelectOutline class="max-w-[70px] md:max-w-[110px]" />
+                <CommonSelectUnitMeasure class="max-w-[70px] md:max-w-[110px]" />
               </UiLabel>
             </div>
             <div class="flex items-center gap-[20px] md:gap-[35px]">
@@ -90,42 +130,20 @@
             <h5>
               <UiTextPortalPrimary class="xl:!text-[20px]"> {{ $t('price') }} </UiTextPortalPrimary>
             </h5>
-            <div class="grid grid-cols-5 gap-[15px] md:max-w-full md:flex-nowrap xl:gap-[25px]">
-              <div class="col-span-5 flex items-center md:col-span-3 lg:col-span-5 4xl:col-span-3">
-                <UiLabel :label="$t('quantity')">
-                  <div class="flex items-center">
-                    <UiLabel :label="$t('from') + ':'" class="!flex-row items-center !text-black">
-                      <UiInputOutline class="w-full max-w-[70px] md:max-w-[110px]" />
-                    </UiLabel>
-                    <UiLabel
-                      :label="$t('to') + ':'"
-                      class="ml-[10px] !flex-row items-center !text-black md:ml-[20px]"
-                    >
-                      <UiInputOutline class="w-full max-w-[70px] md:max-w-[110px]" />
-                    </UiLabel>
-                  </div>
-                </UiLabel>
-                <UiLabel
-                  :label="$t('add_product.unit_measurement') + ':'"
-                  class="ml-[10px] justify-items-start md:ml-[20px]"
-                >
-                  <UiSelectOutline class="max-w-[90px] md:max-w-[110px]" />
-                </UiLabel>
-              </div>
-              <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
-                <UiLabel
-                  class="relative z-50 4xl:max-w-[220px]"
-                  :label="$t('add_product.enter_price') + ':'"
-                >
-                  <CommonPriceInputOutline />
-                </UiLabel>
-              </div>
+            <div v-if="priceType === 'variated'" class="flex flex-col gap-[15px] xl:gap-[25px]">
+              <CommonInputGroupPriceGap
+                v-for="price in variatedPrices"
+                :key="price.id"
+                :price="price"
+                @update:price="updateVariationPrice"
+              />
             </div>
+            <CommonInputGroupPriceFixed v-if="priceType === 'fixed'" v-model="fixedPrice" />
 
             <UiLabel :label="$t('add_product.select_price_format') + ':'">
               <div class="flex items-center gap-[10px] md:gap-[15px] xl:gap-[20px]">
-                <UiSelectOutline class="w-full max-w-[130px] md:max-w-[220px] xl:max-w-[200px]" />
-                <UiButtonOpacityAdding>
+                <CommonSelectPriceVariant v-model="priceType" :selected="priceType" />
+                <UiButtonOpacityAdding v-if="priceType === 'variated'" @click="addNewPrice">
                   {{ $t('add_product.add_new_price') }}
                 </UiButtonOpacityAdding>
               </div>
