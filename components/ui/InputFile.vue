@@ -1,6 +1,7 @@
 <script setup lang="ts">
   const props = defineProps<{
     typeInput?: string;
+    multiple?: boolean;
   }>();
 
   const emits = defineEmits(['updateInput']);

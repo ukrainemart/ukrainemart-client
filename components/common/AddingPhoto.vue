@@ -1,10 +1,26 @@
 <script setup lang="ts">
+  defineProps<{
+    modelValue?: string;
+  }>();
+
   const photos = ref<any[]>([]);
   const showPhotos = computed(() => photos.value.map((file) => URL.createObjectURL(file.value)));
+
+  const emits = defineEmits(['update:modelValue']);
+
+  const handleChangePhoto = () => {
+    emits('update:modelValue', photos.value);
+  };
 
   const updateInput = (value: any) => {
     photos.value = [...photos.value, value];
   };
+
+  watch(photos, () => {
+    handleChangePhoto();
+  });
+
+  handleChangePhoto();
 </script>
 
 <template>
@@ -23,7 +39,7 @@
       class="relative h-0 overflow-hidden rounded-[3px] bg-[#D9D9D9] pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
     >
       <label class="absolute left-0 top-0 z-10 h-full w-full cursor-pointer">
-        <UiInputFile class="hidden" @updateInput="updateInput" />
+        <UiInputFile multiple class="hidden" @updateInput="updateInput" />
       </label>
 
       <div
