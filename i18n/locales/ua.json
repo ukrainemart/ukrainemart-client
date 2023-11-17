@@ -51,7 +51,6 @@
   "yes": "Так",
   "no": "Ні",
   "add_photo": "Додати фото",
-
   "price": "Ціна",
   "from": "від",
   "to": "до",
@@ -71,9 +70,6 @@
     "select_price_format": "Оберіть формат ціни",
     "add_new_price": "Додати нову ціну"
   },
-
-
-
   "profile": {
     "personal_data": "Особисті дані",
     "my_orders": "Мої замовлення",
@@ -81,7 +77,6 @@
     "apply_company_creation": "Подати заявку на створення компанії",
     "sign_out": "Вийти"
   },
-
   "create_company": {
     "application_submission": "Подача заявки на створення компанії",
     "name_legal_entity": "Введіть назву юридичної особи",
@@ -90,5 +85,10 @@
     "describe_plan_using_platform": "Опишіть ваш план застосування платформи",
     "have__experience_export_import": "Чи мали ви досвід у експорті/імпорті?",
     "your_application_moderated": "Ваша заявка знаходиться на модерації"
-  }
+  },
+  "password_length_min": "Пароль повинен містити щонайменше 8 символів",
+  "password_length_max": "Пароль не повинен перевищувати 22 символи",
+  "password_match": "Підтвердження паролю не співпадає",
+  "password_required": "Пароль обов'язковий",
+  "password_confirmation": "Будь ласка, підтвердіть ваш пароль"
 }

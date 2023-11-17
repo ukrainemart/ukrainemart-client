@@ -37,20 +37,26 @@
           <UiInputOutlinePassword v-model="credentials.password" tabindex="2" />
         </UiLabel>
       </div>
+
       <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">
         <UiLabel :label="$t('rememberMe')" class="!flex-row-reverse items-center justify-end">
-          <UiCheckbox />
+          <UiCheckbox tabindex="3" />
         </UiLabel>
-        <UiButtonText class="!text-[7px] text-status_gray md:!text-[10px] xl:!text-[14px]">
+        <UiButtonText
+          class="!text-[7px] text-status_gray md:!text-[10px] xl:!text-[14px]"
+          tabindex="4"
+        >
           {{ $t('forgotPassword') }}
         </UiButtonText>
       </div>
-      <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]">
+
+      <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]" tabindex="5">
         {{ $t('login') }}
       </UiButtonPrimary>
-      <CommonButtonGoogle>
+      <CommonButtonGoogle tabindex="6">
         {{ $t('logInWithGoogle') }}
       </CommonButtonGoogle>
+
       <div
         class="mt-[15px] flex items-center justify-center gap-[5px] text-[7px] font-medium md:mt-[22px] md:text-[10px] xl:mt-[20px] xl:text-[14px]"
       >
@@ -59,6 +65,7 @@
         </span>
         <UiButtonText
           class="gap-[5px] !text-[7px] font-semibold md:!text-[10px] xl:!text-[14px]"
+          tabindex="7"
           @click="switchTypeAuth('register')"
         >
           {{ $t('signup') }}
