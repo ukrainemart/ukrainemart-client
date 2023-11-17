@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <nuxtLink v-if="to" :to="to" class="cursor-pointer text-black duration-hover hover:opacity-hover">
+  <nuxtLink v-if="to" :to="to">
     <slot />
   </nuxtLink>
   <button v-else :type="type || 'button'"><slot /></button>
