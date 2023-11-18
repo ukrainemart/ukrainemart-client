@@ -52,8 +52,9 @@
     data.append('price', price);
     data.append('unit_id', unitId);
 
-    data.append('product_images', productImages.value);
-
+    for (const image of productImages.value) {
+      data.append('product_images[]', image);
+    }
     return data;
   };
 
