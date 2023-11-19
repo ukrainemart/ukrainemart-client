@@ -14,7 +14,7 @@
 <template>
   <textarea
     :value="modelValue"
-    class="input_outline resize-none !rounded-[20px] md:!rounded-[30px]"
+    class="input_outline resize-none !rounded-[20px] py-[10px] md:!rounded-[30px]"
     @input="handleInput"
   >
 <slot/></textarea

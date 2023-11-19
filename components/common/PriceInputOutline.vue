@@ -22,7 +22,7 @@
   const emits = defineEmits(['update:modelValue']);
 
   const handleInput = () => {
-    const inputValue = valueInput.value + selected.value;
+    const inputValue = valueInput.value;
     emits('update:modelValue', inputValue);
   };
 </script>

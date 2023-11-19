@@ -7,10 +7,15 @@
     minAmount: '',
     maxAmount: '',
     price: '',
-    unitId: 0,
+    unitId: '',
   });
 
   const emits = defineEmits(['update:price']);
+  const unitOptions: any = inject('unitOptions');
+
+  const getCurrentUnit = computed(
+    () => unitOptions.value?.find((el: any) => el.id === +inputs.value.unitId) || ''
+  );
 
   const updateValue = () => {
     emits('update:price', inputs.value);
@@ -49,7 +54,11 @@
         :label="$t('add_product.unit_measurement') + ':'"
         class="ml-[10px] justify-items-start md:ml-[20px]"
       >
-        <CommonSelectUnitMeasure class="max-w-[90px] md:max-w-[110px]" />
+        <CommonSelectUnitMeasure
+          v-model="inputs.unitId"
+          :currentValue="getCurrentUnit.title"
+          class="max-w-[90px] md:max-w-[110px]"
+        />
       </UiLabel>
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">

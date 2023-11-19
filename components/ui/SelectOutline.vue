@@ -11,7 +11,7 @@
     :uiMenu="{
       background: 'bg-background-primary',
       container: '!top-0 !left-0 !transform-none',
-      rounded: 'rounded-[10px] md:rounded-[20px]',
+      rounded: 'rounded-[10px] md:rounded-[16px]',
       padding: 'p-0',
       base: 'border border-black py-[5px] md:py-[10px] !pt-[30px] md:!pt-[40px]',
       option: {

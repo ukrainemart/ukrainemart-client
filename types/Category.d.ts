@@ -1,0 +1,15 @@
+declare interface Category {
+  created_at: string;
+  creator_id: string;
+  id: number;
+  image: any;
+  logo: any;
+  main_category: Category;
+  parent_category: Category;
+  priority: any;
+  product_create: number;
+  status: number;
+  title_en: string;
+  title_ua: string;
+  updated_at: string;
+}

@@ -1,57 +1,65 @@
 <script setup lang="ts">
   const language = ref<Language>();
-  const productImages = ref<any>([]);
-  const categoryId = ref<any>(1);
-  const priceType = ref<PriceProduct['type']>('');
+
+  const formInputs = reactive({
+    title_ua: '',
+    title_en: '',
+    description_ua: '',
+    description_en: '',
+    price_type: '',
+    categoryId: '',
+  });
+
   const fixedPrice = ref<PriceProduct['fixedPrice']>();
+  const variatedPrices = ref<PriceProduct['variatedPrice'][]>([]);
+  const productImages = ref<any>([]);
+  const pageData = ref();
 
-  const variatedPrices = ref<PriceProduct['variatedPrice'][]>([
-    {
-      id: 1,
-      minAmount: '',
-      maxAmount: '',
-      price: '',
-      unitId: 0,
-    },
-  ]);
+  const categoryOptions = computed(
+    () =>
+      pageData.value?.categories?.map((el: Category) => {
+        return {
+          id: el.id,
+          title: useMultiLang(el, 'title'),
+        };
+      }) || []
+  );
+  const getCurrentCategory = computed(
+    () => categoryOptions.value.find((el: any) => el.id === +formInputs.categoryId) || ''
+  );
 
-  const addNewPrice = () => {
-    const newPrice: PriceProduct['variatedPrice'] = {
-      id: variatedPrices.value[variatedPrices.value.length - 1].id + 1,
-      minAmount: '',
-      maxAmount: '',
-      price: '',
-      unitId: 0,
-    };
+  const unitOptions = computed(
+    () =>
+      pageData.value?.units.map((el: Unit) => {
+        return {
+          id: el.id,
+          title: useMultiLang(el, 'title'),
+        };
+      }) || []
+  );
 
-    variatedPrices.value = [...variatedPrices.value, newPrice];
-  };
-
-  const updateVariationPrice = (price: PriceProduct['variatedPrice']) => {
-    variatedPrices.value = variatedPrices.value.map((el: PriceProduct['variatedPrice']) => {
-      if (el.id === price.id) {
-        return price;
-      }
-      return el;
+  const getPageData = () => {
+    useApiFetch(`${useUrlApi()}/product/actionPage`).then((res: any) => {
+      pageData.value = res.data.value;
     });
   };
 
   const formData = () => {
-    const amount: any = 22;
-    const price: any = 34;
-    const unitId: any = 0;
-
     const data = new FormData();
-    data.append('title_ua', 'Test Product');
-    data.append('title_en', 'Test Product');
-    data.append('description_ua', 'Test Product');
-    data.append('description_en', 'Test Product');
-    data.append('category_id', categoryId.value);
-    data.append('price_type', 'fixed');
-    data.append('amount', amount);
-    data.append('price', price);
-    data.append('unit_id', unitId);
-
+    data.append('title_ua', formInputs.title_ua);
+    data.append('title_en', formInputs.title_en);
+    data.append('description_ua', formInputs.description_ua);
+    data.append('description_en', formInputs.description_en);
+    data.append('category_id', `${formInputs.categoryId}`);
+    data.append('price_type', formInputs.price_type);
+    if (fixedPrice.value) {
+      data.append('amount', fixedPrice.value.amount);
+      data.append('price', fixedPrice.value.price);
+      data.append('unit_id', fixedPrice.value.unitId);
+    }
+    if (variatedPrices.value.length > 0) {
+      data.append('price_variations', JSON.stringify(variatedPrices.value));
+    }
     for (const image of productImages.value) {
       data.append('product_images[]', image);
     }
@@ -66,13 +74,9 @@
       console.log(res);
     });
   };
+  getPageData();
 
-  watchDeep(
-    () => variatedPrices.value,
-    () => {
-      console.log(variatedPrices.value);
-    }
-  );
+  provide('unitOptions', unitOptions);
 </script>
 
 <template>
@@ -89,31 +93,43 @@
               v-show="language === 'ua'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline />
+              <UiInputOutline v-model="formInputs.title_ua" />
             </UiLabel>
             <UiLabel
               v-show="language === 'en'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline />
+              <UiInputOutline v-model="formInputs.title_en" />
             </UiLabel>
             <UiLabel :label="$t('add_product.select_category') + ':'">
-              <UiSelectOutline />
+              <UiSelectOutline
+                v-model="formInputs.categoryId"
+                :options="categoryOptions"
+                :currentValue="getCurrentCategory.title"
+                value-attribute="id"
+                option-attribute="title"
+              />
             </UiLabel>
             <UiLabel
               v-show="language === 'ua'"
               :label="$t('add_product.enter_product_description') + ':'"
             >
-              <UiTextareaOutline class="min-h-[120px] md:min-h-[179px]" />
+              <UiTextareaOutline
+                v-model="formInputs.description_ua"
+                class="min-h-[120px] md:min-h-[179px]"
+              />
             </UiLabel>
             <UiLabel
               v-show="language === 'en'"
               :label="$t('add_product.enter_product_description') + ':'"
             >
-              <UiTextareaOutline class="min-h-[120px] md:min-h-[179px]" />
+              <UiTextareaOutline
+                v-model="formInputs.description_en"
+                class="min-h-[120px] md:min-h-[179px]"
+              />
             </UiLabel>
           </div>
-          <div class="mt-[24px] flex flex-col gap-[15px] md:mt-[30px] lg:mt-[43px] xl:gap-[25px]">
+          <!-- <div class="mt-[24px] flex flex-col gap-[15px] md:mt-[30px] lg:mt-[43px] xl:gap-[25px]">
             <div class="flex items-center gap-[20px] md:gap-[35px]">
               <UiLabel :label="$t('add_product.minimum_order') + ':'">
                 <UiInputOutline class="max-w-[110px] md:max-w-[220px] xl:max-w-[200px]" />
@@ -133,31 +149,13 @@
                 <UiInputOutline />
               </UiLabel>
             </div>
-          </div>
+          </div> -->
 
-          <div class="mt-[24px] flex flex-col gap-[15px] md:mt-[30px] lg:mt-[43px] xl:gap-[25px]">
-            <h5>
-              <UiTextPortalPrimary class="xl:!text-[20px]"> {{ $t('price') }} </UiTextPortalPrimary>
-            </h5>
-            <div v-if="priceType === 'variated'" class="flex flex-col gap-[15px] xl:gap-[25px]">
-              <CommonInputGroupPriceGap
-                v-for="price in variatedPrices"
-                :key="price.id"
-                :price="price"
-                @update:price="updateVariationPrice"
-              />
-            </div>
-            <CommonInputGroupPriceFixed v-if="priceType === 'fixed'" v-model="fixedPrice" />
-
-            <UiLabel :label="$t('add_product.select_price_format') + ':'">
-              <div class="flex items-center gap-[10px] md:gap-[15px] xl:gap-[20px]">
-                <CommonSelectPriceVariant v-model="priceType" :selected="priceType" />
-                <UiButtonOpacityAdding v-if="priceType === 'variated'" @click="addNewPrice">
-                  {{ $t('add_product.add_new_price') }}
-                </UiButtonOpacityAdding>
-              </div>
-            </UiLabel>
-          </div>
+          <CommonInputGroupPrice
+            v-model:fixedPrice="fixedPrice"
+            v-model:variatedPrices="variatedPrices"
+            v-model:priceType="formInputs.price_type"
+          />
         </div>
         <div class="w-full 2xl:basis-[50%] 4xl:basis-[40%]">
           <CommonAddingPhoto v-model="productImages" />
