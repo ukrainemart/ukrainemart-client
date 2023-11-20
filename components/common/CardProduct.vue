@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    product: Product;
+  }>();
+</script>
 
 <template>
   <div
@@ -12,13 +16,13 @@
       <img class="absolute left-0 top-0 h-full w-full rounded-[7px]" src="@img/oil.jpg" alt="" />
     </div>
     <h5 class="mt-[5px] line-clamp-2 font-medium text-black md:mt-[15px] xl:mt-[20px]">
-      <UiTextPortalPrimaryXl class=""
-        >Соняшникова олія Деревина Зерно пшениці</UiTextPortalPrimaryXl
-      >
+      <UiTextPortalPrimaryXl class="">
+        Соняшникова олія Деревина Зерно пшениці
+      </UiTextPortalPrimaryXl>
     </h5>
-    <UiTextPortalPrimaryXl class="mt-[7px] text-status_gray xl:mt-[10px]"
-      >200 л</UiTextPortalPrimaryXl
-    >
+    <UiTextPortalPrimaryXl class="mt-[7px] text-status_gray xl:mt-[10px]">
+      200 л
+    </UiTextPortalPrimaryXl>
     <p class="mt-[10px] text-[16px] font-semibold text-black md:text-[22px] xl:mt-[15px]">
       100-150<CommonCurrency />
     </p>
