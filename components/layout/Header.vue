@@ -26,7 +26,7 @@
 </script>
 
 <template>
-  <header class="sticky inset-x-0 top-0 z-50 bg-background-primary">
+  <header class="sticky inset-x-0 top-0 z-[100] bg-background-primary">
     <PagesMobileMenuBottom />
     <div class="container mx-auto py-[25px] md:px-10 md:py-[30px] 4xl:py-10">
       <!-- mobile start -->
