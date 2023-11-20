@@ -5,12 +5,13 @@
 </script>
 
 <template>
+  {{ console.log(product) }}
   <div
     class="flex rounded-[5px] bg-[#d9d9d9] px-2.5 pb-5 pt-2.5 font-medium md:rounded-[10px] md:p-5 lg:rounded-[20px] lg:px-[25px] lg:py-[33px]"
   >
     <div class="mr-[15px] md:mr-5 lg:mr-10">
       <img
-        :src="product.images[0].path"
+        :src="product?.main_image"
         alt="product"
         class="h-[75px] w-[60px] rounded-[5px] md:h-[135px] md:w-[100px] md:rounded-[10px] lg:w-[110px] lg:rounded-[20px]"
       />
