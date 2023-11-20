@@ -1,13 +1,11 @@
 <script setup lang="ts">
   defineProps<{
-    // slides?: any[];
+    slides: ImageProduct[];
     breakpoints?: any;
     showAll?: boolean;
     type?: string;
     centeredSlides?: boolean;
   }>();
-
-  const slides = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 </script>
 
 <template>
@@ -27,7 +25,7 @@
   >
     <SwiperSlide v-for="slide in slides" :key="slide" class="">
       <div class="h-full">
-        <img src="@img/product_slide_4.png" class="h-full w-full cursor-pointer" />
+        <img :src="slide.path" class="h-full w-full cursor-pointer" />
       </div>
     </SwiperSlide>
   </Swiper>

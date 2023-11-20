@@ -1,9 +1,7 @@
 <script setup lang="ts">
   defineProps<{
-    // slides?: any[];
+    slides: ImageProduct[];
   }>();
-
-  const slides = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 </script>
 
 <template>
@@ -18,7 +16,7 @@
   >
     <SwiperSlide v-for="slide in slides" :key="slide" class="!flex">
       <div>
-        <img src="@img/product_slide_4.png" class="h-[440px] md:h-[435px] 2xl:h-[584px]" />
+        <img :src="slide.path" class="h-[440px] md:h-[435px] 2xl:h-[584px]" />
       </div>
     </SwiperSlide>
   </Swiper>
