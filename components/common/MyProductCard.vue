@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    product: Product;
+  }>();
+</script>
 
 <template>
   <div
@@ -13,7 +17,9 @@
     </div>
 
     <div class="flex flex-1 flex-col justify-between md:mr-[15px] lg:mr-[30px]">
-      <h2 class="mb-[5px] text-[12px] md:text-[14px] lg:mb-2.5 lg:text-[16px]">Зерно кукурудзи</h2>
+      <h2 class="mb-[5px] text-[12px] md:text-[14px] lg:mb-2.5 lg:text-[16px]">
+        {{ useMultiLang(product, 'title') }}
+      </h2>
       <p class="mb-2.5 text-[7px] text-status_gray md:mb-[25px] md:text-[10px] lg:text-[14px]">
         Агрокультура
       </p>
@@ -30,7 +36,7 @@
               :fontControlled="false"
               class="h-[9px] w-[13px] text-status_gray md:h-[11px] md:w-[16px] lg:h-[15px] lg:w-[22px]"
             />
-            356
+            {{ product.views }}
           </div>
           <div
             class="flex items-center gap-x-[3px] text-[12px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
