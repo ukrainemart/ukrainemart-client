@@ -5,21 +5,24 @@
 </script>
 
 <template>
+  {{ console.log(product) }}
   <div
     class="flex rounded-[5px] bg-[#d9d9d9] px-2.5 pb-5 pt-2.5 font-medium md:rounded-[10px] md:p-5 lg:rounded-[20px] lg:px-[25px] lg:py-[33px]"
   >
     <div class="mr-[15px] md:mr-5 lg:mr-10">
       <img
-        src="@img/product.png"
+        :src="product?.main_image"
         alt="product"
         class="h-[75px] w-[60px] rounded-[5px] md:h-[135px] md:w-[100px] md:rounded-[10px] lg:w-[110px] lg:rounded-[20px]"
       />
     </div>
 
     <div class="flex flex-1 flex-col justify-between md:mr-[15px] lg:mr-[30px]">
-      <h2 class="mb-[5px] text-[12px] md:text-[14px] lg:mb-2.5 lg:text-[16px]">
-        {{ useMultiLang(product, 'title') }}
-      </h2>
+      <NuxtLink :to="`/product/${product.id}`">
+        <h2 class="mb-[5px] text-[12px] md:text-[14px] lg:mb-2.5 lg:text-[16px]">
+          {{ useMultiLang(product, 'title') }}
+        </h2>
+      </NuxtLink>
       <p class="mb-2.5 text-[7px] text-status_gray md:mb-[25px] md:text-[10px] lg:text-[14px]">
         Агрокультура
       </p>

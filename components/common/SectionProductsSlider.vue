@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  defineProps<{
+    products: Product[];
+  }>();
+
   const { width } = useWindowSize();
   const { BREAKPOINTS_4XL } = useVariables();
 
@@ -8,10 +12,6 @@
     }
     return true;
   });
-
-  defineProps<{
-    products: any[];
-  }>();
 </script>
 
 <template>

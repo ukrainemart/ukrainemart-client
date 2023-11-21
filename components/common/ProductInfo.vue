@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    product: Product;
+  }>();
+</script>
 
 <template>
   <div class="mb-[70px] md:mb-0">
@@ -7,9 +11,11 @@
     >
       Цей продукт купували 250 разів
     </p>
-    <CommonProductTitle styles="mb-[15px] md:mb-[17px] 2xl:mb-5" />
+    <CommonProductTitle styles="mb-[15px] md:mb-[17px] 2xl:mb-5">
+      {{ useMultiLang(product, 'title') }}
+    </CommonProductTitle>
     <p class="mb-5 text-[22px] font-semibold md:mb-[22px] md:text-[27px] 2xl:mb-10 2xl:text-[35px]">
-      50₴/кг
+      {{ product?.prices[0].price }}₴/кг
     </p>
 
     <ul class="mb-[15px] flex flex-col gap-2.5 md:mb-[28px] md:gap-[12px] 2xl:gap-5">

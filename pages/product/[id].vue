@@ -1,6 +1,9 @@
 <script lang="ts" setup>
   const { width } = useWindowSize();
   const { BREAKPOINTS_MD } = useVariables();
+  const route = useRoute();
+  const productId = route.params.id;
+  const product = ref<Product>();
 
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
@@ -13,6 +16,17 @@
   const setControlledMainSwiper = (swiper: any) => {
     mainSlider.value = swiper;
   };
+
+  const fetchProduct = async () => {
+    try {
+      const res = await useApi(`${useUrlApi()}/product/show/${productId}`);
+      product.value = res as Product;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchProduct();
 </script>
 
 <template>
@@ -21,10 +35,18 @@
     <div class="container grid 2xl:grid-cols-[1fr_min-content] 2xl:gap-x-5">
       <div class="flex w-full flex-col md:flex-row md:gap-x-5 xl:w-fit 2xl:gap-x-10">
         <div class="mb-[20px] flex gap-[5px] md:mb-[35px] 2xl:mb-[80px] 2xl:gap-[10px]">
-          <CommonProductSideSlider v-if="showSideSlider" @swiper="setThumbsSwiper" />
-          <CommonProductSlider :thumbs="{ swiper: sideSwiper }" @swiper="setControlledMainSwiper" />
+          <CommonProductSideSlider
+            v-if="showSideSlider"
+            :slides="product?.images"
+            @swiper="setThumbsSwiper"
+          />
+          <CommonProductSlider
+            :thumbs="{ swiper: sideSwiper }"
+            :slides="product?.images"
+            @swiper="setControlledMainSwiper"
+          />
         </div>
-        <CommonProductInfo />
+        <CommonProductInfo :product="product" />
       </div>
 
       <CommonProductDetails class="md:order-2 2xl:col-span-2" />
