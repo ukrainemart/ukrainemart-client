@@ -53,7 +53,6 @@ export default defineNuxtConfig({
     head: {
       title: 'Ukrainemart',
     },
-    baseURL: '/ukrainemart-client/',
     buildAssetsDir: 'assets',
   },
 });
