@@ -1,1 +1,0 @@
-import{h as t,j as o,n as r}from"./entry.5191456f.js";import"./swiper-vue.45683e9c.js";const n=t(()=>{const e=o();return console.log(e.isLoggedIn),e.isLoggedIn?!0:r("/",{replace:!0})});export{n as default};
