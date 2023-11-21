@@ -25,7 +25,7 @@
   >
     <SwiperSlide v-for="slide in slides" :key="slide" class="">
       <div class="h-full">
-        <img :src="slide.path" class="h-full w-full cursor-pointer" />
+        <img :src="slide.path" class="h-full w-full cursor-pointer object-cover" />
       </div>
     </SwiperSlide>
   </Swiper>

@@ -13,5 +13,5 @@ declare interface Product {
   category_id: number;
   prices: PriceProduct['price'][];
   images?: ImageProduct[];
-  main_image?: string; // REVIEW ImageProduct?
+  main_image?: ImageProduct;
 }

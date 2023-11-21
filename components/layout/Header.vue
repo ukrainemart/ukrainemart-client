@@ -28,7 +28,7 @@
 <template>
   <header class="sticky inset-x-0 top-0 z-[100] bg-background-primary">
     <PagesMobileMenuBottom />
-    <div class="container mx-auto py-[25px] md:px-10 md:py-[30px] 4xl:py-10">
+    <div class="container mx-auto py-[25px] md:px-10 4xl:py-[30px]">
       <!-- mobile start -->
       <div class="flex justify-between xl:hidden">
         <CommonLogo v-if="isLogo" to="/" />
