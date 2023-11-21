@@ -73,14 +73,18 @@
       <div class="text-right text-[14px] font-semibold md:text-[18px] lg:text-[20px]">30₴</div>
 
       <div class="flex gap-x-[15px] md:gap-x-2.5 lg:gap-x-[15px]">
-        <SvgoEdit
-          :fontControlled="false"
-          class="h-[13px] w-[13px] text-status_gray md:h-[14px] md:w-[14px] lg:h-[18px] lg:w-[18px]"
-        />
-        <SvgoDelete
-          :fontControlled="false"
-          class="h-[11px] w-[13px] text-status_gray md:h-[14px] lg:h-[18px] lg:w-[14px]"
-        />
+        <UiButtonOpacity :to="'edit_product/' + product.id">
+          <SvgoEdit
+            :fontControlled="false"
+            class="h-[13px] w-[13px] text-status_gray md:h-[14px] md:w-[14px] lg:h-[18px] lg:w-[18px]"
+          />
+        </UiButtonOpacity>
+        <UiButtonOpacity>
+          <SvgoDelete
+            :fontControlled="false"
+            class="h-[11px] w-[13px] text-status_gray md:h-[14px] lg:h-[18px] lg:w-[14px]"
+          />
+        </UiButtonOpacity>
       </div>
     </div>
   </div>

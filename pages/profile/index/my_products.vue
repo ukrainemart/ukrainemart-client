@@ -1,4 +1,7 @@
 <script setup lang="ts">
+  definePageMeta({
+    middleware: ['company'],
+  });
   const products = ref<Product[]>([]);
 
   const getProducts = () => {
@@ -20,7 +23,7 @@
       <CommonMyProductCard v-for="product in products" :key="product.id" :product="product" />
     </div>
 
-    <UiPagination />
+    <!-- <UiPagination /> -->
   </LayoutProfilePage>
 </template>
 

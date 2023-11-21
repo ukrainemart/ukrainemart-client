@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  definePageMeta({
+    middleware: ['no-company'],
+  });
+
   const companyStatus = ref<CompanyStatus>('noCreate');
   const isCheck = ref<boolean>(false);
 
@@ -37,8 +41,8 @@
         legal_code: +inputs.code,
         description: inputs.description,
       },
-    }).then((res) => {
-      console.log(res);
+    }).then(() => {
+      checkStatus();
     });
   };
 

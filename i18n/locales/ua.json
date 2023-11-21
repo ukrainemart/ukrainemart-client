@@ -56,7 +56,6 @@
   "to": "до",
   "analytics": "Аналітика",
   "fixed_price": "Фіксована ціна",
-
   "add_product": {
     "add_product": "Додати товар",
     "enter_your_product_name": "Введіть назву вашого товару",
@@ -68,9 +67,11 @@
     "expiration_date": "Термін придатності",
     "enter_price": "Введіть ціну",
     "select_price_format": "Оберіть формат ціни",
-    "add_new_price": "Додати нову ціну"
+    "add_new_price": "Додати нову ціну",
+    "edit_product": "Редагувати товар"
   },
   "profile": {
+    "profile": "Профіль",
     "personal_data": "Особисті дані",
     "my_orders": "Мої замовлення",
     "my_products": "Мої товари",

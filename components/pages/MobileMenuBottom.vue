@@ -1,8 +1,26 @@
 <script setup lang="ts">
+  const emits = defineEmits(['openAuth']);
+
+  const openAuth = () => {
+    emits('openAuth');
+  };
+
   const isOpenProfile = ref(false);
 
   const switchMenu = (value: boolean) => {
     isOpenProfile.value = value;
+  };
+
+  const onClickProfile = () => {
+    if (isLoggedIn()) {
+      switchMenu(true);
+      return false;
+    }
+    if (!isLoggedIn()) {
+      openAuth();
+      return false;
+    }
+    return false;
   };
 </script>
 
@@ -19,11 +37,11 @@
     <PagesMobileMenuItem :label="$t('favorites')">
       <SvgoFavorites class="!h-full !w-full" />
     </PagesMobileMenuItem>
-    <PagesMobileMenuItem :label="$t('myAccount')" @click="switchMenu(true)">
+    <PagesMobileMenuItem :label="$t('myAccount')" @click="onClickProfile">
       <SvgoUser class="!h-full !w-full" />
     </PagesMobileMenuItem>
 
-    <PagesMobileProfile :isOpen="isOpenProfile" @switchMenu="switchMenu" />
+    <PagesMobileProfile v-if="isLoggedIn()" :isOpen="isOpenProfile" @switchMenu="switchMenu" />
   </div>
 </template>
 

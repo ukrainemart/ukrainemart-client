@@ -68,9 +68,11 @@
     "expiration_date": "Expiration date",
     "enter_price": "Enter the price",
     "select_price_format": "Select a price format",
-    "add_new_price": "Add a new price"
+    "add_new_price": "Add a new price",
+    "edit_product": "Edit a product"
   },
   "profile": {
+    "profile": "Profile",
     "personal_data": "Personal data",
     "my_orders": "My orders",
     "my_products": "My products",

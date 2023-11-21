@@ -44,12 +44,23 @@
       </li>
     </ul>
 
-    <UiButtonPrimary styles="mx-auto block mb-[15px]" @click="switchAuth(true, 'login')">
+    <UiButtonPrimary
+      v-if="!isLoggedIn()"
+      styles="mx-auto block mb-[15px]"
+      @click="switchAuth(true, 'login')"
+    >
       {{ $t('login') }}
     </UiButtonPrimary>
-    <UiButtonTextUnderline styles="mx-auto" @click="switchAuth(true, 'register')">
+    <UiButtonTextUnderline
+      v-if="!isLoggedIn()"
+      styles="mx-auto"
+      @click="switchAuth(true, 'register')"
+    >
       {{ $t('signup') }}
     </UiButtonTextUnderline>
+    <UiButtonPrimary v-if="isLoggedIn()" styles="mx-auto block w-fit mb-[15px]" to="/profile">
+      {{ $t('profile.profile') }}
+    </UiButtonPrimary>
   </div>
 </template>
 

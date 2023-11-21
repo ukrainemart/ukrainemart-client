@@ -2,7 +2,6 @@
   definePageMeta({
     middleware: ['company'],
   });
-
   const inputs = ref<InputsCreateProduct>({} as InputsCreateProduct);
 
   const formData = () => {
@@ -28,22 +27,22 @@
   };
 
   const onCreateProduct = () => {
-    useApiFetch(`${useUrlApi()}/product/create`, {
-      method: 'POST',
-      body: formData(),
-    }).then((res) => {
-      console.log(res);
-    });
+    // useApiFetch(`${useUrlApi()}/product/create`, {
+    //   method: 'POST',
+    //   body: formData(),
+    // }).then((res) => {
+    //   console.log(res);
+    // });
   };
 </script>
 
 <template>
   <LayoutCreateProduct
     v-model="inputs"
-    :title="$t('add_product.add_product')"
-    :labelButtonSubmit="$t('add_product.add_product')"
+    :title="$t('add_product.edit_product')"
+    :labelButtonSubmit="$t('add_product.edit_product')"
     @actionSubmit="onCreateProduct"
   />
 </template>
 
-<style></style>
+<style scoped></style>

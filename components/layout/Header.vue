@@ -27,19 +27,22 @@
 
 <template>
   <header class="sticky inset-x-0 top-0 z-50 bg-background-primary">
-    <PagesMobileMenuBottom />
+    <PagesMobileMenuBottom @openAuth="switchAuth(true, 'login')" />
     <div class="container mx-auto py-[25px] md:px-10 md:py-[30px] 4xl:py-10">
       <!-- mobile start -->
       <div class="flex justify-between xl:hidden">
         <CommonLogo v-if="isLogo" to="/" />
 
         <div v-else class="flex items-center gap-5">
-          <UiButtonPrimary @click="switchAuth(true, 'login')">
+          <UiButtonPrimary v-if="!isLoggedIn()" @click="switchAuth(true, 'login')">
             {{ $t('login') }}
           </UiButtonPrimary>
-          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
+          <UiButtonTextUnderline v-if="!isLoggedIn()" @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
+          <UiButtonPrimary v-if="isLoggedIn()" to="/profile">
+            {{ $t('profile.profile') }}
+          </UiButtonPrimary>
         </div>
 
         <div class="relative z-50 flex items-center gap-5">
@@ -78,11 +81,14 @@
             :fontControlled="false"
           />
           <CommonLangSwitcher />
-          <UiButtonTextUnderline @click="switchAuth(true, 'register')">
+          <UiButtonTextUnderline v-if="!isLoggedIn()" @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
-          <UiButtonPrimary @click="switchAuth(true, 'login')">
+          <UiButtonPrimary v-if="!isLoggedIn()" @click="switchAuth(true, 'login')">
             {{ $t('login') }}
+          </UiButtonPrimary>
+          <UiButtonPrimary v-if="isLoggedIn()" to="/profile">
+            {{ $t('profile.profile') }}
           </UiButtonPrimary>
         </div>
       </div>
