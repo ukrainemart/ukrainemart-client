@@ -6,16 +6,7 @@
 
 <template>
   <button>
-    <div
-      :class="
-        cn('tham tham-e-squeeze tham-w-6', {
-          'tham-active': isActive,
-        })
-      "
-    >
-      <div class="tham-box">
-        <div class="tham-inner" />
-      </div>
-    </div>
+    <SvgoClose v-if="isActive" :fontControlled="false" class="h-[14px] w-[14px]" />
+    <SvgoBurger v-if="!isActive" :fontControlled="false" class="h-[14px] w-[23px]" />
   </button>
 </template>
