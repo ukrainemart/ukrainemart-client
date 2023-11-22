@@ -2,14 +2,18 @@
   import TabExporter from '../pages/TabExporter.vue';
   import TabProduct from '../pages/TabProduct.vue';
 
+  // const { product } = defineProps<{
+  //   product: Product;
+  // }>();
+
   const items = [
     {
       label: 'Про товар',
-      content: TabExporter,
+      content: TabProduct,
     },
     {
       label: 'Про експортера',
-      content: TabProduct,
+      content: TabExporter,
     },
   ];
 </script>

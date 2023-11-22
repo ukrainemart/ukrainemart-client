@@ -2,6 +2,7 @@ declare interface Product {
   id: number;
   title_ua: string;
   company_id: number;
+  company?: Company; // REVIEW
   description_ua: string;
   priority: any;
   views: any;

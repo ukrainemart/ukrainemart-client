@@ -17,16 +17,18 @@
     mainSlider.value = swiper;
   };
 
-  const fetchProduct = async () => {
+  const getProduct = async () => {
+    // REVIEW useApi => useApiFetch
     try {
       const res = await useApi(`${useUrlApi()}/product/show/${productId}`);
+
       product.value = res as Product;
     } catch (error) {
       console.error(error);
     }
   };
 
-  fetchProduct();
+  getProduct();
 </script>
 
 <template>
@@ -40,17 +42,19 @@
             :slides="product?.images"
             @swiper="setThumbsSwiper"
           />
+
           <CommonProductSlider
             :thumbs="{ swiper: sideSwiper }"
             :slides="product?.images"
             @swiper="setControlledMainSwiper"
           />
         </div>
+
         <CommonProductInfo :product="product" />
       </div>
 
       <CommonProductDetails class="md:order-2 2xl:col-span-2" />
-      <CommonSellerInfo />
+      <CommonSellerInfo :product="product" />
     </div>
 
     <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]" class="!pt-0">

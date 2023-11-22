@@ -12,4 +12,6 @@ declare interface Category {
   title_en: string;
   title_ua: string;
   updated_at: string;
+  breadcrumb: Breadcrumb;
+  same_categories: SameCategories[];
 }

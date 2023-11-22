@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <UCheckbox :ui="{ ...ui, border: 'border-black', color: '!text-black' }" class="text-black" />
+  <UCheckbox :ui="{ border: 'border-black', color: '!text-black', ...ui }" class="text-black" />
 </template>
 
 <style scoped></style>

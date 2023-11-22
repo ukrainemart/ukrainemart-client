@@ -1,6 +1,6 @@
 const HEADER_HEIGHT = {
   HEADER_SM: '55px',
-  HEADER_LG: '99px',
+  HEADER_LG: '89px',
   HEADER_4XL: '130px',
 };
 
