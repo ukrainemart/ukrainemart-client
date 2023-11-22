@@ -4,10 +4,10 @@ export const useAuthStore = defineStore('authStore', () => {
   const user = ref<User | null>(null);
   const isLoggedIn = computed(() => !!user.value);
 
-  const isCompanyModeration = computed(() => user.value?.company.status === '0');
-  const isNoCompany = computed(() => user.value?.company.status === null);
-  const isCompany = computed(() => user.value?.company.status === '1');
-  const isNoModerationCompany = computed(() => user.value?.company.status === '-1');
+  const isCompanyModeration = computed(() => user.value?.company?.status === '0');
+  const isNoCompany = computed(() => user.value?.company?.status === null);
+  const isCompany = computed(() => user.value?.company?.status === '1');
+  const isNoModerationCompany = computed(() => user.value?.company?.status === '-1');
 
   async function fetchUser() {
     try {
