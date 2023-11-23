@@ -15,8 +15,8 @@
     class="products_swiper product_swiper"
   >
     <SwiperSlide v-for="slide in slides" :key="slide" class="!flex">
-      <div>
-        <img :src="slide.path" class="h-[440px] object-cover md:h-[435px] 2xl:h-[584px]" />
+      <div class="w-full">
+        <img :src="slide.path" class="h-[440px] w-full object-cover md:h-[435px] 2xl:h-[584px]" />
       </div>
     </SwiperSlide>
   </Swiper>

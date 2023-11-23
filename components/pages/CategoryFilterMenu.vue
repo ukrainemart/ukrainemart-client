@@ -9,11 +9,14 @@
   <UModal
     :ui="{
       wrapper: 'z-[150]',
-      container: 'w-[280px] block',
+      container: 'w-[245px] block',
       height: 'h-screen',
       margin: 'sm:m-0',
       padding: 'p-0',
       rounded: 'rounded-none',
+      overlay: {
+        background: 'bg-black/30',
+      },
     }"
   >
     <div class="px-5 py-[25px]">

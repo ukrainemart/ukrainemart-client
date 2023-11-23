@@ -24,8 +24,7 @@
         <p
           class="text-[7px] leading-[9px] text-status_gray md:mb-5 md:text-[10px] md:leading-[12px] lg:mb-[25px] lg:text-[14px] lg:leading-[17px]"
         >
-          <!-- TODO dynamic category name -->
-          Агрокультура
+          {{ useMultiLang(product.category, 'title') }}
         </p>
 
         <!-- REVIEW DRY -->

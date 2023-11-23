@@ -3,6 +3,7 @@ declare interface Product {
   title_ua: string;
   company_id: number;
   company?: Company; // REVIEW
+  category?: Category; // REVIEW
   description_ua: string;
   priority: any;
   views: any;
