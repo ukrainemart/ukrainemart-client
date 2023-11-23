@@ -21,19 +21,53 @@
       />
     </div>
 
-    <h5 class="mt-[5px] line-clamp-2 font-medium text-black md:mt-[15px] xl:mt-[20px]">
+    <h5 class="mt-[5px] truncate font-medium text-black md:mt-[12px] xl:mt-[20px]">
       <UiTextPortalPrimaryXl class="">
         {{ useMultiLang(product, 'title') }}
       </UiTextPortalPrimaryXl>
     </h5>
 
-    <UiTextPortalPrimaryXl class="mt-[7px] text-status_gray xl:mt-[10px]">
-      200 л
-    </UiTextPortalPrimaryXl>
+    <div class="mt-[2px] md:mt-[8px] xl:mt-[15px]">
+      <div v-if="product.price_type === 'fixed'" class="flex flex-col">
+        <span class="text-[15px] text-status_gray md:text-[16px] xl:text-[25px]">
+          {{ product.prices[0].min_amount }}
+        </span>
+        <span
+          class="mt-[7px] text-[16px] font-semibold md:mt-2.5 md:text-[20px] xl:mt-[20px] xl:text-[27px]"
+        >
+          {{ product.prices[0].price }}
+        </span>
+      </div>
 
-    <p class="mt-[10px] text-[16px] font-semibold text-black md:text-[22px] xl:mt-[15px]">
-      add price here<CommonCurrency />
-    </p>
+      <ul v-if="product.price_type === 'variated'" class="">
+        <!-- FIXME make the same offset (price1 - price2) -->
+        <li v-for="(price, i) in product.prices" :key="i" class="inline-flex flex-col">
+          <span v-if="i === 0" class="text-[15px] text-status_gray md:text-[16px] 4xl:text-[25px]">
+            {{ price.min_amount }}-
+          </span>
+          <span
+            v-if="i === 0"
+            class="mt-[7px] text-[16px] font-semibold md:mt-2.5 md:text-[20px] 4xl:mt-[20px] 4xl:text-[27px]"
+          >
+            {{ price.price }}-
+          </span>
+
+          <!-- FIXME make the same offset (price1 - price2) -->
+          <span
+            v-if="i === product.prices.length - 1"
+            class="text-[15px] text-status_gray md:text-[16px] 4xl:text-[25px]"
+          >
+            {{ price.max_amount }} kg
+          </span>
+          <span
+            v-if="i === product.prices.length - 1"
+            class="mt-[7px] text-[16px] font-semibold md:mt-2.5 md:text-[20px] 4xl:mt-[20px] 4xl:text-[27px]"
+          >
+            {{ price.price }}<CommonCurrency />
+          </span>
+        </li>
+      </ul>
+    </div>
 
     <div
       class="invisible relative z-20 mt-[20px] hidden justify-center is-hover:flex group-hover:is-hover:visible"
