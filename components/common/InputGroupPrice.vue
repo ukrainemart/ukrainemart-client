@@ -1,7 +1,7 @@
 <script setup lang="ts">
   const props = defineProps<{
     fixedPrice: PriceProduct['fixedPrice'];
-    variatedPrices: PriceProduct['variatedPrice'];
+    variatedPrices: PriceProduct['variatedPrice'][];
     priceType: PriceProduct['type'];
   }>();
 
@@ -64,7 +64,10 @@
     <UiLabel for="" :label="$t('add_product.select_price_format') + ':'">
       <div class="flex items-center gap-[10px] md:gap-[15px] xl:gap-[20px]">
         <CommonSelectPriceVariant v-model="type" :selected="priceType" />
-        <UiButtonOpacityAdding v-if="priceType === 'variated'" @click="addNewPrice">
+        <UiButtonOpacityAdding
+          v-if="priceType === 'variated' && props.variatedPrices.length < 5"
+          @click="addNewPrice"
+        >
           {{ $t('add_product.add_new_price') }}
         </UiButtonOpacityAdding>
       </div>
