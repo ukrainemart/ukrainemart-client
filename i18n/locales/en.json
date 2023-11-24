@@ -43,7 +43,8 @@
   "password": "Password",
   "password_change": {
     "old_password": "Old password",
-    "new_password": "New password"
+    "new_password": "New password",
+    "set_password": "Set a password"
   },
 
   "registration": "Registration",
@@ -70,6 +71,8 @@
   "phone_number": "Phone number",
   "importer": "Importer",
   "exporter": "Exporter",
+  "last_name": "Last name",
+  "description_of_your_company": "Description of your company",
 
   "add_product": {
     "add_product": "Add a product",
@@ -91,7 +94,8 @@
     "my_orders": "My orders",
     "my_products": "My products",
     "apply_company_creation": "Apply for a company creation",
-    "sign_out": "Sign out"
+    "sign_out": "Sign out",
+    "the_data_has_been_updated": "The data has been updated!"
   },
   "create_company": {
     "application_submission": "Submitting an application for company formation",

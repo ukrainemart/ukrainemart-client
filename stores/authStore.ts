@@ -10,6 +10,7 @@ export const useAuthStore = defineStore('authStore', () => {
   const isNoModerationCompany = computed(() => user.value?.company?.status === '-1');
   const isImporter = computed(() => user.value?.company?.type === 'importer');
   const isExporter = computed(() => user.value?.company?.type === 'exporter');
+  const isGoogleUser = computed(() => !!user.value?.google_id);
 
   async function fetchUser() {
     try {
@@ -73,5 +74,6 @@ export const useAuthStore = defineStore('authStore', () => {
     logout,
     isImporter,
     isExporter,
+    isGoogleUser,
   };
 });

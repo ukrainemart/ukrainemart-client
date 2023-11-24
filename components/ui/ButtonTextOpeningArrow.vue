@@ -6,8 +6,8 @@
 </script>
 
 <template>
-  <UiButtonText class="gap-x-[5px] p-0 uppercase md:gap-x-[7px]">
-    {{ label }}
+  <UiButtonText class="inline-flex gap-x-[5px] p-0 uppercase md:gap-x-[7px]">
+    <span>{{ label }}</span>
 
     <SvgoArrowDown
       :class="

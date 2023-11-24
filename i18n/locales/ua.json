@@ -43,7 +43,8 @@
   "password": "Пароль",
   "password_change": {
     "old_password": "Старий пароль:",
-    "new_password": "Новий пароль:"
+    "new_password": "Новий пароль:",
+    "set_password": "Встановити пароль"
   },
 
   "registration": "Реєстрація",
@@ -70,7 +71,8 @@
   "phone_number": "Номер телефону",
   "importer": "Імпортер",
   "exporter": "Експортер",
-
+  "last_name": "Прізвище",
+  "description_of_your_company": "Опис вашої компанії",
 
   "add_product": {
     "add_product": "Додати товар",
@@ -92,7 +94,8 @@
     "my_orders": "Мої замовлення",
     "my_products": "Мої товари",
     "apply_company_creation": "Подати заявку на створення компанії",
-    "sign_out": "Вийти"
+    "sign_out": "Вийти",
+    "the_data_has_been_updated": "Данні обновлено!"
   },
   "create_company": {
     "application_submission": "Подача заявки на створення компанії",

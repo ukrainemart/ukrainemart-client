@@ -1,4 +1,70 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  const auth = useAuthStore();
+  const { t } = useI18n();
+
+  const user = computed(() => auth.user);
+  const isCompany = computed(() => auth.isCompany);
+  const messageUserData = ref('');
+
+  const inputs = ref({
+    name: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    companyTitle: '',
+    companyCategory: '',
+    companyDescription: '',
+  });
+
+  const categories = ref<Category[]>([]);
+  const categoriesOptions = computed(() =>
+    categories.value.map((el: Category) => {
+      return {
+        id: el.id,
+        title: useMultiLang(el, 'title'),
+      };
+    })
+  );
+  const currentCategory = computed(() => {
+    const current = categoriesOptions.value.find((el) => el.id === +inputs.value.companyCategory);
+    return current?.title;
+  });
+
+  const getUserData = () => {
+    useApi(`${useUrlApi()}/category/parents`).then((res: any) => {
+      categories.value = res;
+
+      inputs.value.name = user.value?.name || '';
+      inputs.value.phone = user.value?.phone || '';
+      inputs.value.lastName = user.value?.last_name || '';
+      inputs.value.email = user.value?.email || '';
+      inputs.value.companyTitle = user.value?.company?.title || '';
+      inputs.value.companyDescription = user.value?.company?.description || '';
+      inputs.value.companyCategory = String(user.value?.company.category_id) || '';
+    });
+  };
+
+  const updateUser = () => {
+    useApi(`${useUrlApi()}/user/changeInfo`, {
+      method: 'POST',
+      body: {
+        name: inputs.value.name,
+        last_name: inputs.value.lastName,
+        phone: inputs.value.phone,
+        email: inputs.value.email,
+        company_title: inputs.value.companyTitle,
+        company_category: inputs.value.companyCategory,
+        company_description: inputs.value.companyDescription,
+      },
+    }).then((res: any) => {
+      if (res.status === 1) {
+        messageUserData.value = t('profile.the_data_has_been_updated');
+      }
+    });
+  };
+
+  getUserData();
+</script>
 
 <template>
   <LayoutProfilePage :title="$t('profile.personal_data')">
@@ -7,45 +73,55 @@
         class="grid grid-cols-1 gap-y-[15px] sm:grid-cols-2 sm:gap-x-[50px] md:gap-x-[84px] md:gap-y-[20px] 2xl:gap-x-[150px] 2xl:gap-y-[25px]"
       >
         <UiLabel :label="$t('name') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline />
+          <UiInputOutline v-model="inputs.name" />
         </UiLabel>
-        <UiLabel :label="$t('name_company') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline />
+        <UiLabel
+          v-if="isCompany"
+          :label="$t('name_company') + ':'"
+          class="col-span-2 sm:col-span-1"
+        >
+          <UiInputOutline v-model="inputs.companyTitle" />
         </UiLabel>
-        <UiLabel label="Прізвище:" class="col-span-2 sm:col-span-1">
-          <UiInputOutline />
+        <UiLabel :label="$t('last_name') + ':'" class="col-span-2 sm:col-span-1">
+          <UiInputOutline v-model="inputs.lastName" />
         </UiLabel>
-        <UiLabel :label="$t('category') + ':'" class="col-span-2 sm:col-span-1">
-          <UiSelectOutline />
+        <UiLabel
+          v-if="isCompany"
+          for=""
+          :label="$t('category') + ':'"
+          class="col-span-2 sm:col-span-1"
+        >
+          <UiSelectOutline
+            v-model="inputs.companyCategory"
+            :currentValue="currentCategory"
+            :options="categoriesOptions"
+            value-attribute="id"
+            option-attribute="title"
+          />
         </UiLabel>
         <UiLabel :label="$t('email') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline />
+          <UiInputOutline v-model="inputs.email" />
         </UiLabel>
-        <UiLabel label="Опис вашої компанії:" class="col-span-2 sm:col-span-1">
-          <UiTextareaOutline />
+        <UiLabel
+          v-if="isCompany"
+          :label="$t('description_of_your_company') + ':'"
+          class="col-span-2 row-span-2 sm:col-span-1"
+        >
+          <UiTextareaOutline
+            v-model="inputs.companyDescription"
+            class="!h-[90px] md:!h-[119px] xl:!h-[152px]"
+          />
         </UiLabel>
         <UiLabel :label="$t('phone_number') + ':'" class="col-span-2 sm:col-span-1">
-          <CommonPhoneInputOutline />
+          <CommonPhoneInputOutline v-model="inputs.phone" />
         </UiLabel>
-        <UiButtonPrimary class="col-span-2 w-fit justify-self-center">{{
+        <UiAlertTextSuccess v-if="messageUserData" class="col-span-2">
+          {{ messageUserData }}
+        </UiAlertTextSuccess>
+        <UiButtonPrimary class="col-span-2 w-fit justify-self-center" @click="updateUser">{{
           $t('save_changes')
         }}</UiButtonPrimary>
-        <div
-          class="mt-[30px] flex flex-col gap-y-[15px] sm:gap-x-[50px] md:mt-[35px] md:gap-x-[84px] md:gap-y-[20px] xl:mt-[55px] 2xl:gap-x-[150px] 2xl:gap-y-[25px]"
-        >
-          <UiLabel class="row-span-1" :label="$t('password_change.old_password') + ':'">
-            <UiInputOutline />
-          </UiLabel>
-          <UiLabel class="row-span-1" :label="$t('password_change.new_password') + ':'">
-            <UiInputOutline />
-          </UiLabel>
-          <UiLabel class="row-span-1" :label="$t('repeatPassword') + ':'">
-            <UiInputOutline />
-          </UiLabel>
-          <UiButtonPrimary class="col-span-2 w-fit justify-self-center">{{
-            $t('change_password')
-          }}</UiButtonPrimary>
-        </div>
+        <PagesProfileChangePassword />
       </div>
     </div>
   </LayoutProfilePage>
