@@ -1,10 +1,15 @@
 <script setup lang="ts">
-  defineProps<{
-    modelValue?: string;
+  const props = defineProps<{
+    modelValue?: any;
+    productImages?: Product['images'];
   }>();
 
   const photos = ref<any[]>([]);
-  const showPhotos = computed(() => photos.value.map((file) => URL.createObjectURL(file.value)));
+  const showPhotos = computed(() => {
+    const newPhotos = photos.value.map((file) => URL.createObjectURL(file.value));
+    if (!props.productImages) return newPhotos;
+    return [...props.productImages, ...newPhotos];
+  });
 
   const emits = defineEmits(['update:modelValue']);
 
@@ -17,6 +22,8 @@
   };
 
   watch(photos, () => {
+    console.log(showPhotos.value);
+
     handleChangePhoto();
   });
 
@@ -31,7 +38,7 @@
       class="relative h-0 overflow-hidden pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
     >
       <div class="absolute left-0 top-0 z-10 h-full w-full">
-        <img :src="photo" class="block h-full w-full object-cover" alt="" />
+        <img :src="`${photo}`" class="block h-full w-full object-cover" alt="" />
       </div>
     </div>
 

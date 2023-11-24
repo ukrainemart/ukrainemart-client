@@ -41,6 +41,11 @@
   "rememberMe": "Запам’ятати мене",
   "email": "Електронна пошта",
   "password": "Пароль",
+  "password_change": {
+    "old_password": "Старий пароль:",
+    "new_password": "Новий пароль:"
+  },
+
   "registration": "Реєстрація",
   "alreadyRegistered": "Вже зареєстровані?",
   "repeatPassword": "Повторіть пароль",
@@ -56,6 +61,15 @@
   "to": "до",
   "analytics": "Аналітика",
   "fixed_price": "Фіксована ціна",
+  "to_main_page": "На головну",
+  "success_register_message": "Ви успішно зареєструвалися!",
+  "save_changes": "Зберегти зміни",
+  "change_password": "Змінити пароль",
+  "category": "Категорія",
+  "name_company": "Назва компанії",
+  "phone_number": "Номер телефону",
+
+
   "add_product": {
     "add_product": "Додати товар",
     "enter_your_product_name": "Введіть назву вашого товару",

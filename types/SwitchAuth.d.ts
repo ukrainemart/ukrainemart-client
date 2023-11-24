@@ -1,1 +1,1 @@
-declare type SwitchAuth = 'login' | 'register';
+declare type SwitchAuth = 'login' | 'register' | 'successRegister';

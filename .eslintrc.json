@@ -75,7 +75,8 @@
             "math": "always"
           }
         ],
-        "vue/v-on-event-hyphenation": "off"
+        "vue/v-on-event-hyphenation": "off",
+        "vue/no-mutating-props": "off"
       }
     }
   ]

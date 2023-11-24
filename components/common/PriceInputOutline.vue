@@ -1,14 +1,14 @@
 <script setup lang="ts">
   defineProps<{
-    modelValue?: string;
+    price: string;
   }>();
-  const valueInput = ref('');
+  // const valueInput = ref('');
 
   const currency = [
-    {
-      value: 'UAH',
-      name: 'UAH',
-    },
+    // {
+    //   value: 'UAH',
+    //   name: 'UAH',
+    // },
     {
       value: 'USD',
       name: 'USD',
@@ -19,18 +19,18 @@
 
   const current = computed(() => currency.find((el) => el.value === selected.value));
 
-  const emits = defineEmits(['update:modelValue']);
+  const emits = defineEmits(['update:price']);
 
-  const handleInput = () => {
-    const inputValue = valueInput.value;
-    emits('update:modelValue', inputValue);
+  const handleInput = (event: any) => {
+    const inputValue = (event.target as HTMLInputElement).value;
+    emits('update:price', inputValue);
   };
 </script>
 
 <template>
   <div class="input_outline flex items-stretch !p-0">
     <input
-      v-model="valueInput"
+      :value="price"
       type="number"
       class="input_without_arrow input_outline_padding w-full basis-full bg-transparent focus:outline-none"
       @input="handleInput"

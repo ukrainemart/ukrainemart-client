@@ -41,6 +41,11 @@
   "rememberMe": "Remember me",
   "email": "Email",
   "password": "Password",
+  "password_change": {
+    "old_password": "Old password",
+    "new_password": "New password"
+  },
+
   "registration": "Registration",
   "alreadyRegistered": "Already registered?",
   "repeatPassword": "Repeat password",
@@ -56,6 +61,13 @@
   "to": "to",
   "analytics": "Analytics",
   "fixed_price": "Fixed price",
+  "to_main_page": "To main page",
+  "success_register_message": "You are successfully registered!",
+  "save_changes": "Save changes",
+  "change_password": "Change password",
+  "category": "Category",
+  "name_company": "Name company",
+  "phone_number": "Phone number",
 
   "add_product": {
     "add_product": "Add a product",

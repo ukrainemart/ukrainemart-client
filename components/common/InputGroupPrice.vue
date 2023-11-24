@@ -1,18 +1,12 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     fixedPrice: PriceProduct['fixedPrice'];
     variatedPrices: PriceProduct['variatedPrice'];
     priceType: PriceProduct['type'];
   }>();
 
   const emits = defineEmits(['update:fixedPrice', 'update:variatedPrices', 'update:priceType']);
-
-  const changeFixed = (price: PriceProduct['fixedPrice']) => {
-    emits('update:fixedPrice', price);
-  };
   const changeVariated = (price: PriceProduct['variatedPrice'][]) => {
-    console.log(price);
-
     emits('update:variatedPrices', price);
   };
 
@@ -22,36 +16,22 @@
 
   const type = ref<PriceProduct['type']>('');
 
-  const fixed = ref<PriceProduct['fixedPrice']>({
-    amount: '',
-    price: '',
-    unitId: '',
+  watch(type, () => {
+    changeType(type.value);
   });
-  const variated = ref<PriceProduct['variatedPrice'][]>([
-    {
-      id: 1,
-      minAmount: '',
-      maxAmount: '',
-      price: '',
-      unitId: '',
-    },
-  ]);
+  const variated = ref<PriceProduct['variatedPrice'][]>([]);
 
-  watchDeep(fixed, () => {
-    changeFixed(fixed.value);
-  });
   watchDeep(variated, () => {
     changeVariated(variated.value);
   });
 
   const addNewPrice = () => {
     const newPrice: PriceProduct['variatedPrice'] = {
-      id: variated.value[variated.value.length - 1].id + 1,
       minAmount: '',
       maxAmount: '',
       price: '',
       unitId: '',
-    };
+    } as PriceProduct['variatedPrice'];
 
     variated.value = [...variated.value, newPrice];
   };
@@ -71,20 +51,20 @@
     <h5>
       <UiTextPortalPrimary class="xl:!text-[20px]"> {{ $t('price') }} </UiTextPortalPrimary>
     </h5>
-    <div v-if="type === 'variated'" class="flex flex-col gap-[15px] xl:gap-[25px]">
+    <div v-if="priceType === 'variated'" class="flex flex-col gap-[15px] xl:gap-[25px]">
       <CommonInputGroupPriceGap
-        v-for="price in variated"
-        :key="price.id"
+        v-for="(price, index) in variatedPrices"
+        :key="index"
         :price="price"
         @update:price="updateVariationPrice"
       />
     </div>
-    <CommonInputGroupPriceFixed v-if="type === 'fixed'" v-model="fixed" />
+    <CommonInputGroupPriceFixed v-if="priceType === 'fixed'" v-model:price="props.fixedPrice" />
 
     <UiLabel :label="$t('add_product.select_price_format') + ':'">
       <div class="flex items-center gap-[10px] md:gap-[15px] xl:gap-[20px]">
-        <CommonSelectPriceVariant v-model="type" :selected="type" @change="changeType(type)" />
-        <UiButtonOpacityAdding v-if="type === 'variated'" @click="addNewPrice">
+        <CommonSelectPriceVariant v-model="type" :selected="priceType" />
+        <UiButtonOpacityAdding v-if="priceType === 'variated'" @click="addNewPrice">
           {{ $t('add_product.add_new_price') }}
         </UiButtonOpacityAdding>
       </div>

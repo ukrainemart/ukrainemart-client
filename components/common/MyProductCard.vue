@@ -11,9 +11,9 @@
   >
     <div class="mr-[15px] md:mr-5 lg:mr-10">
       <img
-        :src="product?.main_image"
+        :src="product?.main_image?.path"
         alt="product"
-        class="h-[75px] w-[60px] rounded-[5px] md:h-[135px] md:w-[100px] md:rounded-[10px] lg:w-[110px] lg:rounded-[20px]"
+        class="h-[75px] w-[60px] rounded-[5px] object-cover md:h-[135px] md:w-[100px] md:rounded-[10px] lg:w-[110px] lg:rounded-[20px]"
       />
     </div>
 

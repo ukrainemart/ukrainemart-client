@@ -1,42 +1,43 @@
 <script setup lang="ts">
-  defineProps<{
-    modelValue: InputsCreateProduct;
+  const props = defineProps<{
+    inputs: InputsCreateProduct;
     title: string;
+    product?: Product;
     labelButtonSubmit: string;
   }>();
 
   const language = ref<Language>();
 
-  const emits = defineEmits(['update:modelValue', 'actionSubmit']);
+  const emits = defineEmits(['update:inputs', 'actionSubmit']);
   const actionSubmit = () => {
     emits('actionSubmit');
   };
   const formInputs = reactive({
-    title_ua: '',
-    title_en: '',
-    description_ua: '',
-    description_en: '',
+    // title_ua: '',
+    // title_en: '',
+    // description_ua: '',
+    // description_en: '',
     price_type: '',
-    categoryId: '',
+    // categoryId: '',
   });
-  const fixedPrice = ref<PriceProduct['fixedPrice']>();
+  // const fixedPrice = ref<PriceProduct['fixedPrice']>();
   const variatedPrices = ref<PriceProduct['variatedPrice'][]>([]);
   const productImages = ref<any>([]);
   const pageData = ref();
 
   const updateInputs = () => {
-    const inputs: InputsCreateProduct = {
-      titleUa: formInputs.title_ua,
-      titleEn: formInputs.title_en,
-      descriptionUa: formInputs.description_ua,
-      descriptionEn: formInputs.description_en,
-      categoryId: formInputs.categoryId,
+    const inputsUpdate: any = {
+      // titleUa: formInputs.title_ua,
+      // titleEn: formInputs.title_en,
+      // descriptionUa: formInputs.description_ua,
+      // descriptionEn: formInputs.description_en,
+      // categoryId: formInputs.categoryId,
       priceType: formInputs.price_type,
-      fixedPrice: fixedPrice.value,
+      // fixedPrice: fixedPrice.value,
       variatedPrices: variatedPrices.value,
-      productImages: productImages.value,
+      // productImages: productImages.value,
     };
-    emits('update:modelValue', inputs);
+    emits('update:inputs', inputsUpdate);
   };
 
   const categoryOptions = computed(
@@ -49,7 +50,7 @@
       }) || []
   );
   const getCurrentCategory = computed(
-    () => categoryOptions.value.find((el: any) => el.id === +formInputs.categoryId) || ''
+    () => categoryOptions.value.find((el: any) => el.id === +props.inputs.categoryId) || ''
   );
 
   const unitOptions = computed(
@@ -68,7 +69,7 @@
     });
   };
 
-  watchDeep([formInputs, fixedPrice, variatedPrices, productImages], () => {
+  watchDeep([formInputs, variatedPrices, productImages], () => {
     updateInputs();
   });
 
@@ -91,17 +92,17 @@
               v-show="language === 'ua'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline v-model="formInputs.title_ua" />
+              <UiInputOutline v-model="inputs.titleUa" />
             </UiLabel>
             <UiLabel
               v-show="language === 'en'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline v-model="formInputs.title_en" />
+              <UiInputOutline v-model="inputs.titleEn" />
             </UiLabel>
             <UiLabel :label="$t('add_product.select_category') + ':'">
               <UiSelectOutline
-                v-model="formInputs.categoryId"
+                v-model="inputs.categoryId"
                 :options="categoryOptions"
                 :currentValue="getCurrentCategory.title"
                 value-attribute="id"
@@ -113,7 +114,7 @@
               :label="$t('add_product.enter_product_description') + ':'"
             >
               <UiTextareaOutline
-                v-model="formInputs.description_ua"
+                v-model="inputs.descriptionUa"
                 class="min-h-[120px] md:min-h-[179px]"
               />
             </UiLabel>
@@ -122,7 +123,7 @@
               :label="$t('add_product.enter_product_description') + ':'"
             >
               <UiTextareaOutline
-                v-model="formInputs.description_en"
+                v-model="inputs.descriptionEn"
                 class="min-h-[120px] md:min-h-[179px]"
               />
             </UiLabel>
@@ -150,13 +151,13 @@
           </div> -->
 
           <CommonInputGroupPrice
-            v-model:fixedPrice="fixedPrice"
-            v-model:variatedPrices="variatedPrices"
-            v-model:priceType="formInputs.price_type"
+            v-model:fixedPrice="inputs.fixedPrice"
+            v-model:variatedPrices="inputs.variatedPrices"
+            v-model:priceType="inputs.priceType"
           />
         </div>
         <div class="w-full 2xl:basis-[50%] 4xl:basis-[40%]">
-          <CommonAddingPhoto v-model="productImages" />
+          <CommonAddingPhoto v-model="inputs.productImages" :productImages="product?.images" />
         </div>
       </div>
       <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">

@@ -2,28 +2,12 @@
   const props = defineProps<{
     price: PriceProduct['variatedPrice'];
   }>();
-  const inputs = ref<PriceProduct['variatedPrice']>({
-    id: props.price.id,
-    minAmount: '',
-    maxAmount: '',
-    price: '',
-    unitId: '',
-  });
 
-  const emits = defineEmits(['update:price']);
   const unitOptions: any = inject('unitOptions');
 
   const getCurrentUnit = computed(
-    () => unitOptions.value?.find((el: any) => el.id === +inputs.value.unitId) || ''
+    () => unitOptions.value?.find((el: any) => el.id === +props.price.unitId) || ''
   );
-
-  const updateValue = () => {
-    emits('update:price', inputs.value);
-  };
-
-  watchDeep(inputs, () => {
-    updateValue();
-  });
 </script>
 
 <template>
@@ -33,7 +17,7 @@
         <div class="flex items-center">
           <UiLabel :label="$t('from') + ':'" class="!flex-row items-center !text-black">
             <UiInputOutline
-              v-model="inputs.minAmount"
+              v-model="price.minAmount"
               type="number"
               class="w-full max-w-[70px] md:max-w-[110px]"
             />
@@ -43,7 +27,7 @@
             class="ml-[10px] !flex-row items-center !text-black md:ml-[20px]"
           >
             <UiInputOutline
-              v-model="inputs.maxAmount"
+              v-model="price.maxAmount"
               type="number"
               class="w-full max-w-[70px] md:max-w-[110px]"
             />
@@ -55,7 +39,7 @@
         class="ml-[10px] justify-items-start md:ml-[20px]"
       >
         <CommonSelectUnitMeasure
-          v-model="inputs.unitId"
+          v-model="price.unitId"
           :currentValue="getCurrentUnit.title"
           class="max-w-[90px] md:max-w-[110px]"
         />
@@ -63,7 +47,7 @@
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
       <UiLabel class="relative z-50 4xl:max-w-none" :label="$t('add_product.enter_price') + ':'">
-        <CommonPriceInputOutline v-model="inputs.price" />
+        <CommonPriceInputOutline v-model:price="price.price" />
       </UiLabel>
     </div>
   </div>

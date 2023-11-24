@@ -2,8 +2,8 @@
   const { width } = useWindowSize();
   const { BREAKPOINTS_MD } = useVariables();
   const route = useRoute();
-  const productId = route.params.id;
-  const product = ref<Product>();
+  const productId = computed(() => route.params.id);
+  // const product = ref<Product>();.
 
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
@@ -17,16 +17,25 @@
     mainSlider.value = swiper;
   };
 
-  const fetchProduct = async () => {
-    try {
-      const res = await useApi(`${useUrlApi()}/product/show/${productId}`);
-      product.value = res as Product;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { data: product } = await useApiFetch<Product>(
+    `${useUrlApi()}/product/show/${productId.value}`
+  );
 
-  fetchProduct();
+  watchDeep(product, () => {
+    console.log(product.value);
+  });
+
+  // const fetchProduct = async () => {
+  //   try {
+  //     const res = await useApiFetch(`${useUrlApi()}/product/show/${productId.value}`);
+  //     product.value = res.data.value as Product;
+  //     console.log(product.value);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // fetchProduct();
 </script>
 
 <template>
@@ -46,7 +55,8 @@
             @swiper="setControlledMainSwiper"
           />
         </div>
-        <CommonProductInfo :product="product" />
+        {{ product?.title_ua }}
+        <!-- <CommonProductInfo :product="product" /> -->
       </div>
 
       <CommonProductDetails class="md:order-2 2xl:col-span-2" />

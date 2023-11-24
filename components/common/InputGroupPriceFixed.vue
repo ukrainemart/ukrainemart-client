@@ -1,26 +1,27 @@
 <script setup lang="ts">
-  defineProps<{
-    modelValue: PriceProduct['fixedPrice'];
+  const props = defineProps<{
+    price: PriceProduct['fixedPrice'];
   }>();
-  const inputs = ref<PriceProduct['fixedPrice']>({
-    amount: '',
-    price: '',
-    unitId: '',
-  });
+
+  // const inputs = ref<PriceProduct['fixedPrice']>({
+  //   amount: '',
+  //   price: '',
+  //   unitId: '',
+  // });
   const unitOptions: any = inject('unitOptions');
 
-  const emits = defineEmits(['update:modelValue']);
+  // const emits = defineEmits(['update:price']);
 
-  const updateValue = () => {
-    emits('update:modelValue', inputs.value);
-  };
+  // const updateValue = () => {
+  //   emits('update:price', inputs.value);
+  // };
 
   const getCurrentUnit = computed(
-    () => unitOptions.value?.find((el: any) => el.id === +inputs.value.unitId) || ''
+    () => unitOptions.value?.find((el: any) => el.id === +props.price.unitId) || ''
   );
-
-  watchDeep(inputs, () => {
-    updateValue();
+  console.log(getCurrentUnit.value);
+  watchDeep(getCurrentUnit, () => {
+    console.log(getCurrentUnit.value);
   });
 </script>
 
@@ -29,7 +30,7 @@
     <div class="col-span-5 flex items-center md:col-span-3 lg:col-span-5 4xl:col-span-3">
       <UiLabel :label="$t('quantity') + ':'" class="w-full">
         <div class="flex w-full items-center">
-          <UiInputOutline v-model="inputs.amount" required type="number" class="w-full" />
+          <UiInputOutline v-model="price.amount" required type="number" class="w-full" />
         </div>
       </UiLabel>
       <UiLabel
@@ -37,7 +38,7 @@
         class="ml-[10px] justify-items-start md:ml-[20px]"
       >
         <CommonSelectUnitMeasure
-          v-model="inputs.unitId"
+          v-model="price.unitId"
           :currentValue="getCurrentUnit.title"
           class="max-w-[90px] md:max-w-[110px]"
         />
@@ -45,7 +46,7 @@
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
       <UiLabel class="relative z-50 4xl:max-w-none" :label="$t('add_product.enter_price') + ':'">
-        <CommonPriceInputOutline v-model="inputs.price" />
+        <CommonPriceInputOutline v-model:price="price.price" />
       </UiLabel>
     </div>
   </div>

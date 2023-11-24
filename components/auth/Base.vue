@@ -23,6 +23,7 @@
         @switchModal="switchModal"
       />
       <AuthRegister v-if="type === 'register'" @switchTypeAuth="switchTypeAuth" />
+      <AuthSuccessRegister v-if="type === 'successRegister'" @switchModal="switchModal" />
     </div>
   </UiModal>
 </template>

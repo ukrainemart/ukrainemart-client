@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  definePageMeta({
-    middleware: ['company'],
-  });
+  // definePageMeta({
+  //   middleware: ['company'],
+  // });
 
   const inputs = ref<InputsCreateProduct>({} as InputsCreateProduct);
 
@@ -19,7 +19,19 @@
       data.append('unit_id', inputs.value.fixedPrice.unitId);
     }
     if (inputs.value.variatedPrices.length > 0) {
-      data.append('price_variations', JSON.stringify(inputs.value.variatedPrices));
+      data.append(
+        'price_variations',
+        JSON.stringify(
+          inputs.value.variatedPrices.map((el) => {
+            return {
+              minAmount: el.minAmount,
+              maxAmount: el.maxAmount,
+              price: el.price,
+              unitId: el.unitId,
+            };
+          })
+        )
+      );
     }
     for (const image of inputs.value.productImages) {
       data.append('product_images[]', image);
@@ -39,7 +51,7 @@
 
 <template>
   <LayoutCreateProduct
-    v-model="inputs"
+    v-model:inputs="inputs"
     :title="$t('add_product.add_product')"
     :labelButtonSubmit="$t('add_product.add_product')"
     @actionSubmit="onCreateProduct"

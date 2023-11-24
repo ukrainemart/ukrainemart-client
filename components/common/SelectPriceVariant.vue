@@ -3,6 +3,8 @@
     selected: PriceProduct['type'];
   }>();
 
+  console.log(props.selected);
+
   const { t } = useI18n();
 
   type Variant = {

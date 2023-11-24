@@ -5,7 +5,7 @@ declare interface InputsCreateProduct {
   descriptionEn:  string;
   categoryId:  string;
   priceType: string;
-  fixedPrice?: PriceProduct['fixedPrice'],
-  variatedPrices:  PriceProduct['variatedPrice'][],
+  fixedPrice?: PriceProduct['fixedPrice'] ,
+  variatedPrices:  PriceProduct['variatedPrice'][] | [],
   productImages: [],
 }

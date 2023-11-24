@@ -22,6 +22,11 @@
       }}</CommonProfileMenuLink>
     </li>
     <li>
+      <CommonProfileMenuLink to="/profile/favorites" @click="closeMenu">{{
+        $t('favorites')
+      }}</CommonProfileMenuLink>
+    </li>
+    <li>
       <CommonProfileMenuLink to="/profile/create_company" @click="closeMenu">{{
         $t('profile.apply_company_creation')
       }}</CommonProfileMenuLink>

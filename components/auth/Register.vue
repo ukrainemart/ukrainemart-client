@@ -22,7 +22,11 @@
       await validationSchema.validate(credentials, { abortEarly: false });
       formValidationErrors.value = {};
 
-      auth.register(credentials);
+      auth.register(credentials).then((res: any) => {
+        if (res.data.value.status === 1) {
+          switchTypeAuth('successRegister');
+        }
+      });
     } catch (validationErrors: any) {
       formValidationErrors.value = {};
 
