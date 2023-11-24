@@ -61,7 +61,7 @@
     </div>
     <CommonInputGroupPriceFixed v-if="priceType === 'fixed'" v-model:price="props.fixedPrice" />
 
-    <UiLabel :label="$t('add_product.select_price_format') + ':'">
+    <UiLabel for="" :label="$t('add_product.select_price_format') + ':'">
       <div class="flex items-center gap-[10px] md:gap-[15px] xl:gap-[20px]">
         <CommonSelectPriceVariant v-model="type" :selected="priceType" />
         <UiButtonOpacityAdding v-if="priceType === 'variated'" @click="addNewPrice">

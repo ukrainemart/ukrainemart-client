@@ -12,33 +12,20 @@
   const actionSubmit = () => {
     emits('actionSubmit');
   };
-  const formInputs = reactive({
-    // title_ua: '',
-    // title_en: '',
-    // description_ua: '',
-    // description_en: '',
-    price_type: '',
-    // categoryId: '',
-  });
-  // const fixedPrice = ref<PriceProduct['fixedPrice']>();
-  const variatedPrices = ref<PriceProduct['variatedPrice'][]>([]);
-  const productImages = ref<any>([]);
+  // const formInputs = reactive({
+  //   price_type: '',
+  // });
+  // const variatedPrices = ref<PriceProduct['variatedPrice'][]>([]);
+  // const productImages = ref<any>([]);
   const pageData = ref();
 
-  const updateInputs = () => {
-    const inputsUpdate: any = {
-      // titleUa: formInputs.title_ua,
-      // titleEn: formInputs.title_en,
-      // descriptionUa: formInputs.description_ua,
-      // descriptionEn: formInputs.description_en,
-      // categoryId: formInputs.categoryId,
-      priceType: formInputs.price_type,
-      // fixedPrice: fixedPrice.value,
-      variatedPrices: variatedPrices.value,
-      // productImages: productImages.value,
-    };
-    emits('update:inputs', inputsUpdate);
-  };
+  // const updateInputs = () => {
+  //   const inputsUpdate: any = {
+  //     priceType: formInputs.price_type,
+  //     variatedPrices: variatedPrices.value,
+  //   };
+  //   emits('update:inputs', inputsUpdate);
+  // };
 
   const categoryOptions = computed(
     () =>
@@ -69,9 +56,9 @@
     });
   };
 
-  watchDeep([formInputs, variatedPrices, productImages], () => {
-    updateInputs();
-  });
+  // watchDeep([formInputs, variatedPrices, productImages], () => {
+  //   updateInputs();
+  // });
 
   getPageData();
 

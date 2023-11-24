@@ -3,7 +3,14 @@
     middleware: ['exporter'],
   });
 
-  const inputs = ref<InputsCreateProduct>({} as InputsCreateProduct);
+  const inputs = ref<InputsCreateProduct>({
+    fixedPrice: {
+      amount: '',
+      price: '',
+      unitId: '',
+    },
+    variatedPrices: [],
+  } as InputsCreateProduct);
 
   const formData = () => {
     const data = new FormData();
