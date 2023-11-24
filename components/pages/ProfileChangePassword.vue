@@ -1,8 +1,6 @@
 <script setup lang="ts">
   const auth = useAuthStore();
   const isGoogleUser = computed(() => auth.isGoogleUser);
-
-  
 </script>
 
 <template>
