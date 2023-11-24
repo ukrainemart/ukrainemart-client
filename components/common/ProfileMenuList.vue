@@ -26,12 +26,12 @@
         $t('favorites')
       }}</CommonProfileMenuLink>
     </li>
-    <li>
+    <li v-if="!isCompany">
       <CommonProfileMenuLink to="/profile/create_company" @click="closeMenu">{{
         $t('profile.apply_company_creation')
       }}</CommonProfileMenuLink>
     </li>
-    <li v-if="!isCompany">
+    <li v-if="isCompany">
       <CommonProfileMenuLink v-if="isCompany" to="/profile/my_products" @click="closeMenu">{{
         $t('profile.my_products')
       }}</CommonProfileMenuLink>
