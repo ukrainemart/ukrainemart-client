@@ -12,7 +12,7 @@
   <h1
     :class="
       cn(
-        'font-montserrat text-[17px] font-medium leading-[20px] text-black md:text-[24px] md:leading-[29px] lg:text-[30px] lg:leading-[36px]',
+        'font-namu text-[20px] font-medium leading-[24px] text-black md:text-[27px] md:leading-[32px] 2xl:text-[35px] 2xl:leading-[42px]',
         styles
       )
     "

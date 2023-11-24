@@ -1,10 +1,7 @@
-export function useMultiLang(item: any, key: string) {
-  // const { locale } = useI18n();
-  if (!item) return '';
-  try {
-    return item[`${key}_ua`] || '';
-  } catch (err: any) {
-    console.error(err);
-    return false;
-  }
-}
+export const useMultiLang = (item: any, key: string): string => {
+  const { locale } = useI18n();
+
+  if (!item || !item[`${key}_${locale.value}`]) return ''; // NOTE for SSR support
+
+  return item[`${key}_${locale.value}`] || '';
+};

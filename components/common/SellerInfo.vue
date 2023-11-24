@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    product: Product;
+  }>();
+</script>
 
 <template>
   <div
@@ -8,14 +12,15 @@
       <p
         class="mb-[5px] text-[12px] font-medium md:mb-[7px] md:text-[16px] 2xl:mb-[12px] 2xl:text-[20px]"
       >
-        ТОВ “Укрпродукт”
+        {{ product?.company?.title }}
       </p>
-      <div class="flex items-center gap-[5px] md:gap-[10px]">
+
+      <!-- REVIEW <div class="flex items-center gap-[5px] md:gap-[10px]">
         <div class="text-[12px] md:text-[16px] 2xl:text-[20px]">
           4.2<span class="text-status_gray">/5</span>
         </div>
         <CommonStarRating />
-      </div>
+      </div> -->
     </div>
 
     <div class="mb-5 md:mb-0 md:grow 2xl:mb-[30px]">

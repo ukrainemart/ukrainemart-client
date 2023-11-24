@@ -1,13 +1,11 @@
 <script lang="ts" setup>
-  const { width } = useWindowSize();
-  const { BREAKPOINTS_MD } = useVariables();
   const route = useRoute();
-  const productId = computed(() => route.params.id);
-  // const product = ref<Product>();.
-
+  const productId = route.params.id;
+  // const product = ref<Product>();
+  const loading = ref(true);
+  const NUM_SKELETON_ITEMS = 7;
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
-  const showSideSlider = computed(() => width.value >= BREAKPOINTS_MD);
 
   const setThumbsSwiper = (swiper: any) => {
     sideSwiper.value = swiper;
@@ -17,50 +15,67 @@
     mainSlider.value = swiper;
   };
 
-  const { data: product } = await useApiFetch<Product>(
-    `${useUrlApi()}/product/show/${productId.value}`
-  );
+  const { data: product } = await useApiFetch<Product>(`${useUrlApi()}/product/show/${productId}`);
 
-  watchDeep(product, () => {
-    console.log(product.value);
+  watch(product, () => {
+    loading.value = false;
   });
 
-  // const fetchProduct = async () => {
+  // const getProduct = async () => {
   //   try {
-  //     const res = await useApiFetch(`${useUrlApi()}/product/show/${productId.value}`);
+  //     const res = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
+
   //     product.value = res.data.value as Product;
-  //     console.log(product.value);
+  //     loading.value = false;
   //   } catch (error) {
   //     console.error(error);
   //   }
   // };
 
-  // fetchProduct();
+  // getProduct();
 </script>
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
     <CommonBreadcrumbs />
+
     <div class="container grid 2xl:grid-cols-[1fr_min-content] 2xl:gap-x-5">
       <div class="flex w-full flex-col md:flex-row md:gap-x-5 xl:w-fit 2xl:gap-x-10">
         <div class="mb-[20px] flex gap-[5px] md:mb-[35px] 2xl:mb-[80px] 2xl:gap-[10px]">
+          <div
+            v-if="loading"
+            class="hidden h-[435px] flex-col gap-[5px] md:flex 2xl:h-[584px] 2xl:gap-[10px]"
+          >
+            <UiSkeleton
+              v-for="i in NUM_SKELETON_ITEMS"
+              :key="i"
+              class="h-[62px] w-[50px] 2xl:h-[124px] 2xl:w-[100px]"
+            />
+          </div>
           <CommonProductSideSlider
-            v-if="showSideSlider"
+            v-else
+            class="!hidden md:!block"
             :slides="product?.images"
             @swiper="setThumbsSwiper"
           />
+
+          <UiSkeleton
+            v-if="loading"
+            class="h-[470px] w-[335px] md:h-[435px] md:w-[330px] 2xl:h-[584px] 2xl:w-[450px]"
+          />
           <CommonProductSlider
+            v-else
             :thumbs="{ swiper: sideSwiper }"
             :slides="product?.images"
             @swiper="setControlledMainSwiper"
           />
         </div>
-        {{ product?.title_ua }}
-        <!-- <CommonProductInfo :product="product" /> -->
+
+        <CommonProductInfo :product="product" />
       </div>
 
       <CommonProductDetails class="md:order-2 2xl:col-span-2" />
-      <CommonSellerInfo />
+      <CommonSellerInfo :product="product" />
     </div>
 
     <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]" class="!pt-0">

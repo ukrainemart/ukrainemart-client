@@ -1,6 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     modelValue?: string;
+    customClass?: string;
   }>();
 
   const emits = defineEmits(['update:modelValue']);
@@ -12,7 +13,11 @@
 </script>
 
 <template>
-  <input :value="modelValue" class="input_outline rounded-[50px]" @input="handleInput" />
+  <input
+    :value="modelValue"
+    :class="customClass ? customClass : 'input_outline'"
+    @input="handleInput"
+  />
 </template>
 
 <style scoped></style>
