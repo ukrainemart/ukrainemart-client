@@ -5,24 +5,34 @@
   const products = ref<Product[]>([]);
   const isOpenFilterMenu = ref(false);
   const loading = ref(true);
-  const NUM_SKELETON_CARDS = 20;
+  const NUM_SKELETON_ITEMS = 20;
 
   const getProducts = async () => {
-    // REVIEW useApi => useApiFetch
     try {
-      const res = await useApi(`${useUrlApi()}/category/products/${categoryId}`);
+      const res = await useApiFetch(`${useUrlApi()}/category/products/${categoryId}`);
 
-      products.value = res as Product[];
+      products.value = res.data.value as Product[];
       loading.value = false;
     } catch (error) {
       console.error(error);
     }
   };
 
+  // const getCategory = async () => {
+  //   try {
+  //     const res = await useApiFetch(`${useUrlApi()}/category/get/${categoryId}`);
+
+  //     category.value = res.data.value as Category;
+  //     getProducts();
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   const getCategory = async () => {
     // REVIEW useApi => useApiFetch
     try {
-      const res = await useApi(`${useUrlApi()}/category/${categoryId}`);
+      const res = await useApi(`${useUrlApi()}/category/get/${categoryId}`);
 
       category.value = res as Category;
       getProducts();
@@ -45,11 +55,7 @@
 
       <div>
         <div class="mb-5">
-          <UiSkeleton
-            v-if="loading"
-            class="mb-5 h-[20px] w-full md:h-[32px] xl:mb-[30px] 2xl:mb-10 2xl:h-[35px]"
-          />
-          <CommonProductTitle v-else class="mb-5 xl:mb-[30px] 2xl:mb-10">
+          <CommonProductTitle class="mb-5 xl:mb-[30px] 2xl:mb-10">
             {{ useMultiLang(category, 'title') }}
           </CommonProductTitle>
 
@@ -78,7 +84,7 @@
           <div class="mb-[30px] flex flex-wrap justify-evenly md:mb-[40px] lg:mb-[50px]">
             <div v-if="loading" class="flex flex-wrap justify-evenly">
               <UiSkeleton
-                v-for="i in NUM_SKELETON_CARDS"
+                v-for="i in NUM_SKELETON_ITEMS"
                 :key="i"
                 class="h-[260px] w-[166px] md:h-[370px] md:w-[220px] 4xl:h-[508px] 4xl:w-[348px]"
               />

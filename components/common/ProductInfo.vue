@@ -1,7 +1,6 @@
 <script setup lang="ts">
   defineProps<{
     product: Product;
-    loading: boolean;
   }>();
 </script>
 
@@ -13,16 +12,13 @@
       Цей продукт купували 250 разів
     </p>
 
-    <UiSkeleton v-if="loading" class="h-[21px] w-full md:h-[29px] 2xl:h-[37px]" />
     <CommonProductTitle
-      v-else
       styles="mb-[15px] md:mb-[17px] 2xl:mb-5 text-[17px] md:text-[24px] 2xl:text-[30px]"
     >
       {{ useMultiLang(product, 'title') }}
     </CommonProductTitle>
 
     <div class="mb-5">
-      <!-- REVIEW do we need skeleton for prices? -->
       <div v-if="product?.price_type === 'fixed'">{{ product.prices[0].price }}$</div>
 
       <ul

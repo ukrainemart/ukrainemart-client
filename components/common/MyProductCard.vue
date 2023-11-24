@@ -12,7 +12,7 @@
       <div class="mr-2.5 md:mr-5 lg:mr-10">
         <img
           :src="product.main_image?.path"
-          alt="product"
+          :alt="useMultiLang(product, 'title')"
           class="h-[75px] w-[60px] rounded-[5px] object-cover md:h-[135px] md:w-[100px] md:rounded-[10px] lg:w-[110px] lg:rounded-[20px]"
         />
       </div>
@@ -37,6 +37,15 @@
               class="h-[9px] w-[13px] text-status_gray md:h-[11px] md:w-[16px] lg:h-[15px] lg:w-[22px]"
             />
             {{ product.views }}
+          </div>
+          <div
+            class="flex items-center gap-x-[3px] text-[12px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
+          >
+            <SvgoHearth
+              :fontControlled="false"
+              class="h-[12px] w-[13px] text-status_gray md:h-[15px] md:w-[16px] lg:h-[20px] lg:w-[21px]"
+            />
+            {{ product.favorites_count }}
           </div>
           <div
             class="flex items-center gap-x-[3px] text-[10px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
@@ -69,7 +78,9 @@
       </div>
 
       <!-- REVIEW DRY -->
-      <div class="order-1 flex gap-x-2.5 md:hidden md:gap-x-[15px] lg:gap-x-[25px]">
+      <div
+        class="order-1 col-start-1 col-end-3 flex gap-x-2.5 md:hidden md:gap-x-[15px] lg:gap-x-[25px]"
+      >
         <div
           class="flex items-center gap-x-[3px] text-[10px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
         >
@@ -78,6 +89,15 @@
             class="h-[9px] w-[13px] text-status_gray md:h-[11px] md:w-[16px] lg:h-[15px] lg:w-[22px]"
           />
           {{ product.views }}
+        </div>
+        <div
+          class="flex items-center gap-x-[3px] text-[12px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
+        >
+          <SvgoHearth
+            :fontControlled="false"
+            class="h-[12px] w-[13px] text-status_gray md:h-[15px] md:w-[16px] lg:h-[20px] lg:w-[21px]"
+          />
+          {{ product.favorites_count }}
         </div>
         <div
           class="flex items-center gap-x-[3px] text-[10px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
@@ -119,7 +139,7 @@
       </div>
 
       <!-- REVIEW DRY -->
-      <div class="order-1 col-span-2 flex justify-end md:hidden">
+      <div class="order-1 col-start-3 flex justify-end md:hidden">
         <a
           href="#"
           class="mr-2.5 text-[7px] leading-[9px] text-status_gray underline underline-offset-2 transition-colors duration-150 hover:text-black md:mr-[15px] md:text-[10px] md:leading-[12px] lg:mr-[30px] lg:text-[14px] lg:leading-[17px]"

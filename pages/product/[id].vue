@@ -1,9 +1,9 @@
 <script lang="ts" setup>
   const route = useRoute();
   const productId = route.params.id;
-  const product = ref<Product>();
+  // const product = ref<Product>();
   const loading = ref(true);
-
+  const NUM_SKELETON_ITEMS = 7;
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
 
@@ -15,19 +15,24 @@
     mainSlider.value = swiper;
   };
 
-  const getProduct = async () => {
-    // REVIEW useApi => useApiFetch
-    try {
-      const res = await useApi(`${useUrlApi()}/product/show/${productId}`);
+  const { data: product } = await useApiFetch<Product>(`${useUrlApi()}/product/show/${productId}`);
 
-      product.value = res as Product;
-      loading.value = false;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  watch(product, () => {
+    loading.value = false;
+  });
 
-  getProduct();
+  // const getProduct = async () => {
+  //   try {
+  //     const res = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
+
+  //     product.value = res.data.value as Product;
+  //     loading.value = false;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
+  // getProduct();
 </script>
 
 <template>
@@ -37,12 +42,19 @@
     <div class="container grid 2xl:grid-cols-[1fr_min-content] 2xl:gap-x-5">
       <div class="flex w-full flex-col md:flex-row md:gap-x-5 xl:w-fit 2xl:gap-x-10">
         <div class="mb-[20px] flex gap-[5px] md:mb-[35px] 2xl:mb-[80px] 2xl:gap-[10px]">
-          <div v-if="loading" class="hidden md:block">
-            <UiSkeleton class="h-[435px] w-[50px] 2xl:h-[584px] 2xl:w-[100px]" />
+          <div
+            v-if="loading"
+            class="hidden h-[435px] flex-col gap-[5px] md:flex 2xl:h-[584px] 2xl:gap-[10px]"
+          >
+            <UiSkeleton
+              v-for="i in NUM_SKELETON_ITEMS"
+              :key="i"
+              class="h-[62px] w-[50px] 2xl:h-[124px] 2xl:w-[100px]"
+            />
           </div>
           <CommonProductSideSlider
             v-else
-            class="hidden md:block"
+            class="!hidden md:!block"
             :slides="product?.images"
             @swiper="setThumbsSwiper"
           />
@@ -59,7 +71,7 @@
           />
         </div>
 
-        <CommonProductInfo :product="product" :loading="loading" />
+        <CommonProductInfo :product="product" />
       </div>
 
       <CommonProductDetails class="md:order-2 2xl:col-span-2" />

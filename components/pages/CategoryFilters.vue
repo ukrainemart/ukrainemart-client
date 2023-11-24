@@ -9,26 +9,26 @@
 <template>
   <div>
     <div class="mb-5">
-      <CommonCategoryFilterTitle>Каталог</CommonCategoryFilterTitle>
-      <CommonCategoryBreadcrumbs
+      <PagesCategoryFilterTitle>Каталог</PagesCategoryFilterTitle>
+      <PagesCategoryBreadcrumb
         :breadcrumb="category?.breadcrumb"
         :sameCategories="category?.same_categories"
       />
     </div>
 
     <div class="mb-5">
-      <CommonCategoryFilterTitle>Особливості постачальника</CommonCategoryFilterTitle>
-      <CommonCategoryCheckbox htmlFor="checkboxId1" label="Верифікований постачальник" />
+      <PagesCategoryFilterTitle>Особливості постачальника</PagesCategoryFilterTitle>
+      <PagesCategoryCheckbox label="Верифікований постачальник" />
     </div>
 
     <div class="mb-5">
-      <CommonCategoryFilterTitle>Особливості товару</CommonCategoryFilterTitle>
-      <CommonCategoryCheckbox htmlFor="checkboxId2" label="Готовий до відправки" />
-      <CommonCategoryCheckbox htmlFor="checkboxId3" label="Платні зразки" />
+      <PagesCategoryFilterTitle>Особливості товару</PagesCategoryFilterTitle>
+      <PagesCategoryCheckbox label="Готовий до відправки" />
+      <PagesCategoryCheckbox label="Платні зразки" />
     </div>
 
     <div class="mb-5">
-      <CommonCategoryFilterTitle>Мінімальне замовлення</CommonCategoryFilterTitle>
+      <PagesCategoryFilterTitle>Мінімальне замовлення</PagesCategoryFilterTitle>
       <div class="flex gap-[10px]">
         <!-- TODO add placeholder -->
         <UiInputOutline customClass="input_outline_category" />
@@ -38,7 +38,7 @@
 
     <!-- TODO Copy PriceFilter from kuzka-shop
     <div class="mb-5">
-      <CommonCategoryFilterTitle>Ціна</CommonCategoryFilterTitle>
+      <PagesCategoryFilterTitle>Ціна</PagesCategoryFilterTitle>
       <URange v-model="value" name="range" />
       <div>
         <UiInputOutline />

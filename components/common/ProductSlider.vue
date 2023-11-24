@@ -16,7 +16,11 @@
   >
     <SwiperSlide v-for="slide in slides" :key="slide" class="!flex">
       <div class="w-full">
-        <img :src="slide.path" class="h-[440px] w-full object-cover md:h-[435px] 2xl:h-[584px]" />
+        <img
+          :src="slide.path"
+          alt=""
+          class="h-[440px] w-full object-cover md:h-[435px] 2xl:h-[584px]"
+        />
       </div>
     </SwiperSlide>
   </Swiper>

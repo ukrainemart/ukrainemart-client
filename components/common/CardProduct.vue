@@ -17,7 +17,7 @@
       <img
         class="absolute left-0 top-0 h-full w-full rounded-[7px] object-cover"
         :src="product?.main_image?.path"
-        alt=""
+        :alt="useMultiLang(product, 'title')"
       />
     </div>
 
@@ -29,13 +29,13 @@
 
     <div class="mt-[2px] md:mt-[8px] xl:mt-[15px]">
       <div v-if="product.price_type === 'fixed'" class="flex flex-col">
-        <span class="text-[15px] text-status_gray md:text-[16px] xl:text-[25px]">
+        <span class="text-[15px] text-status_gray md:text-[16px] 4xl:text-[25px]">
           {{ product.prices[0].min_amount }}
         </span>
         <span
-          class="mt-[7px] text-[16px] font-semibold md:mt-2.5 md:text-[20px] xl:mt-[20px] xl:text-[27px]"
+          class="mt-[7px] text-[16px] font-semibold md:mt-2.5 md:text-[20px] 4xl:mt-[20px] 4xl:text-[27px]"
         >
-          {{ product.prices[0].price }}
+          {{ product.prices[0].price }}<CommonCurrency />
         </span>
       </div>
 
