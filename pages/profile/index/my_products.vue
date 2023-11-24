@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  // definePageMeta({
-  //   middleware: ['company'],
-  // });
+  definePageMeta({
+    middleware: ['exporter'],
+  });
   const products = ref<Product[]>([]);
 
   const getProducts = () => {

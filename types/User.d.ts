@@ -19,5 +19,6 @@ declare interface User {
     created_at: string,
     updated_at: string,
     legal_code: number,
+    type: CompanyType
   },
 }

@@ -6,12 +6,22 @@
   const companyStatus = ref<CompanyStatus>('noCreate');
   const isCheck = ref<boolean>(false);
 
-  const inputs = reactive({
+  type Inputs = {
+    name: string;
+    phone: string;
+    code: string;
+    description: string;
+    experience: string;
+    type: CompanyType;
+  };
+
+  const inputs = reactive<Inputs>({
     name: '',
     phone: '',
     code: '',
     description: '',
     experience: '',
+    type: 'exporter',
   });
 
   const checkStatus = () => {
@@ -40,6 +50,7 @@
         phone: +inputs.phone,
         legal_code: +inputs.code,
         description: inputs.description,
+        type: inputs.type,
       },
     }).then(() => {
       checkStatus();
@@ -60,6 +71,10 @@
         <div
           class="grid max-w-[1110px] gap-[15px] md:gap-[20px] xl:grid-cols-2 xl:gap-x-[80px] xl:gap-y-[15px]"
         >
+          <div class="col-span-2 flex items-center gap-[15px] xl:gap-[25px]">
+            <UiRadio v-model="inputs.type" value="importer" :label="$t('importer')" />
+            <UiRadio v-model="inputs.type" value="exporter" :label="$t('exporter')" />
+          </div>
           <UiLabel class="" :label="$t('create_company.name_legal_entity') + ':'">
             <UiInputOutline v-model="inputs.name" required />
           </UiLabel>

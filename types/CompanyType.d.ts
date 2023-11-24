@@ -1,0 +1,1 @@
+declare type CompanyType = 'importer' | 'exporter';

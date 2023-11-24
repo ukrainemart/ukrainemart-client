@@ -68,6 +68,8 @@
   "category": "Category",
   "name_company": "Name company",
   "phone_number": "Phone number",
+  "importer": "Importer",
+  "exporter": "Exporter",
 
   "add_product": {
     "add_product": "Add a product",

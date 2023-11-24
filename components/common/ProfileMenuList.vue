@@ -3,6 +3,7 @@
   const auth = useAuthStore();
 
   const isCompany = computed(() => auth.isCompany);
+  const isExporter = computed(() => auth.isExporter);
 
   const closeMenu = () => {
     emits('switchMenu', false);
@@ -31,8 +32,8 @@
         $t('profile.apply_company_creation')
       }}</CommonProfileMenuLink>
     </li>
-    <li v-if="isCompany">
-      <CommonProfileMenuLink v-if="isCompany" to="/profile/my_products" @click="closeMenu">{{
+    <li v-if="isExporter">
+      <CommonProfileMenuLink to="/profile/my_products" @click="closeMenu">{{
         $t('profile.my_products')
       }}</CommonProfileMenuLink>
     </li>

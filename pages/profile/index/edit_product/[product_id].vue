@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  // definePageMeta({
-  //   middleware: ['company'],
-  // });
+  definePageMeta({
+    middleware: ['exporter'],
+  });
   const route = useRoute();
 
   const inputs = ref<InputsCreateProduct>({

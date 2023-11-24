@@ -8,6 +8,8 @@ export const useAuthStore = defineStore('authStore', () => {
   const isNoCompany = computed(() => user.value?.company?.status === null);
   const isCompany = computed(() => user.value?.company?.status === '1');
   const isNoModerationCompany = computed(() => user.value?.company?.status === '-1');
+  const isImporter = computed(() => user.value?.company?.type === 'importer');
+  const isExporter = computed(() => user.value?.company?.type === 'exporter');
 
   async function fetchUser() {
     try {
@@ -69,5 +71,7 @@ export const useAuthStore = defineStore('authStore', () => {
     isCompany,
     isNoModerationCompany,
     logout,
+    isImporter,
+    isExporter,
   };
 });

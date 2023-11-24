@@ -68,6 +68,8 @@
   "category": "Категорія",
   "name_company": "Назва компанії",
   "phone_number": "Номер телефону",
+  "importer": "Імпортер",
+  "exporter": "Експортер",
 
 
   "add_product": {
