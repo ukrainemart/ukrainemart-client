@@ -110,5 +110,7 @@
   "password_length_max": "Пароль не повинен перевищувати 22 символи",
   "password_match": "Підтвердження паролю не співпадає",
   "password_required": "Пароль обов'язковий",
-  "password_confirmation": "Будь ласка, підтвердіть ваш пароль"
+  "password_confirmation": "Будь ласка, підтвердіть ваш пароль",
+  "the_old_password_is_wrong": "Невірний старий пароль!",
+  "password_successfully_changed": "Пароль успішно змінено!"
 }

@@ -110,5 +110,7 @@
   "password_length_max": "Password must not exceed 22 characters",
   "password_match": "Password confirmation does not match",
   "password_required": "Password is required",
-  "password_confirmation": "Please confirm your password"
+  "password_confirmation": "Please confirm your password",
+  "the_old_password_is_wrong": "The old password is wrong!",
+  "password_successfully_changed": "Password successfully changed!"
 }
