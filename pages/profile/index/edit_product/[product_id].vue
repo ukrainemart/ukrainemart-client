@@ -77,9 +77,12 @@
         )
       );
     }
-    for (const image of inputs.value.productImages) {
-      data.append('product_images[]', image);
-    }
+    const { productImages } = inputs.value;
+
+    productImages.forEach((image, index) => {
+      const fieldName = `product_images[${index + 1}]`;
+      data.append(fieldName, image);
+    });
     return data;
   };
 
