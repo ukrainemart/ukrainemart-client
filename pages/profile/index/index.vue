@@ -31,31 +31,40 @@
   });
 
   const getUserData = () => {
+    inputs.value.name = user.value?.name || '';
+    inputs.value.phone = user.value?.phone || '';
+    inputs.value.lastName = user.value?.last_name || '';
+    inputs.value.email = user.value?.email || '';
+    inputs.value.companyTitle = user.value?.company?.title || '';
+    inputs.value.companyDescription = user.value?.company?.description || '';
+    inputs.value.companyCategory = String(user.value?.company.category_id) || '';
+
+    if (!isCompany.value) return false;
+
     useApi(`${useUrlApi()}/category/parents`).then((res: any) => {
       categories.value = res;
-
-      inputs.value.name = user.value?.name || '';
-      inputs.value.phone = user.value?.phone || '';
-      inputs.value.lastName = user.value?.last_name || '';
-      inputs.value.email = user.value?.email || '';
-      inputs.value.companyTitle = user.value?.company?.title || '';
-      inputs.value.companyDescription = user.value?.company?.description || '';
-      inputs.value.companyCategory = String(user.value?.company.category_id) || '';
     });
   };
 
   const updateUser = () => {
-    useApi(`${useUrlApi()}/user/changeInfo`, {
-      method: 'POST',
-      body: {
-        name: inputs.value.name,
-        last_name: inputs.value.lastName,
-        phone: inputs.value.phone,
-        email: inputs.value.email,
+    const requestBody = {
+      name: inputs.value.name,
+      last_name: inputs.value.lastName,
+      phone: inputs.value.phone,
+      email: inputs.value.email,
+    };
+
+    if (isCompany.value) {
+      Object.assign(requestBody, {
         company_title: inputs.value.companyTitle,
         company_category: inputs.value.companyCategory,
         company_description: inputs.value.companyDescription,
-      },
+      });
+    }
+
+    useApi(`${useUrlApi()}/user/changeInfo`, {
+      method: 'POST',
+      body: requestBody,
     }).then((res: any) => {
       if (res.status === 1) {
         messageUserData.value = t('profile.the_data_has_been_updated');

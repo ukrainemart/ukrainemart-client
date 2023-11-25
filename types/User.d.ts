@@ -9,7 +9,8 @@ declare interface User {
   created_at:string;
   updated_at: string;
   google_id: any;
-  last_name;
+  last_name: string;
+  password_status: boolean;
   company: {
     id: number,
     category_id: number;
