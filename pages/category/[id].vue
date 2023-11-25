@@ -18,17 +18,6 @@
     }
   };
 
-  // const getCategory = async () => {
-  //   try {
-  //     const res = await useApiFetch(`${useUrlApi()}/category/get/${categoryId}`);
-
-  //     category.value = res.data.value as Category;
-  //     getProducts();
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   const getCategory = async () => {
     // REVIEW useApi => useApiFetch
     try {
@@ -81,17 +70,20 @@
         </div>
 
         <div class="">
+          <!-- TODO uncomment it after solving the ssr slow loading problem <div
+            v-if="loading"
+            class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
+          >
+            <CommonSkeletonCardProduct
+              v-for="i in NUM_SKELETON_ITEMS"
+              :key="i"
+              class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-3"
+            />
+          </div> -->
+
           <div
             class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
           >
-            <!-- <div v-if="loading" class="flex flex-wrap justify-evenly">
-              <UiSkeleton
-                v-for="i in NUM_SKELETON_ITEMS"
-                :key="i"
-                class="h-[260px] w-[166px] md:h-[370px] md:w-[220px] 4xl:h-[508px] 4xl:w-[348px]"
-              />
-            </div> -->
-
             <CommonCardProduct
               v-for="product in products"
               :key="product.id"
@@ -102,7 +94,6 @@
         </div>
 
         <div class="">
-          <!-- <UiSkeleton v-if="loading" class="mx-auto h-[27px] w-[125px]" /> -->
           <UiPagination v-if="!loading" />
         </div>
       </div>
