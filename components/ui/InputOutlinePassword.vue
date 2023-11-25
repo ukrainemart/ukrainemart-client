@@ -14,7 +14,8 @@
   };
 
   const switchPassword = () => {
-    console.log('qwdwq');
+    console.log(showPassword.value);
+    console.log('1');
 
     showPassword.value = !showPassword.value;
   };
@@ -22,19 +23,21 @@
 
 <template>
   <div class="relative w-full">
-    <UiButtonOpacity
-      class="absolute inset-y-0 right-[5px] my-auto p-[10px] md:right-[10px] xl:right-[15px]"
-      @click="switchPassword"
-    >
-      <SvgoShowPassword
-        v-if="showPassword"
-        class="!h-[7px] !w-[11px] text-status_gray md:!h-[10px] md:!w-[15px] xl:!h-[15px] xl:!w-[22px]"
-      />
-      <SvgoHiddenPassword
-        v-else
-        class="!h-[9px] !w-[11px] text-status_gray md:!h-[13px] md:!w-[15px] xl:!h-[19px] xl:!w-[22px]"
-      />
-    </UiButtonOpacity>
+    <div>
+      <UiButtonOpacity
+        class="absolute inset-y-0 right-[5px] my-auto p-[10px] md:right-[10px] xl:right-[15px]"
+        @click="switchPassword"
+      >
+        <SvgoShowPassword
+          v-if="showPassword"
+          class="pointer-events-none inline !h-[7px] !w-[11px] text-status_gray md:!h-[10px] md:!w-[15px] xl:!h-[15px] xl:!w-[22px]"
+        />
+        <SvgoHiddenPassword
+          v-else
+          class="pointer-events-none inline !h-[9px] !w-[11px] text-status_gray md:!h-[13px] md:!w-[15px] xl:!h-[19px] xl:!w-[22px]"
+        />
+      </UiButtonOpacity>
+    </div>
     <UiInputOutline
       :tabindex="tabindex"
       :value="modelValue"
