@@ -29,6 +29,7 @@
       </template>
     </UiSectionTitle>
     <div class="px-5 md:px-10">
+      <!-- REVIEW deleted :centered-slides="centeredSlides" -->
       <Swiper
         :class="
           cn('products_swiper !overflow-y-visible', {
@@ -42,7 +43,6 @@
           dragSize: 65,
         }"
         :breakpoints="breakpoints"
-        :centered-slides="centeredSlides"
         :centered-slides-bounds="centeredSlides"
         :spaceBetween="30"
         :navigation="centeredSlides ? false : { nextEl: next, prevEl: prev }"
