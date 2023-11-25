@@ -26,7 +26,7 @@
       inputs.value.descriptionEn = response.description_en;
       inputs.value.titleEn = response.title_en;
       inputs.value.titleUa = response.title_ua;
-      product.value.images = response.images?.map((el: any) => el.path);
+      inputs.value.productImages = response.images?.map((el: any) => el.path) || [];
       inputs.value.priceType = response.price_type;
       if (response.price_type === 'fixed' && inputs.value.fixedPrice) {
         inputs.value.fixedPrice.amount = String(response.prices[0].min_amount) || '';
@@ -84,7 +84,7 @@
   };
 
   const onEditProduct = () => {
-    useApiFetch(`${useUrlApi()}/product/update`, {
+    useApiFetch(`${useUrlApi()}/product/update/${productId}`, {
       method: 'POST',
       body: formData(),
     }).then((res) => {

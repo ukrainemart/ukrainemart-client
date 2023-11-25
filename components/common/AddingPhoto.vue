@@ -1,33 +1,27 @@
 <script setup lang="ts">
   const props = defineProps<{
-    modelValue?: any;
+    modelValue: any[];
     productImages?: Product['images'];
   }>();
 
-  const photos = ref<any[]>([]);
   const showPhotos = computed(() => {
-    const newPhotos = photos.value.map((file) => URL.createObjectURL(file.value));
-    if (!props.productImages) return newPhotos;
-    return [...props.productImages, ...newPhotos];
+    const newPhotos = props.modelValue?.map((el) =>
+      typeof el !== 'string' ? URL.createObjectURL(el.value) : el
+    );
+    return newPhotos || [];
   });
 
   const emits = defineEmits(['update:modelValue']);
 
-  const handleChangePhoto = () => {
-    emits('update:modelValue', photos.value);
+  const handleChangePhoto = (photo: any) => {
+    if (Array.isArray(props.modelValue)) {
+      emits('update:modelValue', [...props.modelValue, photo]);
+    }
   };
 
   const updateInput = (value: any) => {
-    photos.value = [...photos.value, value];
+    handleChangePhoto(value);
   };
-
-  watch(photos, () => {
-    console.log(showPhotos.value);
-
-    handleChangePhoto();
-  });
-
-  handleChangePhoto();
 </script>
 
 <template>
@@ -46,7 +40,7 @@
       class="relative h-0 overflow-hidden rounded-[3px] bg-[#D9D9D9] pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
     >
       <label class="absolute left-0 top-0 z-10 h-full w-full cursor-pointer">
-        <UiInputFile multiple class="hidden" @updateInput="updateInput" />
+        <UiInputFile class="hidden" @updateInput="updateInput" />
       </label>
 
       <div
