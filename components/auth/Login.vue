@@ -33,7 +33,7 @@
         <UiLabel :label="`${$t('email')}:`" type="text" class="!text-status_gray">
           <UiInputOutline v-model="credentials.email" tabindex="1" />
         </UiLabel>
-        <UiLabel :label="`${$t('password')}:`" class="!text-status_gray">
+        <UiLabel for="" :label="`${$t('password')}:`" class="!text-status_gray">
           <UiInputOutlinePassword v-model="credentials.password" tabindex="2" />
         </UiLabel>
       </div>

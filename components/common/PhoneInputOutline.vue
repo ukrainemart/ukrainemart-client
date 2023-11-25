@@ -14,7 +14,7 @@
 <template>
   <div class="input_outline flex items-center !p-0">
     <UiButtonTextOpacity class="input_outline_padding h-full border-r border-black pr-[20px]"
-      >+38</UiButtonTextOpacity
+      >+</UiButtonTextOpacity
     >
     <input
       :value="modelValue"

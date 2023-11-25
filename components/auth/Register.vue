@@ -68,14 +68,14 @@
           <UiInputOutline v-model="credentials.email" tabindex="2" required />
         </UiLabel>
 
-        <UiLabel :label="`${$t('password')}:`" class="!text-status_gray">
+        <UiLabel for="" :label="`${$t('password')}:`" class="!text-status_gray">
           <UiInputOutlinePassword v-model="credentials.password" tabindex="3" required />
         </UiLabel>
         <div v-if="formValidationErrors.password" class="text-status_red">
           {{ $t(formValidationErrors.password) }}
         </div>
 
-        <UiLabel :label="`${$t('repeatPassword')}:`" class="!text-status_gray">
+        <UiLabel for="" :label="`${$t('repeatPassword')}:`" class="!text-status_gray">
           <UiInputOutlinePassword v-model="credentials.c_password" tabindex="4" required />
         </UiLabel>
         <div v-if="formValidationErrors.c_password" class="text-status_red">

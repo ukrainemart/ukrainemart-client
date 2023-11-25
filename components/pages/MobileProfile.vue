@@ -9,6 +9,8 @@
     emits('switchMenu', value);
   };
   const auth = useAuthStore();
+
+  const user = computed(() => auth.user);
 </script>
 
 <template>
@@ -29,7 +31,7 @@
         "
         @click.stop=""
       >
-        <CommonUserIconName :name="auth.user.name" />
+        <CommonUserIconName v-if="user" :name="user?.name" />
         <CommonProfileMenuList class="mt-[20px] md:mt-[26px]" @switchMenu="switchMenu" />
       </div>
     </div>

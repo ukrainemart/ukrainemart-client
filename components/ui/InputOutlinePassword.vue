@@ -14,6 +14,8 @@
   };
 
   const switchPassword = () => {
+    console.log('qwdwq');
+
     showPassword.value = !showPassword.value;
   };
 </script>
