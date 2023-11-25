@@ -17,8 +17,6 @@
 
     return [];
   });
-
-  console.log(props.product, 'props.product');
 </script>
 
 <template>
@@ -41,20 +39,20 @@
     </h5>
 
     <div>
-      <div v-if="product.price_type === 'fixed'" class="flex flex-col">
+      <div v-if="product?.price_type === 'fixed'" class="flex flex-col">
         <span class="price_amount">
-          {{ product.prices[0].min_amount }}
+          {{ product?.prices[0]?.min_amount }}
         </span>
-        <span class="price_cost"> {{ product.prices[0].price }}<CommonCurrency /> </span>
+        <span class="price_cost"> {{ product?.prices[0]?.price }}<CommonCurrency /> </span>
       </div>
 
-      <div v-if="product.price_type === 'variated'">
+      <div v-if="product?.price_type === 'variated'">
         <div class="price_amount">
-          {{ `${savedPrices[0].minAmount}-${savedPrices[savedPrices.length - 1].maxAmount}` }}
+          {{ `${savedPrices[0]?.minAmount}-${savedPrices[savedPrices.length - 1]?.maxAmount}` }}
         </div>
 
         <div class="price_cost">
-          {{ `${savedPrices[0].minPrice}-${savedPrices[savedPrices.length - 1].maxPrice}` }}
+          {{ `${savedPrices[0]?.minPrice}-${savedPrices[savedPrices.length - 1]?.maxPrice}` }}
           <CommonCurrency />
         </div>
       </div>

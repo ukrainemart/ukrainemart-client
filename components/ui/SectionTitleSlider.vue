@@ -28,7 +28,7 @@
         </div>
       </template>
     </UiSectionTitle>
-    <div class="">
+    <div class="px-5 md:px-10">
       <Swiper
         :class="
           cn('products_swiper !overflow-y-visible', {
