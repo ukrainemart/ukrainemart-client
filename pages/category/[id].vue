@@ -5,7 +5,7 @@
   const products = ref<Product[]>([]);
   const isOpenFilterMenu = ref(false);
   const loading = ref(true);
-  const NUM_SKELETON_ITEMS = 20;
+  // const NUM_SKELETON_ITEMS = 20;
 
   const getProducts = async () => {
     try {
@@ -48,7 +48,7 @@
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
     <CommonBreadcrumbs />
 
-    <div class="container grid-cols-[225px_1fr] gap-x-[30px] lg:grid">
+    <div class="container grid-cols-[225px_1fr] gap-x-[30px] lg:grid lg:grid-cols-[300px_1fr]">
       <aside>
         <PagesCategoryFilters :category="category" class="hidden lg:block" />
       </aside>
@@ -81,28 +81,29 @@
         </div>
 
         <div class="">
-          <div class="mb-[30px] flex flex-wrap justify-evenly md:mb-[40px] lg:mb-[50px]">
-            <div v-if="loading" class="flex flex-wrap justify-evenly">
+          <div
+            class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
+          >
+            <!-- <div v-if="loading" class="flex flex-wrap justify-evenly">
               <UiSkeleton
                 v-for="i in NUM_SKELETON_ITEMS"
                 :key="i"
                 class="h-[260px] w-[166px] md:h-[370px] md:w-[220px] 4xl:h-[508px] 4xl:w-[348px]"
               />
-            </div>
+            </div> -->
 
             <CommonCardProduct
               v-for="product in products"
-              v-else
               :key="product.id"
               :product="product"
-              class="w-[166px] md:w-[234px] 4xl:w-[348px]"
+              class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-3"
             />
           </div>
         </div>
 
         <div class="">
-          <UiSkeleton v-if="loading" class="mx-auto h-[27px] w-[125px]" />
-          <UiPagination v-else />
+          <!-- <UiSkeleton v-if="loading" class="mx-auto h-[27px] w-[125px]" /> -->
+          <UiPagination v-if="!loading" />
         </div>
       </div>
     </div>

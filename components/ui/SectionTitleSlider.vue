@@ -1,7 +1,4 @@
 <script setup lang="ts">
-  const prev = ref(null);
-  const next = ref(null);
-
   defineProps<{
     slides?: any[];
     breakpoints?: any;
@@ -9,6 +6,9 @@
     type?: string;
     centeredSlides?: boolean;
   }>();
+
+  const prev = ref(null);
+  const next = ref(null);
 </script>
 
 <template>
@@ -28,14 +28,7 @@
         </div>
       </template>
     </UiSectionTitle>
-    <div
-      :class="
-        cn('container', {
-          'container max-w-cards-product-slider-container-xs px-padding-x-slider-container-xs md:px-padding-x-slider-container-md lg:max-w-cards-product-slider-container-lg lg:px-padding-x-slider-container-lg 2xl:max-w-cards-product-slider-container-2xl 2xl:px-padding-x-slider-container-2xl 4xl:max-w-screen-4xl':
-            type === 'products',
-        })
-      "
-    >
+    <div class="">
       <Swiper
         :class="
           cn('products_swiper !overflow-y-visible', {
@@ -51,6 +44,7 @@
         :breakpoints="breakpoints"
         :centered-slides="centeredSlides"
         :centered-slides-bounds="centeredSlides"
+        :spaceBetween="30"
         :navigation="centeredSlides ? false : { nextEl: next, prevEl: prev }"
         :fill="'column'"
         :rows="2"
