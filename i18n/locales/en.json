@@ -73,6 +73,7 @@
   "exporter": "Exporter",
   "last_name": "Last name",
   "description_of_your_company": "Description of your company",
+  "delete_product": "Delete a product?",
 
   "add_product": {
     "add_product": "Add a product",

@@ -73,6 +73,8 @@
   "exporter": "Експортер",
   "last_name": "Прізвище",
   "description_of_your_company": "Опис вашої компанії",
+  "delete_product": "Видалити товар?",
+
 
   "add_product": {
     "add_product": "Додати товар",

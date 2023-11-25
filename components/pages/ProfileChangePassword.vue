@@ -1,6 +1,10 @@
 <script setup lang="ts">
   const auth = useAuthStore();
+  const { t } = useI18n();
+
   const isPassword = computed(() => auth.isPassword);
+  const error = ref('');
+  const message = ref('');
 
   const inputs = ref({
     oldPassword: '',
@@ -9,6 +13,9 @@
   });
 
   const changePassword = () => {
+    message.value = '';
+    error.value = '';
+
     useApi(`${useUrlApi()}/user/password/change`, {
       method: 'POST',
       body: {
@@ -16,8 +23,15 @@
         new_password: inputs.value.newPassword,
         new_c_password: inputs.value.newConfPassword,
       },
-    }).then((res) => {
-      console.log(res);
+    }).then((res: any) => {
+      if (res.status === 1) {
+        message.value = t('password_successfully_changed');
+        return false;
+      }
+      if (res.status === 0) {
+        error.value = t('the_old_password_is_wrong');
+        return false;
+      }
     });
   };
 
@@ -56,6 +70,8 @@
     <UiLabel class="row-span-1" :label="$t('repeatPassword') + ':'">
       <UiInputOutlinePassword v-model="inputs.newConfPassword" />
     </UiLabel>
+    <UiAlertTextDanger v-if="error"> {{ error }}</UiAlertTextDanger>
+    <UiAlertTextSuccess v-if="message"> {{ message }}</UiAlertTextSuccess>
     <div class="col-span-2 flex justify-center">
       <UiButtonPrimary class="w-fit" @click="onSetPassword">{{
         !isPassword ? $t('password_change.set_password') : $t('change_password')

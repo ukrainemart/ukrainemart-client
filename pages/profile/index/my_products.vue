@@ -6,6 +6,16 @@
   const loading = ref(true);
   const NUM_SKELETON_ITEMS = 5;
 
+  const currentIdProduct = ref();
+  const setCurrentIdProduct = (id: any) => {
+    currentIdProduct.value = id;
+  };
+
+  const isRemoveProductModal = ref(true);
+  const switchModalRemove = (value: boolean) => {
+    isRemoveProductModal.value = value;
+  };
+
   const getProducts = async () => {
     try {
       const res = await useApiFetch(`${useUrlApi()}/product/list`);
@@ -17,12 +27,33 @@
     }
   };
 
+  const deleteProduct = () => {
+    useApi(`${useUrlApi()}/product/destroy/${currentIdProduct.value}`).then((res: any) => {
+      if (res.status === 1) {
+        switchModalRemove(false);
+        getProducts();
+      }
+    });
+  };
+
+  const deleteAction = (id: any) => {
+    setCurrentIdProduct(id);
+    switchModalRemove(true);
+  };
+
   getProducts();
 </script>
 
 <template>
   <LayoutProfilePage title="Мої товари">
     <UiButtonPrimary to="add_product"> {{ $t('add_product.add_product') }} </UiButtonPrimary>
+    <UiModalWarning
+      v-if="currentIdProduct"
+      v-model="isRemoveProductModal"
+      @confirm="deleteProduct"
+      @closeModal="switchModalRemove(false)"
+      >{{ $t('delete_product') }}</UiModalWarning
+    >
 
     <div
       class="mb-[30px] mt-[15px] flex flex-col gap-y-2.5 md:mb-[40px] md:mt-[30px] md:gap-y-[15px] lg:mb-[50px] lg:mt-[25px] lg:gap-y-[25px]"
@@ -65,6 +96,7 @@
         v-else
         :key="product.id"
         :product="product"
+        @deleteAction="deleteAction(product.id)"
       />
     </div>
 
