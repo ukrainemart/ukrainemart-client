@@ -26,6 +26,9 @@
     }).then((res: any) => {
       if (res.status === 1) {
         message.value = t('password_successfully_changed');
+        inputs.value.oldPassword = '';
+        inputs.value.newPassword = '';
+        inputs.value.newConfPassword = '';
         return false;
       }
       if (res.status === 0) {
