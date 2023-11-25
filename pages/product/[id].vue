@@ -6,6 +6,7 @@
   // const NUM_SKELETON_ITEMS = 7;
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
+  const products = ref<Product[]>([]);
 
   const setThumbsSwiper = (swiper: any) => {
     sideSwiper.value = swiper;
@@ -33,6 +34,20 @@
   // };
 
   // getProduct();
+
+  const getProducts = async () => {
+    // REVIEW useFetchApi
+    // TODO update url after api support
+    try {
+      const res = await useApi(`${useUrlApi()}/product/list`);
+
+      products.value = res as Product[];
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getProducts();
 </script>
 
 <template>
@@ -76,11 +91,11 @@
       <CommonSellerInfo :product="product" />
     </div>
 
-    <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]" class="!pt-0">
+    <CommonSectionProductsSlider :products="products" class="!pt-0">
       <template #title> Інші товари від цього продавця </template>
     </CommonSectionProductsSlider>
 
-    <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]">
+    <CommonSectionProductsSlider :products="products">
       <template #title> Інші товари з цієї категорії </template>
     </CommonSectionProductsSlider>
 
