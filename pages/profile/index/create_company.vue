@@ -96,12 +96,13 @@
           /></UiLabel>
 
           <UiLabel
+            for=""
             :label="$t('create_company.have__experience_export_import')"
             class="xl:row-span-1"
           >
             <div class="flex items-center gap-[25px]">
-              <UiRadio v-model="inputs.experience" value="yes" name="name" :label="$t('yes')" />
-              <UiRadio v-model="inputs.experience" value="no" name="name" :label="$t('no')" />
+              <UiRadio v-model="inputs.experience" value="yes" :label="$t('yes')" />
+              <UiRadio v-model="inputs.experience" value="no" :label="$t('no')" />
             </div>
           </UiLabel>
         </div>
