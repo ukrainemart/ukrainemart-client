@@ -2,12 +2,27 @@
   definePageMeta({
     layout: 'header-without-logo',
   });
+
+  const products = ref<Product[]>([]);
+
+  const getProducts = async () => {
+    // REVIEW useFetchApi
+    try {
+      const res = await useApi(`${useUrlApi()}/product/list`);
+
+      products.value = res as Product[];
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getProducts();
 </script>
 
 <template>
   <div>
     <CommonHeroSection />
-    <CommonSectionProductsSlider :products="[1, 1, 1, 1, 1, 11, 1, 1]">
+    <CommonSectionProductsSlider :products="products">
       <template #title>
         {{ $t('goodsFromUaExporters') }}
       </template>

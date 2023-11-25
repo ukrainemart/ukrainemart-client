@@ -2,8 +2,6 @@
   defineProps<{
     category: Category;
   }>();
-
-  // const value = ref(50); // REVIEW remove it
 </script>
 
 <template>
@@ -29,10 +27,15 @@
 
     <div class="mb-5">
       <PagesCategoryFilterTitle>Мінімальне замовлення</PagesCategoryFilterTitle>
-      <div class="flex gap-[10px]">
+      <div class="flex gap-x-[10px] md:gap-x-[25px]">
         <!-- TODO add placeholder -->
         <UiInputOutline customClass="input_outline_category" />
-        <UiButtonPrimary styles="md:text-[14px] md:px-[20px] md:py-[4px]">Ok</UiButtonPrimary>
+        <!-- REVIEW DRY -->
+        <button
+          class="rounded-[50px] border border-solid border-black bg-black px-[30px] py-[7px] text-[12px] leading-[15px] text-white transition-colors duration-100 ease-in hover:bg-transparent hover:text-black focus:outline-none disabled:cursor-not-allowed md:px-[39.5px] md:py-[9px] md:text-[16px] md:leading-[20px]"
+        >
+          Ok
+        </button>
       </div>
     </div>
 
@@ -50,7 +53,7 @@
 
 <style>
   .input_outline_category {
-    @apply input_outline_text_category input_outline_padding_category input_outline_height_category rounded-[50px] border border-black bg-transparent focus:outline-none;
+    @apply input_outline_text_category input_outline_padding_category input_outline_sizes_category rounded-[50px] border border-black bg-transparent focus:outline-none;
   }
 
   .input_outline_text_category {
@@ -61,7 +64,7 @@
     @apply px-[15px] 2xl:px-[20px] 4xl:px-[25px];
   }
 
-  .input_outline_height_category {
-    @apply h-[30px] 2xl:h-[40px] 4xl:h-[50px];
+  .input_outline_sizes_category {
+    @apply h-[30px] w-full md:h-[40px] 4xl:h-[50px];
   }
 </style>
