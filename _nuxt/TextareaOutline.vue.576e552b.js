@@ -1,0 +1,2 @@
+import{x as l,M as p,X as u}from"./swiper-vue.33fa7a2f.js";const s=["value"],m=l({__name:"TextareaOutline",props:{modelValue:{}},emits:["update:modelValue"],setup(r,{emit:n}){const o=n,a=e=>{const t=e.target.value;o("update:modelValue",t)};return(e,t)=>(p(),u("textarea",{value:e.modelValue,class:"input_outline resize-none !rounded-[20px] py-[10px] md:!rounded-[30px] xl:py-[15px]",onInput:a},`
+<slot/>`,40,s))}});export{m as _};
