@@ -2,7 +2,7 @@
   definePageMeta({
     middleware: ['exporter'],
   });
-
+  const { t } = useI18n();
   const error = ref('');
   const message = ref('');
 
@@ -65,12 +65,17 @@
     useApiFetch(`${useUrlApi()}/product/create`, {
       method: 'POST',
       body: formData(),
-    }).then((res: any) => {
-      if (res.data.value.status === 1) {
-        message.value = '';
-      }
-      console.log(res);
-    });
+    })
+      .then((res: any) => {
+        if (res.data.value.status === 1) {
+          navigateTo('/profile/my_products');
+        }
+        console.log(res);
+      })
+      .catch((err) => {
+        error.value = t('fill_in_all_fields');
+        console.log(err);
+      });
   };
 </script>
 

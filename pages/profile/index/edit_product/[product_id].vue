@@ -3,6 +3,10 @@
     middleware: ['exporter'],
   });
   const route = useRoute();
+  const { t } = useI18n();
+
+  const error = ref('');
+  const message = ref('');
 
   const inputs = ref<InputsCreateProduct>({
     titleUa: '',
@@ -98,9 +102,15 @@
     useApiFetch(`${useUrlApi()}/product/update/${productId}`, {
       method: 'POST',
       body: formData(),
-    }).then((res) => {
-      console.log(res);
-    });
+    })
+      .then((res) => {
+        navigateTo('/profile/my_products');
+        console.log(res);
+      })
+      .catch((err) => {
+        error.value = t('fill_in_all_fields');
+        console.log(err);
+      });
   };
 
   getProductData();
@@ -110,6 +120,8 @@
   <LayoutCreateProduct
     v-model:inputs="inputs"
     :product="product"
+    :error="error"
+    :message="message"
     :title="$t('add_product.edit_product')"
     :labelButtonSubmit="$t('add_product.edit_product')"
     @actionSubmit="onEditProduct"

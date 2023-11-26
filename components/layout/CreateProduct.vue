@@ -4,14 +4,15 @@
     title: string;
     product?: Product;
     labelButtonSubmit: string;
+    error: string;
+    message: string;
   }>();
 
   const language = ref<Language>();
 
   const emits = defineEmits(['update:inputs', 'actionSubmit']);
-  const actionSubmit = async () => {
-    await emits('actionSubmit');
-    navigateTo('/profile/my_products');
+  const actionSubmit = () => {
+    emits('actionSubmit');
   };
   const pageData = ref();
 
@@ -135,6 +136,7 @@
           <CommonAddingPhoto v-model="inputs.productImages" />
         </div>
       </div>
+      <UiAlertTextDanger v-if="error" class="mt-[15px] xl:mt-[20px]">{{ error }}</UiAlertTextDanger>
       <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">
         <UiButtonPrimary type="button" @click.once="actionSubmit">{{
           labelButtonSubmit

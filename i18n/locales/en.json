@@ -74,6 +74,7 @@
   "last_name": "Last name",
   "description_of_your_company": "Description of your company",
   "delete_product": "Delete a product?",
+  "fill_in_all_fields": "Fill in all fields!",
 
   "add_product": {
     "add_product": "Add a product",
