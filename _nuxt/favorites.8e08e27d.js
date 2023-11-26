@@ -1,0 +1,1 @@
+import{_ as o}from"./ProfilePage.vue.a2a9a8fd.js";import{_ as r}from"./entry.61600fec.js";import{N as a,O as s,M as c,_}from"./swiper-vue.01371f92.js";const f={};function i(t,n){const e=o;return c(),a(e,{title:t.$t("favorites")},{default:s(()=>[_(" favorites ")]),_:1},8,["title"])}const d=r(f,[["render",i]]);export{d as default};
