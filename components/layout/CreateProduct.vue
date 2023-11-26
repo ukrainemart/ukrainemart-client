@@ -12,20 +12,7 @@
   const actionSubmit = () => {
     emits('actionSubmit');
   };
-  // const formInputs = reactive({
-  //   price_type: '',
-  // });
-  // const variatedPrices = ref<PriceProduct['variatedPrice'][]>([]);
-  // const productImages = ref<any>([]);
   const pageData = ref();
-
-  // const updateInputs = () => {
-  //   const inputsUpdate: any = {
-  //     priceType: formInputs.price_type,
-  //     variatedPrices: variatedPrices.value,
-  //   };
-  //   emits('update:inputs', inputsUpdate);
-  // };
 
   const categoryOptions = computed(
     () =>
@@ -56,10 +43,6 @@
     });
   };
 
-  // watchDeep([formInputs, variatedPrices, productImages], () => {
-  //   updateInputs();
-  // });
-
   getPageData();
 
   provide('unitOptions', unitOptions);
@@ -79,17 +62,18 @@
               v-show="language === 'ua'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline v-model="inputs.titleUa" />
+              <UiInputOutline v-model="inputs.titleUa" required />
             </UiLabel>
             <UiLabel
               v-show="language === 'en'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline v-model="inputs.titleEn" />
+              <UiInputOutline v-model="inputs.titleEn" required />
             </UiLabel>
             <UiLabel :label="$t('add_product.select_category') + ':'">
               <UiSelectOutline
                 v-model="inputs.categoryId"
+                required
                 :options="categoryOptions"
                 :currentValue="getCurrentCategory.title"
                 value-attribute="id"
@@ -102,6 +86,7 @@
             >
               <UiTextareaOutline
                 v-model="inputs.descriptionUa"
+                required
                 class="min-h-[120px] md:min-h-[179px]"
               />
             </UiLabel>
@@ -111,6 +96,7 @@
             >
               <UiTextareaOutline
                 v-model="inputs.descriptionEn"
+                required
                 class="min-h-[120px] md:min-h-[179px]"
               />
             </UiLabel>

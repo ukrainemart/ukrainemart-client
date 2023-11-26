@@ -91,11 +91,11 @@
       <CommonSellerInfo :product="product" />
     </div>
 
-    <CommonSectionProductsSlider :products="products" class="!pt-0">
+    <CommonSectionProductsSlider v-if="products.length > 0" :products="products" class="!pt-0">
       <template #title> Інші товари від цього продавця </template>
     </CommonSectionProductsSlider>
 
-    <CommonSectionProductsSlider :products="products">
+    <CommonSectionProductsSlider v-if="products.length > 0" :products="products">
       <template #title> Інші товари з цієї категорії </template>
     </CommonSectionProductsSlider>
 
