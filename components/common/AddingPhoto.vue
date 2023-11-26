@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { Sortable } from 'sortablejs-vue3';
-
   const props = defineProps<{
     modelValue: any[];
     productImages?: Product['images'];
@@ -28,7 +26,7 @@
 
 <template>
   <div class="">
-    <Sortable
+    <!--<Sortable
       class="grid w-full grid-cols-4 gap-[5px] md:grid-cols-5 md:gap-[10px] 2xl:grid-cols-4"
       :list="showPhotos"
       item-key="id"
@@ -62,6 +60,7 @@
         </div>
       </template>
     </Sortable>
+    -->
   </div>
 </template>
 
