@@ -91,11 +91,18 @@
       <CommonSellerInfo :product="product" />
     </div>
 
-    <CommonSectionProductsSlider v-if="products.length > 0" :products="products" class="!pt-0">
+    <CommonSectionProductsSlider
+      v-if="product && product.product_company.length > 0"
+      :products="product?.product_company"
+      class="!pt-0"
+    >
       <template #title> Інші товари від цього продавця </template>
     </CommonSectionProductsSlider>
 
-    <CommonSectionProductsSlider v-if="products.length > 0" :products="products">
+    <CommonSectionProductsSlider
+      v-if="product && product.product_same_category.length > 0"
+      :products="products"
+    >
       <template #title> Інші товари з цієї категорії </template>
     </CommonSectionProductsSlider>
 

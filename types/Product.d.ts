@@ -17,4 +17,6 @@ declare interface Product {
   images?: ImageProduct[]; // REVIEW
   main_image?: ImageProduct; // REVIEW
   favorites_count: number;
+  product_company: Product[];
+  product_same_category: Product[];
 }

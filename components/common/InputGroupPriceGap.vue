@@ -35,6 +35,7 @@
         </div>
       </UiLabel>
       <UiLabel
+        for=""
         :label="$t('add_product.unit_measurement') + ':'"
         class="ml-[10px] justify-items-start md:ml-[20px]"
       >
@@ -46,7 +47,11 @@
       </UiLabel>
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
-      <UiLabel class="relative z-50 4xl:max-w-none" :label="$t('add_product.enter_price') + ':'">
+      <UiLabel
+        for=""
+        class="relative z-50 4xl:max-w-none"
+        :label="$t('add_product.enter_price') + ':'"
+      >
         <CommonPriceInputOutline v-model:price="price.price" />
       </UiLabel>
     </div>

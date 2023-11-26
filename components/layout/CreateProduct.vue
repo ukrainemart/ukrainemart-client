@@ -9,8 +9,9 @@
   const language = ref<Language>();
 
   const emits = defineEmits(['update:inputs', 'actionSubmit']);
-  const actionSubmit = () => {
-    emits('actionSubmit');
+  const actionSubmit = async () => {
+    await emits('actionSubmit');
+    navigateTo('/profile/my_products');
   };
   const pageData = ref();
 
@@ -50,7 +51,7 @@
 
 <template>
   <LayoutProfilePage :title="title">
-    <form action="#" @submit.prevent="actionSubmit">
+    <form action="#">
       <div
         class="flex flex-col items-start gap-[25px] md:gap-[40px] xl:gap-[100px] 2xl:flex-row 3xl:gap-[141px]"
       >
@@ -70,7 +71,7 @@
             >
               <UiInputOutline v-model="inputs.titleEn" required />
             </UiLabel>
-            <UiLabel :label="$t('add_product.select_category') + ':'">
+            <UiLabel for="" :label="$t('add_product.select_category') + ':'">
               <UiSelectOutline
                 v-model="inputs.categoryId"
                 required
@@ -112,6 +113,7 @@
             </div>
             <div class="flex items-center gap-[20px] md:gap-[35px]">
               <UiLabel
+              for=""
                 :label="$t('add_product.type_packaging') + ':'"
                 class="w-full max-w-[150px] md:max-w-[310px] xl:max-w-[235px]"
               >
@@ -134,7 +136,9 @@
         </div>
       </div>
       <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">
-        <UiButtonPrimary type="submit">{{ labelButtonSubmit }}</UiButtonPrimary>
+        <UiButtonPrimary type="button" @click.once="actionSubmit">{{
+          labelButtonSubmit
+        }}</UiButtonPrimary>
       </div>
     </form>
   </LayoutProfilePage>
