@@ -53,7 +53,7 @@
       <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]" tabindex="5">
         {{ $t('login') }}
       </UiButtonPrimary>
-      <CommonButtonGoogle tabindex="6">
+      <CommonButtonGoogle type="button" tabindex="6">
         {{ $t('logInWithGoogle') }}
       </CommonButtonGoogle>
 

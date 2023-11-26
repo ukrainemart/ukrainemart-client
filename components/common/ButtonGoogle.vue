@@ -4,7 +4,7 @@
   <UiButtonOutline
     type="button"
     class="fill_revert_layer mt-[10px] md:mt-[14px] 4xl:mt-[15px]"
-    to="http://localhost/auth/google"
+    :to="useUrl() + '/auth/google'"
   >
     <SvgoGoogle />
     <span>

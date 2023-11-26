@@ -48,7 +48,7 @@
   >
     {{ $t('registration') }}
   </UiTitleNamu>
-  <CommonButtonGoogle>
+  <CommonButtonGoogle type="button">
     {{ $t('logInWithGoogle') }}
   </CommonButtonGoogle>
 

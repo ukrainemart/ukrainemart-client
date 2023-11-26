@@ -36,6 +36,8 @@
   const updateInput = (value: any) => {
     handleChangePhoto(value);
   };
+
+  const deleteImage = () => {};
 </script>
 
 <template>
@@ -49,8 +51,10 @@
         @sort="sortable"
       >
         <template #item="{ element }">
-          <div :key="`${showPhoto(element)}`" class="w-full basis-[25%]">
-            <div class="relative h-0 overflow-hidden rounded-[5px] pt-[100%] xl:rounded-[10px]">
+          <div :key="`${showPhoto(element)}`" class="relative w-full basis-[25%]">
+            <div
+              class="group relative h-0 overflow-hidden rounded-[5px] pt-[100%] xl:rounded-[10px]"
+            >
               <div class="absolute left-0 top-0 z-10 h-full w-full">
                 <img
                   :src="`${showPhoto(element)}`"
@@ -58,6 +62,12 @@
                   alt=""
                 />
               </div>
+              <button
+                class="invisible absolute left-0 top-0 flex h-full w-full items-center justify-center bg-[#0000005e] group-hover:visible"
+                @click="deleteImage"
+              >
+                <SvgoDelete class="!h-[20%] !w-[20%] text-white" />
+              </button>
             </div>
           </div>
         </template>

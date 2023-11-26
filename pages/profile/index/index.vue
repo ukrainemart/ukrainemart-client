@@ -37,7 +37,7 @@
     inputs.value.email = user.value?.email || '';
     inputs.value.companyTitle = user.value?.company?.title || '';
     inputs.value.companyDescription = user.value?.company?.description || '';
-    inputs.value.companyCategory = String(user.value?.company.category_id) || '';
+    inputs.value.companyCategory = String(user.value?.company?.category_id) || '';
 
     if (!isCompany.value) return false;
 
