@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { Sortable } from 'sortablejs-vue3';
+
   const props = defineProps<{
     modelValue: any[];
     productImages?: Product['images'];
