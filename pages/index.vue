@@ -8,9 +8,9 @@
   const getProducts = async () => {
     // REVIEW useFetchApi
     try {
-      const res = await useApi(`${useUrlApi()}/main_page`);
+      const res: any = await useApi(`${useUrlApi()}/main_page`);
 
-      products.value = res as Product[];
+      products.value = res.products as Product[];
     } catch (error) {
       console.error(error);
     }
