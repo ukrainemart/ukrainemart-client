@@ -7,5 +7,5 @@ declare interface InputsCreateProduct {
   priceType: string;
   fixedPrice?: PriceProduct['fixedPrice'] ,
   variatedPrices:  PriceProduct['variatedPrice'][] | [],
-  productImages: any[],
+  productImages: any[] | [],
 }

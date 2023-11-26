@@ -83,6 +83,7 @@
       const fieldName = `product_images[${index + 1}]`;
       data.append(fieldName, image);
     });
+
     return data;
   };
 
