@@ -7,6 +7,12 @@
   const message = ref('');
 
   const inputs = ref<InputsCreateProduct>({
+    titleUa: '',
+    titleEn: '',
+    descriptionUa: '',
+    descriptionEn: '',
+    categoryId: '',
+    priceType: '',
     fixedPrice: {
       amount: '',
       price: '',

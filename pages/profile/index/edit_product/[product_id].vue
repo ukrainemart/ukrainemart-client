@@ -5,12 +5,19 @@
   const route = useRoute();
 
   const inputs = ref<InputsCreateProduct>({
+    titleUa: '',
+    titleEn: '',
+    descriptionUa: '',
+    descriptionEn: '',
+    categoryId: '',
+    priceType: '',
     fixedPrice: {
       amount: '',
       price: '',
       unitId: '',
     },
     variatedPrices: [],
+    productImages: [],
   } as InputsCreateProduct);
   const product = ref<Product>({} as Product);
   const productId = route.params.product_id;
