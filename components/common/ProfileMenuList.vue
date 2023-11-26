@@ -32,7 +32,7 @@
         $t('profile.apply_company_creation')
       }}</CommonProfileMenuLink>
     </li>
-    <li v-if="isExporter">
+    <li v-if="isExporter && ">
       <CommonProfileMenuLink to="/profile/my_products" @click="closeMenu">{{
         $t('profile.my_products')
       }}</CommonProfileMenuLink>
