@@ -44,6 +44,7 @@
         )
       );
     }
+
     const { productImages } = inputs.value;
 
     productImages.forEach((image, index) => {
