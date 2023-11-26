@@ -37,7 +37,10 @@
     handleChangePhoto(value);
   };
 
-  const deleteImage = () => {};
+  const deleteImage = (element: any) => {
+    const updateArray = props.modelValue.filter((el) => el !== element);
+    emits('update:modelValue', updateArray);
+  };
 </script>
 
 <template>
@@ -63,8 +66,9 @@
                 />
               </div>
               <button
-                class="invisible absolute left-0 top-0 flex h-full w-full items-center justify-center bg-[#0000005e] group-hover:visible"
-                @click="deleteImage"
+                type="button"
+                class="invisible absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-[#0000005e] group-hover:visible"
+                @click="deleteImage(element)"
               >
                 <SvgoDelete class="!h-[20%] !w-[20%] text-white" />
               </button>
