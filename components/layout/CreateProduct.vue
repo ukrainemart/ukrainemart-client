@@ -144,7 +144,7 @@
           />
         </div>
         <div class="w-full 2xl:basis-[50%] 4xl:basis-[40%]">
-          <CommonAddingPhoto v-model="inputs.productImages" :productImages="product?.images" />
+          <CommonAddingPhoto v-model="inputs.productImages" />
         </div>
       </div>
       <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">
