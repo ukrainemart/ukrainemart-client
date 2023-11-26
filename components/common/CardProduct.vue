@@ -5,7 +5,7 @@
 
   const savedPrices = computed(() => {
     if (props.product && props.product.price_type === 'variated') {
-      return props.product.prices.map((price, i) => {
+      return props.product?.prices?.map((price, i) => {
         return {
           minAmount: i === 0 ? price.min_amount : null,
           minPrice: i === 0 ? price.price : null,
@@ -38,7 +38,7 @@
       {{ useMultiLang(product, 'title') }}
     </h5>
 
-    <div>
+    <div v-if="product.prices">
       <div v-if="product?.price_type === 'fixed'" class="flex flex-col">
         <span class="price_amount">
           {{ product?.prices[0]?.min_amount }}
