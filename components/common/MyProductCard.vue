@@ -43,7 +43,9 @@
           class="ml-auto flex w-fit items-center justify-between gap-x-2.5 md:gap-x-5 lg:gap-x-[25px]"
         >
           <span class="text-[7px] font-normal text-status_gray md:text-[12px] lg:text-[16px]">
-            {{ product?.prices[0]?.min_amount }}
+            {{
+              `${product?.prices[0]?.min_amount} ${useMultiLang(product.prices[0].unit, 'title')}`
+            }}
           </span>
           {{ product?.prices[0]?.price }}
         </div>
@@ -58,7 +60,12 @@
             class="flex items-center justify-between gap-x-2.5 md:gap-x-5 lg:gap-x-[25px]"
           >
             <span class="text-[7px] font-normal text-status_gray md:text-[12px] lg:text-[16px]">
-              {{ `вiд ${price?.min_amount} до ${price?.max_amount}` }}
+              {{
+                `вiд ${price?.min_amount} до ${price?.max_amount} ${useMultiLang(
+                  price.unit,
+                  'title'
+                )}`
+              }}
             </span>
             {{ price?.price }}
           </li>

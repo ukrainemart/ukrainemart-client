@@ -19,6 +19,13 @@ declare interface PriceProduct {
     min_amount: number;
     max_amount: number;
     price: number;
+    unit: {
+      id: number;
+      title_ua: string;
+      title_en: string;
+      created_at: string;
+      updated_at: string;
+    };
     unit_id: number;
     created_at: string;
     updated_at: string;
