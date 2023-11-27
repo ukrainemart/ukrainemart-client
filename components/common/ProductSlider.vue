@@ -19,7 +19,7 @@
         <img
           :src="slide.path"
           alt=""
-          class="h-[440px] w-full object-cover md:h-[435px] 2xl:h-[584px]"
+          class="h-[440px] w-full rounded-[3px] object-cover md:h-[435px] md:rounded-[4px] 2xl:h-[584px]"
         />
       </div>
     </SwiperSlide>
