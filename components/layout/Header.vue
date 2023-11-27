@@ -48,7 +48,7 @@
         <div class="relative z-50 flex items-center gap-5">
           <SvgoSearchMobileMenu
             v-if="isLogo"
-            class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
+            class="h-[18px] w-[18px] text-black md:h-[23px] md:w-[23px] 4xl:h-[28px] 4xl:w-[28px]"
             :fontControlled="false"
           />
 
