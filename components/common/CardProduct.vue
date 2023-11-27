@@ -1,7 +1,29 @@
 <script setup lang="ts">
   const props = defineProps<{
     product: Product;
+    isFavorites?: boolean;
   }>();
+  const favorites = useFavoritesStore();
+
+  const addToFavorites = () => {
+    favorites.addToFavorites(props.product.id);
+  };
+
+  const isExistInFavorites = computed(() => {
+    return !!favorites.favorites.find((el) => el.id === props.product.id);
+  });
+
+  const removeFavorites = () => {
+    favorites.removeFavorites(props.product.id);
+  };
+
+  const onClickFavoritesBth = () => {
+    if (isExistInFavorites.value) {
+      removeFavorites();
+      return false;
+    }
+    addToFavorites();
+  };
 
   const savedPrices = computed(() => {
     if (props.product && props.product.price_type === 'variated') {
@@ -22,7 +44,7 @@
 <template>
   <NuxtLink
     :to="`/product/${product.id}`"
-    class="block rounded-[10px] bg-white p-2.5 md:rounded-[15px] md:p-[15px] 4xl:rounded-[20px] 4xl:p-[20px]"
+    class="relative block rounded-[10px] bg-white p-2.5 md:rounded-[15px] md:p-[15px] 4xl:rounded-[20px] 4xl:p-[20px]"
   >
     <div class="relative mb-[7px] pt-[128%] md:mb-2.5 md:pt-[127.5%] 4xl:mb-5 4xl:pt-[125%]">
       <img
@@ -31,6 +53,28 @@
         :alt="useMultiLang(product, 'title')"
       />
     </div>
+
+    <button
+      class="group absolute right-[15%] top-[7%] w-[22%] rounded-[50%] bg-white pt-[22%]"
+      @click.prevent="onClickFavoritesBth"
+    >
+      <SvgoHearth
+        v-if="!isExistInFavorites"
+        :class="
+          cn(
+            'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-black duration-hover group-hover:text-status_red'
+          )
+        "
+      />
+      <SvgoHearthBg
+        v-else
+        :class="
+          cn(
+            'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-status_red duration-hover group-hover:text-status_red'
+          )
+        "
+      />
+    </button>
 
     <h5
       class="mb-[5px] truncate text-[13px] font-medium leading-[15px] md:text-[16px] md:leading-[20px] 4xl:mb-2.5 4xl:text-[20px] 4xl:leading-[24px]"

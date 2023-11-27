@@ -29,7 +29,6 @@
       </template>
     </UiSectionTitle>
     <div class="px-5 md:px-10">
-      <!-- REVIEW deleted :centered-slides="centeredSlides" -->
       <Swiper
         :class="
           cn('products_swiper !overflow-y-visible', {
@@ -44,6 +43,7 @@
         }"
         :breakpoints="breakpoints"
         :centered-slides-bounds="centeredSlides"
+        :centered-slides="centeredSlides"
         :spaceBetween="30"
         :navigation="centeredSlides ? false : { nextEl: next, prevEl: prev }"
         :fill="'column'"
@@ -68,5 +68,9 @@
 
   .products_swiper .swiper-wrapper {
     @apply pb-[30px];
+  }
+
+  .products_swiper .swiper-slide {
+    @apply h-auto;
   }
 </style>

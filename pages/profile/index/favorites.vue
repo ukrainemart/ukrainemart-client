@@ -1,7 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  const favorites = useFavoritesStore();
+
+  const products = computed<Product[]>(() => favorites.favorites);
+  const fetchFavorites = () => favorites.fetchFavorites();
+
+  fetchFavorites();
+</script>
 
 <template>
-  <LayoutProfilePage :title="$t('favorites')"> favorites </LayoutProfilePage>
+  <LayoutProfilePage :title="$t('favorites')">
+    <div
+      class="grid grid-cols-12 gap-x-[25px] gap-y-5 md:gap-x-[32px] md:gap-y-10 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
+    >
+      <CommonCardProduct
+        v-for="product in products"
+        :key="product.id"
+        class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-3"
+        :product="product"
+      />
+    </div>
+  </LayoutProfilePage>
 </template>
 
 <style scoped></style>

@@ -39,7 +39,7 @@
       <slot name="title" />
     </template>
     <template #slide="{ slide }">
-      <CommonCardProduct :product="slide" />
+      <CommonCardProduct class="h-full" :product="slide" />
     </template>
   </UiSectionTitleSlider>
 </template>
