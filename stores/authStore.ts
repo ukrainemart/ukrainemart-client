@@ -25,7 +25,7 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   async function logout() {
-    await useApiFetch(`${useUrl()}/logout`, {
+    await useApiFetch(`${useUrlApi()}/logout`, {
       method: 'POST',
     }).then(() => {
       navigateTo('/');
