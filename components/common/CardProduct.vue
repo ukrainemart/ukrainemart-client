@@ -18,6 +18,8 @@
   };
 
   const onClickFavoritesBth = () => {
+    if (!isLoggedIn()) return false;
+
     if (isExistInFavorites.value) {
       removeFavorites();
       return false;
