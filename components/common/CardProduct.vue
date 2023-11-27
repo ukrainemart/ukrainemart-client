@@ -55,7 +55,7 @@
     </div>
 
     <button
-      class="group/favorites absolute right-[15%] top-[7%] w-[22%] rounded-[50%] bg-white pt-[22%] opacity-0 duration-hover group-hover:opacity-100"
+      class="group/favorites absolute right-[15%] top-[7%] w-[22%] rounded-[50%] bg-white pt-[22%] duration-hover group-hover:opacity-100 is-hover:opacity-0"
       @click.prevent="onClickFavoritesBth"
     >
       <SvgoHearth
