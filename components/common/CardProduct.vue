@@ -44,7 +44,7 @@
 <template>
   <NuxtLink
     :to="`/product/${product.id}`"
-    class="relative block rounded-[10px] bg-white p-2.5 md:rounded-[15px] md:p-[15px] 4xl:rounded-[20px] 4xl:p-[20px]"
+    class="group relative block rounded-[10px] bg-white p-2.5 md:rounded-[15px] md:p-[15px] 4xl:rounded-[20px] 4xl:p-[20px]"
   >
     <div class="relative mb-[7px] pt-[128%] md:mb-2.5 md:pt-[127.5%] 4xl:mb-5 4xl:pt-[125%]">
       <img
@@ -55,14 +55,14 @@
     </div>
 
     <button
-      class="group absolute right-[15%] top-[7%] w-[22%] rounded-[50%] bg-white pt-[22%]"
+      class="group/favorites absolute right-[15%] top-[7%] w-[22%] rounded-[50%] bg-white pt-[22%] opacity-0 duration-hover group-hover:opacity-100"
       @click.prevent="onClickFavoritesBth"
     >
       <SvgoHearth
         v-if="!isExistInFavorites"
         :class="
           cn(
-            'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-black duration-hover group-hover:text-status_red'
+            'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-black duration-hover group-hover/favorites:text-status_red'
           )
         "
       />
