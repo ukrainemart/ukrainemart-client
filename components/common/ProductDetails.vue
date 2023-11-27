@@ -10,10 +10,12 @@
     {
       label: 'Про товар',
       content: TabProduct,
+      data: 'qwdqdqd',
     },
     {
       label: 'Про експортера',
       content: TabExporter,
+      data: 'qwdqdqd',
     },
   ];
 </script>

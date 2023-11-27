@@ -1,6 +1,9 @@
 <script setup lang="ts">
   defineProps<{
-    items: any;
+    items: {
+      content: any;
+      data: any;
+    };
     ui?: any;
   }>();
 </script>
@@ -27,7 +30,7 @@
     }"
   >
     <template #item="{ item }">
-      <component :is="item.content" />
+      <component :is="item.content" :content="item.data" />
     </template>
   </UTabs>
 </template>
