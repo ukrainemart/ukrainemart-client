@@ -101,7 +101,7 @@
 
     <CommonSectionProductsSlider
       v-if="product && product.product_same_category.length > 0"
-      :products="products"
+      :products="product?.product_same_category"
     >
       <template #title> Інші товари з цієї категорії </template>
     </CommonSectionProductsSlider>
