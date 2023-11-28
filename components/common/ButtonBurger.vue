@@ -6,7 +6,7 @@
 
 <template>
   <button>
-    <CommonCloseIcon v-if="isActive" styles="h-[18px] w-[18px] md:h-[23px] md:w-[23px]" />
+    <UiCloseIcon v-if="isActive" styles="h-[18px] w-[18px] md:h-[23px] md:w-[23px]" />
     <SvgoBurger
       v-if="!isActive"
       :fontControlled="false"
