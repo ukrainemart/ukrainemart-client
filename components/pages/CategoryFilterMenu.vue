@@ -9,7 +9,7 @@
   <UModal
     :ui="{
       wrapper: 'z-[150]',
-      container: 'w-[280px] md:w-[450px] block',
+      container: 'w-[280px] md:w-[350px] block',
       height: 'h-screen',
       margin: 'sm:m-0',
       padding: 'p-0',

@@ -25,7 +25,11 @@
   >
     <SwiperSlide v-for="slide in slides" :key="slide" class="">
       <div class="h-full">
-        <img :src="slide.path" alt="" class="h-full w-full cursor-pointer object-cover" />
+        <img
+          :src="slide.path"
+          alt=""
+          class="h-full w-full cursor-pointer rounded-[1px] object-cover"
+        />
       </div>
     </SwiperSlide>
   </Swiper>
@@ -38,5 +42,16 @@
 
   .product_side_swiper .swiper-wrapper {
     @apply gap-[5px] 2xl:gap-[10px];
+  }
+
+  .product_side_swiper .swiper-slide-thumb-active {
+    position: relative;
+  }
+
+  .product_side_swiper .swiper-slide-thumb-active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
   }
 </style>

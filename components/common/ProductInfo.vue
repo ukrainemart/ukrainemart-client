@@ -19,7 +19,17 @@
     </CommonProductTitle>
 
     <div class="mb-5">
-      <div v-if="product?.price_type === 'fixed'">{{ product.prices[0].price }}$</div>
+      <div
+        v-if="product?.price_type === 'fixed'"
+        class="flex flex-col gap-y-[3px] md:gap-y-[4px] xl:gap-y-[5px]"
+      >
+        <span class="text-[9px] font-medium text-status_gray md:text-[13px] xl:text-[18px]">
+          {{ `${product?.prices[0].min_amount} ${useMultiLang(product.prices[0].unit, 'title')}` }}
+        </span>
+        <span class="text-[18px] font-semibold md:text-[24px] xl:text-[30px]">
+          {{ product?.prices[0].price }}$
+        </span>
+      </div>
 
       <ul
         v-if="product?.price_type === 'variated'"
@@ -31,7 +41,7 @@
           class="flex flex-col gap-y-[3px] md:gap-y-[4px] xl:gap-y-[5px]"
         >
           <span class="text-[9px] font-medium text-status_gray md:text-[13px] xl:text-[18px]">
-            {{ `${price.min_amount}-${price.max_amount} kg` }}
+            {{ `${price.min_amount}-${price.max_amount} ${useMultiLang(price.unit, 'title')}` }}
           </span>
           <span class="text-[18px] font-semibold md:text-[24px] xl:text-[30px]">
             {{ price.price }}$
