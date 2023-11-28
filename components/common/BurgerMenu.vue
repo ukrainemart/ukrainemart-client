@@ -14,7 +14,7 @@
   <div
     :class="
       cn(
-        'fixed inset-x-0 -top-full z-40 h-fit rounded-b-[10px] bg-white px-5 py-[25px] text-black transition-all delay-0 duration-[200ms] ease-linear md:top-[-400px] md:px-10 md:py-[30px] 2xl:hidden',
+        'fixed inset-x-0 -top-full z-40 h-fit rounded-b-[10px] bg-white px-5 py-[25px] text-black transition-all delay-0 duration-[200ms] ease-linear md:top-[-400px] md:px-10 md:py-[30px] xl:hidden',
         {
           'top-0 md:top-0': isActive,
         }
