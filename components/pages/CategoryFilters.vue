@@ -39,15 +39,10 @@
       </div>
     </div>
 
-    <!-- TODO Copy PriceFilter from kuzka-shop
     <div class="mb-5">
       <PagesCategoryFilterTitle>Ціна</PagesCategoryFilterTitle>
-      <URange v-model="value" name="range" />
-      <div>
-        <UiInputOutline />
-        <UiInputOutline />
-      </div>
-    </div> -->
+      <CommonPriceFilter />
+    </div>
   </div>
 </template>
 
