@@ -32,22 +32,17 @@
         <UiInputOutline customClass="input_outline_category" />
         <!-- REVIEW DRY -->
         <button
-          class="rounded-[50px] border border-solid border-black bg-black px-[30px] py-[7px] text-[12px] leading-[15px] text-white transition-colors duration-100 ease-in hover:bg-transparent hover:text-black focus:outline-none disabled:cursor-not-allowed md:px-[39.5px] md:py-[9px] md:text-[16px] md:leading-[20px]"
+          class="rounded-[50px] border border-solid border-black bg-black px-[30px] py-[7px] text-[12px] leading-[15px] text-white transition-colors duration-100 ease-in hover:bg-transparent hover:text-black focus:outline-none disabled:cursor-not-allowed md:text-[16px] md:leading-[20px]"
         >
           Ok
         </button>
       </div>
     </div>
 
-    <!-- TODO Copy PriceFilter from kuzka-shop
     <div class="mb-5">
       <PagesCategoryFilterTitle>Ціна</PagesCategoryFilterTitle>
-      <URange v-model="value" name="range" />
-      <div>
-        <UiInputOutline />
-        <UiInputOutline />
-      </div>
-    </div> -->
+      <CommonPriceFilter />
+    </div>
   </div>
 </template>
 
@@ -65,6 +60,6 @@
   }
 
   .input_outline_sizes_category {
-    @apply h-[30px] w-full md:h-[40px] 4xl:h-[50px];
+    @apply h-[30px] w-full 4xl:h-[50px];
   }
 </style>

@@ -2,22 +2,22 @@
   import TabExporter from '../pages/TabExporter.vue';
   import TabProduct from '../pages/TabProduct.vue';
 
-  // const { product } = defineProps<{
-  //   product: Product;
-  // }>();
+  const props = defineProps<{
+    product: Product;
+  }>();
 
-  const items = [
+  const items = computed(() => [
     {
       label: 'Про товар',
       content: TabProduct,
-      data: 'qwdqdqd',
+      data: useMultiLang(props.product, 'description'),
     },
     {
       label: 'Про експортера',
       content: TabExporter,
-      data: 'qwdqdqd',
+      data: props.product?.company?.description,
     },
-  ];
+  ]);
 </script>
 
 <template>

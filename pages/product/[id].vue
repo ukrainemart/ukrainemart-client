@@ -87,7 +87,7 @@
         <CommonProductInfo :product="product" />
       </div>
 
-      <CommonProductDetails class="md:order-2 2xl:col-span-2" />
+      <CommonProductDetails :product="product" class="md:order-2 2xl:col-span-2" />
       <CommonSellerInfo :product="product" />
     </div>
 

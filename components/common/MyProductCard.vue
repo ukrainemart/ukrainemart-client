@@ -43,7 +43,9 @@
           class="ml-auto flex w-fit items-center justify-between gap-x-2.5 md:gap-x-5 lg:gap-x-[25px]"
         >
           <span class="text-[7px] font-normal text-status_gray md:text-[12px] lg:text-[16px]">
-            {{ product?.prices[0]?.min_amount }}
+            {{
+              `${product?.prices[0]?.min_amount} ${useMultiLang(product.prices[0].unit, 'title')}`
+            }}
           </span>
           {{ product?.prices[0]?.price }}
         </div>
@@ -58,7 +60,12 @@
             class="flex items-center justify-between gap-x-2.5 md:gap-x-5 lg:gap-x-[25px]"
           >
             <span class="text-[7px] font-normal text-status_gray md:text-[12px] lg:text-[16px]">
-              {{ `вiд ${price?.min_amount} до ${price?.max_amount}` }}
+              {{
+                `вiд ${price?.min_amount} до ${price?.max_amount} ${useMultiLang(
+                  price.unit,
+                  'title'
+                )}`
+              }}
             </span>
             {{ price?.price }}
           </li>
@@ -102,17 +109,23 @@
       >
         <a
           href="#"
-          class="mr-2.5 text-[7px] leading-[9px] text-status_gray underline underline-offset-2 transition-colors duration-150 hover:text-black md:mr-[15px] md:text-[10px] md:leading-[12px] lg:mr-[30px] lg:text-[14px] lg:leading-[17px]"
+          class="mr-2.5 flex items-center text-[7px] leading-[9px] text-status_gray underline underline-offset-2 transition-colors duration-150 hover:text-black md:mr-[15px] md:text-[10px] md:leading-[12px] lg:mr-[30px] lg:text-[14px] lg:leading-[17px]"
         >
           {{ $t('analytics') }}
         </a>
-        <UiButtonOpacity :to="'edit_product/' + product.id">
+        <UiButtonOpacity
+          :to="'edit_product/' + product.id"
+          class="mr-2.5 flex h-[25px] w-[25px] items-center justify-center rounded-full bg-white md:h-[30px] md:w-[30px] lg:mr-[15px] lg:h-[40px] lg:w-[40px]"
+        >
           <SvgoEdit
             :fontControlled="false"
-            class="mr-2.5 h-[11px] w-[11px] text-status_gray md:h-[14px] md:w-[14px] lg:mr-[15px] lg:h-[18px] lg:w-[18px]"
+            class="h-[11px] w-[11px] text-status_gray md:h-[14px] md:w-[14px] lg:h-[18px] lg:w-[18px]"
           />
         </UiButtonOpacity>
-        <UiButtonOpacity @click.prevent="deleteAction">
+        <UiButtonOpacity
+          class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-white md:h-[30px] md:w-[30px] lg:h-[40px] lg:w-[40px]"
+          @click.prevent="deleteAction"
+        >
           <SvgoDelete
             :fontControlled="false"
             class="h-[11px] w-[9px] text-status_gray md:h-[14px] md:w-[11px] lg:h-[18px] lg:w-[14px]"
