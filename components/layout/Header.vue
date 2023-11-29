@@ -3,7 +3,11 @@
     isLogo?: boolean;
   }>();
 
+  const { width: screenWidth } = useWindowSize();
+  const { BREAKPOINTS_LG } = useVariables();
   const isMobileMenu = ref(false);
+  const isCatalogModal = ref(false);
+  const isCatalogHovered = ref(false);
   const isAuthModal = ref(false);
   const typeAuth = ref<SwitchAuth>('login');
 
@@ -23,14 +27,22 @@
   const switchMenu = (value: boolean) => {
     isMobileMenu.value = value;
   };
+
+  const toggleCatalogModal = () => {
+    isCatalogModal.value = !isCatalogModal.value;
+  };
 </script>
 
 <template>
   <header class="sticky inset-x-0 top-0 z-[100] bg-background-primary">
-    <PagesMobileMenuBottom @openAuth="switchAuth(true, 'login')" />
+    <PagesMobileMenuBottom
+      @openAuth="switchAuth(true, 'login')"
+      @toggleCatalogModal="toggleCatalogModal"
+    />
+
     <div class="container mx-auto py-[25px] md:px-10 md:py-[30px] 4xl:py-10">
-      <!-- mobile start -->
-      <div class="flex justify-between xl:hidden">
+      <!-- MOBILE START -->
+      <div class="flex justify-between lg:hidden">
         <CommonLogo v-if="isLogo" to="/" />
 
         <div v-else class="flex items-center gap-5">
@@ -52,22 +64,22 @@
             :fontControlled="false"
           />
 
-          <SvgoHearth
-            class="hidden h-5 w-[22px] text-black lg:block xl:hidden 4xl:h-[28px] 4xl:w-[30px]"
-            :fontControlled="false"
-          />
-
           <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
         </div>
       </div>
-      <!-- mobile end -->
+      <!-- MOBILE END -->
 
-      <!-- desktop start -->
-      <div class="hidden items-center justify-between xl:flex">
+      <!-- DESKTOP START -->
+      <div class="hidden items-center justify-between lg:flex">
         <div class="flex items-center gap-[15px] 4xl:gap-10">
           <CommonLogo v-if="isLogo" to="/" />
 
-          <CommonSubHeader v-if="!isLogo" />
+          <CommonSubHeader
+            v-if="!isLogo"
+            @toggleModal="toggleCatalogModal"
+            @mouseOver="isCatalogHovered = true"
+            @mouseLeave="isCatalogHovered = false"
+          />
         </div>
 
         <div class="flex items-center gap-[15px] 4xl:gap-[30px]">
@@ -92,9 +104,11 @@
           </UiButtonPrimary>
         </div>
       </div>
-      <!-- desktop end -->
+      <!-- DESKTOP END -->
+
       <CommonBurgerMenu :isActive="isMobileMenu" @switchAuth="switchAuth" />
     </div>
+
     <AuthBase
       v-model="isAuthModal"
       :type="typeAuth"
@@ -102,5 +116,34 @@
       @switchModal="switchAuthModal"
     />
   </header>
-  <CommonSubHeader v-if="isLogo" class="container mb-[40px] hidden xl:flex" />
+
+  <!-- DESKTOP SUB-HEADER START -->
+  <CommonSubHeader
+    v-if="isLogo"
+    class="container mb-[40px] hidden lg:flex"
+    @toggleModal="toggleCatalogModal"
+    @mouseOver="isCatalogHovered = true"
+    @mouseLeave="isCatalogHovered = false"
+  />
+  <!-- DESKTOP SUB-HEADER END -->
+
+  <!-- MOBILE CATALOG START -->
+  <UiSideModal
+    v-if="screenWidth < BREAKPOINTS_LG"
+    v-model="isCatalogModal"
+    :label="$t('catalog')"
+    @toggleModal="toggleCatalogModal"
+  >
+    <CommonCatalog />
+  </UiSideModal>
+  <!-- MOBILE CATALOG END -->
+
+  <!-- DESKTOP CATALOG START -->
+  <div
+    v-if="screenWidth >= BREAKPOINTS_LG"
+    class="fixed inset-x-0 top-[99px] z-20 rounded-b-3xl bg-background-primary pb-[100px] pt-[35px] shadow-xl"
+  >
+    <CommonCatalog />
+  </div>
+  <!-- DESKTOP CATALOG END -->
 </template>

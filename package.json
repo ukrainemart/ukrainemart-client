@@ -27,6 +27,7 @@
     "@vueuse/nuxt": "10.5.0",
     "axios": "1.6.0",
     "clsx": "2.0.0",
+    "custom-vue-scrollbar": "0.0.8",
     "nuxt-swiper": "1.2.2",
     "pinia": "2.1.7",
     "sortablejs": "1.15.0",
