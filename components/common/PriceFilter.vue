@@ -47,7 +47,7 @@
           :value="[price.min_value, price.max_value]"
           :min="price.min_price"
           :max="price.max_price"
-          :tooltips="true"
+          :tooltips="false"
           :showTooltip="'drag'"
           class="price_slider"
         />
@@ -101,7 +101,7 @@
   }
 
   .price_slider {
-    @apply mx-auto h-px w-[calc(100%-8px)] md:w-[calc(100%-10px)] 2xl:h-[2px] 2xl:w-[calc(100%-12px)];
+    @apply mx-auto h-px w-[calc(100%-8px)] cursor-pointer md:w-[calc(100%-10px)] 2xl:h-[2px] 2xl:w-[calc(100%-12px)];
   }
 
   .slider_values_item {

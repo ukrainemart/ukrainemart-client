@@ -27,11 +27,7 @@
       <li>
         <CommonLangSwitcher isMobile />
       </li>
-      <li>
-        <UiButtonTextUnderline styles="md:hover:text-status_red md:hover:before:bg-status_red">
-          {{ $t('catalog') }}
-        </UiButtonTextUnderline>
-      </li>
+
       <li>
         <UiButtonTextIconArrowDown>
           {{ $t('forUaExporters') }}

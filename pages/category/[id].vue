@@ -99,12 +99,14 @@
       </div>
     </div>
 
-    <PagesCategoryFilterMenu
+    <UiSideModal
       v-model="isOpenFilterMenu"
-      :isOpen="isOpenFilterMenu"
-      :category="category"
+      :label="'Фільтри'"
       class="lg:hidden"
-    />
+      @toggleModal="isOpenFilterMenu = false"
+    >
+      <PagesCategoryFilters :category="category" />
+    </UiSideModal>
   </div>
 </template>
 
