@@ -1,15 +1,14 @@
 <script setup lang="ts">
-  import CustomScrollbar from 'custom-vue-scrollbar';
-
   const catalog = ref<Catalog[]>([]);
   const currentCategories = ref<Catalog[]>([]);
   const navigationStack = ref<Catalog[]>([]);
-
+  const currentCategoryLevel = ref(0);
+  const MIDDLE_CATEGORY_LEVEL = 1;
+  const LAST_CATEGORY_LEVEL = 2;
   const selectedParentCategory = ref<Catalog | null>(null);
   const selectedChildCategory = ref<Catalog | null>(null);
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
-  const customScrollbarHeight = '210px';
 
   const parentCategories = computed(() =>
     catalog.value.filter((item) => item.parent_category === 0)
@@ -18,6 +17,7 @@
   const showChildren = (category: Catalog) => {
     navigationStack.value.push(category);
     currentCategories.value = category.children;
+    currentCategoryLevel.value += 1;
   };
 
   const navigateToParentCategory = () => {
@@ -27,6 +27,8 @@
     } else {
       currentCategories.value = parentCategories.value;
     }
+
+    currentCategoryLevel.value -= 1;
   };
 
   const selectParentCategory = (category: Catalog) => {
@@ -34,10 +36,9 @@
     [selectedChildCategory.value] = category.children;
   };
 
-  const selectChildCategory = (category: Catalog) => {
-    selectedChildCategory.value = category;
-  };
+  const selectChildCategory = (category: Catalog) => (selectedChildCategory.value = category);
 
+  // TODO move to parent component
   const getCatalog = async () => {
     try {
       const res = await useApi(`${useUrlApi()}/catalog`);
@@ -62,31 +63,42 @@
   <div v-if="screenWidth < BREAKPOINTS_LG" class="flex flex-col items-start">
     <button
       v-if="navigationStack.length > 0"
-      class="flex items-center"
+      class="mb-[5px] flex items-center gap-x-[10px] text-[12px] leading-[15px] text-status_gray transition-colors duration-100 ease-linear hover:text-black md:text-[14px] md:leading-[17px]"
       @click="navigateToParentCategory"
     >
-      <SvgoArrowDown :fontControlled="false" class="h-full w-[10px] rotate-90 text-transparent" />
+      <SvgoArrowNext :fontControlled="false" class="h-full w-[10px] rotate-180 text-transparent" />
       Назад
     </button>
 
     <template v-for="category in currentCategories" :key="category.id">
-      <CommonCatalogItem :category="category" @show-children="showChildren" />
+      <CommonCatalogItem
+        :category="category"
+        :variant="
+          currentCategoryLevel === LAST_CATEGORY_LEVEL
+            ? 'image'
+            : currentCategoryLevel === MIDDLE_CATEGORY_LEVEL
+            ? 'logo'
+            : null
+        "
+        @show-children="showChildren"
+      />
     </template>
   </div>
   <!-- MOBILE END -->
 
   <!-- DESKTOP CONTAINERS START -->
   <div v-else class="container grid grid-cols-[max-content_max-content_1fr] gap-4 2xl:gap-[30px]">
-    <ul class="categories_container w-[350px]">
-      <CustomScrollbar :autoHide="false" :style="{ height: customScrollbarHeight }">
-        <li
-          v-for="category in parentCategories"
-          :key="category.id"
-          @mouseover="selectParentCategory(category)"
-        >
-          <CommonCatalogItem :category="category" />
-        </li>
-      </CustomScrollbar>
+    <ul class="categories_container max-w-[350px]">
+      <li
+        v-for="category in parentCategories"
+        :key="category.id"
+        @mouseover="selectParentCategory(category)"
+      >
+        <CommonCatalogItem
+          :category="category"
+          :isSelectedCategory="selectedParentCategory?.id === category.id"
+        />
+      </li>
     </ul>
 
     <ul
@@ -95,17 +107,19 @@
         selectedParentCategory.children &&
         selectedParentCategory.children.length > 0
       "
-      class="categories_container w-[350px]"
+      class="categories_container max-w-[350px]"
     >
-      <CustomScrollbar :autoHide="false" :style="{ height: customScrollbarHeight }">
-        <li
-          v-for="category in selectedParentCategory.children"
-          :key="category.id"
-          @mouseover="selectChildCategory(category)"
-        >
-          <CommonCatalogItem :category="category" />
-        </li>
-      </CustomScrollbar>
+      <li
+        v-for="category in selectedParentCategory.children"
+        :key="category.id"
+        @mouseover="selectChildCategory(category)"
+      >
+        <CommonCatalogItem
+          :category="category"
+          :isSelectedCategory="selectedChildCategory?.id === category.id"
+          variant="logo"
+        />
+      </li>
     </ul>
 
     <ul
@@ -114,26 +128,18 @@
         selectedChildCategory.children &&
         selectedChildCategory.children.length > 0
       "
-      class="categories_container"
+      class="categories_container flex flex-wrap content-start"
     >
-      <CustomScrollbar :autoHide="false" :style="{ height: customScrollbarHeight }">
-        <li v-for="category in selectedChildCategory.children" :key="category.id">
-          <CommonCatalogItem :category="category" />
-        </li>
-      </CustomScrollbar>
+      <li v-for="category in selectedChildCategory.children" :key="category.id" class="h-fit">
+        <CommonCatalogItem :category="category" variant="image" />
+      </li>
     </ul>
   </div>
   <!-- DESKTOP CONTAINERS END -->
 </template>
 
 <style>
-  @import 'custom-vue-scrollbar/dist/style.css';
-
   .categories_container {
-    @apply w-full min-w-[250px] rounded-[20px] bg-white shadow-lg;
+    @apply min-h-[330px] w-full min-w-[250px] rounded-[20px] bg-white shadow-lg;
   }
-
-  /* .scrollbar__content--vertical {
-    @apply h-full;
-  } */
 </style>

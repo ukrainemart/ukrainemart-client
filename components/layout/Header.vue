@@ -7,30 +7,25 @@
   const { BREAKPOINTS_LG } = useVariables();
   const isMobileMenu = ref(false);
   const isCatalogModal = ref(false);
-  const isCatalogHovered = ref(false);
+  const isCatalogHovered = ref(true);
   const isAuthModal = ref(false);
   const typeAuth = ref<SwitchAuth>('login');
 
-  const switchTypeAuth = (type: SwitchAuth) => {
-    typeAuth.value = type;
-  };
+  watch(isCatalogHovered, () => console.log('isCatalogHovered', isCatalogHovered.value));
 
-  const switchAuthModal = (value: boolean) => {
-    isAuthModal.value = value;
-  };
+  const switchTypeAuth = (type: SwitchAuth) => (typeAuth.value = type);
+
+  const switchAuthModal = (value: boolean) => (isAuthModal.value = value);
 
   const switchAuth = (value: boolean, type: SwitchAuth) => {
     switchAuthModal(value);
     switchTypeAuth(type);
   };
 
-  const switchMenu = (value: boolean) => {
-    isMobileMenu.value = value;
-  };
-
-  const toggleCatalogModal = () => {
-    isCatalogModal.value = !isCatalogModal.value;
-  };
+  // REVIEW refactor
+  const switchMenu = (value: boolean) => (isMobileMenu.value = value);
+  // REVIEW refactor
+  const toggleCatalogModal = () => (isCatalogModal.value = !isCatalogModal.value);
 </script>
 
 <template>
@@ -74,12 +69,7 @@
         <div class="flex items-center gap-[15px] 4xl:gap-10">
           <CommonLogo v-if="isLogo" to="/" />
 
-          <CommonSubHeader
-            v-if="!isLogo"
-            @toggleModal="toggleCatalogModal"
-            @mouseOver="isCatalogHovered = true"
-            @mouseLeave="isCatalogHovered = false"
-          />
+          <CommonSubHeader v-if="!isLogo" :isLogo="isLogo" @toggleModal="toggleCatalogModal" />
         </div>
 
         <div class="flex items-center gap-[15px] 4xl:gap-[30px]">
@@ -120,10 +110,9 @@
   <!-- DESKTOP SUB-HEADER START -->
   <CommonSubHeader
     v-if="isLogo"
+    :isLogo="isLogo"
     class="container mb-[40px] hidden lg:flex"
     @toggleModal="toggleCatalogModal"
-    @mouseOver="isCatalogHovered = true"
-    @mouseLeave="isCatalogHovered = false"
   />
   <!-- DESKTOP SUB-HEADER END -->
 
@@ -139,11 +128,14 @@
   <!-- MOBILE CATALOG END -->
 
   <!-- DESKTOP CATALOG START -->
-  <div
-    v-if="screenWidth >= BREAKPOINTS_LG"
-    class="fixed inset-x-0 top-[99px] z-20 rounded-b-3xl bg-background-primary pb-[100px] pt-[35px] shadow-xl"
+  <!-- FIXME top, isLogo -->
+  <!-- <div
+    v-if="screenWidth >= BREAKPOINTS_LG && isCatalogHovered"
+    class="fixed inset-x-0 top-[60px] z-[200]"
   >
-    <CommonCatalog />
-  </div>
+    <div class="mt-[30px] rounded-b-3xl bg-background-primary pb-[50px] shadow-xl 2xl:pb-[70px]">
+      <CommonCatalog />
+    </div>
+  </div> -->
   <!-- DESKTOP CATALOG END -->
 </template>
