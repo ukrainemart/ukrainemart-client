@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  defineProps<{
+    toggleCatalogModal: () => void;
+  }>();
+
   const catalog = ref<Catalog[]>([]);
   const currentCategories = ref<Catalog[]>([]);
   const navigationStack = ref<Catalog[]>([]);
@@ -80,6 +84,7 @@
             ? 'logo'
             : null
         "
+        :toggleCatalogModal="toggleCatalogModal"
         @show-children="showChildren"
       />
     </template>
@@ -97,6 +102,7 @@
         <CommonCatalogItem
           :category="category"
           :isSelectedCategory="selectedParentCategory?.id === category.id"
+          :toggleCatalogModal="toggleCatalogModal"
         />
       </li>
     </ul>
@@ -117,6 +123,7 @@
         <CommonCatalogItem
           :category="category"
           :isSelectedCategory="selectedChildCategory?.id === category.id"
+          :toggleCatalogModal="toggleCatalogModal"
           variant="logo"
         />
       </li>
@@ -131,7 +138,11 @@
       class="categories_container flex flex-wrap content-start"
     >
       <li v-for="category in selectedChildCategory.children" :key="category.id" class="h-fit">
-        <CommonCatalogItem :category="category" variant="image" />
+        <CommonCatalogItem
+          :category="category"
+          :toggleCatalogModal="toggleCatalogModal"
+          variant="image"
+        />
       </li>
     </ul>
   </div>

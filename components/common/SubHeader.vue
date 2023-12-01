@@ -1,6 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     isLogo?: boolean;
+    toggleCatalogModal: () => void;
   }>();
 
   defineEmits(['toggleModal']);
@@ -35,7 +36,7 @@
         <div
           class="mt-[30px] rounded-b-3xl bg-background-primary pb-[50px] shadow-xl 2xl:pb-[70px]"
         >
-          <CommonCatalog />
+          <CommonCatalog :toggleCatalogModal="toggleCatalogModal" />
         </div>
       </div>
     </UiButtonTextUnderline>

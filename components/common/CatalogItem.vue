@@ -1,13 +1,20 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     category: Catalog;
     isSelectedCategory: boolean;
     variant?: 'logo' | 'image';
+    toggleCatalogModal: () => void;
   }>();
 
   const emit = defineEmits(['show-children']);
+  const router = useRouter();
 
   const showChildren = (category: Catalog) => emit('show-children', category);
+
+  const handleLinkClick = () => {
+    props.toggleCatalogModal();
+    router.push(`/category/${props.category.id}`);
+  };
 </script>
 
 <template>
@@ -16,6 +23,7 @@
     :to="`/category/${category.id}`"
     class="catalog_item"
     :class="{ 'bg-[#1111111f]': isSelectedCategory }"
+    @click="handleLinkClick"
   >
     <div
       :class="

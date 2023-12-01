@@ -7,11 +7,8 @@
   const { BREAKPOINTS_LG } = useVariables();
   const isMobileMenu = ref(false);
   const isCatalogModal = ref(false);
-  const isCatalogHovered = ref(true);
   const isAuthModal = ref(false);
   const typeAuth = ref<SwitchAuth>('login');
-
-  watch(isCatalogHovered, () => console.log('isCatalogHovered', isCatalogHovered.value));
 
   const switchTypeAuth = (type: SwitchAuth) => (typeAuth.value = type);
 
@@ -44,9 +41,11 @@
           <UiButtonPrimary v-if="!isLoggedIn()" @click="switchAuth(true, 'login')">
             {{ $t('login') }}
           </UiButtonPrimary>
+
           <UiButtonTextUnderline v-if="!isLoggedIn()" @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
+
           <UiButtonPrimary v-if="isLoggedIn()" to="/profile">
             {{ $t('profile.profile') }}
           </UiButtonPrimary>
@@ -69,7 +68,12 @@
         <div class="flex items-center gap-[15px] 4xl:gap-10">
           <CommonLogo v-if="isLogo" to="/" />
 
-          <CommonSubHeader v-if="!isLogo" :isLogo="isLogo" @toggleModal="toggleCatalogModal" />
+          <CommonSubHeader
+            v-if="!isLogo"
+            :isLogo="isLogo"
+            :toggleCatalogModal="toggleCatalogModal"
+            @toggleModal="toggleCatalogModal"
+          />
         </div>
 
         <div class="flex items-center gap-[15px] 4xl:gap-[30px]">
@@ -78,17 +82,22 @@
             class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
             :fontControlled="false"
           />
+
           <SvgoHearth
             class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
             :fontControlled="false"
           />
+
           <CommonLangSwitcher />
+
           <UiButtonTextUnderline v-if="!isLoggedIn()" @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
+
           <UiButtonPrimary v-if="!isLoggedIn()" @click="switchAuth(true, 'login')">
             {{ $t('login') }}
           </UiButtonPrimary>
+
           <UiButtonPrimary v-if="isLoggedIn()" to="/profile">
             {{ $t('profile.profile') }}
           </UiButtonPrimary>
@@ -111,6 +120,7 @@
   <CommonSubHeader
     v-if="isLogo"
     :isLogo="isLogo"
+    :toggleCatalogModal="toggleCatalogModal"
     class="container mb-[40px] hidden lg:flex"
     @toggleModal="toggleCatalogModal"
   />
@@ -123,19 +133,7 @@
     :label="$t('catalog')"
     @toggleModal="toggleCatalogModal"
   >
-    <CommonCatalog />
+    <CommonCatalog :toggleCatalogModal="toggleCatalogModal" />
   </UiSideModal>
   <!-- MOBILE CATALOG END -->
-
-  <!-- DESKTOP CATALOG START -->
-  <!-- FIXME top, isLogo -->
-  <!-- <div
-    v-if="screenWidth >= BREAKPOINTS_LG && isCatalogHovered"
-    class="fixed inset-x-0 top-[60px] z-[200]"
-  >
-    <div class="mt-[30px] rounded-b-3xl bg-background-primary pb-[50px] shadow-xl 2xl:pb-[70px]">
-      <CommonCatalog />
-    </div>
-  </div> -->
-  <!-- DESKTOP CATALOG END -->
 </template>
