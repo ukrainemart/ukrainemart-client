@@ -5,7 +5,7 @@
   }>();
 
   const [isAllItemsVisible, setIsAllItemsVisible] = useToggle(false);
-  const ITEMS_TO_SHOW = 1; // TODO set 5
+  const ITEMS_TO_SHOW = 5;
 
   const showedItems = computed(() => {
     if (isAllItemsVisible.value) {
@@ -20,19 +20,20 @@
     <div class="mb-[7px] flex items-center gap-[2px] md:mb-2.5">
       <SvgoBreadcrumbArrowDown
         :fontControlled="false"
-        class="h-[3px] w-[5px] rotate-90 text-transparent"
+        class="h-[3px] w-[5px] rotate-90 text-transparent lg:h-[5px] lg:w-[8px]"
       />
 
-      <!-- TODO add NuxtLink to -->
-      <p class="breadcrumb_item">
-        {{ useMultiLang(breadcrumb, 'title') }}
-      </p>
+      <!-- FIXME bug breadcrumb.id -->
+      <!-- <NuxtLink :to="`/category/${breadcrumb?.id}`" class="breadcrumb_item"> -->
+      {{ useMultiLang(breadcrumb, 'title') }}
+      <!-- </NuxtLink> -->
     </div>
 
     <ul class="mb-[7px] ml-[14px] flex flex-col gap-y-[7px] md:mb-2.5 md:ml-2.5 md:gap-y-2.5">
-      <!-- TODO add NuxtLink to -->
-      <li v-for="sameCategory in showedItems" :key="sameCategory.id" class="breadcrumb_item">
-        {{ useMultiLang(sameCategory, 'title') }}
+      <li v-for="sameCategory in showedItems" :key="sameCategory?.id" class="breadcrumb_item">
+        <NuxtLink :to="`/category/${sameCategory?.id}`">
+          {{ useMultiLang(sameCategory, 'title') }}
+        </NuxtLink>
       </li>
     </ul>
 
@@ -46,7 +47,10 @@
         </span>
 
         <!-- FIXME hover text-black -->
-        <SvgoBreadcrumbArrowDown :fontControlled="false" class="h-[3px] w-[5px] text-transparent" />
+        <SvgoBreadcrumbArrowDown
+          :fontControlled="false"
+          class="h-[3px] w-[5px] text-transparent lg:h-[5px] lg:w-[8px]"
+        />
       </button>
     </div>
   </div>

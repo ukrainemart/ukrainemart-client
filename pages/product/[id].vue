@@ -18,26 +18,8 @@
 
   const { data: product } = await useApiFetch<Product>(`${useUrlApi()}/product/show/${productId}`);
 
-  // watch(product, () => {
-  //   loading.value = false;
-  // });
-
-  // const getProduct = async () => {
-  //   try {
-  //     const res = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
-
-  //     product.value = res.data.value as Product;
-  //     loading.value = false;
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // getProduct();
-
   const getProducts = async () => {
     // REVIEW useFetchApi
-    // TODO update url after api support
     try {
       const res = await useApi(`${useUrlApi()}/product/list`);
 
@@ -52,8 +34,7 @@
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
-    <CommonBreadcrumbs />
-
+    <CommonBreadcrumbs :breadcrumb="product?.category" />
     <div class="container grid 2xl:grid-cols-[1fr_min-content] 2xl:gap-x-5">
       <div class="flex w-full flex-col md:flex-row md:gap-x-5 xl:w-fit 2xl:gap-x-10">
         <div class="mb-[20px] flex gap-[5px] md:mb-[35px] 2xl:mb-[80px] 2xl:gap-[10px]">
