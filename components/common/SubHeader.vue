@@ -13,6 +13,12 @@
   const handleMouseOver = () => (isCatalogHovered.value = true);
 
   const handleMouseLeave = () => (isCatalogHovered.value = false);
+
+  const onScroll = () => (isCatalogHovered.value = false);
+
+  onMounted(() => window.addEventListener('scroll', onScroll));
+
+  onUnmounted(() => window.removeEventListener('scroll', onScroll));
 </script>
 
 <template>
