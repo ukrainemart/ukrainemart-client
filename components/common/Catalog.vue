@@ -44,9 +44,7 @@
 
   const selectParentCategory = (category: Catalog) => {
     updateParentCategory(category);
-    // console.log(category.children, 'category.children');
-    // FIXME type error
-    updateChildCategory(category.children);
+    updateChildCategory(category.children[0]);
   };
 
   const selectChildCategory = (category: Catalog) => updateChildCategory(category);
