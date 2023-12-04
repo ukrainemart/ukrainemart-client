@@ -25,9 +25,8 @@
         <p class="text-[14px] font-medium md:text-[18px]">
           {{ label }}
         </p>
-        <button type="button" class="inline-flex" @click="$emit('toggleModal')">
-          <CommonButtonBurger :isActive="true" />
-        </button>
+
+        <CommonButtonBurger :isActive="true" class="inline-flex" @click="$emit('toggleModal')" />
       </div>
 
       <slot />
