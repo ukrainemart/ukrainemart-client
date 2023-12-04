@@ -1,29 +1,25 @@
 <script setup lang="ts">
-  const props = defineProps<{
+  defineProps<{
     category: Catalog;
     isSelectedCategory: boolean;
+    viewport?: 'mobile' | 'desktop';
     variant?: 'logo' | 'image';
-    toggleCatalogModal: () => void;
+    handleLinkClick: (category: Catalog) => void;
   }>();
 
   const emit = defineEmits(['show-children']);
-  const router = useRouter();
 
   const showChildren = (category: Catalog) => emit('show-children', category);
-
-  const handleLinkClick = () => {
-    props.toggleCatalogModal();
-    router.push(`/category/${props.category.id}`);
-  };
 </script>
 
 <template>
+  <!-- Mobile link -->
   <NuxtLink
-    v-if="!category.children.length"
+    v-if="!category.children.length && viewport === 'mobile'"
     :to="`/category/${category.id}`"
     class="catalog_item"
     :class="{ 'bg-[#1111111f]': isSelectedCategory }"
-    @click="handleLinkClick"
+    @click="handleLinkClick(category)"
   >
     <div
       :class="
@@ -54,8 +50,9 @@
     </div>
   </NuxtLink>
 
+  <!-- Mobile button -->
   <button
-    v-else
+    v-if="category.children.length && viewport === 'mobile'"
     type="button"
     class="catalog_item"
     :class="{ 'bg-[#1111111f]': isSelectedCategory }"
@@ -79,6 +76,55 @@
       class="ml-2 h-full w-[10px] -rotate-90 text-transparent"
     />
   </button>
+
+  <!-- Desktop link -->
+  <NuxtLink
+    v-if="viewport !== 'mobile'"
+    :to="`/category/${category.id}`"
+    class="catalog_item"
+    :class="{ 'bg-[#1111111f]': isSelectedCategory }"
+    @click="handleLinkClick(category)"
+  >
+    <div
+      :class="
+        cn('flex items-center truncate', {
+          'flex-1 gap-x-[10px] ': variant === 'logo',
+          'w-full gap-x-[5px] md:gap-x-[10px] lg:max-w-[80px] lg:flex-col lg:gap-y-[10px]':
+            variant === 'image',
+        })
+      "
+    >
+      <img
+        v-if="variant === 'image' && category.image && category.image?.length > 0"
+        class="h-[20px] w-[20px] rounded-full object-cover md:h-[40px] md:w-[40px] lg:h-[80px] lg:w-[80px]"
+        :src="category.image"
+        :alt="useMultiLang(category, 'title')"
+      />
+
+      <img
+        v-if="variant === 'logo' && category.logo && category.logo?.length > 0"
+        class="h-[20px] w-[20px] object-cover"
+        :src="category.logo"
+        :alt="useMultiLang(category, 'title')"
+      />
+
+      <span
+        :class="
+          cn('catalog_text', {
+            'lg:text-center': variant === 'image',
+          })
+        "
+      >
+        {{ useMultiLang(category, 'title') }}
+      </span>
+    </div>
+
+    <SvgoArrowDown
+      v-if="category.children.length"
+      :fontControlled="false"
+      class="ml-2 h-full w-[10px] -rotate-90 text-transparent"
+    />
+  </NuxtLink>
 </template>
 
 <style>

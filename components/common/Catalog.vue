@@ -1,7 +1,17 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     toggleCatalogModal: () => void;
+    closeCatalog: () => void;
   }>();
+
+  const router = useRouter();
+  const navigationStack = ref<Catalog[]>([]);
+  const currentCategoryLevel = ref(0);
+  const currentMobileParentCategory = ref<Catalog | null>(null);
+  const MIDDLE_CATEGORY_LEVEL = 1;
+  const LAST_CATEGORY_LEVEL = 2;
+  const { width: screenWidth } = useWindowSize();
+  const { BREAKPOINTS_LG } = useVariables();
 
   const parentCategories = inject('parentCategories') as Ref<Catalog[]>;
   const { currentCategories, updateCurrentCategories } = inject('currentCategories') as {
@@ -17,15 +27,9 @@
     updateChildCategory: (value: Catalog | null) => void;
   };
 
-  const navigationStack = ref<Catalog[]>([]);
-  const currentCategoryLevel = ref(0);
-  const MIDDLE_CATEGORY_LEVEL = 1;
-  const LAST_CATEGORY_LEVEL = 2;
-  const { width: screenWidth } = useWindowSize();
-  const { BREAKPOINTS_LG } = useVariables();
-
   const showChildren = (category: Catalog) => {
     navigationStack.value.push(category);
+    currentMobileParentCategory.value = category;
     updateCurrentCategories(category.children);
     currentCategoryLevel.value += 1;
   };
@@ -48,6 +52,17 @@
   };
 
   const selectChildCategory = (category: Catalog) => updateChildCategory(category);
+
+  const handleLinkClick = (category: Catalog) => {
+    if (screenWidth.value < BREAKPOINTS_LG) {
+      props.toggleCatalogModal();
+    }
+    if (screenWidth.value >= BREAKPOINTS_LG) {
+      props.closeCatalog();
+    }
+
+    router.push(`/category/${category.id}`);
+  };
 </script>
 
 <template>
@@ -62,9 +77,21 @@
       Назад
     </button>
 
+    <NuxtLink
+      v-if="currentMobileParentCategory !== null"
+      :to="`/category/${currentMobileParentCategory.id}`"
+      class="catalog_item !w-fit underline underline-offset-1"
+      @click="handleLinkClick(currentMobileParentCategory)"
+    >
+      <span class="catalog_text">
+        Все в {{ useMultiLang(currentMobileParentCategory, 'title') }}
+      </span>
+    </NuxtLink>
+
     <template v-for="category in currentCategories" :key="category.id">
       <CommonCatalogItem
         :category="category"
+        viewport="mobile"
         :variant="
           currentCategoryLevel === LAST_CATEGORY_LEVEL
             ? 'image'
@@ -72,7 +99,7 @@
             ? 'logo'
             : null
         "
-        :toggleCatalogModal="toggleCatalogModal"
+        :handleLinkClick="handleLinkClick"
         @show-children="showChildren"
       />
     </template>
@@ -90,7 +117,7 @@
         <CommonCatalogItem
           :category="category"
           :isSelectedCategory="selectedParentCategory?.id === category.id"
-          :toggleCatalogModal="toggleCatalogModal"
+          :handleLinkClick="handleLinkClick"
         />
       </li>
     </ul>
@@ -111,7 +138,8 @@
         <CommonCatalogItem
           :category="category"
           :isSelectedCategory="selectedChildCategory?.id === category.id"
-          :toggleCatalogModal="toggleCatalogModal"
+          :selectedParentCategory="selectedParentCategory"
+          :handleLinkClick="handleLinkClick"
           variant="logo"
         />
       </li>
@@ -128,7 +156,7 @@
       <li v-for="category in selectedChildCategory.children" :key="category.id" class="h-fit">
         <CommonCatalogItem
           :category="category"
-          :toggleCatalogModal="toggleCatalogModal"
+          :handleLinkClick="handleLinkClick"
           variant="image"
         />
       </li>
