@@ -6,9 +6,13 @@
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
   const isMobileMenu = ref(false);
-  const isCatalogModal = ref(false);
   const isAuthModal = ref(false);
   const typeAuth = ref<SwitchAuth>('login');
+  const isCatalogModal = ref(false);
+  const catalog = ref<Catalog[]>([]);
+  const currentCategories = ref<Catalog[]>([]);
+  const selectedParentCategory = ref<Catalog | null>(null);
+  const selectedChildCategory = ref<Catalog | null>(null);
 
   const switchTypeAuth = (type: SwitchAuth) => (typeAuth.value = type);
 
@@ -19,10 +23,64 @@
     switchTypeAuth(type);
   };
 
-  // REVIEW refactor
   const switchMenu = (value: boolean) => (isMobileMenu.value = value);
-  // REVIEW refactor
-  const toggleCatalogModal = () => (isCatalogModal.value = !isCatalogModal.value);
+
+  // Catalog START
+  const parentCategories = computed(() =>
+    catalog.value.filter((item) => item.parent_category === 0)
+  );
+
+  // mobile reset
+  const resetModalState = () => {
+    selectedParentCategory.value = null;
+    selectedChildCategory.value = null;
+    currentCategories.value = parentCategories.value;
+  };
+
+  watch(isCatalogModal, (newValue) => {
+    // reset modal state on close by click on overlay
+    if (newValue === false) {
+      resetModalState();
+    }
+  });
+
+  const toggleCatalogModal = () => {
+    isCatalogModal.value = !isCatalogModal.value;
+
+    // reset modal state on close by click on button
+    if (isCatalogModal.value === false) {
+      resetModalState();
+    }
+  };
+
+  const updateCurrentCategories = (value: Catalog[]) => (currentCategories.value = value);
+  const updateParentCategory = (value: Catalog | null) => (selectedParentCategory.value = value);
+  const updateChildCategory = (value: Catalog | null) => (selectedChildCategory.value = value);
+
+  const getCatalog = async () => {
+    // TODO useApiFetch
+    try {
+      const res = await useApi(`${useUrlApi()}/catalog`);
+
+      catalog.value = res as Catalog[];
+      currentCategories.value = parentCategories.value;
+
+      if (screenWidth.value >= BREAKPOINTS_LG) {
+        [selectedParentCategory.value] = parentCategories.value;
+        [selectedChildCategory.value] = selectedParentCategory.value.children;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getCatalog();
+
+  provide('parentCategories', parentCategories);
+  provide('currentCategories', { currentCategories, updateCurrentCategories });
+  provide('selectedParentCategory', { selectedParentCategory, updateParentCategory });
+  provide('selectedChildCategory', { selectedChildCategory, updateChildCategory });
+  // Catalog END
 </script>
 
 <template>
@@ -122,7 +180,6 @@
     :isLogo="isLogo"
     :toggleCatalogModal="toggleCatalogModal"
     class="container mb-[40px] hidden lg:flex"
-    @toggleModal="toggleCatalogModal"
   />
   <!-- DESKTOP SUB-HEADER END -->
 

@@ -3,63 +3,53 @@
     toggleCatalogModal: () => void;
   }>();
 
-  const catalog = ref<Catalog[]>([]);
-  const currentCategories = ref<Catalog[]>([]);
+  const parentCategories = inject('parentCategories') as Ref<Catalog[]>;
+  const { currentCategories, updateCurrentCategories } = inject('currentCategories') as {
+    currentCategories: Ref<Catalog[]>;
+    updateCurrentCategories: (value: Catalog[]) => void;
+  };
+  const { selectedParentCategory, updateParentCategory } = inject('selectedParentCategory') as {
+    selectedParentCategory: Ref<Catalog | null>;
+    updateParentCategory: (value: Catalog | null) => void;
+  };
+  const { selectedChildCategory, updateChildCategory } = inject('selectedChildCategory') as {
+    selectedChildCategory: Ref<Catalog | null>;
+    updateChildCategory: (value: Catalog | null) => void;
+  };
+
   const navigationStack = ref<Catalog[]>([]);
   const currentCategoryLevel = ref(0);
   const MIDDLE_CATEGORY_LEVEL = 1;
   const LAST_CATEGORY_LEVEL = 2;
-  const selectedParentCategory = ref<Catalog | null>(null);
-  const selectedChildCategory = ref<Catalog | null>(null);
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
 
-  const parentCategories = computed(() =>
-    catalog.value.filter((item) => item.parent_category === 0)
-  );
-
   const showChildren = (category: Catalog) => {
     navigationStack.value.push(category);
-    currentCategories.value = category.children;
+    updateCurrentCategories(category.children);
     currentCategoryLevel.value += 1;
   };
 
   const navigateToParentCategory = () => {
     navigationStack.value.pop();
+
     if (navigationStack.value.length > 0) {
-      currentCategories.value = navigationStack.value[navigationStack.value.length - 1].children;
+      updateCurrentCategories(navigationStack.value[navigationStack.value.length - 1].children);
     } else {
-      currentCategories.value = parentCategories.value;
+      updateCurrentCategories(parentCategories.value);
     }
 
     currentCategoryLevel.value -= 1;
   };
 
   const selectParentCategory = (category: Catalog) => {
-    selectedParentCategory.value = category;
-    [selectedChildCategory.value] = category.children;
+    updateParentCategory(category);
+    // console.log(category.children, 'category.children');
+    // FIXME type error
+    updateChildCategory(category.children);
   };
 
-  const selectChildCategory = (category: Catalog) => (selectedChildCategory.value = category);
-
-  // TODO move to parent component
-  const getCatalog = async () => {
-    try {
-      const res = await useApiFetch(`${useUrlApi()}/catalog`);
-
-      catalog.value = res.data.value as Catalog[];
-      currentCategories.value = parentCategories.value;
-
-      if (screenWidth.value >= BREAKPOINTS_LG) {
-        [selectedParentCategory.value] = parentCategories.value;
-        [selectedChildCategory.value] = selectedParentCategory.value.children;
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  getCatalog();
+  const selectChildCategory = (category: Catalog) => updateChildCategory(category);
 </script>
 
 <template>

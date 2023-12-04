@@ -4,8 +4,6 @@
     toggleCatalogModal: () => void;
   }>();
 
-  defineEmits(['toggleModal']);
-
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
   const isCatalogHovered = ref(false);
@@ -14,18 +12,15 @@
 
   const handleMouseLeave = () => (isCatalogHovered.value = false);
 
-  const onScroll = () => (isCatalogHovered.value = false);
+  onMounted(() => window.addEventListener('scroll', handleMouseLeave));
 
-  onMounted(() => window.addEventListener('scroll', onScroll));
-
-  onUnmounted(() => window.removeEventListener('scroll', onScroll));
+  onUnmounted(() => window.removeEventListener('scroll', handleMouseLeave));
 </script>
 
 <template>
   <div class="flex gap-[48px]">
     <UiButtonTextUnderline
       styles="md:hover:text-status_red md:hover:before:bg-status_red"
-      @click="$emit('toggleModal')"
       @mouseover="handleMouseOver"
       @mouseleave="handleMouseLeave"
     >
