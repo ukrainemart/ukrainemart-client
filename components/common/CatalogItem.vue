@@ -3,7 +3,7 @@
     category: Catalog;
     isSelectedCategory: boolean;
     viewport?: 'mobile' | 'desktop';
-    variant?: 'logo' | 'image';
+    variant?: 'logo' | 'image' | null;
     handleLinkClick: (category: Catalog) => void;
   }>();
 

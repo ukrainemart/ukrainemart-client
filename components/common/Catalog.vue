@@ -39,8 +39,10 @@
 
     if (navigationStack.value.length > 0) {
       updateCurrentCategories(navigationStack.value[navigationStack.value.length - 1].children);
+      currentMobileParentCategory.value = navigationStack.value[navigationStack.value.length - 1];
     } else {
       updateCurrentCategories(parentCategories.value);
+      currentMobileParentCategory.value = null;
     }
 
     currentCategoryLevel.value -= 1;
