@@ -6,7 +6,7 @@
 
 <template>
   <div>
-    <div class="mb-5">
+    <div class="mb-5 md:mb-7">
       <PagesCategoryFilterTitle>Каталог</PagesCategoryFilterTitle>
       <PagesCategoryBreadcrumb
         :breadcrumb="category?.breadcrumb"
@@ -14,18 +14,7 @@
       />
     </div>
 
-    <div class="mb-5">
-      <PagesCategoryFilterTitle>Особливості постачальника</PagesCategoryFilterTitle>
-      <PagesCategoryCheckbox label="Верифікований постачальник" />
-    </div>
-
-    <div class="mb-5">
-      <PagesCategoryFilterTitle>Особливості товару</PagesCategoryFilterTitle>
-      <PagesCategoryCheckbox label="Готовий до відправки" />
-      <PagesCategoryCheckbox label="Платні зразки" />
-    </div>
-
-    <div class="mb-5">
+    <div class="mb-5 md:mb-7">
       <PagesCategoryFilterTitle>Мінімальне замовлення</PagesCategoryFilterTitle>
       <div class="flex gap-x-[10px] md:gap-x-[25px]">
         <!-- TODO add placeholder -->
