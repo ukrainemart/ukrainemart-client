@@ -29,15 +29,18 @@
         v-if="screenWidth >= BREAKPOINTS_LG && isCatalogHovered"
         :class="
           cn('fixed inset-x-0 z-[200] text-black', {
-            'top-[110px]': isLogo,
-            'top-[60px]': !isLogo,
+            'top-[110px] 4xl:top-[145px]': isLogo,
+            'top-[60px] 4xl:top-[80px]': !isLogo,
           })
         "
       >
         <div
           class="mt-[30px] rounded-b-3xl bg-background-primary pb-[50px] shadow-xl 2xl:pb-[70px]"
         >
-          <CommonCatalog :toggleCatalogModal="toggleCatalogModal" />
+          <CommonCatalog
+            :toggleCatalogModal="toggleCatalogModal"
+            :closeCatalog="handleMouseLeave"
+          />
         </div>
       </div>
     </UiButtonTextUnderline>
