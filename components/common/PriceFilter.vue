@@ -47,7 +47,8 @@
 </script>
 
 <template>
-  <div class="">
+  <!-- REVIEW empty/parent category -->
+  <div v-if="priceRange.api.min !== null && priceRange.api.max !== null">
     <div class="flex flex-col gap-2.5 2xl:gap-[15px]">
       <!-- NOTE 8px height of slider button -->
       <div class="flex h-[8px] items-center md:h-2.5 2xl:h-[12px]">
@@ -109,7 +110,7 @@
   }
 
   .price_slider {
-    @apply mx-auto h-px w-[calc(100%-8px)] cursor-pointer md:w-[calc(100%-10px)] 2xl:h-[2px] 2xl:w-[calc(100%-12px)];
+    @apply h-px w-[calc(100%-8px)] cursor-pointer md:w-[calc(100%-10px)] 2xl:h-[2px] 2xl:w-[calc(100%-12px)];
   }
 
   .slider_values_item {

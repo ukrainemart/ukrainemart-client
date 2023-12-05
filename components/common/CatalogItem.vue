@@ -33,7 +33,7 @@
     >
       <img
         v-if="variant === 'image' && category.image"
-        class="h-[20px] w-[20px] rounded-full object-cover md:h-[40px] md:w-[40px] lg:h-[80px] lg:w-[80px]"
+        class="h-[35px] w-[35px] rounded-full object-cover md:h-[45px] md:w-[45px] lg:h-[80px] lg:w-[80px]"
         :src="category.image"
         :alt="useMultiLang(category, 'title')"
       />
@@ -96,7 +96,7 @@
     >
       <img
         v-if="variant === 'image' && category.image && category.image?.length > 0"
-        class="h-[20px] w-[20px] rounded-full object-cover md:h-[40px] md:w-[40px] lg:h-[80px] lg:w-[80px]"
+        class="h-[80px] w-[80px] rounded-full object-cover"
         :src="category.image"
         :alt="useMultiLang(category, 'title')"
       />

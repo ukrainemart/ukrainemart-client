@@ -84,7 +84,6 @@
 
         updateUrlWithFilters();
         getValueQuery();
-        getProducts();
       }
     } catch (error) {
       console.error(error);
