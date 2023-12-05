@@ -1,3 +1,8 @@
+const BURGER_MENU_HEIGHT = {
+  BURGER_MENU_SM: '257px',
+  BURGER_MENU_MD: '282px',
+};
+
 const HEADER_HEIGHT = {
   HEADER_SM: '82px',
   HEADER_LG: '99px',
@@ -20,5 +25,6 @@ const VAR = {
   CONTAINER_PADDING_MD: '40px',
   MOBILE_BOTTOM_MENU_HEIGHT: '64px',
   ...HEADER_HEIGHT,
+  ...BURGER_MENU_HEIGHT,
 };
 export default VAR;

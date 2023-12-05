@@ -8,7 +8,8 @@
   const isMobileMenu = ref(false);
   const isAuthModal = ref(false);
   const typeAuth = ref<SwitchAuth>('login');
-  const isCatalogModal = ref(false);
+  const isCatalogModal = ref(false); // mobile catalog state
+  const isCatalogHovered = ref(false); // desktop catalog state
   const catalog = ref<Catalog[]>([]);
   const currentCategories = ref<Catalog[]>([]);
   const selectedParentCategory = ref<Catalog | null>(null);
@@ -30,32 +31,28 @@
     catalog.value.filter((item) => item.parent_category === 0)
   );
 
-  // mobile reset
-  const resetModalState = () => {
-    selectedParentCategory.value = null;
-    selectedChildCategory.value = null;
-    currentCategories.value = parentCategories.value;
-  };
-
   watch(isCatalogModal, (newValue) => {
     // reset modal state on close by click on overlay
     if (newValue === false) {
-      resetModalState();
+      currentCategories.value = parentCategories.value;
     }
   });
 
-  const toggleCatalogModal = () => {
-    isCatalogModal.value = !isCatalogModal.value;
-
-    // reset modal state on close by click on button
-    if (isCatalogModal.value === false) {
-      resetModalState();
+  watch(isCatalogHovered, (newValue) => {
+    // reset modal on mouse leave
+    if (newValue === false) {
+      currentCategories.value = parentCategories.value;
+      [selectedParentCategory.value] = parentCategories.value;
+      [selectedChildCategory.value] = selectedParentCategory.value.children;
     }
-  };
+  });
+
+  const toggleCatalogModal = () => (isCatalogModal.value = !isCatalogModal.value);
 
   const updateCurrentCategories = (value: Catalog[]) => (currentCategories.value = value);
   const updateParentCategory = (value: Catalog | null) => (selectedParentCategory.value = value);
   const updateChildCategory = (value: Catalog | null) => (selectedChildCategory.value = value);
+  const updateIsCatalogHovered = (value: boolean) => (isCatalogHovered.value = value);
 
   const getCatalog = async () => {
     // TODO useApiFetch
@@ -80,6 +77,7 @@
   provide('currentCategories', { currentCategories, updateCurrentCategories });
   provide('selectedParentCategory', { selectedParentCategory, updateParentCategory });
   provide('selectedChildCategory', { selectedChildCategory, updateChildCategory });
+  provide('isCatalogHovered', { isCatalogHovered, updateIsCatalogHovered });
   // Catalog END
 </script>
 

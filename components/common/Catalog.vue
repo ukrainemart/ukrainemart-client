@@ -101,8 +101,8 @@
             ? 'logo'
             : null
         "
-        :handleLinkClick="handleLinkClick"
-        @show-children="showChildren"
+        @handleLinkClick="handleLinkClick"
+        @showChildren="showChildren"
       />
     </template>
   </div>
@@ -119,7 +119,7 @@
         <CommonCatalogItem
           :category="category"
           :isSelectedCategory="selectedParentCategory?.id === category.id"
-          :handleLinkClick="handleLinkClick"
+          @handleLinkClick="handleLinkClick"
         />
       </li>
     </ul>
@@ -141,8 +141,8 @@
           :category="category"
           :isSelectedCategory="selectedChildCategory?.id === category.id"
           :selectedParentCategory="selectedParentCategory"
-          :handleLinkClick="handleLinkClick"
           variant="logo"
+          @handleLinkClick="handleLinkClick"
         />
       </li>
     </ul>
@@ -158,8 +158,8 @@
       <li v-for="category in selectedChildCategory.children" :key="category.id" class="h-fit">
         <CommonCatalogItem
           :category="category"
-          :handleLinkClick="handleLinkClick"
           variant="image"
+          @handleLinkClick="handleLinkClick"
         />
       </li>
     </ul>

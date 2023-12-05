@@ -51,7 +51,7 @@
   <div v-if="priceRange.api.min !== null && priceRange.api.max !== null">
     <div class="flex flex-col gap-2.5 2xl:gap-[15px]">
       <!-- NOTE 8px height of slider button -->
-      <div class="flex h-[8px] items-center md:h-2.5 2xl:h-[12px]">
+      <div class="flex h-[8px] items-center justify-center md:h-2.5 2xl:h-[12px]">
         <Slider
           :value="[priceRange.input.min, priceRange.input.max]"
           :min="priceRange.api.min"

@@ -4,16 +4,18 @@
     toggleCatalogModal: () => void;
   }>();
 
+  const { isCatalogHovered, updateIsCatalogHovered } = inject('isCatalogHovered') as {
+    isCatalogHovered: Ref<boolean>;
+    updateIsCatalogHovered: (value: boolean) => void;
+  };
+
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
-  const isCatalogHovered = ref(false);
 
-  const handleMouseOver = () => (isCatalogHovered.value = true);
-
-  const handleMouseLeave = () => (isCatalogHovered.value = false);
+  const handleMouseOver = () => updateIsCatalogHovered(true);
+  const handleMouseLeave = () => updateIsCatalogHovered(false);
 
   onMounted(() => window.addEventListener('scroll', handleMouseLeave));
-
   onUnmounted(() => window.removeEventListener('scroll', handleMouseLeave));
 </script>
 
