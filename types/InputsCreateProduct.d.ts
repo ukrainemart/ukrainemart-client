@@ -4,8 +4,9 @@ declare interface InputsCreateProduct {
   descriptionUa: string;
   descriptionEn:  string;
   categoryId:  string;
-  priceType: string;
+  priceType: PriceProduct['type'];
   fixedPrice?: PriceProduct['fixedPrice'] ,
   variatedPrices:  PriceProduct['variatedPrice'][] | [],
   productImages: any[] | [],
+  unitId: any;
 }

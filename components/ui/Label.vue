@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     label: string;
-    htmlFor: string;
+    htmlFor?: string;
     styles?: string;
   }>();
 </script>
@@ -16,7 +16,7 @@
     "
     :for="htmlFor"
   >
-    <p class="shrink-0 truncate">
+    <p class="flex-1">
       {{ label }}
     </p>
     <slot />

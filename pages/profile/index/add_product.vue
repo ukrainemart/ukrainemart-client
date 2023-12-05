@@ -20,7 +20,8 @@
     },
     variatedPrices: [],
     productImages: [],
-  } as InputsCreateProduct);
+    unitId: '',
+  });
 
   const formData = () => {
     const data = new FormData();

@@ -17,7 +17,17 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxt/ui',
     '@nuxtjs/i18n',
+    '@vee-validate/nuxt',
   ],
+  veeValidate: {
+    autoImports: true,
+    componentNames: {
+      Form: 'VForm',
+      Field: 'VField',
+      FieldArray: 'VFieldArray',
+      ErrorMessage: 'VErrorMessage',
+    },
+  },
   i18n: {
     vueI18n: './i18n/i18n.config.ts',
   },

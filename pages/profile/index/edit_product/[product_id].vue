@@ -22,6 +22,7 @@
     },
     variatedPrices: [],
     productImages: [],
+    unitId: '',
   } as InputsCreateProduct);
   const product = ref<Product>({} as Product);
   const productId = route.params.product_id;
@@ -39,10 +40,12 @@
       inputs.value.titleUa = response.title_ua;
       inputs.value.productImages = response.images?.map((el: any) => el.path) || [];
       inputs.value.priceType = response.price_type;
+      inputs.value.unitId = response.prices[0].unit_id || '';
+
       if (response.price_type === 'fixed' && inputs.value.fixedPrice) {
         inputs.value.fixedPrice.amount = String(response.prices[0].min_amount) || '';
         inputs.value.fixedPrice.price = String(response.prices[0].price) || '';
-        inputs.value.fixedPrice.unitId = String(response.prices[0].unit_id) || '';
+        inputs.value.fixedPrice.unitId = response?.prices[0]?.unit_id || '';
       }
       if (response.price_type === 'variated') {
         inputs.value.variatedPrices = response.prices.map((price: PriceProduct['price']) => {
@@ -51,8 +54,8 @@
             minAmount: String(price.min_amount),
             maxAmount: String(price.max_amount),
             price: String(price.price),
-            unitId: String(price.unit_id),
-          };
+            unitId: response.prices[0].unit_id,
+          } as PriceProduct['variatedPrice'];
 
           return variatedPrice;
         });

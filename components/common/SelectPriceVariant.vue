@@ -1,9 +1,30 @@
 <script setup lang="ts">
   const props = defineProps<{
     selected: PriceProduct['type'];
+    name: string;
+    modelValue: PriceProduct['type'];
   }>();
 
-  console.log(props.selected);
+  const value = ref<PriceProduct['type']>('');
+
+  watchDeep(
+    () => props.selected,
+    () => {
+      console.log(props.modelValue);
+
+      value.value = props.selected;
+    }
+  );
+
+  const emits = defineEmits(['update:modelValue']);
+
+  const handleInput = () => {
+    emits('update:modelValue', value.value);
+  };
+
+  watchDeep(value, () => {
+    handleInput();
+  });
 
   const { t } = useI18n();
 
@@ -31,11 +52,13 @@
 </script>
 
 <template>
-  <UiSelectOutline
+  <UiSelectOutlineValidate
+    v-model="value"
     :currentValue="selectedTitle"
     :options="variants"
-    value-attribute="value"
-    option-attribute="title"
+    :name="name"
+    valueAttribute="value"
+    optionAttribute="title"
     class="w-full max-w-[130px] lowercase md:max-w-[220px] xl:max-w-[200px]"
   />
 </template>

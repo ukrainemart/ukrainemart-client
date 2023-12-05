@@ -40,12 +40,17 @@ export const useAuthStore = defineStore('authStore', () => {
         method: 'POST',
         body: credentials,
       });
+      if (response.status.value === 'error') {
+        return false;
+      }
       if (response.data.value.status === 1) {
         await fetchUser();
         navigateTo('/profile');
+        return true;
       }
     } catch (err) {
       console.log(err);
+      return false;
     }
   }
 

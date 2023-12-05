@@ -1,6 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     currentValue: any;
+    uiMenu?: any;
   }>();
 </script>
 
@@ -22,6 +23,7 @@
           base: 'hidden',
         },
       },
+      ...uiMenu,
     }"
   >
     <UiButtonTextOpeningArrow

@@ -3,6 +3,7 @@
     fixedPrice: PriceProduct['fixedPrice'];
     variatedPrices: PriceProduct['variatedPrice'][];
     priceType: PriceProduct['type'];
+    currentUnitId: any;
   }>();
 
   const emits = defineEmits(['update:fixedPrice', 'update:variatedPrices', 'update:priceType']);
@@ -26,14 +27,14 @@
   });
 
   const addNewPrice = () => {
-    const newPrice: PriceProduct['variatedPrice'] = {
+    const addablePrice = {
       minAmount: '',
       maxAmount: '',
       price: '',
-      unitId: '',
+      unitId: props.currentUnitId,
     } as PriceProduct['variatedPrice'];
 
-    variated.value = [...variated.value, newPrice];
+    variated.value = [...variated.value, addablePrice];
   };
 
   const updateVariationPrice = (price: PriceProduct['variatedPrice']) => {
@@ -63,7 +64,7 @@
 
     <UiLabel for="" :label="$t('add_product.select_price_format') + ':'">
       <div class="flex items-center gap-[10px] md:gap-[15px] xl:gap-[20px]">
-        <CommonSelectPriceVariant v-model="type" :selected="priceType" />
+        <CommonSelectPriceVariant v-model="type" name="priceType" :selected="priceType" />
         <UiButtonOpacityAdding
           v-if="priceType === 'variated' && props.variatedPrices.length < 5"
           @click="addNewPrice"

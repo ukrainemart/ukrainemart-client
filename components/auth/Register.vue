@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  const { t } = useI18n();
   const auth = useAuthStore();
   const emits = defineEmits(['switchTypeAuth']);
   const credentials = reactive<RegisterCredentials>({
@@ -7,38 +8,20 @@
     password: '',
     c_password: '',
   });
-  type FormValidationErrors = {
-    password?: string;
-    c_password?: string;
-  };
-  const formValidationErrors = ref<FormValidationErrors>({});
 
+  const error = ref('');
   const switchTypeAuth = (type: SwitchAuth) => {
     emits('switchTypeAuth', type);
   };
 
-  const validateForm = async () => {
-    try {
-      await validationSchema.validate(credentials, { abortEarly: false });
-      formValidationErrors.value = {};
-
-      auth.register(credentials).then((res: any) => {
-        if (res.data.value.status === 1) {
-          switchTypeAuth('successRegister');
-        }
-      });
-    } catch (validationErrors: any) {
-      formValidationErrors.value = {};
-
-      validationErrors.inner.forEach((error: any) => {
-        const errorPath = error.path as keyof FormValidationErrors;
-        formValidationErrors.value[errorPath] = error.message;
-      });
-    }
-  };
-
   const register = () => {
-    validateForm();
+    auth.register(credentials).then((res: any) => {
+      if (res.data.value.status === 1) {
+        switchTypeAuth('successRegister');
+      } else {
+        error.value = t('validation_inputs.try_again');
+      }
+    });
   };
 </script>
 
@@ -57,30 +40,42 @@
     class="my-[10px] w-[100px] self-center md:my-[17px] md:w-[139px] xl:my-[15px] xl:w-[181px]"
   />
 
-  <form action="#" @submit.prevent="register">
+  <VForm action="#" :validation-schema="validationRegister" @submit="register">
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
         <UiLabel :label="`${$t('name')}:`" type="text" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.name" tabindex="1" required />
+          <UiInputOutlineValidate v-model="credentials.name" name="name" tabindex="1" required />
         </UiLabel>
 
         <UiLabel :label="`${$t('email')}:`" type="email" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.email" tabindex="2" required />
+          <UiInputOutlineValidate v-model="credentials.email" name="email" tabindex="2" required />
         </UiLabel>
 
         <UiLabel for="" :label="`${$t('password')}:`" class="!text-status_gray">
-          <UiInputOutlinePassword v-model="credentials.password" tabindex="3" required />
+          <UiInputOutlinePassword
+            v-model="credentials.password"
+            :showPasswordError="true"
+            name="password"
+            tabindex="3"
+            required
+          />
         </UiLabel>
-        <div v-if="formValidationErrors.password" class="text-status_red">
+        <!-- <div v-if="formValidationErrors.password" class="text-status_red">
           {{ $t(formValidationErrors.password) }}
-        </div>
+        </div> -->
 
         <UiLabel for="" :label="`${$t('repeatPassword')}:`" class="!text-status_gray">
-          <UiInputOutlinePassword v-model="credentials.c_password" tabindex="4" required />
+          <UiInputOutlinePassword
+            v-model="credentials.c_password"
+            :showPasswordError="true"
+            name="c_password"
+            tabindex="4"
+            required
+          />
         </UiLabel>
-        <div v-if="formValidationErrors.c_password" class="text-status_red">
+        <!-- <div v-if="formValidationErrors.c_password" class="text-status_red">
           {{ $t(formValidationErrors.c_password) }}
-        </div>
+        </div> -->
       </div>
 
       <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">
@@ -91,6 +86,8 @@
           <UiCheckbox required tabindex="5" />
         </UiLabel>
       </div>
+
+      <UiAlertTextDanger v-if="error" class="mt-[7px] xl:mt-[10px]">{{ error }}</UiAlertTextDanger>
 
       <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]" tabindex="6">
         {{ $t('signup') }}
@@ -113,7 +110,7 @@
         </UiButtonText>
       </div>
     </div>
-  </form>
+  </VForm>
 </template>
 
 <style scoped></style>

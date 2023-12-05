@@ -3,26 +3,22 @@
     price: PriceProduct['fixedPrice'];
   }>();
 
-  // const inputs = ref<PriceProduct['fixedPrice']>({
-  //   amount: '',
-  //   price: '',
-  //   unitId: '',
-  // });
-  const unitOptions: any = inject('unitOptions');
+  const { value, errorMessage } = useField(() => 'price');
 
-  // const emits = defineEmits(['update:price']);
+  const checkValidation = () => {
+    if (props.price.amount && props.price.price && props.price.unitId) {
+      value.value = true;
+    } else {
+      value.value = false;
+    }
+  };
 
-  // const updateValue = () => {
-  //   emits('update:price', inputs.value);
-  // };
-
-  const getCurrentUnit = computed(
-    () => unitOptions.value?.find((el: any) => el.id === +props.price.unitId) || ''
+  watchDeep(
+    () => props.price,
+    () => {
+      checkValidation();
+    }
   );
-  console.log(getCurrentUnit.value);
-  watchDeep(getCurrentUnit, () => {
-    console.log(getCurrentUnit.value);
-  });
 </script>
 
 <template>
@@ -38,11 +34,7 @@
         :label="$t('add_product.unit_measurement') + ':'"
         class="ml-[10px] justify-items-start md:ml-[20px]"
       >
-        <CommonSelectUnitMeasure
-          v-model="price.unitId"
-          :currentValue="getCurrentUnit.title"
-          class="max-w-[90px] md:max-w-[110px]"
-        />
+        <PagesCreateProductSelectUnit class="max-w-[90px] md:max-w-[110px]" />
       </UiLabel>
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
@@ -55,6 +47,7 @@
       </UiLabel>
     </div>
   </div>
+  <UiAlertInputError v-if="errorMessage" :error="errorMessage" />
 </template>
 
 <style scoped></style>
