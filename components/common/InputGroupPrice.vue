@@ -45,6 +45,20 @@
       return el;
     });
   };
+
+  const { value, errorMessage } = useField(() => 'price');
+
+  const checkValidation = () => {
+    if (props.fixedPrice || props.variatedPrices.length > 0) {
+      value.value = true;
+    } else {
+      value.value = false;
+    }
+  };
+
+  watchDeep([() => props.fixedPrice, () => props.variatedPrices], () => {
+    checkValidation();
+  });
 </script>
 
 <template>
@@ -73,6 +87,7 @@
         </UiButtonOpacityAdding>
       </div>
     </UiLabel>
+    <UiAlertInputError v-if="errorMessage" :error="errorMessage" />
   </div>
 </template>
 

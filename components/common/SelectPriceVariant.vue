@@ -52,11 +52,10 @@
 </script>
 
 <template>
-  <UiSelectOutlineValidate
+  <UiSelectOutline
     v-model="value"
     :currentValue="selectedTitle"
     :options="variants"
-    :name="name"
     valueAttribute="value"
     optionAttribute="title"
     class="w-full max-w-[130px] lowercase md:max-w-[220px] xl:max-w-[200px]"

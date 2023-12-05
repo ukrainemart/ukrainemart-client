@@ -3,7 +3,13 @@
     price: PriceProduct['variatedPrice'];
   }>();
 
-  const { value, errorMessage } = useField(() => 'price');
+  const { value, errorMessage } = useField(
+    () => 'price',
+    {},
+    {
+      validateOnValueUpdate: false,
+    }
+  );
 
   const checkValidation = () => {
     console.log(props.price.unitId);
@@ -53,9 +59,9 @@
       <UiLabel
         for=""
         :label="$t('add_product.unit_measurement') + ':'"
-        class="ml-[10px] justify-items-start md:ml-[20px]"
+        styles="ml-[10px] whitespace-nowrap justify-items-start  md:ml-[20px]"
       >
-        <PagesCreateProductSelectUnit class="max-w-[90px] md:max-w-[110px]" />
+        <PagesCreateProductSelectUnit class="max-w-[90px] whitespace-nowrap md:max-w-[110px]" />
       </UiLabel>
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">

@@ -41,16 +41,21 @@
     emits('update:modelValue', updateArray);
   };
 
-  const { value, errorMessage } = useField(() => 'productImages');
+  const { value, errorMessage } = useField(
+    'productImages',
+    {},
+    {
+      validateOnValueUpdate: false,
+    }
+  );
 
   const checkValidation = () => {
-    if (props.modelValue.length > 1) {
+    if (props.modelValue.length > 0) {
       value.value = true;
     } else {
       value.value = false;
     }
   };
-
   watchDeep(
     () => props.modelValue,
     () => {
@@ -67,6 +72,9 @@
         class="grid w-full grid-cols-4 gap-[5px] md:grid-cols-5 md:gap-[10px] 2xl:grid-cols-4"
         :list="props.modelValue"
         tag="div"
+        :options="{
+          filter: '.non_draggable',
+        }"
         @sort="sortable"
       >
         <template #item="{ element }">
@@ -93,7 +101,7 @@
         </template>
         <template #footer>
           <div
-            class="relative h-0 basis-[25%] overflow-hidden rounded-[3px] bg-[#D9D9D9] pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
+            class="non_draggable relative h-0 basis-[25%] overflow-hidden rounded-[3px] bg-[#D9D9D9] pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
           >
             <label class="absolute left-0 top-0 z-10 h-full w-full cursor-pointer">
               <UiInputFile class="hidden" @updateInput="updateInput" />

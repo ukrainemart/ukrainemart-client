@@ -32,7 +32,7 @@
       <UiLabel
         for=""
         :label="$t('add_product.unit_measurement') + ':'"
-        class="ml-[10px] justify-items-start md:ml-[20px]"
+        class="ml-[10px] justify-items-start whitespace-nowrap md:ml-[20px]"
       >
         <PagesCreateProductSelectUnit class="max-w-[90px] md:max-w-[110px]" />
       </UiLabel>
