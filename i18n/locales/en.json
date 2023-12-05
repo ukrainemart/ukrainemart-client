@@ -114,5 +114,14 @@
   "password_required": "Password is required",
   "password_confirmation": "Please confirm your password",
   "the_old_password_is_wrong": "The old password is wrong!",
-  "password_successfully_changed": "Password successfully changed!"
+  "password_successfully_changed": "Password successfully changed!",
+
+  "validation_inputs": {
+    "required": "This field is required!",
+    "try_again": "Try it again!"
+  },
+
+  "validation_create_product": {
+    "there_must_be_at_least_1_price": "There must be at least 1 price!"
+  }
 }

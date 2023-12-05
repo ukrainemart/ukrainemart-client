@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  // eslint-disable-next-line import/no-extraneous-dependencies
   import { Sortable } from 'sortablejs-vue3';
 
   const props = defineProps<{
@@ -41,6 +40,23 @@
     const updateArray = props.modelValue.filter((el) => el !== element);
     emits('update:modelValue', updateArray);
   };
+
+  const { value, errorMessage } = useField(() => 'productImages');
+
+  const checkValidation = () => {
+    if (props.modelValue.length > 1) {
+      value.value = true;
+    } else {
+      value.value = false;
+    }
+  };
+
+  watchDeep(
+    () => props.modelValue,
+    () => {
+      checkValidation();
+    }
+  );
 </script>
 
 <template>
@@ -96,6 +112,7 @@
       </Sortable>
     </ClientOnly>
   </div>
+  <UiAlertInputError v-if="errorMessage" class="mt-[5px]" :error="errorMessage" />
 </template>
 
 <style scoped></style>

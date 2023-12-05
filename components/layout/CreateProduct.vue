@@ -7,13 +7,51 @@
     error: string;
     message: string;
   }>();
-
-  const language = ref<Language>();
-
   const emits = defineEmits(['update:inputs', 'actionSubmit']);
   const actionSubmit = () => {
     emits('actionSubmit');
   };
+
+  const updateInputs = (value: any, input: keyof InputsCreateProduct) => {
+    props.inputs[input] = value;
+  };
+
+  const currentUnitId = computed(() => props.inputs.unitId);
+  const changeCurrentUnit = (unitId: any) => {
+    updateInputs(unitId, 'unitId');
+
+    if (props.inputs.priceType === 'fixed') {
+      updateInputs(
+        {
+          amount: props.inputs.fixedPrice?.amount,
+          price: props.inputs.fixedPrice?.price,
+          unitId: currentUnitId.value,
+        },
+        'fixedPrice'
+      );
+      return false;
+    }
+    if (props.inputs.priceType === 'variated') {
+      const newVariated: InputsCreateProduct['variatedPrices'][] = props.inputs.variatedPrices.map(
+        (element: any) => ({
+          ...element,
+          unitId: currentUnitId.value,
+        })
+      );
+      updateInputs(newVariated, 'variatedPrices');
+      return false;
+    }
+  };
+
+  watchDeep(
+    () => props.inputs,
+    () => {
+      console.log(props.inputs);
+    }
+  );
+
+  const language = ref<Language>();
+
   const pageData = ref();
 
   const categoryOptions = computed(
@@ -48,11 +86,13 @@
   getPageData();
 
   provide('unitOptions', unitOptions);
+  provide('currentUnitId', currentUnitId);
+  provide('changeCurrentUnit', changeCurrentUnit);
 </script>
 
 <template>
   <LayoutProfilePage :title="title">
-    <form action="#">
+    <VForm :validation-schema="validationCreateProductForm" @submit="actionSubmit">
       <div
         class="flex flex-col items-start gap-[25px] md:gap-[40px] xl:gap-[100px] 2xl:flex-row 3xl:gap-[141px]"
       >
@@ -64,18 +104,18 @@
               v-show="language === 'ua'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline v-model="inputs.titleUa" required />
+              <UiInputOutlineValidate v-model="inputs.titleUa" name="titleUa" />
             </UiLabel>
             <UiLabel
               v-show="language === 'en'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutline v-model="inputs.titleEn" required />
+              <UiInputOutlineValidate v-model="inputs.titleEn" name="titleEn" />
             </UiLabel>
             <UiLabel for="" :label="$t('add_product.select_category') + ':'">
-              <UiSelectOutline
+              <UiSelectOutlineValidate
                 v-model="inputs.categoryId"
-                required
+                name="categoryId"
                 :options="categoryOptions"
                 :currentValue="getCurrentCategory.title"
                 value-attribute="id"
@@ -86,8 +126,9 @@
               v-show="language === 'ua'"
               :label="$t('add_product.enter_product_description') + ':'"
             >
-              <UiTextareaOutline
+              <UiTextareaOutlineValidate
                 v-model="inputs.descriptionUa"
+                name="descriptionUa"
                 required
                 class="min-h-[120px] md:min-h-[179px]"
               />
@@ -96,8 +137,9 @@
               v-show="language === 'en'"
               :label="$t('add_product.enter_product_description') + ':'"
             >
-              <UiTextareaOutline
+              <UiTextareaOutlineValidate
                 v-model="inputs.descriptionEn"
+                name="descriptionEn"
                 required
                 class="min-h-[120px] md:min-h-[179px]"
               />
@@ -124,12 +166,13 @@
                 <UiInputOutline />
               </UiLabel>
             </div>
-          </div> -->
+          </div>  -->
 
           <CommonInputGroupPrice
             v-model:fixedPrice="inputs.fixedPrice"
             v-model:variatedPrices="inputs.variatedPrices"
             v-model:priceType="inputs.priceType"
+            :currentUnitId="currentUnitId"
           />
         </div>
         <div class="w-full 2xl:basis-[50%] 4xl:basis-[40%]">
@@ -138,11 +181,9 @@
       </div>
       <UiAlertTextDanger v-if="error" class="mt-[15px] xl:mt-[20px]">{{ error }}</UiAlertTextDanger>
       <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">
-        <UiButtonPrimary type="button" @click.once="actionSubmit">{{
-          labelButtonSubmit
-        }}</UiButtonPrimary>
+        <UiButtonPrimary type="submit">{{ labelButtonSubmit }}</UiButtonPrimary>
       </div>
-    </form>
+    </VForm>
   </LayoutProfilePage>
 </template>
 

@@ -3,11 +3,27 @@
     price: PriceProduct['variatedPrice'];
   }>();
 
-  const unitOptions: any = inject('unitOptions');
+  const { value, errorMessage } = useField(() => 'price');
 
-  const getCurrentUnit = computed(
-    () => unitOptions.value?.find((el: any) => el.id === +props.price.unitId) || ''
+  const checkValidation = () => {
+    console.log(props.price.unitId);
+
+    if (props.price.maxAmount && props.price.minAmount && props.price.price && props.price.unitId) {
+      value.value = true;
+    } else {
+      console.log(props.price);
+
+      value.value = false;
+    }
+  };
+  watchDeep(
+    () => props.price,
+    () => {
+      checkValidation();
+    }
   );
+
+  checkValidation();
 </script>
 
 <template>
@@ -39,11 +55,7 @@
         :label="$t('add_product.unit_measurement') + ':'"
         class="ml-[10px] justify-items-start md:ml-[20px]"
       >
-        <CommonSelectUnitMeasure
-          v-model="price.unitId"
-          :currentValue="getCurrentUnit.title"
-          class="max-w-[90px] md:max-w-[110px]"
-        />
+        <PagesCreateProductSelectUnit class="max-w-[90px] md:max-w-[110px]" />
       </UiLabel>
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
@@ -56,6 +68,7 @@
       </UiLabel>
     </div>
   </div>
+  <UiAlertInputError v-if="errorMessage" :error="errorMessage" />
 </template>
 
 <style scoped></style>

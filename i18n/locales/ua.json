@@ -115,5 +115,15 @@
   "password_required": "Пароль обов'язковий",
   "password_confirmation": "Будь ласка, підтвердіть ваш пароль",
   "the_old_password_is_wrong": "Невірний старий пароль!",
-  "password_successfully_changed": "Пароль успішно змінено!"
+  "password_successfully_changed": "Пароль успішно змінено!",
+
+  "validation_inputs": {
+    "required": "Це поле обов'язкове!",
+    "try_again": "Спробуйте ще раз!"
+  },
+
+  "validation_create_product": {
+    "there_must_be_at_least_1_price": "Повинна бути хоча б 1 ціна!",
+    "there_must_be_at_least_one_photo": "Повинна бути хоча б одне фото!"
+  }
 }

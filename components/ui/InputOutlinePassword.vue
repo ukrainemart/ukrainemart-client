@@ -1,22 +1,28 @@
 <script setup lang="ts">
-  defineProps<{
-    modelValue?: string;
+  const props = defineProps<{
+    modelValue: string;
     required?: boolean;
     tabindex?: string;
+    showPasswordError?: boolean;
+    name: string;
   }>();
+  const { value, errorMessage } = useField(() => props.name);
 
   const showPassword = ref(false);
 
   const emits = defineEmits(['update:modelValue']);
-  const handleInput = (event: Event) => {
-    const inputValue = (event.target as HTMLInputElement).value;
-    emits('update:modelValue', inputValue);
+  const handleInput = () => {
+    emits('update:modelValue', value);
   };
 
-  const switchPassword = () => {
-    console.log(showPassword.value);
-    console.log('1');
+  watchDeep(
+    () => value,
+    () => {
+      handleInput();
+    }
+  );
 
+  const switchPassword = () => {
     showPassword.value = !showPassword.value;
   };
 </script>
@@ -39,14 +45,16 @@
       </UiButtonOpacity>
     </div>
     <UiInputOutline
+      v-model="value"
       :tabindex="tabindex"
-      :value="modelValue"
+      :name="name"
       :required="required"
       class="w-full pr-[26px] md:pr-[35px] xl:pr-[47px]"
+      :class="{ '!border-status_red': errorMessage && showPasswordError }"
       :type="showPassword ? 'text' : 'password'"
-      @input="handleInput"
     />
   </div>
+  <UiAlertInputError v-if="showPasswordError" :error="errorMessage" />
 </template>
 
 <style scoped></style>

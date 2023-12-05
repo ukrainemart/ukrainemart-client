@@ -6,7 +6,7 @@ declare interface PriceProduct {
     unitId: any;
   };
   variatedPrice: {
-    id: number;
+    id?: number;
     minAmount: string;
     maxAmount: string;
     price: string;
@@ -26,7 +26,7 @@ declare interface PriceProduct {
       created_at: string;
       updated_at: string;
     };
-    unit_id: number;
+    unit_id: any;
     created_at: string;
     updated_at: string;
   };

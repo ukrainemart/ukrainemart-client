@@ -1,23 +1,30 @@
 <script setup lang="ts">
   const auth = useAuthStore();
+  const { t } = useI18n();
+
   const emits = defineEmits(['switchTypeAuth', 'switchModal']);
+
+  const error = ref('');
 
   const switchTypeAuth = (type: SwitchAuth) => {
     emits('switchTypeAuth', type);
   };
-  const switchModal = (value: boolean) => {
-    emits('switchModal', value);
-  };
+  // const switchModal = (value: boolean) => {
+  //   emits('switchModal', value);
+  // };
 
   const credentials = reactive<LoginCredentials>({
     email: '',
     password: '',
   });
 
-  const login = () => {
-    auth.login(credentials).then(() => {
-      switchModal(false);
-    });
+  const login = async () => {
+    const status = await auth.login(credentials);
+    console.log(status);
+
+    if (!status) {
+      error.value = t('validation_inputs.try_again');
+    }
   };
 </script>
 
@@ -27,14 +34,19 @@
   >
     {{ $t('authorization') }}
   </UiTitleNamu>
-  <form action="#" @submit.prevent="login">
+  <VForm :validation-schema="validationLogin" action="#" @submit="login">
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
         <UiLabel :label="`${$t('email')}:`" type="text" class="!text-status_gray">
-          <UiInputOutline v-model="credentials.email" tabindex="1" />
+          <UiInputOutlineValidate v-model="credentials.email" name="email" tabindex="1" />
         </UiLabel>
         <UiLabel for="" :label="`${$t('password')}:`" class="!text-status_gray">
-          <UiInputOutlinePassword v-model="credentials.password" tabindex="2" />
+          <UiInputOutlinePassword
+            v-model="credentials.password"
+            :showPasswordError="true"
+            tabindex="2"
+            name="password"
+          />
         </UiLabel>
       </div>
 
@@ -50,6 +62,7 @@
         </UiButtonText>
       </div>
 
+      <UiAlertTextDanger class="mt-[20px]">{{ error }}</UiAlertTextDanger>
       <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]" tabindex="5">
         {{ $t('login') }}
       </UiButtonPrimary>
@@ -72,7 +85,7 @@
         </UiButtonText>
       </div>
     </div>
-  </form>
+  </VForm>
 </template>
 
 <style scoped></style>
