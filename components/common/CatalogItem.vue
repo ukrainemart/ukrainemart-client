@@ -4,12 +4,9 @@
     isSelectedCategory: boolean;
     viewport?: 'mobile' | 'desktop';
     variant?: 'logo' | 'image' | null;
-    handleLinkClick: (category: Catalog) => void;
   }>();
 
-  const emit = defineEmits(['show-children']);
-
-  const showChildren = (category: Catalog) => emit('show-children', category);
+  const emit = defineEmits(['showChildren', 'handleLinkClick']);
 </script>
 
 <template>
@@ -19,7 +16,7 @@
     :to="`/category/${category.id}`"
     class="catalog_item"
     :class="{ 'bg-[#1111111f]': isSelectedCategory }"
-    @click="handleLinkClick(category)"
+    @click="emit('handleLinkClick', category)"
   >
     <div
       :class="
@@ -56,7 +53,7 @@
     type="button"
     class="catalog_item"
     :class="{ 'bg-[#1111111f]': isSelectedCategory }"
-    @click="showChildren(category)"
+    @click="emit('showChildren', category)"
   >
     <div class="flex flex-1 items-center gap-x-[10px] truncate">
       <img
@@ -83,7 +80,7 @@
     :to="`/category/${category.id}`"
     class="catalog_item"
     :class="{ 'bg-[#1111111f]': isSelectedCategory }"
-    @click="handleLinkClick(category)"
+    @click="emit('handleLinkClick', category)"
   >
     <div
       :class="
