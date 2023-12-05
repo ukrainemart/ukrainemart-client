@@ -62,6 +62,9 @@ export default <Partial<Config>>{
         'padding-x-slider-container-2xl': `calc(${VAR.CONTAINER_PADDING_MD} - ${VAR.PADDING_CARD_2XL})`,
 
         'padding-b-footer-xs': `calc(30px + ${VAR.MOBILE_BOTTOM_MENU_HEIGHT})`,
+
+        'burger-menu-sm': `${VAR.BURGER_MENU_SM}`,
+        'burger-menu-md': `${VAR.BURGER_MENU_MD}`,
       },
       opacity: {
         hover: '60%',
