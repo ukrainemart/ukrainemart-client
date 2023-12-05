@@ -60,10 +60,6 @@
             required
           />
         </UiLabel>
-        <!-- <div v-if="formValidationErrors.password" class="text-status_red">
-          {{ $t(formValidationErrors.password) }}
-        </div> -->
-
         <UiLabel for="" :label="`${$t('repeatPassword')}:`" class="!text-status_gray">
           <UiInputOutlinePassword
             v-model="credentials.c_password"
@@ -73,9 +69,6 @@
             required
           />
         </UiLabel>
-        <!-- <div v-if="formValidationErrors.c_password" class="text-status_red">
-          {{ $t(formValidationErrors.c_password) }}
-        </div> -->
       </div>
 
       <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">
