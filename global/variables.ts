@@ -1,6 +1,6 @@
 const BURGER_MENU_HEIGHT = {
-  BURGER_MENU_SM: '241px',
-  BURGER_MENU_MD: '266px',
+  BURGER_MENU_SM: '257px',
+  BURGER_MENU_MD: '282px',
 };
 
 const HEADER_HEIGHT = {

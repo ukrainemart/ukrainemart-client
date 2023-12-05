@@ -14,7 +14,7 @@
   <div
     :class="
       cn(
-        '-top-burger-menu-sm md:-top-burger-menu-md fixed inset-x-0 z-40 h-fit rounded-b-[10px] bg-white px-5 py-[25px] text-black transition-all delay-0 duration-[500ms] ease-linear md:px-10 md:py-[30px] xl:hidden',
+        'fixed inset-x-0 -top-burger-menu-sm z-40 h-fit rounded-b-[10px] bg-white px-5 py-[25px] text-black transition-all delay-0 duration-[500ms] ease-linear md:-top-burger-menu-md md:px-10 md:py-[30px] xl:hidden',
         {
           'top-0 md:top-0': isActive,
         }
