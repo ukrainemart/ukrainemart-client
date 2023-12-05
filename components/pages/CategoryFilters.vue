@@ -18,10 +18,10 @@
       <PagesCategoryFilterTitle>Мінімальне замовлення</PagesCategoryFilterTitle>
       <div class="flex gap-x-[10px] md:gap-x-[25px]">
         <!-- TODO add placeholder -->
-        <UiInputOutline customClass="input_outline_category" />
+        <UiInputOutline customClass="input_outline_category" placeholder="50 Кг" />
         <!-- REVIEW DRY -->
         <button
-          class="rounded-[50px] border border-solid border-black bg-black px-[30px] py-[7px] text-[12px] leading-[15px] text-white transition-colors duration-100 ease-in hover:bg-transparent hover:text-black focus:outline-none disabled:cursor-not-allowed md:text-[16px] md:leading-[20px]"
+          class="rounded-[50px] border border-solid border-black bg-black px-[30px] py-[4px] text-[12px] leading-[15px] text-white transition-colors duration-100 ease-in hover:bg-transparent hover:text-black focus:outline-none disabled:cursor-not-allowed md:text-[16px] md:leading-[20px]"
         >
           Ok
         </button>
