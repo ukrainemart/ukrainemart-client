@@ -1,1 +1,0 @@
-import{k as r,h as t,n as o}from"./entry.1c78ecf8.js";import"./swiper-vue.aabf7ec7.js";const u=r(()=>{const e=t();return console.log(e.isExporter),e.isExporter?!0:o("/profile",{replace:!0})});export{u as default};
