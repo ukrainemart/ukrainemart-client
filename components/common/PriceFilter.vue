@@ -1,57 +1,66 @@
 <script setup lang="ts">
   import Slider from '@vueform/slider';
 
-  const price = ref({
-    min_price: 200,
-    max_price: 4000,
-    min_value: 1300,
-    max_value: 2500,
-  });
+  const PRICE_MAX_LENGTH = 9;
+  const { priceRange, handlerFilter } = inject('priceRange') as {
+    priceRange: {
+      api: {
+        min: number;
+        max: number;
+      };
+      input: {
+        min: number;
+        max: number;
+      };
+    };
+    handlerFilter: (filterValue: any, filterType: string) => void;
+  };
 
-  // const { price } = defineProps(['price']);
-  // const emit = defineEmits();
-  // const [isVisible, setIsVisible] = useToggle(true);
-  // const PRICE_MAX_LENGTH = 9;
+  const handlerPriceUpdate = (value: string | number[], type: string) => {
+    switch (type) {
+      case 'min': {
+        handlerFilter({ min: Number(value), max: priceRange.input.max }, 'price');
+        break;
+      }
+      case 'max': {
+        handlerFilter({ min: priceRange.input.min, max: Number(value) }, 'price');
+        break;
+      }
+      case 'range': {
+        handlerFilter({ min: value[0], max: value[1] }, 'price');
+        break;
+      }
+      default:
+        throw new Error(`Unexpected input type: ${type} or value: ${value}`);
+    }
+  };
 
-  // const handlerPriceUpdate = (value: any, type: string) => {
-  //   switch (type) {
-  //     case 'min':
-  //       emit('update:price', { min_price: Number(value), max_price: price.max_price }, 'price');
-  //       break;
-  //     case 'max':
-  //       emit('update:price', { min_price: price.min_price, max_price: Number(value) }, 'price');
-  //       break;
-  //     case 'range':
-  //       emit('update:price', { min_price: value[0], max_price: value[1] }, 'price');
-  //       break;
-  //     default:
-  //       throw new Error(`Unexpected filterType - ${type}}`);
-  //   }
-  // };
+  const handleInputLength = (value: string, type: string) => {
+    let newValue = value;
 
-  // const handleInputLength = (value: any, type: string) => {
-  //   if (Number(value) > PRICE_MAX_LENGTH) {
-  //     value = value.slice(0, PRICE_MAX_LENGTH);
-  //   }
+    if (Number(value) > PRICE_MAX_LENGTH) {
+      newValue = value.slice(0, PRICE_MAX_LENGTH);
+    }
 
-  //   handlerPriceUpdate(value, type);
-  // };
+    handlerPriceUpdate(newValue, type);
+  };
 </script>
 
 <template>
-  <div class="">
+  <!-- REVIEW empty/parent category -->
+  <div v-if="priceRange.api.min !== null && priceRange.api.max !== null">
     <div class="flex flex-col gap-2.5 2xl:gap-[15px]">
       <!-- NOTE 8px height of slider button -->
       <div class="flex h-[8px] items-center md:h-2.5 2xl:h-[12px]">
         <Slider
-          :value="[price.min_value, price.max_value]"
-          :min="price.min_price"
-          :max="price.max_price"
-          :tooltips="true"
+          :value="[priceRange.input.min, priceRange.input.max]"
+          :min="priceRange.api.min"
+          :max="priceRange.api.max"
+          :tooltips="false"
           :showTooltip="'drag'"
           class="price_slider"
+          @update="handlerPriceUpdate($event, 'range')"
         />
-        <!-- @update="handlerPriceUpdate($event, 'range')" -->
       </div>
 
       <div class="flex justify-between">
@@ -61,11 +70,11 @@
           class="slider_values_item"
           type="number"
           name="min-price"
-          :min="price.min_price"
-          :max="price.max_price"
-          :value="price.min_value"
+          :min="priceRange.api.min"
+          :max="priceRange.api.max"
+          :value="priceRange.input.min"
+          @input="(event: any) => handleInputLength(event.target.value, 'min')"
         />
-        <!-- @input="(event: any) => handleInputLength(event.target.value, 'min')" -->
 
         <input
           id="maxInput"
@@ -73,11 +82,11 @@
           class="slider_values_item"
           type="number"
           name="max-price"
-          :min="price.min_price"
-          :max="price.max_price"
-          :value="price.max_value"
+          :min="priceRange.api.min"
+          :max="priceRange.api.max"
+          :value="priceRange.input.max"
+          @input="(event: any) => handleInputLength(event.target.value, 'max')"
         />
-        <!-- @input="(event: any) => handleInputLength(event.target.value, 'max')" -->
       </div>
     </div>
   </div>
@@ -101,7 +110,7 @@
   }
 
   .price_slider {
-    @apply mx-auto h-px w-[calc(100%-8px)] md:w-[calc(100%-10px)] 2xl:h-[2px] 2xl:w-[calc(100%-12px)];
+    @apply h-px w-[calc(100%-8px)] cursor-pointer md:w-[calc(100%-10px)] 2xl:h-[2px] 2xl:w-[calc(100%-12px)];
   }
 
   .slider_values_item {

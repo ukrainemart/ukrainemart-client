@@ -3,43 +3,107 @@
     isLogo?: boolean;
   }>();
 
+  const { width: screenWidth } = useWindowSize();
+  const { BREAKPOINTS_LG } = useVariables();
   const isMobileMenu = ref(false);
   const isAuthModal = ref(false);
   const typeAuth = ref<SwitchAuth>('login');
+  const isCatalogModal = ref(false);
+  const catalog = ref<Catalog[]>([]);
+  const currentCategories = ref<Catalog[]>([]);
+  const selectedParentCategory = ref<Catalog | null>(null);
+  const selectedChildCategory = ref<Catalog | null>(null);
 
-  const switchTypeAuth = (type: SwitchAuth) => {
-    typeAuth.value = type;
-  };
+  const switchTypeAuth = (type: SwitchAuth) => (typeAuth.value = type);
 
-  const switchAuthModal = (value: boolean) => {
-    isAuthModal.value = value;
-  };
+  const switchAuthModal = (value: boolean) => (isAuthModal.value = value);
 
   const switchAuth = (value: boolean, type: SwitchAuth) => {
     switchAuthModal(value);
     switchTypeAuth(type);
   };
 
-  const switchMenu = (value: boolean) => {
-    isMobileMenu.value = value;
+  const switchMenu = (value: boolean) => (isMobileMenu.value = value);
+
+  // Catalog START
+  const parentCategories = computed(() =>
+    catalog.value.filter((item) => item.parent_category === 0)
+  );
+
+  // mobile reset
+  const resetModalState = () => {
+    selectedParentCategory.value = null;
+    selectedChildCategory.value = null;
+    currentCategories.value = parentCategories.value;
   };
+
+  watch(isCatalogModal, (newValue) => {
+    // reset modal state on close by click on overlay
+    if (newValue === false) {
+      resetModalState();
+    }
+  });
+
+  const toggleCatalogModal = () => {
+    isCatalogModal.value = !isCatalogModal.value;
+
+    // reset modal state on close by click on button
+    if (isCatalogModal.value === false) {
+      resetModalState();
+    }
+  };
+
+  const updateCurrentCategories = (value: Catalog[]) => (currentCategories.value = value);
+  const updateParentCategory = (value: Catalog | null) => (selectedParentCategory.value = value);
+  const updateChildCategory = (value: Catalog | null) => (selectedChildCategory.value = value);
+
+  const getCatalog = async () => {
+    // TODO useApiFetch
+    try {
+      const res = await useApi(`${useUrlApi()}/catalog`);
+
+      catalog.value = res as Catalog[];
+      currentCategories.value = parentCategories.value;
+
+      if (screenWidth.value >= BREAKPOINTS_LG) {
+        [selectedParentCategory.value] = parentCategories.value;
+        [selectedChildCategory.value] = selectedParentCategory.value.children;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  getCatalog();
+
+  provide('parentCategories', parentCategories);
+  provide('currentCategories', { currentCategories, updateCurrentCategories });
+  provide('selectedParentCategory', { selectedParentCategory, updateParentCategory });
+  provide('selectedChildCategory', { selectedChildCategory, updateChildCategory });
+  // Catalog END
 </script>
 
 <template>
   <header class="sticky inset-x-0 top-0 z-[100] bg-background-primary">
-    <PagesMobileMenuBottom @openAuth="switchAuth(true, 'login')" />
+    <PagesMobileMenuBottom
+      @openAuth="switchAuth(true, 'login')"
+      @toggleCatalogModal="toggleCatalogModal"
+    />
+
     <div class="container mx-auto py-[25px] md:px-10 md:py-[30px] 4xl:py-10">
-      <!-- mobile start -->
-      <div class="flex justify-between xl:hidden">
+      <!-- MOBILE START -->
+      <div class="flex justify-between lg:hidden">
         <CommonLogo v-if="isLogo" to="/" />
 
         <div v-else class="flex items-center gap-5">
           <UiButtonPrimary v-if="!isLoggedIn()" @click="switchAuth(true, 'login')">
             {{ $t('login') }}
           </UiButtonPrimary>
+
           <UiButtonTextUnderline v-if="!isLoggedIn()" @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
+
           <UiButtonPrimary v-if="isLoggedIn()" to="/profile">
             {{ $t('profile.profile') }}
           </UiButtonPrimary>
@@ -52,22 +116,22 @@
             :fontControlled="false"
           />
 
-          <SvgoHearth
-            class="hidden h-5 w-[22px] text-black lg:block xl:hidden 4xl:h-[28px] 4xl:w-[30px]"
-            :fontControlled="false"
-          />
-
           <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
         </div>
       </div>
-      <!-- mobile end -->
+      <!-- MOBILE END -->
 
-      <!-- desktop start -->
-      <div class="hidden items-center justify-between xl:flex">
+      <!-- DESKTOP START -->
+      <div class="hidden items-center justify-between lg:flex">
         <div class="flex items-center gap-[15px] 4xl:gap-10">
           <CommonLogo v-if="isLogo" to="/" />
 
-          <CommonSubHeader v-if="!isLogo" />
+          <CommonSubHeader
+            v-if="!isLogo"
+            :isLogo="isLogo"
+            :toggleCatalogModal="toggleCatalogModal"
+            @toggleModal="toggleCatalogModal"
+          />
         </div>
 
         <div class="flex items-center gap-[15px] 4xl:gap-[30px]">
@@ -76,25 +140,32 @@
             class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
             :fontControlled="false"
           />
+
           <SvgoHearth
             class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
             :fontControlled="false"
           />
+
           <CommonLangSwitcher />
+
           <UiButtonTextUnderline v-if="!isLoggedIn()" @click="switchAuth(true, 'register')">
             {{ $t('signup') }}
           </UiButtonTextUnderline>
+
           <UiButtonPrimary v-if="!isLoggedIn()" @click="switchAuth(true, 'login')">
             {{ $t('login') }}
           </UiButtonPrimary>
+
           <UiButtonPrimary v-if="isLoggedIn()" to="/profile">
             {{ $t('profile.profile') }}
           </UiButtonPrimary>
         </div>
       </div>
-      <!-- desktop end -->
+      <!-- DESKTOP END -->
+
       <CommonBurgerMenu :isActive="isMobileMenu" @switchAuth="switchAuth" />
     </div>
+
     <AuthBase
       v-model="isAuthModal"
       :type="typeAuth"
@@ -102,5 +173,24 @@
       @switchModal="switchAuthModal"
     />
   </header>
-  <CommonSubHeader v-if="isLogo" class="container mb-[40px] hidden xl:flex" />
+
+  <!-- DESKTOP SUB-HEADER START -->
+  <CommonSubHeader
+    v-if="isLogo"
+    :isLogo="isLogo"
+    :toggleCatalogModal="toggleCatalogModal"
+    class="container mb-[40px] hidden lg:flex"
+  />
+  <!-- DESKTOP SUB-HEADER END -->
+
+  <!-- MOBILE CATALOG START -->
+  <UiSideModal
+    v-if="screenWidth < BREAKPOINTS_LG"
+    v-model="isCatalogModal"
+    :label="$t('catalog')"
+    @toggleModal="toggleCatalogModal"
+  >
+    <CommonCatalog :toggleCatalogModal="toggleCatalogModal" />
+  </UiSideModal>
+  <!-- MOBILE CATALOG END -->
 </template>

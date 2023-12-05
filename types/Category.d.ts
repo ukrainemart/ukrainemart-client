@@ -14,4 +14,6 @@ declare interface Category {
   updated_at: string;
   breadcrumb: Breadcrumb;
   same_categories: SameCategories[];
+  min_price: number;
+  max_price: number;
 }

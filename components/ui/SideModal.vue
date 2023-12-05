@@ -1,8 +1,9 @@
 <script setup lang="ts">
   defineProps<{
-    isOpen: boolean;
-    category: Category;
+    label: string;
   }>();
+
+  defineEmits(['toggleModal']);
 </script>
 
 <template>
@@ -21,13 +22,14 @@
   >
     <div class="px-5 py-[25px] md:px-10 md:py-[30px]">
       <div class="mb-[25px] flex items-center justify-between md:mb-[30px]">
-        <p class="text-[14px] font-medium md:text-[18px]">Фільтри</p>
-        <button type="button" class="inline-flex">
-          <CommonButtonBurger :isActive="true" />
-        </button>
+        <p class="text-[14px] font-medium md:text-[18px]">
+          {{ label }}
+        </p>
+
+        <CommonButtonBurger :isActive="true" class="inline-flex" @click="$emit('toggleModal')" />
       </div>
 
-      <PagesCategoryFilters :category="category" />
+      <slot />
     </div>
   </UModal>
 </template>

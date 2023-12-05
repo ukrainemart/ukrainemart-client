@@ -1,15 +1,66 @@
 <script setup lang="ts">
   const route = useRoute();
+  const router = useRouter();
   const categoryId = route.params.id;
   const category = ref<Category>();
   const products = ref<Product[]>([]);
   const isOpenFilterMenu = ref(false);
   const loading = ref(true);
+  const priceRange = reactive({
+    api: {
+      min: 0,
+      max: 0,
+    },
+    input: {
+      min: 0,
+      max: 0,
+    },
+  });
   // const NUM_SKELETON_ITEMS = 20;
+
+  const handlerFilter = (filterValue: any, filterType: string) => {
+    switch (filterType) {
+      case 'price': {
+        priceRange.input.min = filterValue.min;
+        priceRange.input.max = filterValue.max;
+        break;
+      }
+      default:
+        throw new Error(`Unexpected filterType - ${filterType} or filterValue - ${filterValue}`);
+    }
+  };
+
+  provide('priceRange', { priceRange, handlerFilter });
+
+  const updateUrlWithFilters = () => {
+    const query: { [key: string]: number | undefined } = {
+      min_price: priceRange.input.min,
+      max_price: priceRange.input.max,
+    };
+
+    Object.keys(query).forEach((key) => {
+      if (!query[key]) {
+        delete query[key];
+      }
+    });
+
+    router.push({ query });
+  };
+
+  const getValueQuery = () => {
+    if (!route.query) return false;
+
+    priceRange.input.min = Number(route.query?.min_price) || priceRange.api.min;
+    priceRange.input.max = Number(route.query?.max_price) || priceRange.api.max;
+  };
 
   const getProducts = async () => {
     try {
-      const res = await useApiFetch(`${useUrlApi()}/category/products/${categoryId}`);
+      const res = await useApiFetch(
+        `${useUrlApi()}/category/products/${categoryId}` +
+          `?min_price=${priceRange.input.min}` +
+          `&max_price=${priceRange.input.max}`
+      );
 
       products.value = res.data.value as Product[];
       loading.value = false;
@@ -23,19 +74,35 @@
     try {
       const res = await useApi(`${useUrlApi()}/category/get/${categoryId}`);
 
-      category.value = res as Category;
-      getProducts();
+      if (res) {
+        category.value = res as Category;
+
+        priceRange.api.min = category.value.min_price;
+        priceRange.api.max = category.value.max_price;
+        priceRange.input.min = category.value.min_price;
+        priceRange.input.max = category.value.max_price;
+
+        updateUrlWithFilters();
+        getValueQuery();
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
   getCategory();
+
+  watchDeep([priceRange], async () => {
+    loading.value = true;
+    await getProducts();
+    await updateUrlWithFilters();
+    loading.value = false;
+  });
 </script>
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
-    <CommonBreadcrumbs />
+    <CommonBreadcrumbs :breadcrumb="category?.breadcrumb" />
 
     <div class="container grid-cols-[225px_1fr] gap-x-[30px] lg:grid lg:grid-cols-[300px_1fr]">
       <aside>
@@ -93,18 +160,20 @@
           </div>
         </div>
 
-        <div class="">
+        <!-- <div class="">
           <UiPagination v-if="!loading" />
-        </div>
+        </div> -->
       </div>
     </div>
 
-    <PagesCategoryFilterMenu
+    <UiSideModal
       v-model="isOpenFilterMenu"
-      :isOpen="isOpenFilterMenu"
-      :category="category"
+      :label="'Фільтри'"
       class="lg:hidden"
-    />
+      @toggleModal="isOpenFilterMenu = false"
+    >
+      <PagesCategoryFilters :category="category" />
+    </UiSideModal>
   </div>
 </template>
 

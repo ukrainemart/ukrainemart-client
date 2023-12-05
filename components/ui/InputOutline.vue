@@ -2,6 +2,7 @@
   defineProps<{
     modelValue?: string;
     customClass?: string;
+    placeholder?: string;
   }>();
 
   const emits = defineEmits(['update:modelValue']);
@@ -16,6 +17,7 @@
   <input
     :value="modelValue"
     :class="customClass ? customClass : 'input_outline'"
+    :placeholder="placeholder ? placeholder : ''"
     @input="handleInput"
   />
 </template>

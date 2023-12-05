@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  const emits = defineEmits(['openAuth']);
+  const emits = defineEmits(['openAuth', 'toggleCatalogModal']);
 
   const openAuth = () => {
     emits('openAuth');
@@ -31,7 +31,7 @@
     <PagesMobileMenuItem to="/" :label="$t('home')">
       <SvgoHome class="!h-full !w-full" />
     </PagesMobileMenuItem>
-    <PagesMobileMenuItem :label="$t('catalog')">
+    <PagesMobileMenuItem :label="$t('catalog')" @click="$emit('toggleCatalogModal')">
       <SvgoSearchMobileMenu class="!h-full !w-full" />
     </PagesMobileMenuItem>
     <PagesMobileMenuItem :label="$t('favorites')">
