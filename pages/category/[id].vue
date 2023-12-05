@@ -102,7 +102,7 @@
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
-    <CommonBreadcrumbs :breadcrumb="category?.breadcrumb" />
+    <CommonBreadcrumbs :breadcrumb="category" />
 
     <div class="container grid-cols-[225px_1fr] gap-x-[30px] lg:grid lg:grid-cols-[300px_1fr]">
       <aside>
@@ -125,12 +125,12 @@
             </button>
 
             <!-- TODO v-if active filters -->
-            <button
+            <!-- <button
               type="button"
               class="text-[10px] font-medium text-status_gray md:text-[12px] lg:text-[16px]"
             >
               Очистити фільтри
-            </button>
+            </button> -->
           </div>
 
           <CommonFilterTags />

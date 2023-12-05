@@ -35,6 +35,7 @@
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
     <CommonBreadcrumbs :breadcrumb="product?.category" />
+
     <div class="container grid 2xl:grid-cols-[1fr_min-content] 2xl:gap-x-5">
       <div class="flex w-full flex-col md:flex-row md:gap-x-5 xl:w-fit 2xl:gap-x-10">
         <div class="mb-[20px] flex gap-[5px] md:mb-[35px] 2xl:mb-[80px] 2xl:gap-[10px]">
