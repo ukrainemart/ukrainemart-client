@@ -18,7 +18,6 @@ export const useFavoritesStore = defineStore('favoritesStore', () => {
   function addToFavorites(id: number, disabledBtn: Ref<boolean>) {
     useApiFetch(`${useUrlApi()}/favorite/change/${id}`).then((res: any) => {
       if (res.data.value.status === 1) {
-
         disabledBtn.value = false;
       }
     });
@@ -27,7 +26,6 @@ export const useFavoritesStore = defineStore('favoritesStore', () => {
   function removeFavorites(id: number, disabledBtn: Ref<boolean>) {
     useApiFetch(`${useUrlApi()}/favorite/change/${id}`).then((res: any) => {
       if (res.data.value.status === 1) {
-
         favorites.value = favorites.value.filter((el) => el.id !== id);
         disabledBtn.value = false;
       }

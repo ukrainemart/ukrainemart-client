@@ -33,6 +33,7 @@
     if (!isLoggedIn()) {
       switchAuthModal(true);
       switchTypeAuth('login');
+      return false;
     }
     isDisabledFavoritesBtn.value = true;
 
