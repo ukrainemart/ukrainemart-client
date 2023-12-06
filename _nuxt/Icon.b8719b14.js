@@ -1,0 +1,1 @@
+import{_ as n}from"./entry.8e6e732b.js";import{x as o,M as r,X as s,a6 as t}from"./swiper-vue.f46bfc32.js";const a=o({props:{name:{type:String,required:!0}}});function p(e,c,_,m,i,l){return r(),s("span",{class:t(e.name)},null,2)}const d=n(a,[["render",p]]);export{d as _};
