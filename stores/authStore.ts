@@ -26,9 +26,7 @@ export const useAuthStore = defineStore('authStore', () => {
 
   async function fetchUser() {
     try {
-      const { data } = await useApiFetch(`${useUrlApi()}/user`, {
-        method: 'GET',
-      });
+      const { data } = await useApiFetch(`${useUrlApi()}/user`);
       user.value = data.value as User;
     } catch (err) {
       console.log(err);
@@ -56,6 +54,7 @@ export const useAuthStore = defineStore('authStore', () => {
       }
       if (response.data.value.status === 1) {
         await fetchUser();
+        switchAuthModal(false);
         navigateTo('/profile');
         return true;
       }

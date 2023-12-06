@@ -13,9 +13,14 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-swiper',
     'nuxt-svgo',
-    '@pinia/nuxt',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore', 'acceptHMRUpdate'],
+      },
+    ],
     '@vueuse/nuxt',
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     '@nuxt/ui',
     '@nuxtjs/i18n',
     '@vee-validate/nuxt',

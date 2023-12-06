@@ -12,7 +12,8 @@
   const switchAuthModal = (value: boolean) => auth.switchAuthModal(value);
 
   const addToFavorites = async () => {
-    await favorites.addToFavorites(props.productId, isDisabledFavoritesBtn, isFavoritesProduct);
+    isFavoritesProduct.value = true;
+    await favorites.addToFavorites(props.productId, isDisabledFavoritesBtn);
   };
 
   watch(isDisabledFavoritesBtn, () => {
@@ -24,7 +25,8 @@
   };
 
   const removeFavorites = () => {
-    favorites.removeFavorites(props.productId, isDisabledFavoritesBtn, isFavoritesProduct);
+    isFavoritesProduct.value = false;
+    favorites.removeFavorites(props.productId, isDisabledFavoritesBtn);
   };
 
   const onClickFavoritesBth = () => {

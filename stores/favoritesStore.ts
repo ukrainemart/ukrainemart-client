@@ -15,19 +15,19 @@ export const useFavoritesStore = defineStore('favoritesStore', () => {
     favorites.value = data.value as Product[];
   }
 
-  function addToFavorites(id: number, disabledBtn: Ref<boolean>, isFavorite: Ref<boolean>) {
+  function addToFavorites(id: number, disabledBtn: Ref<boolean>) {
     useApiFetch(`${useUrlApi()}/favorite/change/${id}`).then((res: any) => {
       if (res.data.value.status === 1) {
-        isFavorite.value = true;
+
         disabledBtn.value = false;
       }
     });
   }
 
-  function removeFavorites(id: number, disabledBtn: Ref<boolean>, isFavorite: Ref<boolean>) {
+  function removeFavorites(id: number, disabledBtn: Ref<boolean>) {
     useApiFetch(`${useUrlApi()}/favorite/change/${id}`).then((res: any) => {
       if (res.data.value.status === 1) {
-        isFavorite.value = false;
+
         favorites.value = favorites.value.filter((el) => el.id !== id);
         disabledBtn.value = false;
       }
