@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="no-scrollbar overflow-y-hidden py-[35px] md:py-[50px] 4xl:py-[75px]">
+  <div class="no-scrollbar overflow-hidden py-[35px] md:py-[50px] 4xl:py-[75px]">
     <UiSectionTitle class="!p-0">
       <template #title>
         <slot name="title" />
@@ -28,7 +28,7 @@
         </div>
       </template>
     </UiSectionTitle>
-    <div class="px-5 md:px-10">
+    <div class="container">
       <Swiper
         :class="
           cn('products_swiper !overflow-y-visible', {

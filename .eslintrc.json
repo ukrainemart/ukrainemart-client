@@ -78,7 +78,8 @@
         "vue/v-on-event-hyphenation": "off",
         "vue/no-mutating-props": "off",
         "consistent-return": "off",
-        "vue/require-explicit-emits": "off"
+        "vue/require-explicit-emits": "off",
+        "no-param-reassign":"off"
       }
     }
   ]

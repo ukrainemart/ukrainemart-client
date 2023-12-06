@@ -3,38 +3,36 @@ import { defineStore } from 'pinia';
 export const useFavoritesStore = defineStore('favoritesStore', () => {
   const favorites = ref<Product[]>([]);
 
-  function fetchFavorites() {
-    useApiFetch(`${useUrlApi()}/user/favorite/list`, {
-      transform(data) {
-        if (Array.isArray(data)) {
-          return data.map((el: any) => el.product);
+  async function fetchFavorites() {
+    const { data }: any = await useApiFetch(`${useUrlApi()}/user/favorite/list`, {
+      transform(value: any) {
+        if (Array.isArray(value)) {
+          return value.map((el: any) => el.product);
         }
         return [];
       },
-    }).then((res) => {
-      favorites.value = res.data.value as Product[];
-
-      console.log(favorites.value);
     });
+    favorites.value = data.value as Product[];
   }
 
-  function addToFavorites(id: number) {
-    useApiFetch(`${useUrlApi()}/user/favorite/add/${id}`).then((res: any) => {
+  function addToFavorites(id: number, disabledBtn: Ref<boolean>, isFavorite: Ref<boolean>) {
+    useApiFetch(`${useUrlApi()}/favorite/change/${id}`).then((res: any) => {
       if (res.data.value.status === 1) {
-        fetchFavorites();
+        isFavorite.value = true;
+        disabledBtn.value = false;
       }
     });
   }
 
-  function removeFavorites(id: number) {
-    useApiFetch(`${useUrlApi()}/user/favorite/destroy/${id}`).then((res: any) => {
+  function removeFavorites(id: number, disabledBtn: Ref<boolean>, isFavorite: Ref<boolean>) {
+    useApiFetch(`${useUrlApi()}/favorite/change/${id}`).then((res: any) => {
       if (res.data.value.status === 1) {
-        fetchFavorites();
+        isFavorite.value = false;
+        favorites.value = favorites.value.filter((el) => el.id !== id);
+        disabledBtn.value = false;
       }
     });
   }
-
-  fetchFavorites();
 
   return {
     favorites,
