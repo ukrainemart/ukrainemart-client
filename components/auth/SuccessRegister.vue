@@ -15,7 +15,7 @@
       <SvgoCheckmarkRounded class="!h-auto !w-[50%] text-transparent" />
     </div>
     <UiTitleNamu
-      class="mt-[10px] text-center text-[23px] md:mb-[22px] md:mt-[15px] md:text-[35px] xl:mb-[25px] xl:mt-[20px] xl:text-[50px]"
+      class="mt-[10px] text-center text-[23px] md:mb-[22px] md:mt-[15px] md:text-[35px] xl:mb-[25px] xl:mt-[18px] xl:text-[50px]"
     >
       {{ $t('success_register_message') }}
     </UiTitleNamu>

@@ -5,6 +5,7 @@
 
   const companyStatus = ref<CompanyStatus>('noCreate');
   const isCheck = ref<boolean>(false);
+  const error = ref('');
 
   type Inputs = {
     name: string;
@@ -20,7 +21,7 @@
     phone: '',
     code: '',
     description: '',
-    experience: '',
+    experience: 'no',
     type: 'exporter',
   });
 
@@ -66,7 +67,11 @@
       {{ $t('create_company.your_application_moderated') }}
     </UiAlertSuccess>
 
-    <form v-if="companyStatus === 'noCreate'" action="#" @submit.prevent="sendRequest">
+    <VForm
+      v-if="companyStatus === 'noCreate'"
+      :validation-schema="validationCreateCompany"
+      @submit="sendRequest"
+    >
       <div>
         <div
           class="grid max-w-[1110px] gap-[15px] md:gap-[20px] xl:grid-cols-2 xl:gap-x-[80px] xl:gap-y-[15px]"
@@ -82,8 +87,11 @@
             <UiInputOutline v-model="inputs.code" type="number" required />
           </UiLabel>
 
-          <UiLabel :label="$t('create_company.contact_person_number') + ':'" class="xl:row-span-1">
-            <CommonPhoneInputOutline v-model="inputs.phone" required />
+          <UiLabel
+            :label="$t('create_company.contact_person_number') + ':'"
+            class="self-start xl:row-span-1"
+          >
+            <CommonPhoneInputOutline v-model="inputs.phone" />
           </UiLabel>
 
           <UiLabel
@@ -106,12 +114,11 @@
             </div>
           </UiLabel>
         </div>
+        <UiAlertInputError class="mt-[10px] xl:mt-[30px]" :error="error" />
 
-        <UiButtonPrimary type="submit" class="mt-[25px] md:mt-[45px]">{{
-          $t('send_request')
-        }}</UiButtonPrimary>
+        <PagesCompanySendValidationBtn v-model="error" :inputs="inputs" />
       </div>
-    </form>
+    </VForm>
   </LayoutProfilePage>
 </template>
 
