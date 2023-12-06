@@ -4,7 +4,6 @@
   const openAuth = () => {
     emits('openAuth');
   };
-
   const isOpenProfile = ref(false);
 
   const switchMenu = (value: boolean) => {
@@ -22,6 +21,14 @@
     }
     return false;
   };
+
+  const onClickFavorites = () => {
+    if (isLoggedIn()) {
+      navigateTo('/profile/favorites');
+      return false;
+    }
+    openAuth();
+  };
 </script>
 
 <template>
@@ -34,7 +41,7 @@
     <PagesMobileMenuItem :label="$t('catalog')" @click="$emit('toggleCatalogModal')">
       <SvgoSearchMobileMenu class="!h-full !w-full" />
     </PagesMobileMenuItem>
-    <PagesMobileMenuItem :label="$t('favorites')">
+    <PagesMobileMenuItem :label="$t('favorites')" @click="onClickFavorites">
       <SvgoFavorites class="!h-full !w-full" />
     </PagesMobileMenuItem>
     <PagesMobileMenuItem :label="$t('myAccount')" @click="onClickProfile">

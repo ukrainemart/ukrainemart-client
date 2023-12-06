@@ -4,6 +4,8 @@ export const useAuthStore = defineStore('authStore', () => {
   const user = ref<User | null>(null);
   const isLoggedIn = computed(() => !!user.value);
 
+  const typeAuth = ref<SwitchAuth>('login');
+
   const isCompanyModeration = computed(() => user.value?.company?.status === '0');
   const isNoCompany = computed(() => user.value?.company?.status === null);
   const isCompany = computed(() => user.value?.company?.status === '1');
@@ -12,6 +14,10 @@ export const useAuthStore = defineStore('authStore', () => {
   const isExporter = computed(() => user.value?.company?.type === 'exporter');
   const isGoogleUser = computed(() => !!user.value?.google_id);
   const isPassword = computed(() => !!user.value?.password_status);
+
+  function switchTypeAuth(type: SwitchAuth) {
+    typeAuth.value = type;
+  }
 
   async function fetchUser() {
     try {
@@ -82,5 +88,7 @@ export const useAuthStore = defineStore('authStore', () => {
     isExporter,
     isGoogleUser,
     isPassword,
+    typeAuth,
+    switchTypeAuth,
   };
 });

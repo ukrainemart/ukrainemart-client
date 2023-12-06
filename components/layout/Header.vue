@@ -3,19 +3,21 @@
     isLogo?: boolean;
   }>();
 
+  const auth = useAuthStore();
+
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
   const isMobileMenu = ref(false);
   const isAuthModal = ref(false);
-  const typeAuth = ref<SwitchAuth>('login');
   const isCatalogModal = ref(false); // mobile catalog state
   const isCatalogHovered = ref(false); // desktop catalog state
   const catalog = ref<Catalog[]>([]);
   const currentCategories = ref<Catalog[]>([]);
   const selectedParentCategory = ref<Catalog | null>(null);
   const selectedChildCategory = ref<Catalog | null>(null);
+  const typeAuth = computed(() => auth.typeAuth);
 
-  const switchTypeAuth = (type: SwitchAuth) => (typeAuth.value = type);
+  const switchTypeAuth = (type: SwitchAuth) => auth.switchTypeAuth(type);
 
   const switchAuthModal = (value: boolean) => (isAuthModal.value = value);
 
@@ -69,6 +71,13 @@
     } catch (error) {
       console.error(error);
     }
+  };
+  const onClickFavorites = () => {
+    if (isLoggedIn()) {
+      navigateTo('/profile/favorites');
+      return false;
+    }
+    switchAuth(true, 'login');
   };
 
   getCatalog();
@@ -139,10 +148,12 @@
             :fontControlled="false"
           />
 
-          <SvgoHearth
-            class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
-            :fontControlled="false"
-          />
+          <UiButtonOpacity @click="onClickFavorites">
+            <SvgoHearth
+              class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
+              :fontControlled="false"
+            />
+          </UiButtonOpacity>
 
           <CommonLangSwitcher />
 
