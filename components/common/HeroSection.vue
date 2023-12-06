@@ -15,33 +15,7 @@
         {{ $t('companyDescription') }}
       </p>
 
-      <div>
-        <div
-          class="relative min-w-[305px] rounded-[50px] border border-solid border-black md:w-[446px] lg:w-[600px]"
-        >
-          <label for="Search" class="absolute right-[15px] top-1/2 -translate-y-1/2">
-            <SvgoSearch
-              :fontControlled="false"
-              class="!mb-0 h-[12px] w-[12px] cursor-text text-status_gray md:h-[17px] md:w-[17px] lg:h-5 lg:w-5"
-            />
-          </label>
-
-          <input
-            id="Search"
-            type="search"
-            name="Search"
-            :placeholder="$t('startYourSearch')"
-            class="w-full bg-transparent py-[9px] pl-[15px] pr-8 text-[10px] text-black outline-none placeholder:text-status_gray md:py-[12px] md:pl-[18px] md:pr-[36px] md:text-[14px] lg:py-[15px] lg:pl-[21px] lg:pr-10 lg:text-[17px]"
-          />
-        </div>
-
-        <p
-          class="ld:mt-[5px] ml-[18px] mt-[3px] text-left text-[7px] font-medium text-black md:mt-[7px] md:text-[13px] lg:text-[17px]"
-        >
-          {{ `${$t('example')}:` }} <span class="underline">{{ $t('grain') }}</span> {{ $t('or') }}
-          <span class="underline">{{ $t('oil') }}</span>
-        </p>
-      </div>
+      <CommonSearch />
     </div>
 
     <CommonSectionCategories />
