@@ -8,7 +8,6 @@
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
   const isMobileMenu = ref(false);
-  const isAuthModal = ref(false);
   const isCatalogModal = ref(false); // mobile catalog state
   const isCatalogHovered = ref(false); // desktop catalog state
   const catalog = ref<Catalog[]>([]);
@@ -19,7 +18,7 @@
 
   const switchTypeAuth = (type: SwitchAuth) => auth.switchTypeAuth(type);
 
-  const switchAuthModal = (value: boolean) => (isAuthModal.value = value);
+  const switchAuthModal = (value: boolean) => auth.switchAuthModal(value);
 
   const switchAuth = (value: boolean, type: SwitchAuth) => {
     switchAuthModal(value);
@@ -176,7 +175,7 @@
     </div>
 
     <AuthBase
-      v-model="isAuthModal"
+      v-model="auth.isAuthModal"
       :type="typeAuth"
       @switchTypeAuth="switchTypeAuth"
       @switchModal="switchAuthModal"

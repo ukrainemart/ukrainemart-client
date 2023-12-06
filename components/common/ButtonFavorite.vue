@@ -2,10 +2,14 @@
   const props = defineProps<{
     productId: number;
   }>();
-
+  const auth = useAuthStore();
   const favorites = useFavoritesStore();
   const isDisabledFavoritesBtn = ref(false);
   const isFavoritesProduct = ref(false);
+
+  const switchTypeAuth = (type: SwitchAuth) => auth.switchTypeAuth(type);
+
+  const switchAuthModal = (value: boolean) => auth.switchAuthModal(value);
 
   const addToFavorites = async () => {
     await favorites.addToFavorites(props.productId, isDisabledFavoritesBtn, isFavoritesProduct);
@@ -24,8 +28,11 @@
   };
 
   const onClickFavoritesBth = () => {
+    if (!isLoggedIn()) {
+      switchAuthModal(true);
+      switchTypeAuth('login');
+    }
     isDisabledFavoritesBtn.value = true;
-    if (!isLoggedIn()) return false;
 
     if (isFavoritesProduct.value) {
       removeFavorites();

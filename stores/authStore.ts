@@ -5,6 +5,7 @@ export const useAuthStore = defineStore('authStore', () => {
   const isLoggedIn = computed(() => !!user.value);
 
   const typeAuth = ref<SwitchAuth>('login');
+  const isAuthModal = ref(false);
 
   const isCompanyModeration = computed(() => user.value?.company?.status === '0');
   const isNoCompany = computed(() => user.value?.company?.status === null);
@@ -17,6 +18,10 @@ export const useAuthStore = defineStore('authStore', () => {
 
   function switchTypeAuth(type: SwitchAuth) {
     typeAuth.value = type;
+  }
+
+  function switchAuthModal(value: boolean) {
+    isAuthModal.value = value;
   }
 
   async function fetchUser() {
@@ -90,5 +95,7 @@ export const useAuthStore = defineStore('authStore', () => {
     isPassword,
     typeAuth,
     switchTypeAuth,
+    isAuthModal,
+    switchAuthModal,
   };
 });
