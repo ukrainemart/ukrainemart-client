@@ -1,19 +1,34 @@
 <script setup lang="ts">
+  const searchRef = ref(null);
+  const searchValue = ref<string>('');
+  const isSearchActive = ref(false);
   const products = ref<Product[]>([]);
-  // const searchValue = ref<string>('');
+  const categories = ref<Category[]>([]);
 
-  // const updateSearch = (value: string) => (searchValue.value = value);
+  const updateSearchValue = (value: string) => (searchValue.value = value);
+  const updateSearchActive = (value: boolean) => (isSearchActive.value = value);
   const updateProducts = (newProducts: Product[]) => (products.value = newProducts);
+  const updateCategories = (newCategories: Category[]) => (categories.value = newCategories);
 
-  provide('products', { products, updateProducts });
-  // provide('search', { searchValue, updateSearch });
+  onClickOutside(searchRef, () => updateSearchActive(false));
 </script>
 
 <template>
-  <div class="relative min-w-[305px] md:w-[446px] lg:w-[600px]">
-    <CommonSearchInput />
+  <div ref="searchRef" class="relative min-w-[305px] md:w-[446px] lg:w-[600px]">
+    <CommonSearchInput
+      :searchValue="searchValue"
+      :isSearchActive="isSearchActive"
+      @updateSearchValue="updateSearchValue"
+      @updateProducts="updateProducts"
+      @updateCategories="updateCategories"
+      @updateSearchActive="updateSearchActive"
+    />
 
-    <CommonSearchResult :products="products" />
+    <CommonSearchResult
+      :isSearchActive="isSearchActive"
+      :products="products"
+      :categories="categories"
+    />
 
     <!-- REVIEW optional? -->
     <p
