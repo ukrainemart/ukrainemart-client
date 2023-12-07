@@ -29,7 +29,10 @@
           }"
         >
           <SwiperSlide v-for="category in categories" :key="category.id" class="!h-auto !w-fit">
-            <CommonCategoryItem :title="`${useMultiLang(category, 'title')}`">
+            <CommonCategoryItem
+              :to="`category/${category.id}`"
+              :title="`${useMultiLang(category, 'title')}`"
+            >
               <img
                 class="h-full w-full object-contain"
                 :src="category.logo"

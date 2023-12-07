@@ -1,11 +1,12 @@
 <script setup lang="ts">
   defineProps<{
     title: string;
+    to?: string;
   }>();
 </script>
 
 <template>
-  <UiButtonOpacityTextIcon class="text-left">
+  <UiButtonOpacityTextIcon :to="to" class="text-left">
     <template #title>
       <span class="lg:text-[14px] 3xl:text-[18px]">
         {{ title }}
