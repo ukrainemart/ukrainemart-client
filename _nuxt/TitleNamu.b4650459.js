@@ -1,0 +1,1 @@
+import{_ as e}from"./entry.dbfce9c5.js";import{M as o,X as n,a1 as s}from"./swiper-vue.8611abf5.js";const c={},r={class:"font-namu text-[20px] text-black"};function _(t,a){return o(),n("h4",r,[s(t.$slots,"default")])}const m=e(c,[["render",_]]);export{m as _};
