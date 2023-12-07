@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     searchValue: string;
     isSearchActive: boolean;
   }>();
@@ -30,12 +30,21 @@
     const newSearchValue = target.value;
     emit('updateSearchValue', newSearchValue);
 
-    if (newSearchValue.length) {
-      getSearchResult(newSearchValue);
+    if (newSearchValue.trim().length) {
+      getSearchResult(newSearchValue.trim());
     } else {
       emit('updateSearchActive', false);
     }
   }, 400);
+
+  watch(
+    () => props.isSearchActive,
+    (newVal) => {
+      if (newVal === false) {
+        emit('updateSearchValue', '');
+      }
+    }
+  );
 </script>
 
 <template>
@@ -53,7 +62,7 @@
     />
 
     <input
-      :searchValue="searchValue"
+      :value="searchValue"
       type="text"
       :placeholder="$t('startYourSearch')"
       class="w-full bg-transparent py-[9px] pl-[15px] pr-8 text-[12px] text-black outline-none placeholder:text-status_gray md:py-[12px] md:pl-[18px] md:pr-[36px] md:text-[16px] lg:py-[15px] lg:pl-[21px] lg:pr-10 lg:text-[17px]"

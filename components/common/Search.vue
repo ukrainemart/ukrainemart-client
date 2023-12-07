@@ -10,9 +10,7 @@
   const updateProducts = (newProducts: Product[]) => (products.value = newProducts);
   const updateCategories = (newCategories: Category[]) => (categories.value = newCategories);
 
-  onClickOutside(searchRef, () => {
-    updateSearchActive(false);
-  });
+  onClickOutside(searchRef, () => updateSearchActive(false));
 </script>
 
 <template>
