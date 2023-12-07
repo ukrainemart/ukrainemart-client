@@ -56,7 +56,6 @@
   const updateIsCatalogHovered = (value: boolean) => (isCatalogHovered.value = value);
 
   const getCatalog = async () => {
-    // TODO useApiFetch
     try {
       const res = await useFetch(`${useUrlApi()}/catalog`);
 
