@@ -7,7 +7,7 @@
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
   // const products = ref<Product[]>([]);
-  const product = ref<Product>();
+  const product = ref<Product | null>();
 
   const setThumbsSwiper = (swiper: any) => {
     sideSwiper.value = swiper;
@@ -17,8 +17,12 @@
     mainSlider.value = swiper;
   };
 
-  const { data } = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
-  product.value = data.value as Product;
+  const fetchProduct = async () => {
+    const response = await useFetch(`${useUrlApi()}/product/show/${productId}`);
+    product.value = response?.data.value as Product;
+  };
+
+  fetchProduct()
   // const getProducts = async () => {
   //   // REVIEW useFetchApi
   //   try {
