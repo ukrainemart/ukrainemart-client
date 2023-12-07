@@ -8,9 +8,7 @@
       </span>
     </template>
     <template #content>
-      <div
-        class="mt-[40px] flex flex-col items-center justify-center gap-[50px] lg:flex-row lg:gap-[150px]"
-      >
+      <div class="mt-[40px] flex items-center justify-center gap-[50px] lg:flex-row lg:gap-[150px]">
         <div>
           <img class="w-full max-w-[700px]" src="@img/partners_ministerstvo.png" alt="" />
         </div>

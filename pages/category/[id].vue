@@ -56,7 +56,7 @@
 
   const getProducts = async () => {
     try {
-      const res = await useApiFetch(
+      const res = await useFetch(
         `${useUrlApi()}/category/products/${categoryId}` +
           `?min_price=${priceRange.input.min}` +
           `&max_price=${priceRange.input.max}`
@@ -72,10 +72,10 @@
   const getCategory = async () => {
     // REVIEW useApi => useApiFetch
     try {
-      const res = await useApi(`${useUrlApi()}/category/get/${categoryId}`);
+      const res = await useFetch(`${useUrlApi()}/category/get/${categoryId}`);
 
       if (res) {
-        category.value = res as Category;
+        category.value = res.data.value as Category;
 
         priceRange.api.min = category.value.min_price;
         priceRange.api.max = category.value.max_price;

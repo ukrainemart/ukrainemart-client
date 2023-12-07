@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  const categories = ref<Category[]>([]);
+
+  const fetchCategories = async () => {
+    const { data } = await useFetch(`${useUrlApi()}/category/main`);
+    categories.value = data.value as Category[];
+  };
+
+  fetchCategories();
+</script>
 
 <template>
   <div class="bg-white py-[15px] md:py-[23px] 4xl:py-[35px]">
@@ -6,43 +15,34 @@
       <div
         class="flex items-center gap-[20px] md:gap-[35px] 2xl:justify-between 4xl:w-auto 4xl:gap-[0px]"
       >
-        <ul
-          class="flex items-center gap-[20px] md:gap-[35px] lg:gap-[15px] xl:gap-[25px] 4xl:gap-[35px]"
+        <Swiper
+          class="swiper_main w-full"
+          :slides-per-view="'auto'"
+          :spaceBetween="30"
+          :breakpoints="{
+            375: {
+              spaceBetween: 30,
+            },
+            768: {
+              spaceBetween: 50,
+            },
+          }"
         >
-          <li>
-            <CommonCategoryItem title="Продукти та агрокультура">
-              <SvgoAgriculture class="!h-full !w-full" />
+          <SwiperSlide v-for="category in categories" :key="category.id" class="!h-auto !w-fit">
+            <CommonCategoryItem :title="`${useMultiLang(category, 'title')}`">
+              <img
+                class="h-full w-full object-contain"
+                :src="category.logo"
+                :alt="`${useMultiLang(category, 'title')}`"
+              />
             </CommonCategoryItem>
-          </li>
-          <li>
-            <CommonCategoryItem title="Електроніка">
-              <SvgoElectronics class="!h-full !w-full" />
+          </SwiperSlide>
+          <SwiperSlide class="!h-auto lg:!w-fit">
+            <CommonCategoryItem title="Більше категорій" class="flex-row-reverse text-right">
+              <SvgoArrowRightSecond class="!h-full !w-full" />
             </CommonCategoryItem>
-          </li>
-          <li>
-            <CommonCategoryItem title="Ліки та добавки">
-              <SvgoMedicine class="!h-full !w-full" />
-            </CommonCategoryItem>
-          </li>
-          <li>
-            <CommonCategoryItem title="Добрива">
-              <SvgoFertilizers class="!h-full !w-full" />
-            </CommonCategoryItem>
-          </li>
-          <li>
-            <CommonCategoryItem title="Авто запчастини">
-              <SvgoAutoPart class="!h-full !w-full" />
-            </CommonCategoryItem>
-          </li>
-          <li>
-            <CommonCategoryItem title="Будівельні матеріали">
-              <SvgoBuilding class="!h-full !w-full" />
-            </CommonCategoryItem>
-          </li>
-        </ul>
-        <CommonCategoryItem title="Більше категорій" class="flex-row-reverse text-right">
-          <SvgoArrowRightSecond class="!h-full !w-full" />
-        </CommonCategoryItem>
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   </div>

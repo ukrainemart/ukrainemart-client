@@ -30,7 +30,7 @@
     <CommonSectionRequestsImporters />
     <CommonSectionPopularCategories />
     <CommonSectionFaq />
-    <CommonSectionOurPartners class="hidden xl:block" />
+    <CommonSectionOurPartners />
   </div>
 </template>
 

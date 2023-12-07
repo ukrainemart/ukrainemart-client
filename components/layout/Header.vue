@@ -58,9 +58,9 @@
   const getCatalog = async () => {
     // TODO useApiFetch
     try {
-      const res = await useApi(`${useUrlApi()}/catalog`);
+      const res = await useFetch(`${useUrlApi()}/catalog`);
 
-      catalog.value = res as Catalog[];
+      catalog.value = res.data.value as Catalog[];
       currentCategories.value = parentCategories.value;
 
       if (screenWidth.value >= BREAKPOINTS_LG) {
