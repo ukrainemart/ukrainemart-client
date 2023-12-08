@@ -10,12 +10,15 @@
   });
 
   const error = ref('');
+  const loadingRequest = ref(false);
   const switchTypeAuth = (type: SwitchAuth) => {
     emits('switchTypeAuth', type);
   };
 
   const register = () => {
+    loadingRequest.value = true;
     auth.register(credentials).then((res: any) => {
+      loadingRequest.value = false;
       if (res.data.value.status === 2) {
         switchTypeAuth('successRegister');
       } else {
@@ -82,9 +85,14 @@
 
       <UiAlertTextDanger v-if="error" class="mt-[7px] xl:mt-[10px]">{{ error }}</UiAlertTextDanger>
 
-      <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]" tabindex="6">
+      <UiButtonPrimaryLoading
+        :loading="loadingRequest"
+        type="submit"
+        class="mt-[20px] md:mt-[25px] xl:mt-[30px]"
+        tabindex="6"
+      >
         {{ $t('signup') }}
-      </UiButtonPrimary>
+      </UiButtonPrimaryLoading>
 
       <div
         class="mt-[15px] flex items-center justify-center gap-[5px] text-[7px] font-medium md:mt-[22px] md:text-[10px] xl:mt-[20px] xl:text-[14px]"

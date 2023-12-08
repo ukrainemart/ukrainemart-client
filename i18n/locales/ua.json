@@ -76,6 +76,10 @@
   "delete_product": "Видалити товар?",
   "fill_in_all_fields": "Заповніть усі поля!",
 
+  "email_validate": {
+    "email_not_verified": "Email не підтверджено!"
+  },
+
 
   "add_product": {
     "add_product": "Додати товар",

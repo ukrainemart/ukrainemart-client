@@ -2,6 +2,7 @@
   const props = defineProps<{
     inputs: any;
     modelValue: string;
+    loading: boolean;
   }>();
 
   const emits = defineEmits(['update:modelValue']);
@@ -39,9 +40,9 @@
 </script>
 
 <template>
-  <UiButtonPrimary type="submit" class="mt-[25px] md:mt-[45px]">{{
+  <UiButtonPrimaryLoading :loading="loading" type="submit" class="mt-[25px] md:mt-[45px]">{{
     $t('send_request')
-  }}</UiButtonPrimary>
+  }}</UiButtonPrimaryLoading>
 </template>
 
 <style scoped></style>

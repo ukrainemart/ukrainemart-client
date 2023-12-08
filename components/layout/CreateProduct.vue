@@ -7,9 +7,17 @@
     error: string;
     message: string;
   }>();
+  const loadingRequest = ref(false);
+  const language = ref<Language>();
+  const pageData = ref();
+
   const emits = defineEmits(['update:inputs', 'actionSubmit']);
-  const actionSubmit = () => {
-    emits('actionSubmit');
+  const actionSubmit = async () => {
+    loadingRequest.value = true;
+    await emits('actionSubmit');
+    setTimeout(() => {
+      loadingRequest.value = false;
+    }, 100);
   };
 
   const updateInputs = (value: any, input: keyof InputsCreateProduct) => {
@@ -49,11 +57,6 @@
       console.log(props.inputs);
     }
   );
-
-  const language = ref<Language>();
-
-  const pageData = ref();
-
   const categoryOptions = computed(
     () =>
       pageData.value?.categories?.map((el: Category) => {
@@ -181,7 +184,9 @@
       </div>
       <UiAlertTextDanger v-if="error" class="mt-[15px] xl:mt-[20px]">{{ error }}</UiAlertTextDanger>
       <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">
-        <UiButtonPrimary type="submit">{{ labelButtonSubmit }}</UiButtonPrimary>
+        <UiButtonPrimaryLoading :loading="loadingRequest" type="submit">{{
+          labelButtonSubmit
+        }}</UiButtonPrimaryLoading>
       </div>
     </VForm>
   </LayoutProfilePage>

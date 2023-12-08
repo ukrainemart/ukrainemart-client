@@ -5,6 +5,7 @@
   const user = computed(() => auth.user);
   const isCompany = computed(() => auth.isCompany);
   const messageUserData = ref('');
+  const loadingRequest = ref(false);
 
   const inputs = ref({
     name: '',
@@ -47,6 +48,8 @@
   };
 
   const updateUser = () => {
+    loadingRequest.value = true;
+
     const requestBody = {
       name: inputs.value.name,
       last_name: inputs.value.lastName,
@@ -68,6 +71,7 @@
     }).then((res: any) => {
       if (res.status === 1) {
         messageUserData.value = t('profile.the_data_has_been_updated');
+        loadingRequest.value = false;
       }
     });
   };
@@ -127,9 +131,12 @@
         <UiAlertTextSuccess v-if="messageUserData" class="col-span-2">
           {{ messageUserData }}
         </UiAlertTextSuccess>
-        <UiButtonPrimary class="col-span-2 w-fit justify-self-center" @click="updateUser">{{
-          $t('save_changes')
-        }}</UiButtonPrimary>
+        <UiButtonPrimaryLoading
+          :loading="loadingRequest"
+          class="col-span-2 w-fit justify-self-center"
+          @click="updateUser"
+          >{{ $t('save_changes') }}</UiButtonPrimaryLoading
+        >
         <PagesProfileChangePassword />
       </div>
     </div>

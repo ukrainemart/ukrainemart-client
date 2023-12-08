@@ -6,6 +6,7 @@
   const companyStatus = ref<CompanyStatus>('noCreate');
   const isCheck = ref<boolean>(false);
   const error = ref('');
+  const loadingRequest = ref(false);
 
   type Inputs = {
     name: string;
@@ -44,6 +45,7 @@
   };
 
   const sendRequest = () => {
+    loadingRequest.value = true;
     useApiFetch(`${useUrlApi()}/company/request`, {
       method: 'POST',
       body: {
@@ -55,6 +57,7 @@
       },
     }).then(() => {
       checkStatus();
+      loadingRequest.value = false;
     });
   };
 
@@ -116,7 +119,7 @@
         </div>
         <UiAlertInputError class="mt-[10px] xl:mt-[30px]" :error="error" />
 
-        <PagesCompanySendValidationBtn v-model="error" :inputs="inputs" />
+        <PagesCompanySendValidationBtn v-model="error" :loading="loadingRequest" :inputs="inputs" />
       </div>
     </VForm>
   </LayoutProfilePage>

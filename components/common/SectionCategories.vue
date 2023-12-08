@@ -3,14 +3,17 @@
 
   const fetchCategories = async () => {
     const { data } = await useFetch(`${useUrlApi()}/category/main`);
-    categories.value = data.value as Category[];
+    categories.value = data?.value as Category[];
   };
 
   fetchCategories();
 </script>
 
 <template>
-  <div v-if="categories.length > 0" class="bg-white py-[15px] md:py-[23px] 4xl:py-[35px]">
+  <div
+    v-if="categories && categories.length > 0"
+    class="bg-white py-[15px] md:py-[23px] 4xl:py-[35px]"
+  >
     <div class="no-scrollbar container overflow-scroll">
       <div
         class="flex items-center gap-[20px] md:gap-[35px] 2xl:justify-between 4xl:w-auto 4xl:gap-[0px]"

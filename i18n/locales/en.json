@@ -76,6 +76,12 @@
   "delete_product": "Delete a product?",
   "fill_in_all_fields": "Fill in all fields!",
 
+
+  "email_validate": {
+    "email_not_verified": "Email not verified!"
+  },
+
+
   "add_product": {
     "add_product": "Add a product",
     "enter_your_product_name": "Enter the name of your product",

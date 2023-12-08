@@ -52,8 +52,9 @@
 </script>
 
 <template>
-  <UiSelectOutline
+  <UiSelectOutlineValidate
     v-model="value"
+    :name="name"
     :currentValue="selectedTitle"
     :options="variants"
     valueAttribute="value"

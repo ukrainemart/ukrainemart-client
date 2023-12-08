@@ -28,8 +28,8 @@
   const switchMenu = (value: boolean) => (isMobileMenu.value = value);
 
   // Catalog START
-  const parentCategories = computed(() =>
-    catalog.value.filter((item) => item.parent_category === 0)
+  const parentCategories = computed(
+    () => catalog.value?.filter((item) => item.parent_category === 0)
   );
 
   watch(isCatalogModal, (newValue) => {
@@ -59,7 +59,7 @@
     try {
       const res = await useFetch(`${useUrlApi()}/catalog`);
 
-      catalog.value = res.data.value as Catalog[];
+      catalog.value = res?.data?.value as Catalog[];
       currentCategories.value = parentCategories.value;
 
       if (screenWidth.value >= BREAKPOINTS_LG) {

@@ -4,14 +4,12 @@
 
   const emits = defineEmits(['switchTypeAuth', 'switchModal']);
 
-  const error = ref('');
-
   const switchTypeAuth = (type: SwitchAuth) => {
     emits('switchTypeAuth', type);
   };
-  // const switchModal = (value: boolean) => {
-  //   emits('switchModal', value);
-  // };
+
+  const error = ref('');
+  const loadingRequest = ref(false);
 
   const credentials = reactive<LoginCredentials>({
     email: '',
@@ -19,11 +17,19 @@
   });
 
   const login = async () => {
-    const status = await auth.login(credentials);
-    console.log(status);
+    loadingRequest.value = true;
+    const status: any = await auth.login(credentials);
 
+    setTimeout(() => {
+      loadingRequest.value = false;
+    }, 100);
     if (!status) {
       error.value = t('validation_inputs.try_again');
+      return false;
+    }
+
+    if (status === 2) {
+      error.value = t('email_validate.email_not_verified');
     }
   };
 </script>
@@ -63,9 +69,14 @@
       </div>
 
       <UiAlertTextDanger class="mt-[20px]">{{ error }}</UiAlertTextDanger>
-      <UiButtonPrimary type="submit" class="mt-[20px] md:mt-[25px] xl:mt-[30px]" tabindex="5">
+      <UiButtonPrimaryLoading
+        :loading="loadingRequest"
+        type="submit"
+        class="mt-[20px] md:mt-[25px] xl:mt-[30px]"
+        tabindex="5"
+      >
         {{ $t('login') }}
-      </UiButtonPrimary>
+      </UiButtonPrimaryLoading>
       <CommonButtonGoogle type="button" tabindex="6">
         {{ $t('logInWithGoogle') }}
       </CommonButtonGoogle>

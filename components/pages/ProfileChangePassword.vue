@@ -5,6 +5,7 @@
   const isPassword = computed(() => auth.isPassword);
   const error = ref('');
   const message = ref('');
+  const loadingRequest = ref(false);
 
   const inputs = ref({
     oldPassword: '',
@@ -18,6 +19,7 @@
   };
 
   const changePassword = () => {
+    loadingRequest.value = true;
     message.value = '';
     error.value = '';
 
@@ -35,6 +37,7 @@
         inputs.value.newPassword = '';
         inputs.value.newConfPassword = '';
         isShowValidate.value = false;
+        loadingRequest.value = false;
         return false;
       }
       if (res.status === 0) {
@@ -45,12 +48,15 @@
   };
 
   const setPassword = () => {
+    loadingRequest.value = true;
     useApi(`${useUrlApi()}/user/password/set`, {
       method: 'POST',
       body: {
         new_password: inputs.value.newPassword,
         new_c_password: inputs.value.newConfPassword,
       },
+    }).then(() => {
+      loadingRequest.value = false;
     });
   };
 
@@ -104,9 +110,9 @@
       <UiAlertTextDanger v-if="error"> {{ error }}</UiAlertTextDanger>
       <UiAlertTextSuccess v-if="message"> {{ message }}</UiAlertTextSuccess>
       <div class="col-span-2 flex justify-center">
-        <UiButtonPrimary type="submit" class="w-fit">{{
+        <UiButtonPrimaryLoading :loading="loadingRequest" type="submit" class="w-fit">{{
           !isPassword ? $t('password_change.set_password') : $t('change_password')
-        }}</UiButtonPrimary>
+        }}</UiButtonPrimaryLoading>
       </div>
     </div>
   </VForm>

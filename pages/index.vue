@@ -10,7 +10,7 @@
     try {
       const res: any = await useFetch(`${useUrlApi()}/main_page`);
 
-      products.value = res.data.value.products as Product[];
+      products.value = res?.data?.value?.products as Product[];
     } catch (error) {
       console.error(error);
     }
