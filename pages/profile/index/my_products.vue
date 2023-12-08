@@ -45,7 +45,7 @@
 </script>
 
 <template>
-  <LayoutProfilePage title="Мої товари">
+  <LayoutProfilePage :title="`${$t('profile.my_products')}`">
     <UiButtonPrimary to="add_product"> {{ $t('add_product.add_product') }} </UiButtonPrimary>
     <UiModalWarning
       v-if="currentIdProduct"

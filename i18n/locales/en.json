@@ -76,6 +76,14 @@
   "delete_product": "Delete a product?",
   "fill_in_all_fields": "Fill in all fields!",
 
+  "labels": {
+    "title": "Title",
+    "enter_title_your_request": "Enter the title of your request",
+    "enter_description": "Enter a description",
+    "country": "Country",
+    "select_country": "Select a country",
+    "request_validity_period": "Request validity period"
+  },
 
   "email_validate": {
     "email_not_verified": "Email not verified!"
@@ -105,7 +113,12 @@
     "sign_out": "Sign out",
     "the_data_has_been_updated": "The data has been updated!",
     "you_dont_have_any_products_yet": "You don't have any products yet.",
-    "there_are_no_products_your_favorites_yet": "There are no products in your favorites yet."
+    "there_are_no_products_your_favorites_yet": "There are no products in your favorites yet.",
+    "my_requests": {
+      "my_requests": "My requests",
+      "add_request": "Add a request",
+      "edit_request": "Edit request"
+    }
   },
   "create_company": {
     "application_submission": "Submitting an application for company formation",

@@ -16,10 +16,10 @@
     <span :class="cn('', { 'opacity-0': loading })">
       <slot />
     </span>
-    <div v-if="loading" role="status" class="absolute">
+    <div v-if="loading" role="status" class="absolute py-[5px]">
       <svg
         aria-hidden="true"
-        class="inline h-auto w-[10%] animate-spin fill-white text-gray-600 group-hover:fill-black group-hover:text-gray-300"
+        class="inline h-[13rem] w-[10%] animate-spin fill-white text-gray-600 group-hover:fill-black group-hover:text-gray-300"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

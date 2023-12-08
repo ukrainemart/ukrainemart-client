@@ -76,6 +76,17 @@
   "delete_product": "Видалити товар?",
   "fill_in_all_fields": "Заповніть усі поля!",
 
+  "labels": {
+    "title": "Заголовок",
+    "enter_title_your_request": "Введіть заголовок вашого запиту",
+    "enter_description": "Введіть опис",
+    "country": "Країна",
+    "select_country": "Оберіть країну",
+    "request_validity_period": "Термін дії запиту"
+  },
+
+
+
   "email_validate": {
     "email_not_verified": "Email не підтверджено!"
   },
@@ -104,7 +115,12 @@
     "sign_out": "Вийти",
     "the_data_has_been_updated": "Данні обновлено!",
     "you_dont_have_any_products_yet": "У ваc ще немає товарів.",
-    "there_are_no_products_your_favorites_yet": "У вашому вибраному ще немає товарів."
+    "there_are_no_products_your_favorites_yet": "У вашому вибраному ще немає товарів.",
+    "my_requests": {
+      "my_requests": "Мої запити",
+      "add_request": "Додати запит",
+      "edit_request": "Редагувати запит"
+    }
   },
   "create_company": {
     "application_submission": "Подача заявки на створення компанії",
