@@ -93,12 +93,15 @@
 
       <CommonMyProductCard
         v-for="product in products"
-        v-else
+        v-else-if="!loading && products.length > 0"
         :key="product.id"
         :product="product"
         @deleteAction="deleteAction(product.id)"
       />
     </div>
+    <UiAlertProfileEmpty v-if="products.length === 0">{{
+      $t('profile.you_dont_have_any_products_yet')
+    }}</UiAlertProfileEmpty>
 
     <!-- <UiPagination v-if="!loading"/> -->
   </LayoutProfilePage>

@@ -10,6 +10,7 @@
 <template>
   <LayoutProfilePage :title="$t('favorites')">
     <div
+      v-if="products.length > 0"
       class="grid grid-cols-12 gap-x-[25px] gap-y-5 md:gap-x-[32px] md:gap-y-10 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
     >
       <CommonCardProduct
@@ -19,6 +20,9 @@
         :product="product"
       />
     </div>
+    <UiAlertProfileEmpty v-else>{{
+      $t('profile.there_are_no_products_your_favorites_yet')
+    }}</UiAlertProfileEmpty>
   </LayoutProfilePage>
 </template>
 

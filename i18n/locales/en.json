@@ -97,7 +97,9 @@
     "my_products": "My products",
     "apply_company_creation": "Apply for a company creation",
     "sign_out": "Sign out",
-    "the_data_has_been_updated": "The data has been updated!"
+    "the_data_has_been_updated": "The data has been updated!",
+    "you_dont_have_any_products_yet": "You don't have any products yet.",
+    "there_are_no_products_your_favorites_yet": "There are no products in your favorites yet."
   },
   "create_company": {
     "application_submission": "Submitting an application for company formation",
