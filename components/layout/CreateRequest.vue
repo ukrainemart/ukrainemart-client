@@ -60,7 +60,7 @@
         </UiLabel>
       </div>
     </div>
-    <div class="flex jus">
+    <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">
       <UiButtonPrimary>{{ title }}</UiButtonPrimary>
     </div>
   </LayoutProfilePage>
