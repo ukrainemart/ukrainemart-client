@@ -65,7 +65,7 @@
       :value="searchValue"
       type="text"
       :placeholder="$t('startYourSearch')"
-      class="w-full bg-transparent py-[9px] pl-[15px] pr-8 text-[12px] text-black outline-none placeholder:text-status_gray md:py-[12px] md:pl-[18px] md:pr-[36px] md:text-[16px] lg:py-[15px] lg:pl-[21px] lg:pr-10 lg:text-[17px]"
+      class="w-full bg-transparent py-[9px] pl-[15px] pr-8 text-[12px] font-medium text-black outline-none placeholder:text-status_gray md:py-[12px] md:pl-[18px] md:pr-[36px] md:text-[14px] lg:py-[15px] lg:pl-[21px] lg:pr-10 lg:text-[17px]"
       @input="handleInput($event)"
     />
   </div>
