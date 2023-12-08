@@ -60,6 +60,9 @@
         </UiLabel>
       </div>
     </div>
+    <div class="flex jus">
+      <UiButtonPrimary>{{ title }}</UiButtonPrimary>
+    </div>
   </LayoutProfilePage>
 </template>
 
