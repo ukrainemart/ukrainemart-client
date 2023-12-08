@@ -1,0 +1,1 @@
+import{_}from"./TextPortalPrimary.e6e1b0da.js";import{_ as e}from"./entry.46ee1e76.js";import{M as r,N as n,O as s,a1 as a}from"./swiper-vue.67144f5d.js";const c={};function m(t,f){const o=_;return r(),n(o,{class:"text-status_red"},{default:s(()=>[a(t.$slots,"default")]),_:3})}const u=e(c,[["render",m]]);export{u as _};
