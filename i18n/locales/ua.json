@@ -82,7 +82,8 @@
     "enter_description": "Введіть опис",
     "country": "Країна",
     "select_country": "Оберіть країну",
-    "request_validity_period": "Термін дії запиту"
+    "request_validity_period": "Термін дії запиту",
+    "days": "Днів"
   },
 
 

@@ -73,6 +73,15 @@ export default defineNuxtConfig({
           name: 'viewport',
           content: 'width=device-width, initial-scale=1, maximum-scale=1',
         },
+        {
+          name: 'description',
+          content:
+            'Перша в Україні B2B платформа для українських експортерів та міжнародних імпортерів',
+        },
+        {
+          name: 'keywords',
+          content: 'Україна, B2B платформа, експортер, міжнародних, імпортер',
+        },
       ],
     },
   },

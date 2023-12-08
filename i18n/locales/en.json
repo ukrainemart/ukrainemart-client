@@ -82,7 +82,8 @@
     "enter_description": "Enter a description",
     "country": "Country",
     "select_country": "Select a country",
-    "request_validity_period": "Request validity period"
+    "request_validity_period": "Request validity period",
+    "days": "Days"
   },
 
   "email_validate": {
