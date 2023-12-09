@@ -4,12 +4,22 @@
     products: Product[];
     categories: Category[];
   }>();
+
+  const isSearchModal = inject('isSearchModal') as Ref<boolean>;
 </script>
 
 <template>
   <div
     v-if="isSearchActive"
-    class="absolute inset-x-0 z-10 rounded-b-[15px] bg-white py-[15px] text-left shadow-lg md:rounded-b-[20px] md:py-[18px] xl:py-[25px]"
+    :class="
+      cn(
+        'absolute inset-x-0 z-10 rounded-b-[15px] bg-white py-[15px] text-left md:rounded-b-[20px] md:py-[18px] xl:py-[25px]',
+        {
+          relative: isSearchModal,
+          'shadow-lg': !isSearchModal,
+        }
+      )
+    "
   >
     <div v-if="categories.length">
       <p
