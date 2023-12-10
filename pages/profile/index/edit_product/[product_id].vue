@@ -2,6 +2,7 @@
   definePageMeta({
     middleware: ['exporter'],
   });
+  useTitle('add_product.edit_product');
   const route = useRoute();
   const { t } = useI18n();
 

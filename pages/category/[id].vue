@@ -6,6 +6,8 @@
   const products = ref<Product[]>([]);
   const isOpenFilterMenu = ref(false);
   const loading = ref(true);
+  const titleProduct = computed(() => useMultiLang(category.value, 'title'));
+  useTitle(titleProduct);
   const priceRange = reactive({
     api: {
       min: 0,

@@ -6,8 +6,9 @@
   // const NUM_SKELETON_ITEMS = 7;
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
-  // const products = ref<Product[]>([]);
   const product = ref<Product | null>();
+  const titleProduct = computed(() => useMultiLang(product.value, 'title'));
+  useTitle(titleProduct);
 
   const setThumbsSwiper = (swiper: any) => {
     sideSwiper.value = swiper;
@@ -22,19 +23,7 @@
     product.value = response?.data.value as Product;
   };
 
-  fetchProduct()
-  // const getProducts = async () => {
-  //   // REVIEW useFetchApi
-  //   try {
-  //     const res = await useApi(`${useUrlApi()}/product/list`);
-
-  //     products.value = res as Product[];
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // getProducts();
+  fetchProduct();
 </script>
 
 <template>

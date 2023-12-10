@@ -2,6 +2,7 @@
   definePageMeta({
     middleware: ['no-company'],
   });
+  useTitle('create_company.application_submission');
 
   const companyStatus = ref<CompanyStatus>('noCreate');
   const isCheck = ref<boolean>(false);

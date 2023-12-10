@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  useTitle('profile.my_requests.add_request');
   // definePageMeta({
   //   middleware: ['exporter'],
   // });

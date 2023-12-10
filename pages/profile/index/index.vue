@@ -1,7 +1,7 @@
 <script setup lang="ts">
   const auth = useAuthStore();
   const { t } = useI18n();
-
+  useTitle('profile.personal_data');
   const user = computed(() => auth.user);
   const isCompany = computed(() => auth.isCompany);
   const messageUserData = ref('');

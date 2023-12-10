@@ -2,6 +2,7 @@
   definePageMeta({
     middleware: ['exporter', 'company'],
   });
+  useTitle('profile.my_products');
   const products = ref<Product[]>([]);
   const loading = ref(true);
   const NUM_SKELETON_ITEMS = 5;

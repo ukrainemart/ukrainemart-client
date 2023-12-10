@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+  useTitle('home');
+
   definePageMeta({
     layout: 'header-without-logo',
   });

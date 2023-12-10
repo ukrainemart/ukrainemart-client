@@ -2,6 +2,7 @@
   definePageMeta({
     middleware: ['exporter'],
   });
+  useTitle('add_product.add_product');
   const { t } = useI18n();
   const error = ref('');
   const message = ref('');

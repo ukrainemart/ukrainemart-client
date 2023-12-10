@@ -5,6 +5,12 @@
 
   const { locale } = useI18n();
 
+  useHead({
+    htmlAttrs: {
+      lang: locale,
+    },
+  });
+
   const locales = ['ua', 'en'];
   const filteredLocales = computed(() => locales.filter((item) => item !== locale.value));
 </script>

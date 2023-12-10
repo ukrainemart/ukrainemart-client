@@ -1,5 +1,6 @@
 <script setup lang="ts">
   const favorites = useFavoritesStore();
+  useTitle('favorites');
 
   const products = computed<Product[]>(() => favorites.favorites);
   const fetchFavorites = () => favorites.fetchFavorites();
