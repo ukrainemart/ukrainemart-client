@@ -15,7 +15,7 @@
         {{ $t('companyDescription') }}
       </p>
 
-      <CommonSearch />
+      <CommonSearch :isExample="true" />
     </div>
 
     <CommonSectionCategories />

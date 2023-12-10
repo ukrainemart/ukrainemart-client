@@ -1,9 +1,14 @@
 <script setup lang="ts">
+  defineProps<{
+    isExample?: boolean;
+  }>();
+
   const searchRef = ref(null);
   const searchValue = ref<string>('');
   const isSearchActive = ref(false);
   const products = ref<Product[]>([]);
   const categories = ref<Category[]>([]);
+  const isSearchModal = inject('isSearchModal') as Ref<boolean>;
 
   const updateSearchValue = (value: string) => (searchValue.value = value);
   const updateSearchActive = (value: boolean) => (isSearchActive.value = value);
@@ -14,7 +19,15 @@
 </script>
 
 <template>
-  <div ref="searchRef" class="relative min-w-[305px] md:w-[446px] lg:w-[600px]">
+  <div
+    ref="searchRef"
+    :class="
+      cn('relative', {
+        'min-w-[305px] md:w-[446px] lg:w-[600px]': !isSearchModal,
+        'max-w-[562px]': isSearchModal,
+      })
+    "
+  >
     <CommonSearchInput
       :searchValue="searchValue"
       :isSearchActive="isSearchActive"
@@ -30,8 +43,8 @@
       :categories="categories"
     />
 
-    <!-- REVIEW optional? -->
     <p
+      v-if="isExample"
       class="ld:mt-[5px] ml-[18px] mt-[3px] text-left text-[7px] font-medium text-black md:mt-[7px] md:text-[13px] lg:text-[17px]"
     >
       {{ `${$t('example')}:` }} <span class="underline">{{ $t('grain') }}</span> {{ $t('or') }}

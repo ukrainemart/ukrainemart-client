@@ -4,26 +4,36 @@
     products: Product[];
     categories: Category[];
   }>();
+
+  const isSearchModal = inject('isSearchModal') as Ref<boolean>;
 </script>
 
 <template>
   <div
     v-if="isSearchActive"
-    class="absolute inset-x-0 rounded-b-[15px] bg-white py-[7px] text-left shadow-lg md:rounded-[20px] md:py-[18px] xl:py-[25px]"
+    :class="
+      cn(
+        'absolute inset-x-0 z-10 rounded-b-[15px] bg-white py-[15px] text-left md:rounded-b-[20px] md:py-[18px] xl:py-[25px]',
+        {
+          relative: isSearchModal,
+          'shadow-lg': !isSearchModal,
+        }
+      )
+    "
   >
     <div v-if="categories.length">
       <p
-        class="px_search mb-[6px] py-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
+        class="px_search mb-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
       >
         Категорії
       </p>
 
-      <ul class="z-10 flex flex-col">
+      <ul class="flex flex-col">
         <li v-for="category in categories" :key="category.id" class="">
           <!-- TODO: long title (truncate, gap) -->
           <NuxtLink
             :to="`/category/${category.id}`"
-            class="px_search flex items-center justify-between py-[6px] lg:hover:bg-gray-100"
+            class="px_search flex items-center justify-between py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
           >
             <span
               class="text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
@@ -40,21 +50,21 @@
       </ul>
     </div>
 
-    <div v-if="products.length && categories.length" class="mx-[15px] my-1 h-px bg-[#d9d9d9]" />
+    <div v-if="products.length && categories.length" class="mx-[15px] mb-2.5 h-px bg-[#d9d9d9]" />
 
     <div v-if="products.length">
       <p
-        class="px_search mb-[6px] py-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
+        class="px_search mb-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
       >
         Товари
       </p>
 
-      <ul class="z-10 flex flex-col">
+      <ul class="flex flex-col">
         <li v-for="product in products" :key="product.id" class="">
           <!-- TODO: long title (truncate, gap) -->
           <NuxtLink
             :to="`/product/${product.id}`"
-            class="px_search flex items-center justify-between py-[6px] lg:hover:bg-gray-100"
+            class="px_search flex items-center justify-between py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
           >
             <span
               class="text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
@@ -71,9 +81,9 @@
       </ul>
     </div>
 
-    <div v-if="products.length || categories.length" class="px_search py-[6px]">
+    <div v-if="products.length || categories.length" class="px_search">
       <!-- TODO: add to url -->
-      <NuxtLink :to="'/'" class="flex w-fit">
+      <NuxtLink :to="'/'" class="flex w-fit pt-[4px] xl:pt-[5px]">
         <span
           class="text-[10px] font-semibold leading-[12px] text-status_red md:text-[14px] md:leading-[17px] lg:hover:underline xl:text-[17px] xl:leading-[21px]"
         >
@@ -84,7 +94,7 @@
 
     <div v-if="!products.length && !categories.length">
       <p
-        class="px_search py-[6px] text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
+        class="px_search text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
       >
         Нічого не знайдено
       </p>

@@ -10,6 +10,7 @@
   const isMobileMenu = ref(false);
   const isCatalogModal = ref(false); // mobile catalog state
   const isCatalogHovered = ref(false); // desktop catalog state
+  const isSearchModal = ref(false);
   const catalog = ref<Catalog[]>([]);
   const currentCategories = ref<Catalog[]>([]);
   const selectedParentCategory = ref<Catalog | null>(null);
@@ -70,6 +71,7 @@
       console.error(error);
     }
   };
+
   const onClickFavorites = () => {
     if (isLoggedIn()) {
       navigateTo('/profile/favorites');
@@ -86,6 +88,12 @@
   provide('selectedChildCategory', { selectedChildCategory, updateChildCategory });
   provide('isCatalogHovered', { isCatalogHovered, updateIsCatalogHovered });
   // Catalog END
+
+  // Search START
+  const toggleSearchModal = () => (isSearchModal.value = !isSearchModal.value);
+
+  provide('isSearchModal', isSearchModal);
+  // Search END
 </script>
 
 <template>
@@ -115,11 +123,12 @@
         </div>
 
         <div class="relative z-50 flex items-center gap-5">
-          <SvgoSearchMobileMenu
-            v-if="isLogo"
-            class="h-[18px] w-[18px] text-black md:h-[23px] md:w-[23px] 4xl:h-[28px] 4xl:w-[28px]"
-            :fontControlled="false"
-          />
+          <UiButtonOpacity v-if="isLogo" type="button" @click="toggleSearchModal">
+            <SvgoSearchMobileMenu
+              class="h-[18px] w-[18px] text-black md:h-[23px] md:w-[23px] 4xl:h-[28px] 4xl:w-[28px]"
+              :fontControlled="false"
+            />
+          </UiButtonOpacity>
 
           <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
         </div>
@@ -140,11 +149,13 @@
         </div>
 
         <div class="flex items-center gap-[15px] 4xl:gap-[30px]">
-          <SvgoSearchMobileMenu
-            v-if="isLogo"
-            class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
-            :fontControlled="false"
-          />
+          <UiButtonOpacity v-if="isLogo" type="button" @click="toggleSearchModal">
+            <SvgoSearchMobileMenu
+              v-if="isLogo"
+              class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
+              :fontControlled="false"
+            />
+          </UiButtonOpacity>
 
           <UiButtonOpacity @click="onClickFavorites">
             <SvgoHearth
@@ -200,4 +211,8 @@
     <CommonCatalog :toggleCatalogModal="toggleCatalogModal" />
   </UiSideModal>
   <!-- MOBILE CATALOG END -->
+
+  <!-- MOBILE SEARCH START -->
+  <CommonSearchModal v-model="isSearchModal" />
+  <!-- MOBILE SEARCH END -->
 </template>
