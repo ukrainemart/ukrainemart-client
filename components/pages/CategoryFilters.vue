@@ -17,7 +17,6 @@
     <div class="mb-5 md:mb-7">
       <PagesCategoryFilterTitle>Мінімальне замовлення</PagesCategoryFilterTitle>
       <div class="flex gap-x-[10px] md:gap-x-[25px]">
-        <!-- TODO add placeholder -->
         <UiInputOutline customClass="input_outline_category" placeholder="50 Кг" />
         <!-- REVIEW DRY -->
         <button

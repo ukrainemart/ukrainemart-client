@@ -40,6 +40,7 @@
     />
 
     <CommonSearchResult
+      :searchValue="searchValue"
       :isSearchActive="isSearchActive"
       :products="products"
       :categories="categories"

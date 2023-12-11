@@ -72,7 +72,6 @@
   };
 
   const getCategory = async () => {
-    // REVIEW useApi => useApiFetch
     try {
       const res = await useFetch(`${useUrlApi()}/category/get/${categoryId}`);
 
@@ -119,28 +118,18 @@
             {{ useMultiLang(category, 'title') }}
           </CommonProductTitle>
 
-          <div class="mb-[15px] flex items-center justify-between md:mb-[15px]">
+          <div class="mb-[15px] flex items-center justify-between md:mb-[15px] lg:hidden">
             <button
               type="button"
-              class="text-[14px] font-medium md:text-[18px] lg:hidden"
+              class="text-[14px] font-medium md:text-[18px]"
               @click="isOpenFilterMenu = true"
             >
               Фільтри
             </button>
-
-            <!-- TODO v-if active filters -->
-            <!-- <button
-              type="button"
-              class="text-[10px] font-medium text-status_gray md:text-[12px] lg:text-[16px]"
-            >
-              Очистити фільтри
-            </button> -->
           </div>
-
-          <CommonFilterTags />
         </div>
 
-        <div class="">
+        <div>
           <!-- TODO uncomment it after solving the ssr slow loading problem <div
             v-if="loading"
             class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
@@ -163,10 +152,6 @@
             />
           </div>
         </div>
-
-        <!-- <div class="">
-          <UiPagination v-if="!loading" />
-        </div> -->
       </div>
     </div>
 
