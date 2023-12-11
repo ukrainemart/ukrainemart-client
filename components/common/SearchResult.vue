@@ -1,11 +1,21 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     isSearchActive: boolean;
     products: Product[];
     categories: Category[];
+    isSearchModal?: boolean;
+    toggleSearchModal?: () => void;
   }>();
 
-  const isSearchModal = inject('isSearchModal') as Ref<boolean>;
+  const router = useRouter();
+
+  const handleClick = (path: string) => {
+    if (props.toggleSearchModal) {
+      props.toggleSearchModal();
+    }
+
+    router.push(path);
+  };
 </script>
 
 <template>
@@ -34,6 +44,7 @@
           <NuxtLink
             :to="`/category/${category.id}`"
             class="px_search flex items-center justify-between py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
+            @click="handleClick(`/category/${category.id}`)"
           >
             <span
               class="text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
@@ -65,6 +76,7 @@
           <NuxtLink
             :to="`/product/${product.id}`"
             class="px_search flex items-center justify-between py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
+            @click="handleClick(`product/${product.id}`)"
           >
             <span
               class="text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"

@@ -1,6 +1,8 @@
 <script setup lang="ts">
   defineProps<{
     isExample?: boolean;
+    isSearchModal?: boolean;
+    toggleSearchModal?: () => void;
   }>();
 
   const searchRef = ref(null);
@@ -8,7 +10,6 @@
   const isSearchActive = ref(false);
   const products = ref<Product[]>([]);
   const categories = ref<Category[]>([]);
-  const isSearchModal = inject('isSearchModal') as Ref<boolean>;
 
   const updateSearchValue = (value: string) => (searchValue.value = value);
   const updateSearchActive = (value: boolean) => (isSearchActive.value = value);
@@ -31,6 +32,7 @@
     <CommonSearchInput
       :searchValue="searchValue"
       :isSearchActive="isSearchActive"
+      :isSearchModal="isSearchModal"
       @updateSearchValue="updateSearchValue"
       @updateProducts="updateProducts"
       @updateCategories="updateCategories"
@@ -41,6 +43,8 @@
       :isSearchActive="isSearchActive"
       :products="products"
       :categories="categories"
+      :isSearchModal="isSearchModal"
+      :toggleSearchModal="toggleSearchModal"
     />
 
     <p

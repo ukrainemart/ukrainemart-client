@@ -1,6 +1,7 @@
 <script setup lang="ts">
   defineProps<{
-    label: string;
+    isSearchModal: boolean;
+    toggleSearchModal: () => void;
   }>();
 </script>
 
@@ -19,7 +20,7 @@
       },
     }"
   >
-    <CommonSearch />
+    <CommonSearch :isSearchModal="isSearchModal" :toggleSearchModal="toggleSearchModal" />
   </UModal>
 </template>
 
