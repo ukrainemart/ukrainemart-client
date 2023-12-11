@@ -5,14 +5,22 @@
     layout: 'header-without-logo',
   });
 
+  type MainPageData = {
+    products: Product[];
+    importRequests: Request[];
+  };
+
   const products = ref<Product[]>([]);
+  const requests = ref<Request[]>([]);
 
   const getProducts = async () => {
     // REVIEW useFetchApi
     try {
       const res: any = await useFetch(`${useUrlApi()}/main_page`);
+      const data: MainPageData = res.data.value;
 
-      products.value = res?.data?.value?.products as Product[];
+      products.value = data?.products as Product[];
+      requests.value = data?.importRequests as Request[];
     } catch (error) {
       console.error(error);
     }
@@ -29,7 +37,7 @@
         {{ $t('goodsFromUaExporters') }}
       </template>
     </CommonSectionProductsSlider>
-    <CommonSectionRequestsImporters />
+    <CommonSectionRequestsImporters :requests="requests" />
     <CommonSectionPopularCategories />
     <CommonSectionFaq />
     <CommonSectionOurPartners />

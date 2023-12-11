@@ -11,11 +11,14 @@
     v-slot="{ open }"
     class="input_outline !p-0"
     :uiMenu="{
-      background: 'bg-background-primary',
-      container: '!top-0 !left-0 !transform-none',
-      rounded: 'rounded-[10px] md:rounded-[16px]',
+      trigger: 'inline-flex w-full !bg-black',
+      background: '',
+      container:
+        '!top-[-1px] rounded-[10px] !right-0 !m-auto md:rounded-[16px] shadow-lg w-[100%] overflow-hidden !left-[0px] !transform-none bg-background-primary border border-black  pt-[5px] md:pt-[10px] !pt-[30px] md:!pt-[40px]',
+      rounded: '',
       padding: 'p-0',
-      base: 'border border-black py-[5px] md:py-[10px] !pt-[30px] md:!pt-[40px]',
+      base: '!ring-0',
+      shadow: '',
       option: {
         base: 'input_outline_text',
         padding: 'px-[9px] py-[7px] md:px-[14px] xl:px-[19px] xl:py-[10px]',
