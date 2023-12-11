@@ -1,7 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    styles?: string;
+  }>();
+</script>
 
 <template>
-  <UiButtonText>
+  <UiButtonText :styles="styles">
     <span class="flex items-center gap-[5px] md:gap-[7px] 4xl:gap-[10px]">
       <slot />
       <SvgoArrowDown

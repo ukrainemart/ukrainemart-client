@@ -20,9 +20,19 @@
 </script>
 
 <template>
-  <div class="flex gap-[48px]">
+  <div
+    :class="
+      cn('flex gap-[48px]', {
+        'gap-[15px] xl:gap-[48px]': !isLogo,
+      })
+    "
+  >
     <UiButtonTextUnderline
-      styles="md:hover:text-status_red md:hover:before:bg-status_red"
+      :styles="
+        cn('md:hover:text-status_red md:hover:before:bg-status_red', {
+          'md:text-[14px] xl:text-[16px]': !isLogo,
+        })
+      "
       @mouseover="handleMouseOver"
       @mouseleave="handleMouseLeave"
     >
@@ -47,11 +57,23 @@
       </div>
     </UiButtonTextUnderline>
 
-    <UiButtonTextIconArrowDown>
+    <UiButtonTextIconArrowDown
+      :styles="
+        cn('', {
+          'md:text-[14px] xl:text-[16px]': !isLogo,
+        })
+      "
+    >
       {{ $t('forUaExporters') }}
     </UiButtonTextIconArrowDown>
 
-    <UiButtonTextIconArrowDown>
+    <UiButtonTextIconArrowDown
+      :styles="
+        cn('', {
+          'md:text-[14px] xl:text-[16px]': !isLogo,
+        })
+      "
+    >
       {{ $t('forIntlImporters') }}
     </UiButtonTextIconArrowDown>
   </div>
