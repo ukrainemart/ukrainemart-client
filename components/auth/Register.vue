@@ -17,14 +17,20 @@
 
   const register = () => {
     loadingRequest.value = true;
-    auth.register(credentials).then((res: any) => {
-      loadingRequest.value = false;
-      if (res.data.value.status === 2) {
-        switchTypeAuth('successRegister');
-      } else {
+    auth
+      .register(credentials)
+      .then((res: any) => {
+        loadingRequest.value = false;
+        if (res.data.value.status === 2) {
+          switchTypeAuth('successRegister');
+        } else {
+          error.value = t('validation_inputs.try_again');
+        }
+      })
+      .catch((): void => {
+        loadingRequest.value = false;
         error.value = t('validation_inputs.try_again');
-      }
-    });
+      });
   };
 </script>
 

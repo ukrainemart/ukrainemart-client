@@ -1,12 +1,19 @@
 <script setup lang="ts">
-  const props = defineProps<{
+  interface Props {
     currentValue: any;
     options: any[];
     name: string;
     modelValue: any;
     valueAttribute: string;
     optionAttribute: string;
-  }>();
+    message?: boolean;
+    placeholder?: string;
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    message: true,
+    placeholder: '',
+  });
 
   const { value, errorMessage } = useField(() => props.name);
 
@@ -29,16 +36,21 @@
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="relative flex flex-col">
     <UiSelectOutline
       v-model="value"
       :class="{ '!border-status_red': errorMessage }"
       :options="options"
+      :placeholder="placeholder"
       :currentValue="currentValue"
       :value-attribute="valueAttribute"
       :option-attribute="optionAttribute"
     />
-    <UiAlertInputError class="mt-[5px] normal-case" :error="errorMessage" />
+    <UiAlertInputError
+      v-if="message"
+      class="absolute left-0 top-full mt-[5px] normal-case"
+      :error="errorMessage"
+    />
   </div>
 </template>
 

@@ -7,9 +7,7 @@ export function useTitle(title: any) {
   useHead({
     titleTemplate: reactiveTitle.value,
   });
-  console.log(reactiveTitle.value);
   watchDeep(reactiveTitle, () => {
-    console.log(reactiveTitle.value);
     useHead({
       titleTemplate: reactiveTitle.value,
     });

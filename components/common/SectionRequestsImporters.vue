@@ -1,9 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    requests: Request[];
+  }>();
+</script>
 
 <template>
   <UiSectionTitleSlider
     :showAll="true"
-    :slides="[1, 1, 1, 1, 1, 1, 1, 1]"
+    :slides="requests"
     :breakpoints="{
       375: {
         slidesPerView: 1,
@@ -26,7 +30,7 @@
       {{ $t('requestsFromIntlImporters') }}
     </template>
     <template #slide="{ slide }">
-      <CommonRequestImportersItem class="mb-[20px]" :item="slide" />
+      <CommonRequestImportersItem :request="slide" class="mb-[20px]" :item="slide" />
     </template>
   </UiSectionTitleSlider>
 </template>

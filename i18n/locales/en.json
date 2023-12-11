@@ -83,7 +83,10 @@
     "country": "Country",
     "select_country": "Select a country",
     "request_validity_period": "Request validity period",
-    "days": "Days"
+    "days": "Days",
+    "months": "Months",
+    "years": "Years",
+    "choose_a_date": "Choose a date"
   },
 
   "email_validate": {
@@ -118,7 +121,9 @@
     "my_requests": {
       "my_requests": "My requests",
       "add_request": "Add a request",
-      "edit_request": "Edit request"
+      "edit_request": "Edit request",
+      "you_have_no_requests_yet": "У ваc ще немає запитів.",
+      "delete_request_question": "Delete a request?"
     }
   },
   "create_company": {
