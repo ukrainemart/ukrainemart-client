@@ -7,6 +7,8 @@ declare interface RequestImporter {
   // date_from: string;
   // date_before: string;
   // date_type: string;
+  company_requests: Request[];
+  same_category: Request[];
   count: number;
   count_type: string;
   active_before: string;

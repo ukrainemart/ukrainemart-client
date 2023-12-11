@@ -28,6 +28,15 @@
       <PagesCompanyInfo :request="request" class="md:mt-[35px] 2xl:mt-[0px]" />
     </div>
 
+    <CommonSectionRequestsImporters
+      :title="$t('labels.other_inquiries_from_this_importer')"
+      :requests="request?.company_requests"
+    />
+    <CommonSectionRequestsImporters
+      :title="$t('labels.other_inquiries_from_this_category')"
+      :requests="request?.same_category"
+    />
+
     <CommonSectionCategories />
   </div>
 </template>

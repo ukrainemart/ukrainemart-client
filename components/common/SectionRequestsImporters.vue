@@ -1,12 +1,13 @@
 <script setup lang="ts">
   defineProps<{
     requests: Request[];
+    title: string;
   }>();
 </script>
 
 <template>
   <UiSectionTitleSlider
-    v-if="requests.length > 0"
+    v-if="requests && requests.length > 0"
     :showAll="true"
     :slides="requests"
     :breakpoints="{
@@ -28,7 +29,7 @@
     }"
   >
     <template #title>
-      {{ $t('requestsFromIntlImporters') }}
+      {{ title }}
     </template>
     <template #slide="{ slide }">
       <CommonRequestImportersItem :request="slide" class="mb-[20px]" :item="slide" />

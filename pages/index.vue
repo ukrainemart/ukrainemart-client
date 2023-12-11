@@ -37,7 +37,7 @@
         {{ $t('goodsFromUaExporters') }}
       </template>
     </CommonSectionProductsSlider>
-    <CommonSectionRequestsImporters :requests="requests" />
+    <CommonSectionRequestsImporters :title="$t('requestsFromIntlImporters')" :requests="requests" />
     <CommonSectionPopularCategories />
     <CommonSectionFaq />
     <CommonSectionOurPartners />

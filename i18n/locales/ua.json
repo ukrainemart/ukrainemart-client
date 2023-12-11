@@ -91,7 +91,9 @@
     "contact": "Зв’язатися",
     "more_information_about_request": "Детальніше про запит",
     "more_about_importer": "Детальніше про імпортера",
-    "open_contact": "Відкрити контакт"
+    "open_contact": "Відкрити контакт",
+    "other_inquiries_from_this_importer": "Інші запити від цього імпортера",
+    "other_inquiries_from_this_category": "Інші запити з цієї категорії"
   },
 
 
