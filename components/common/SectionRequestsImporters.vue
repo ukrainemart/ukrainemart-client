@@ -6,6 +6,7 @@
 
 <template>
   <UiSectionTitleSlider
+    v-if="requests.length > 0"
     :showAll="true"
     :slides="requests"
     :breakpoints="{
