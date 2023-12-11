@@ -1,16 +1,19 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     isSearchActive: boolean;
     products: Product[];
     categories: Category[];
+    isSearchModal?: boolean;
+    toggleSearchModal?: () => void;
   }>();
 
   const router = useRouter();
-  const isSearchModal = inject('isSearchModal') as Ref<boolean>;
-  const toggleSearchModal = inject('toggleSearchModal') as () => void;
 
   const handleClick = (path: string) => {
-    toggleSearchModal();
+    if (props.toggleSearchModal) {
+      props.toggleSearchModal();
+    }
+
     router.push(path);
   };
 </script>

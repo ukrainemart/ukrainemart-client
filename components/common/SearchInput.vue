@@ -2,6 +2,7 @@
   const props = defineProps<{
     searchValue: string;
     isSearchActive: boolean;
+    isSearchModal?: boolean;
   }>();
 
   const emit = defineEmits([
@@ -10,8 +11,6 @@
     'updateCategories',
     'updateSearchActive',
   ]);
-
-  const isSearchModal = inject('isSearchModal') as Ref<boolean>;
 
   const getSearchResult = async (query: string) => {
     try {

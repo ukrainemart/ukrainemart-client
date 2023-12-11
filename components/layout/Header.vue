@@ -92,8 +92,6 @@
   // Search START
   const toggleSearchModal = () => (isSearchModal.value = !isSearchModal.value);
 
-  provide('toggleSearchModal', toggleSearchModal);
-  provide('isSearchModal', isSearchModal);
   // Search END
 </script>
 
@@ -214,6 +212,10 @@
   <!-- MOBILE CATALOG END -->
 
   <!-- MOBILE SEARCH START -->
-  <CommonSearchModal v-model="isSearchModal" />
+  <CommonSearchModal
+    v-model="isSearchModal"
+    :isSearchModal="isSearchModal"
+    :toggleSearchModal="toggleSearchModal"
+  />
   <!-- MOBILE SEARCH END -->
 </template>

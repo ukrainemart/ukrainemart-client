@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineProps<{
+    isSearchModal: boolean;
+    toggleSearchModal: () => void;
+  }>();
+</script>
 
 <template>
   <UModal
@@ -15,7 +20,7 @@
       },
     }"
   >
-    <CommonSearch />
+    <CommonSearch :isSearchModal="isSearchModal" :toggleSearchModal="toggleSearchModal" />
   </UModal>
 </template>
 
