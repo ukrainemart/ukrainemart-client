@@ -1,7 +1,6 @@
 <script setup lang="ts">
   defineProps<{
     noButton?: boolean;
-    requestLink: string;
     request: RequestImporter;
   }>();
 </script>
@@ -20,7 +19,7 @@
       <slot name="buttons_action" />
     </div>
     <h3
-      class="col-span-2 mt-[5px] text-[17px] font-medium md:mt-[12px] md:text-[20px] 4xl:mt-[21px]"
+      class="col-span-2 mt-[10px] text-[17px] font-medium md:mt-[15px] md:text-[20px] 4xl:mt-[24px]"
     >
       {{ request?.title }}
     </h3>
@@ -31,8 +30,8 @@
       class="col-span-2 mt-[7px] flex flex-col gap-[5px] md:mt-[20px] md:gap-[10px] 4xl:mt-[30px] 4xl:gap-[15px]"
     >
       <UiTextPortalPrimaryXl>
-        {{ `${$t('category')}:` }}
-        <span class="text-status_gray">{{ useMultiLang(request?.category, 'title') }}</span>
+        {{ `${$t('name_company')}:` }}
+        <span class="text-status_gray">{{ request?.company?.title }}</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
         {{ `${$t('quantity')}:` }}
@@ -46,13 +45,17 @@
     <div class="col-span-2 flex justify-center">
       <UiButtonOutline
         v-if="!noButton"
-        :to="requestLink"
+        :to="'/request_importers/' + request.id"
         class="mt-[15px] self-center md:mt-[35px] 4xl:mt-[25px]"
       >
         {{ $t('details') }}
       </UiButtonOutline>
     </div>
-    <nuxt-link v-if="noButton" class="absolute left-0 top-0 z-10 h-full w-full" :to="requestLink" />
+    <nuxt-link
+      v-if="noButton"
+      class="absolute left-0 top-0 z-10 h-full w-full"
+      :to="'/request_importers/' + request.id"
+    />
   </div>
 </template>
 

@@ -86,7 +86,12 @@
     "days": "Днів",
     "months": "Місяців",
     "years": "Років",
-    "choose_a_date": "Виберіть дату"
+    "choose_a_date": "Виберіть дату",
+    "importers_requests": "Запити імпортерів",
+    "contact": "Зв’язатися",
+    "more_information_about_request": "Детальніше про запит",
+    "more_about_importer": "Детальніше про імпортера",
+    "open_contact": "Відкрити контакт"
   },
 
 
@@ -94,6 +99,7 @@
   "email_validate": {
     "email_not_verified": "Email не підтверджено!"
   },
+
 
 
   "add_product": {
@@ -125,7 +131,8 @@
       "add_request": "Додати запит",
       "edit_request": "Редагувати запит",
       "you_have_no_requests_yet": "У ваc ще немає запитів.",
-      "delete_request_question": "Видалити запит?"
+      "delete_request_question": "Видалити запит?",
+      "date_the_request_was_created": "Дата створення запиту"
     }
   },
   "create_company": {

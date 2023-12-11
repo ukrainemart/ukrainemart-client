@@ -3,6 +3,7 @@ declare interface RequestImporter {
   category: Category;
   description:string;
   country: Country;
+  company: Company;
   // date_from: string;
   // date_before: string;
   // date_type: string;

@@ -86,7 +86,12 @@
     "days": "Days",
     "months": "Months",
     "years": "Years",
-    "choose_a_date": "Choose a date"
+    "choose_a_date": "Choose a date",
+    "importers_requests": "Importers' requests",
+    "contact": "Contact",
+    "more_information_about_request": "More information about the request",
+    "more_about_importer": "More about the importer",
+    "open_contact": "Open a contact"
   },
 
   "email_validate": {
@@ -123,7 +128,8 @@
       "add_request": "Add a request",
       "edit_request": "Edit request",
       "you_have_no_requests_yet": "У ваc ще немає запитів.",
-      "delete_request_question": "Delete a request?"
+      "delete_request_question": "Delete a request?",
+      "date_the_request_was_created": "Date the request was created"
     }
   },
   "create_company": {
