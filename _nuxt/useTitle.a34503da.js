@@ -1,0 +1,1 @@
+import{u as a,l as p}from"./entry.1a7899f3.js";import{w as u}from"./index.a747a02a.js";import{l as i}from"./swiper-vue.6ff25394.js";function c(e){const{$i18n:o}=p(),{t:s}=o,t=i(()=>typeof e!="string"?e.value:s(`${e}`));a({titleTemplate:t.value}),u(t,()=>{a({titleTemplate:t.value})})}export{c as u};
