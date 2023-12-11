@@ -92,6 +92,7 @@
   // Search START
   const toggleSearchModal = () => (isSearchModal.value = !isSearchModal.value);
 
+  provide('toggleSearchModal', toggleSearchModal);
   provide('isSearchModal', isSearchModal);
   // Search END
 </script>
