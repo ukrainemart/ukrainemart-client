@@ -1,5 +1,6 @@
 <script setup lang="ts">
   const props = defineProps<{
+    searchValue: string;
     isSearchActive: boolean;
     products: Product[];
     categories: Category[];
@@ -76,7 +77,7 @@
           <NuxtLink
             :to="`/product/${product.id}`"
             class="px_search flex items-center justify-between py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
-            @click="handleClick(`product/${product.id}`)"
+            @click="handleClick(`/product/${product.id}`)"
           >
             <span
               class="text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
@@ -94,8 +95,11 @@
     </div>
 
     <div v-if="products.length || categories.length" class="px_search">
-      <!-- TODO: add to url -->
-      <NuxtLink :to="'/'" class="flex w-fit pt-[4px] xl:pt-[5px]">
+      <NuxtLink
+        :to="`/search?param=${searchValue}`"
+        class="flex w-fit pt-[4px] xl:pt-[5px]"
+        @click="handleClick(`/search?param=${searchValue}`)"
+      >
         <span
           class="text-[10px] font-semibold leading-[12px] text-status_red md:text-[14px] md:leading-[17px] lg:hover:underline xl:text-[17px] xl:leading-[21px]"
         >
