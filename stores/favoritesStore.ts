@@ -12,7 +12,7 @@ export const useFavoritesStore = defineStore('favoritesStore', () => {
         return [];
       },
     });
-    favorites.value = data.value as Product[];
+    favorites.value = (data.value || []) as Product[];
   }
 
   function addToFavorites(id: number, disabledBtn: Ref<boolean>) {
