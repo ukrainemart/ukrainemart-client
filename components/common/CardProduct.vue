@@ -32,7 +32,7 @@
       />
     </div>
 
-    <CommonButtonFavorite :productId="product.id" />
+    <CommonButtonFavoriteCardProduct :product="product" />
 
     <h5
       class="mb-[5px] truncate text-[13px] font-medium leading-[15px] md:text-[16px] md:leading-[20px] 4xl:mb-2.5 4xl:text-[20px] 4xl:leading-[24px]"

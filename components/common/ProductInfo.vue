@@ -83,7 +83,10 @@
       </li>
     </ul>
 
-    <UiButtonPrimaryIconEnvelop>Зв’язатися</UiButtonPrimaryIconEnvelop>
+    <div class="flex items-center gap-[15px] md:gap-[20px] xl:gap-[25px]">
+      <UiButtonPrimaryIconEnvelop>Зв’язатися</UiButtonPrimaryIconEnvelop>
+      <CommonButtonFavoritePageProduct :product="product" />
+    </div>
   </div>
 </template>
 

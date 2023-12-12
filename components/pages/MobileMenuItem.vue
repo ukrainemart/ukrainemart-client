@@ -1,11 +1,21 @@
 <script setup lang="ts">
   defineProps<{
     label: string;
+    active?: boolean;
   }>();
 </script>
 
 <template>
-  <UiButtonOpacity class="flex flex-col items-center gap-[3px]">
+  <UiButtonOpacity
+    :class="
+      cn(
+        'flex h-full min-w-[57px] flex-col items-center justify-center gap-[3px] border-b-[5px] border-transparent md:min-w-[82px] md:border-b-[6px]',
+        {
+          'border-black': active,
+        }
+      )
+    "
+  >
     <span class="h-[22px] w-[22px] text-black">
       <slot />
     </span>

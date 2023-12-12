@@ -68,7 +68,7 @@
         </UiButtonText>
       </div>
 
-      <UiAlertTextDanger class="mt-[20px]">{{ error }}</UiAlertTextDanger>
+      <UiAlertTextDanger v-if="error" class="mt-[20px]">{{ error }}</UiAlertTextDanger>
       <UiButtonPrimaryLoading
         :loading="loadingRequest"
         type="submit"

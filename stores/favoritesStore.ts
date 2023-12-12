@@ -15,9 +15,11 @@ export const useFavoritesStore = defineStore('favoritesStore', () => {
     favorites.value = (data.value || []) as Product[];
   }
 
-  function addToFavorites(id: number, disabledBtn: Ref<boolean>) {
-    useApiFetch(`${useUrlApi()}/favorite/change/${id}`).then((res: any) => {
+  function addToFavorites(product: Product, disabledBtn: Ref<boolean>) {
+    useApiFetch(`${useUrlApi()}/favorite/change/${product.id}`).then((res: any) => {
       if (res.data.value.status === 1) {
+        favorites.value.push(product);
+        console.log(favorites.value);
         disabledBtn.value = false;
       }
     });

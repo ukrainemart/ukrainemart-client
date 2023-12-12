@@ -156,12 +156,7 @@
             />
           </UiButtonOpacity>
 
-          <UiButtonOpacity @click="onClickFavorites">
-            <SvgoHearth
-              class="h-5 w-[22px] text-black 4xl:h-[28px] 4xl:w-[30px]"
-              :fontControlled="false"
-            />
-          </UiButtonOpacity>
+          <UiButtonOpacityHearth @click="onClickFavorites" />
 
           <CommonLangSwitcher />
 
