@@ -175,7 +175,7 @@
       </div>
       <!-- DESKTOP END -->
 
-      <CommonBurgerMenu :isActive="isMobileMenu" @switchAuth="switchAuth" />
+      <CommonBurgerMenu :isActive="isMobileMenu" class="lg:hidden" @switchAuth="switchAuth" />
     </div>
 
     <AuthBase
