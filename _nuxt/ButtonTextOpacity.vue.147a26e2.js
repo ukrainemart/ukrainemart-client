@@ -1,1 +1,0 @@
-import{_ as s}from"./ButtonText.vue.9bf998e4.js";import{x as o,M as a,N as n,O as r,a1 as p}from"./swiper-vue.c8ff5059.js";const m=o({__name:"ButtonTextOpacity",props:{styles:{default:""}},setup(_){return(t,c)=>{const e=s;return a(),n(e,{class:"hover:opacity-hover",styles:t.styles},{default:r(()=>[p(t.$slots,"default")]),_:3},8,["styles"])}}});export{m as _};

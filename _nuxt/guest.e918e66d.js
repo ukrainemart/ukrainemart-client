@@ -1,0 +1,1 @@
+import{o as e,j as t,n as r}from"./entry.4c93b34e.js";import"./swiper-vue.c8ff5059.js";const s=e(()=>t().isLoggedIn?r("/profile",{replace:!0}):!0);export{s as default};
