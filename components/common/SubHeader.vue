@@ -20,19 +20,9 @@
 </script>
 
 <template>
-  <div
-    :class="
-      cn('flex gap-[48px]', {
-        'gap-[15px] xl:gap-[48px]': !isLogo,
-      })
-    "
-  >
+  <div class="flex gap-[48px]">
     <UiButtonTextUnderline
-      :styles="
-        cn('md:hover:text-status_red md:hover:before:bg-status_red', {
-          'md:text-[14px] xl:text-[16px]': !isLogo,
-        })
-      "
+      class="md:hover:text-status_red md:hover:before:bg-status_red"
       @mouseover="handleMouseOver"
       @mouseleave="handleMouseLeave"
     >
@@ -57,25 +47,11 @@
       </div>
     </UiButtonTextUnderline>
 
-    <UiButtonTextIconArrowDown
-      :styles="
-        cn('', {
-          'md:text-[14px] xl:text-[16px]': !isLogo,
-        })
-      "
-    >
-      {{ $t('forUaExporters') }}
-    </UiButtonTextIconArrowDown>
+    <UiButtonTextUnderline to="/" class="md:hover:text-status_red md:hover:before:bg-status_red">
+      Запити
+    </UiButtonTextUnderline>
 
-    <UiButtonTextIconArrowDown
-      :styles="
-        cn('', {
-          'md:text-[14px] xl:text-[16px]': !isLogo,
-        })
-      "
-    >
-      {{ $t('forIntlImporters') }}
-    </UiButtonTextIconArrowDown>
+    <UiButtonTextIconArrowDown> Для користувачів </UiButtonTextIconArrowDown>
   </div>
 </template>
 
