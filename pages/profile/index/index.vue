@@ -86,17 +86,20 @@
         class="grid grid-cols-1 gap-y-[15px] sm:grid-cols-2 sm:gap-x-[50px] md:gap-x-[84px] md:gap-y-[20px] 2xl:gap-x-[150px] 2xl:gap-y-[25px]"
       >
         <UiLabel :label="$t('name') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline v-model="inputs.name" />
+          <UiInputOutline v-model="inputs.name" :placeholder="$t('placeholders.name')" />
         </UiLabel>
         <UiLabel
           v-if="isCompany"
           :label="$t('name_company') + ':'"
           class="col-span-2 sm:col-span-1"
         >
-          <UiInputOutline v-model="inputs.companyTitle" />
+          <UiInputOutline
+            v-model="inputs.companyTitle"
+            :placeholder="$t('placeholders.name_company')"
+          />
         </UiLabel>
         <UiLabel :label="$t('last_name') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline v-model="inputs.lastName" />
+          <UiInputOutline v-model="inputs.lastName" :placeholder="$t('placeholders.last_name')" />
         </UiLabel>
         <UiLabel
           v-if="isCompany"
@@ -106,6 +109,7 @@
         >
           <UiSelectOutline
             v-model="inputs.companyCategory"
+            :placeholder="$t('placeholders.category')"
             :currentValue="currentCategory"
             :options="categoriesOptions"
             value-attribute="id"
@@ -113,7 +117,7 @@
           />
         </UiLabel>
         <UiLabel :label="$t('email') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline v-model="inputs.email" />
+          <UiInputOutline v-model="inputs.email" :placeholder="$t('placeholders.email')" />
         </UiLabel>
         <UiLabel
           v-if="isCompany"
@@ -122,11 +126,15 @@
         >
           <UiTextareaOutline
             v-model="inputs.companyDescription"
+            :placeholder="$t('placeholders.description_company')"
             class="!h-[90px] md:!h-[119px] xl:!h-[152px]"
           />
         </UiLabel>
         <UiLabel :label="$t('phone_number') + ':'" class="col-span-2 sm:col-span-1">
-          <CommonPhoneInputOutline v-model="inputs.phone" />
+          <CommonPhoneInputOutline
+            v-model="inputs.phone"
+            :placeholder="$t('placeholders.phone_number')"
+          />
         </UiLabel>
         <UiAlertTextSuccess v-if="messageUserData" class="col-span-2">
           {{ messageUserData }}

@@ -22,7 +22,7 @@
 <template>
   <NuxtLink
     :to="`/product/${product.id}`"
-    class="group relative block rounded-[10px] bg-white p-2.5 md:rounded-[15px] md:p-[15px] 4xl:rounded-[20px] 4xl:p-[20px]"
+    class="group relative block rounded-[10px] border-[1px] border-transparent bg-white p-2.5 duration-hover hover:border-status_gray md:rounded-[15px] md:p-[15px] 4xl:rounded-[20px] 4xl:p-[20px]"
   >
     <div class="relative mb-[7px] pt-[128%] md:mb-2.5 md:pt-[127.5%] 4xl:mb-5 4xl:pt-[125%]">
       <img

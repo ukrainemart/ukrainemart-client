@@ -31,6 +31,7 @@
   <div class="input_outline flex items-stretch !p-0">
     <input
       :value="price"
+      placeholder="223.34"
       type="number"
       class="input_without_arrow input_outline_padding w-full basis-full bg-transparent focus:outline-none"
       @input="handleInput"

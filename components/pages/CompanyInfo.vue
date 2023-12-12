@@ -40,7 +40,9 @@
     </div>
 
     <div class="flex flex-col items-center gap-[8px] md:gap-[10px]">
-      <UiButtonOutlineIconEnvelop class="max-h-[45px]">{{ $t('labels.contact') }}</UiButtonOutlineIconEnvelop>
+      <UiButtonOutlineIconEnvelop class="max-h-[45px]">{{
+        $t('labels.contact')
+      }}</UiButtonOutlineIconEnvelop>
       <NuxtLink
         to="/"
         class="text-[10px] font-medium text-status_gray underline underline-offset-1 md:text-[14px]"

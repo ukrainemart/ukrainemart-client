@@ -55,6 +55,7 @@
   <UiSelectOutlineValidate
     v-model="value"
     :name="name"
+    :placeholder="$t('placeholders.price_type_product')"
     :currentValue="selectedTitle"
     :options="variants"
     valueAttribute="value"

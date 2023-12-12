@@ -64,7 +64,7 @@
       <UiButtonTextOpacity
         class="input_outline_height input_outline_text flex w-full justify-between"
       >
-        <span>{{ value || placeholder }}</span>
+        <span :class="{ 'text-status_gray': !value }">{{ value || placeholder }}</span>
         <SvgoCalendar v-if="!modelValue" />
       </UiButtonTextOpacity>
     </template>

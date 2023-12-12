@@ -1,6 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     modelValue?: string;
+    placeholder?: string;
   }>();
 
   const emits = defineEmits(['update:modelValue']);
@@ -17,6 +18,7 @@
       >+</UiButtonTextOpacity
     >
     <input
+      :placeholder="placeholder"
       :value="modelValue"
       type="number"
       class="input_without_arrow input_outline_padding basis-full bg-transparent focus:outline-none"

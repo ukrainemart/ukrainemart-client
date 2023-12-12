@@ -20,7 +20,7 @@
       <UiButtonOpacity
         :class="
           cn(
-            'flex w-full items-center justify-between  py-[20px] text-left text-[16px] font-semibold !duration-0 md:text-[17px] 4xl:border-b-[2px] 4xl:py-[25px]',
+            'flex w-full items-center justify-between  py-[20px] text-left text-[16px] font-semibold !duration-0 md:text-[17px]  4xl:py-[25px]',
             {
               'border-b border-black': !open,
             }

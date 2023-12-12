@@ -85,17 +85,24 @@
             <UiRadio v-model="inputs.type" value="exporter" :label="$t('exporter')" />
           </div>
           <UiLabel class="" :label="$t('create_company.name_legal_entity') + ':'">
-            <UiInputOutline v-model="inputs.name" required />
+            <UiInputOutline
+              v-model="inputs.name"
+              :placeholder="$t('placeholders.name_company')"
+              required
+            />
           </UiLabel>
           <UiLabel :label="$t('create_company.enter_edrpou_code') + ':'" type="text" class="">
-            <UiInputOutline v-model="inputs.code" type="number" required />
+            <UiInputOutline v-model="inputs.code" placeholder="12345678" type="number" required />
           </UiLabel>
 
           <UiLabel
             :label="$t('create_company.contact_person_number') + ':'"
             class="self-start xl:row-span-1"
           >
-            <CommonPhoneInputOutline v-model="inputs.phone" />
+            <CommonPhoneInputOutline
+              v-model="inputs.phone"
+              :placeholder="$t('placeholders.phone_number')"
+            />
           </UiLabel>
 
           <UiLabel
@@ -104,6 +111,7 @@
           >
             <UiTextareaOutline
               v-model="inputs.description"
+              :placeholder="$t('placeholders.description_company')"
               class="h-[125px] md:h-[159px] xl:h-[147px]"
           /></UiLabel>
 

@@ -96,6 +96,23 @@
     "other_inquiries_from_this_category": "Інші запити з цієї категорії"
   },
 
+  "placeholders": {
+    "name": "Іван",
+    "last_name": "Петров",
+    "name_company": "ПрАТ 'Нова компанія'",
+    "email": "example@example.com",
+    "description_company": "Ми спеціалізуємося...",
+    "phone_number": "(123) 456-7890",
+    "password_hide": "********",
+    "category": "Добрива",
+    "title_ua_product": "Назва товару на українській",
+    "description_ua_product": "Опис товару на українській",
+    "title_en_product": "Назва товару англійською мовою",
+    "description_en_product": "Опис товару англійською мовою",
+    "price_type_product": "Тип ціни товару",
+    "unit": "кг"
+  },
+
 
 
   "email_validate": {

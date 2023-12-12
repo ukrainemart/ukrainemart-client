@@ -40,6 +40,7 @@
           <UiLabel :label="$t('from') + ':'" class="!flex-row items-center !text-black">
             <UiInputOutline
               v-model="price.minAmount"
+              placeholder="12"
               type="number"
               class="w-full max-w-[70px] md:max-w-[110px]"
             />
@@ -50,6 +51,7 @@
           >
             <UiInputOutline
               v-model="price.maxAmount"
+              placeholder="38"
               type="number"
               class="w-full max-w-[70px] md:max-w-[110px]"
             />

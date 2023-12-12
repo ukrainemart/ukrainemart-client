@@ -86,6 +86,7 @@
       >
         <UiInputOutlinePassword
           v-model="inputs.oldPassword"
+          :placeholder="$t('placeholders.password_hide')"
           :showPasswordError="isShowValidate"
           name="old_password"
         />
@@ -96,6 +97,7 @@
       >
         <UiInputOutlinePassword
           v-model="inputs.newPassword"
+          :placeholder="$t('placeholders.password_hide')"
           :showPasswordError="isShowValidate"
           name="newPassword"
         />
@@ -103,6 +105,7 @@
       <UiLabel class="row-span-1" :label="$t('repeatPassword') + ':'">
         <UiInputOutlinePassword
           v-model="inputs.newConfPassword"
+          :placeholder="$t('placeholders.password_hide')"
           :showPasswordError="isShowValidate"
           name="newConfPassword"
         />

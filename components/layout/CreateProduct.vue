@@ -107,17 +107,26 @@
               v-show="language === 'ua'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutlineValidate v-model="inputs.titleUa" name="titleUa" />
+              <UiInputOutlineValidate
+                v-model="inputs.titleUa"
+                :placeholder="$t('placeholders.title_ua_product')"
+                name="titleUa"
+              />
             </UiLabel>
             <UiLabel
               v-show="language === 'en'"
               :label="$t('add_product.enter_your_product_name') + ':'"
             >
-              <UiInputOutlineValidate v-model="inputs.titleEn" name="titleEn" />
+              <UiInputOutlineValidate
+                v-model="inputs.titleEn"
+                :placeholder="$t('placeholders.title_en_product')"
+                name="titleEn"
+              />
             </UiLabel>
             <UiLabel for="" :label="$t('add_product.select_category') + ':'">
               <UiSelectOutlineValidate
                 v-model="inputs.categoryId"
+                :placeholder="$t('placeholders.category')"
                 name="categoryId"
                 :options="categoryOptions"
                 :currentValue="getCurrentCategory.title"
@@ -131,6 +140,7 @@
             >
               <UiTextareaOutlineValidate
                 v-model="inputs.descriptionUa"
+                :placeholder="$t('placeholders.description_ua_product')"
                 name="descriptionUa"
                 required
                 class="min-h-[120px] md:min-h-[179px]"
@@ -142,6 +152,7 @@
             >
               <UiTextareaOutlineValidate
                 v-model="inputs.descriptionEn"
+                :placeholder="$t('placeholders.description_en_product')"
                 name="descriptionEn"
                 required
                 class="min-h-[120px] md:min-h-[179px]"

@@ -5,6 +5,7 @@
     tabindex?: string;
     showPasswordError?: boolean;
     name: string;
+    placeholder?: string;
   }>();
   const { value, errorMessage } = useField(() => props.name);
 
@@ -47,6 +48,7 @@
     <UiInputOutline
       v-model="value"
       :tabindex="tabindex"
+      :placeholder="placeholder"
       :name="name"
       :required="required"
       class="w-full pr-[26px] md:pr-[35px] xl:pr-[47px]"

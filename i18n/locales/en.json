@@ -96,6 +96,23 @@
     "other_inquiries_from_this_category": "Other inquiries from this category"
   },
 
+  "placeholders": {
+    "name": "John",
+    "last_name": "Smith",
+    "name_company": "XYZ Company",
+    "email": "example@example.com",
+    "description_company": "We specialize in...",
+    "phone_number": "(123) 456-7890",
+    "password_hide": "********",
+    "category": "Fertilizers",
+    "title_ua_product": "Product name in Ukrainian",
+    "description_ua_product": "Product description in Ukrainian",
+    "title_en_product": "Product title in English",
+    "description_en_product": "Product description in English",
+    "price_type_product": "Product price type",
+    "unit": "pound"
+  },
+
   "email_validate": {
     "email_not_verified": "Email not verified!"
   },

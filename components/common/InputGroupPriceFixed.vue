@@ -26,7 +26,13 @@
     <div class="col-span-5 flex items-center md:col-span-3 lg:col-span-5 4xl:col-span-3">
       <UiLabel :label="$t('quantity') + ':'" class="w-full">
         <div class="flex w-full items-center">
-          <UiInputOutline v-model="price.amount" required type="number" class="w-full" />
+          <UiInputOutline
+            v-model="price.amount"
+            placeholder="12"
+            required
+            type="number"
+            class="w-full"
+          />
         </div>
       </UiLabel>
       <UiLabel

@@ -24,6 +24,7 @@
 <template>
   <UiSelectOutline
     v-model="value"
+    :placeholder="$t('placeholders.unit')"
     :options="unitOptions"
     :currentValue="getCurrentUnit"
     class="relative z-[60] max-w-[90px] md:max-w-[110px]"

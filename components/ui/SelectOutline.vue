@@ -33,6 +33,7 @@
     <UiButtonTextOpeningArrow
       style="text-transform: inherit"
       class="input_outline_text input_outline_height relative z-40 w-full justify-between !px-[9px] text-[7px] normal-case md:!px-[14px] xl:!px-[19px]"
+      :class="{ '!text-status_gray': !currentValue }"
       :label="currentValue || placeholder"
       :open="open"
     />
