@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="flex-1">
+  <div class="flex flex-1 flex-col">
     <nuxtPage />
   </div>
 </template>

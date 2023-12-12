@@ -63,6 +63,7 @@
         <UiButtonText
           class="!text-[7px] text-status_gray md:!text-[10px] xl:!text-[14px]"
           tabindex="4"
+          @click="switchTypeAuth('forgotPassword')"
         >
           {{ $t('forgotPassword') }}
         </UiButtonText>

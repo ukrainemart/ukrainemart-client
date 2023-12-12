@@ -23,7 +23,16 @@
         @switchModal="switchModal"
       />
       <AuthRegister v-if="type === 'register'" @switchTypeAuth="switchTypeAuth" />
-      <AuthSuccessRegister v-if="type === 'successRegister'" @switchModal="switchModal" />
+      <AuthSuccessRegister
+        v-if="type === 'successRegister'"
+        :message="$t('success_register_message')"
+        @switchModal="switchModal"
+      />
+      <AuthForgotPassword v-if="type === 'forgotPassword'" @switchModal="switchModal" />
+      <AuthMessageRestorePassword
+        v-if="type === 'messageRestorePassword'"
+        @switchModal="switchModal"
+      />
     </div>
   </UiModal>
 </template>

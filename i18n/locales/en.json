@@ -75,6 +75,7 @@
   "description_of_your_company": "Description of your company",
   "delete_product": "Delete a product?",
   "fill_in_all_fields": "Fill in all fields!",
+  "the_link_not_active": "The link is not active!",
 
   "labels": {
     "title": "Title",
@@ -93,7 +94,10 @@
     "more_about_importer": "More about the importer",
     "open_contact": "Open a contact",
     "other_inquiries_from_this_importer": "Other inquiries from this importer",
-    "other_inquiries_from_this_category": "Other inquiries from this category"
+    "other_inquiries_from_this_category": "Other inquiries from this category",
+    "recover_password": "Recover password",
+    "restore": "Restore",
+    "password_recovery": "Password recovery"
   },
 
   "placeholders": {
@@ -114,7 +118,8 @@
   },
 
   "email_validate": {
-    "email_not_verified": "Email not verified!"
+    "email_not_verified": "Email not verified!",
+    "there_no_such_email": "There is no such email!"
   },
 
 
@@ -175,5 +180,10 @@
 
   "validation_create_product": {
     "there_must_be_at_least_1_price": "There must be at least 1 price!"
+  },
+
+  "text": {
+    "send_mail": "A link to set a new password has been sent to your email address.",
+    "check_spam": "In addition to your inbox, check your spam folder. The email may have ended up there."
   }
 }
