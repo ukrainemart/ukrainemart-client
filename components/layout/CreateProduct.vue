@@ -96,10 +96,8 @@
 <template>
   <LayoutProfilePage :title="title">
     <VForm :validation-schema="validationCreateProductForm" @submit="actionSubmit">
-      <div
-        class="flex flex-col items-start gap-[25px] md:gap-[40px] xl:gap-[100px] 2xl:flex-row 3xl:gap-[141px]"
-      >
-        <div class="flex w-full max-w-[700px] flex-col 2xl:basis-[50%] 4xl:basis-[60%]">
+      <div class="flex flex-col items-start gap-[25px] md:gap-[40px] xl:gap-[100px] 2xl:flex-row">
+        <div class="flex w-full max-w-[700px] flex-col 2xl:basis-[50%] 4xl:basis-[70%]">
           <CommonLangSwitcherInputs v-model="language" />
 
           <div class="mt-[15px] flex flex-col gap-[15px] md:mt-[20px] xl:mt-[26px] xl:gap-[25px]">
@@ -189,7 +187,7 @@
             :currentUnitId="currentUnitId"
           />
         </div>
-        <div class="w-full 2xl:basis-[50%] 4xl:basis-[40%]">
+        <div class="w-full 2xl:basis-[50%] 4xl:basis-[30%]">
           <CommonAddingPhoto v-model="inputs.productImages" />
         </div>
       </div>

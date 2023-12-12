@@ -37,6 +37,10 @@
     variated.value = [...variated.value, addablePrice];
   };
 
+  const deletePrice = (indexPrice: number) => {
+    variated.value = variated.value.filter((el, index: number) => index !== indexPrice);
+  };
+
   const updateVariationPrice = (price: PriceProduct['variatedPrice']) => {
     variated.value = variated.value.map((el: PriceProduct['variatedPrice']) => {
       if (el.id === price.id) {
@@ -72,6 +76,7 @@
         :key="index"
         :price="price"
         @update:price="updateVariationPrice"
+        @deletePrice="deletePrice(index)"
       />
     </div>
     <CommonInputGroupPriceFixed v-if="priceType === 'fixed'" v-model:price="props.fixedPrice" />
@@ -81,6 +86,7 @@
         <CommonSelectPriceVariant v-model="type" name="priceType" :selected="priceType" />
         <UiButtonOpacityAdding
           v-if="priceType === 'variated' && props.variatedPrices.length < 5"
+          type="button"
           @click="addNewPrice"
         >
           {{ $t('add_product.add_new_price') }}

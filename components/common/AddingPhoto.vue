@@ -91,7 +91,7 @@
               </div>
               <button
                 type="button"
-                class="invisible absolute left-0 top-0 z-10 flex h-full w-full items-center justify-center bg-[#0000005e] group-hover:visible"
+                class="absolute left-0 top-0 z-10 flex h-full w-full items-start justify-end bg-[#0000003e] p-[8px] group-hover:visible is-hover:invisible is-hover:items-center is-hover:justify-center is-hover:!bg-[#0000005e]"
                 @click="deleteImage(element)"
               >
                 <SvgoDelete class="!h-[20%] !w-[20%] text-white" />

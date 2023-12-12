@@ -3,6 +3,12 @@
     price: PriceProduct['variatedPrice'];
   }>();
 
+  const emits = defineEmits(['deletePrice']);
+
+  const deletePrice = () => {
+    emits('deletePrice');
+  };
+
   const { value, errorMessage } = useField(
     () => 'price',
     {},
@@ -33,8 +39,10 @@
 </script>
 
 <template>
-  <div class="grid grid-cols-5 gap-[15px] md:max-w-full md:flex-nowrap xl:gap-[25px]">
-    <div class="col-span-5 flex items-center md:col-span-3 lg:col-span-5 4xl:col-span-3">
+  <div class="grid grid-cols-12 gap-[15px] md:max-w-full md:flex-nowrap xl:gap-[25px]">
+    <div
+      class="col-span-12 flex items-center md:col-span-7 lg:col-span-6 2xl:col-span-12 4xl:col-span-7"
+    >
       <UiLabel :label="$t('quantity')">
         <div class="flex items-center">
           <UiLabel :label="$t('from') + ':'" class="!flex-row items-center !text-black">
@@ -66,7 +74,7 @@
         <PagesCreateProductSelectUnit class="max-w-[90px] whitespace-nowrap md:max-w-[110px]" />
       </UiLabel>
     </div>
-    <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
+    <div class="col-span-10 md:col-span-4 lg:col-span-5 2xl:col-span-10 4xl:col-span-4">
       <UiLabel
         for=""
         class="relative z-50 4xl:max-w-none"
@@ -74,6 +82,11 @@
       >
         <CommonPriceInputOutline v-model:price="price.price" />
       </UiLabel>
+    </div>
+    <div
+      class="input_outline_height col-span-2 flex items-center self-end justify-self-end md:col-span-1 2xl:col-span-2 4xl:col-span-1"
+    >
+      <UiButtonOpacityDelete @click="deletePrice" />
     </div>
   </div>
   <UiAlertInputError v-if="errorMessage" :error="errorMessage" />
