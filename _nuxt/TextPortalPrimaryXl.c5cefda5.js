@@ -1,0 +1,1 @@
+import{_ as e}from"./TextPortalPrimary.7bcfb788.js";import{_}from"./entry.c056951f.js";import{M as r,N as n,O as s,a1 as a}from"./swiper-vue.c8ff5059.js";const c={};function m(t,p){const o=e;return r(),n(o,{class:"text-[16px] md:text-[17px]"},{default:s(()=>[a(t.$slots,"default")]),_:3})}const l=_(c,[["render",m]]);export{l as _};
