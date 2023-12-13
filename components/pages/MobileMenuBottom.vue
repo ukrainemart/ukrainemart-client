@@ -42,6 +42,9 @@
     <PagesMobileMenuItem :label="$t('catalog.catalog')" @click="$emit('toggleCatalogModal')">
       <SvgoSearchMobileMenu class="!h-full !w-full" />
     </PagesMobileMenuItem>
+    <PagesMobileMenuItem to="/requests" :label="$t('subHeader.requests')">
+      <SvgoRequestsIcon class="!h-full !w-full" />
+    </PagesMobileMenuItem>
     <PagesMobileMenuItem
       :label="$t('favorites')"
       :active="route.path === '/profile/favorites'"

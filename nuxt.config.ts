@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/i18n',
     '@vee-validate/nuxt',
+    '@davestewart/nuxt-scrollbar',
   ],
   veeValidate: {
     autoImports: true,

@@ -1,12 +1,14 @@
-<script setup>
-  const page = ref(1);
-  const items = ref(Array(3));
+<script setup lang="ts">
+  defineProps<{
+    links: any[];
+  }>();
+
+  const pageValue = ref(1);
 </script>
 
 <template>
   <UPagination
-    v-model="page"
-    :total="items.length"
+    :total="links.length"
     :page-count="1"
     :activeButton="{
       color: 'transparent',

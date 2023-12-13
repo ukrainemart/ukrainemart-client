@@ -19,6 +19,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@davestewart/nuxt-scrollbar": "^1.0.0",
     "@nuxt/image": "1.0.0",
     "@nuxt/ui": "2.10.0",
     "@pinia/nuxt": "0.5.1",

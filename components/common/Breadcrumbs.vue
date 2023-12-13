@@ -1,6 +1,7 @@
 <script setup lang="ts">
   const props = defineProps<{
-    breadcrumb: Breadcrumb;
+    breadcrumb?: Breadcrumb;
+    static?: string;
   }>();
 
   const { BREAKPOINTS_MD } = useVariables();
@@ -8,7 +9,7 @@
 
   const breadcrumbs = computed(() => {
     const result: Breadcrumb[] = [];
-    let currentBreadcrumb: Breadcrumb | null = props.breadcrumb;
+    let currentBreadcrumb: Breadcrumb | null = props.breadcrumb || null;
 
     while (currentBreadcrumb) {
       result.unshift(currentBreadcrumb);
@@ -61,6 +62,12 @@
     >
       <li class="breadcrumb_item">
         <NuxtLink to="/">{{ $t('logo') }}</NuxtLink>
+
+        <SvgoBreadcrumbArrow class="breadcrumb_arrow" :fontControlled="false" />
+      </li>
+
+      <li v-if="static" class="breadcrumb_item !text-black">
+        <button disabled>{{ static }}</button>
 
         <SvgoBreadcrumbArrow class="breadcrumb_arrow" :fontControlled="false" />
       </li>
