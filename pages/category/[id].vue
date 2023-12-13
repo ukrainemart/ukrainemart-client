@@ -8,6 +8,7 @@
   const loading = ref(true);
   const titleProduct = computed(() => useMultiLang(category.value, 'title'));
   useTitle(titleProduct);
+  const minAmount = ref(0);
   const priceRange = reactive({
     api: {
       min: 0,
@@ -27,17 +28,23 @@
         priceRange.input.max = filterValue.max;
         break;
       }
+      case 'minAmount': {
+        minAmount.value = filterValue;
+        break;
+      }
       default:
         throw new Error(`Unexpected filterType - ${filterType} or filterValue - ${filterValue}`);
     }
   };
 
   provide('priceRange', { priceRange, handlerFilter });
+  provide('minAmount', { minAmount, handlerFilter });
 
   const updateUrlWithFilters = () => {
     const query: { [key: string]: number | undefined } = {
       min_price: priceRange.input.min,
       max_price: priceRange.input.max,
+      min_amount: minAmount.value,
     };
 
     Object.keys(query).forEach((key) => {
@@ -54,6 +61,7 @@
 
     priceRange.input.min = Number(route.query?.min_price) || priceRange.api.min;
     priceRange.input.max = Number(route.query?.max_price) || priceRange.api.max;
+    minAmount.value = Number(route.query?.min_amount) || minAmount.value;
   };
 
   const getProducts = async () => {
@@ -61,7 +69,8 @@
       const res = await useFetch(
         `${useUrlApi()}/category/products/${categoryId}` +
           `?min_price=${priceRange.input.min}` +
-          `&max_price=${priceRange.input.max}`
+          `&max_price=${priceRange.input.max}` +
+          `&min_amount=${minAmount.value}`
       );
 
       products.value = res.data.value as Product[];
@@ -93,7 +102,7 @@
 
   getCategory();
 
-  watchDeep([priceRange], async () => {
+  watchDeep([priceRange, minAmount], async () => {
     loading.value = true;
     await getProducts();
     await updateUrlWithFilters();
