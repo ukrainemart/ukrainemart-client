@@ -5,6 +5,7 @@
     isSearchModal?: boolean;
   }>();
 
+  const router = useRouter();
   const emit = defineEmits([
     'updateSearchValue',
     'updateProducts',
@@ -26,13 +27,18 @@
     }
   };
 
-  const handleInput = useDebounceFn((event: Event) => {
+  const handleInput = useDebounceFn((event: Event | KeyboardEvent) => {
     const target = event.target as HTMLInputElement;
     const newSearchValue = target.value;
     emit('updateSearchValue', newSearchValue);
 
     if (newSearchValue.trim().length) {
-      getSearchResult(newSearchValue.trim());
+      if (event instanceof KeyboardEvent && event.key === 'Enter') {
+        router.push(`/search?param=${newSearchValue}`);
+        emit('updateSearchActive', false);
+      } else {
+        getSearchResult(newSearchValue.trim());
+      }
     } else {
       emit('updateSearchActive', false);
     }
@@ -84,6 +90,7 @@
         )
       "
       @input="handleInput($event)"
+      @keydown="handleInput($event)"
     />
   </div>
 </template>
