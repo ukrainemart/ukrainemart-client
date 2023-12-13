@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  const { t } = useI18n();
   const route = useRoute();
   const { param } = route.query;
   const breadcrumb = {
@@ -9,7 +10,7 @@
   const products = ref<Product[]>([]);
   const isLoading = ref<boolean>(true);
 
-  useTitle('Пошук | Ukrainemart');
+  useTitle(`${t('search.search')} | ${t('logo')}`);
 
   const getSearchResult = async (query: string) => {
     try {
@@ -36,14 +37,14 @@
       <div>
         <div class="mb-5">
           <CommonProductTitle class="mb-5 xl:mb-[30px] 2xl:mb-10">
-            {{ `Результати за пошуком "${param}"` }}
+            {{ $t('search_page.results_for_search') }} "{{ param }}"
           </CommonProductTitle>
 
           <p
             v-if="!isLoading"
             class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
           >
-            {{ `Знайдено ${products.length} товарів` }}
+            {{ $t('search_page.found_products', { count: products.length }) }}
           </p>
         </div>
 

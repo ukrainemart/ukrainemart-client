@@ -64,7 +64,15 @@
   "success_register_message": "An account confirmation has been sent to your email!",
   "save_changes": "Save changes",
   "change_password": "Change password",
-  "category": "Category",
+  "category": {
+    "singular": "Category",
+    "plural": "Categories",
+    "minimum_order": "Minimum order",
+    "minimum_order_placeholder": "50 kg",
+    "price": "Price",
+    "ok": "OK",
+    "filters": "Filters"
+  },
   "name_company": "Name company",
   "phone_number": "Phone number",
   "importer": "Importer",
@@ -184,5 +192,15 @@
   "subHeader": {
     "requests": "Requests",
     "for_users": "For users"
+  },
+  "search": {
+    "search": "Search",
+    "nothing_found": "Nothing found",
+    "show_all": "Show all results",
+    "products": "Products"
+  },
+  "search_page": {
+    "results_for_search": "Results for search",
+    "found_products": "Found {count} product|Found {count} products"
   }
 }

@@ -27,7 +27,7 @@
         <h2 class="mb-[2px] text-[10px] md:mb-[5px] md:text-[14px] lg:mb-2.5 lg:text-[16px]">
           {{ useMultiLang(product, 'title') }}
         </h2>
-        <!-- FIXME md:mb-5 lg:mb-[25px] -->
+
         <p
           class="text-[7px] leading-[9px] text-status_gray md:text-[10px] md:leading-[12px] lg:text-[14px] lg:leading-[17px]"
         >
@@ -61,7 +61,7 @@
           >
             <span class="text-[7px] font-normal text-status_gray md:text-[12px] lg:text-[16px]">
               {{
-                `вiд ${price?.min_amount} до ${price?.max_amount} ${useMultiLang(
+                `${$t('from')} ${price?.min_amount} ${$t('to')} ${price?.max_amount} ${useMultiLang(
                   price.unit,
                   'title'
                 )}`
@@ -84,6 +84,7 @@
           />
           {{ product.views }}
         </div>
+
         <div
           class="flex items-center gap-x-[3px] text-[12px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
         >
@@ -93,7 +94,8 @@
           />
           {{ product.favorites_count }}
         </div>
-        <div
+
+        <!-- <div
           class="flex items-center gap-x-[3px] text-[10px] md:gap-x-[5px] md:text-[14px] lg:gap-x-[10px] lg:text-[16px]"
         >
           <SvgoEnvelop
@@ -101,7 +103,7 @@
             class="h-[11px] w-[13px] text-status_gray md:h-[13px] md:w-[16px] lg:h-[18px] lg:w-[22px]"
           />
           32
-        </div>
+        </div> -->
       </div>
 
       <div
@@ -113,7 +115,9 @@
         >
           {{ $t('analytics') }}
         </a>
+
         <UiButtonOpacityEdit class="mr-2.5 lg:mr-[15px]" :to="'edit_product/' + product.id" />
+
         <UiButtonOpacityDelete @click.prevent="deleteAction" />
       </div>
     </div>

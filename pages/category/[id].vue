@@ -124,7 +124,7 @@
               class="text-[14px] font-medium md:text-[18px]"
               @click="isOpenFilterMenu = true"
             >
-              Фільтри
+              {{ $t('category.filters') }}
             </button>
           </div>
         </div>
@@ -157,7 +157,7 @@
 
     <UiSideModal
       v-model="isOpenFilterMenu"
-      :label="'Фільтри'"
+      :label="$t('category.filters')"
       class="lg:hidden"
       @toggleModal="isOpenFilterMenu = false"
     >

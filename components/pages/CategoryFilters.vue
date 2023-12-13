@@ -7,7 +7,10 @@
 <template>
   <div>
     <div class="mb-5 md:mb-7">
-      <PagesCategoryFilterTitle>Каталог</PagesCategoryFilterTitle>
+      <PagesCategoryFilterTitle>
+        {{ $t('catalog.catalog') }}
+      </PagesCategoryFilterTitle>
+
       <PagesCategoryBreadcrumb
         :breadcrumb="category?.breadcrumb"
         :sameCategories="category?.same_categories"
@@ -15,20 +18,29 @@
     </div>
 
     <div class="mb-5 md:mb-7">
-      <PagesCategoryFilterTitle>Мінімальне замовлення</PagesCategoryFilterTitle>
+      <PagesCategoryFilterTitle>
+        {{ $t('category.minimum_order') }}
+      </PagesCategoryFilterTitle>
+
       <div class="flex gap-x-[10px] md:gap-x-[25px]">
-        <UiInputOutline customClass="input_outline_category" placeholder="50 Кг" />
-        <!-- REVIEW DRY -->
+        <UiInputOutline
+          customClass="input_outline_category"
+          :placeholder="$t('category.minimum_order_placeholder')"
+        />
+
         <button
           class="rounded-[50px] border border-solid border-black bg-black px-[30px] py-[4px] text-[12px] leading-[15px] text-white transition-colors duration-100 ease-in hover:bg-transparent hover:text-black focus:outline-none disabled:cursor-not-allowed md:text-[16px] md:leading-[20px]"
         >
-          Ok
+          {{ $t('category.ok') }}
         </button>
       </div>
     </div>
 
     <div class="mb-5">
-      <PagesCategoryFilterTitle>Ціна</PagesCategoryFilterTitle>
+      <PagesCategoryFilterTitle>
+        {{ $t('category.price') }}
+      </PagesCategoryFilterTitle>
+
       <CommonPriceFilter />
     </div>
   </div>

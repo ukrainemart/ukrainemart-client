@@ -64,7 +64,15 @@
   "success_register_message": "На вашу пошту надіслано підтвердження акаунта!",
   "save_changes": "Зберегти зміни",
   "change_password": "Змінити пароль",
-  "category": "Категорія",
+  "category": {
+    "singular": "Категорія",
+    "plural": "Категорії",
+    "minimum_order": "Мінімальне замовлення",
+    "minimum_order_placeholder": "50 кг",
+    "price": "Ціна",
+    "ok": "OK",
+    "filters": "Фільтри"
+  },
   "name_company": "Назва компанії",
   "phone_number": "Номер телефону",
   "importer": "Імпортер",
@@ -185,5 +193,15 @@
   "subHeader": {
     "requests": "Запити",
     "for_users": "Для користувачів"
+  },
+  "search": {
+    "search": "Пошук",
+    "nothing_found": "Нічого не знайдено",
+    "show_all": "Показати всі результати",
+    "products": "Товари"
+  },
+  "search_page": {
+    "results_for_search": "Результати за пошуком",
+    "found_products": "Знайдено {count} товар | Знайдено {count} товарів"
   }
 }
