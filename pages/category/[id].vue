@@ -112,13 +112,13 @@
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
-    <CommonBreadcrumbs :breadcrumb="category" />
+    <CommonBreadcrumbs v-if="category" :breadcrumb="category" />
 
     <div
       class="container grid-cols-[225px_1fr] gap-x-[30px] lg:grid lg:grid-cols-[300px_1fr] xl:gap-x-[50px]"
     >
       <aside>
-        <PagesCategoryFilters :category="category" class="hidden lg:block" />
+        <PagesCategoryFilters v-if="category" :category="category" class="hidden lg:block" />
       </aside>
 
       <div>
@@ -175,7 +175,7 @@
       class="lg:hidden"
       @toggleModal="isOpenFilterMenu = false"
     >
-      <PagesCategoryFilters :category="category" />
+      <PagesCategoryFilters v-if="category" :category="category" />
     </UiSideModal>
   </div>
 </template>
