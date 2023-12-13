@@ -8,7 +8,6 @@
   const categories = ref<Category[]>();
   const products = ref<Product[]>([]);
   const isLoading = ref<boolean>(true);
-
   useTitle('search_page.search_page_title');
 
   const getSearchResult = async (query: string) => {
@@ -17,9 +16,11 @@
         `${useUrlApi()}/search/query?search=${query}`
       );
 
-      categories.value = res.categories;
-      products.value = res.products;
-      isLoading.value = false;
+      if (res.products.length || res.categories.length) {
+        categories.value = res.categories;
+        products.value = res.products;
+        isLoading.value = false;
+      }
     } catch (err) {
       console.error(err);
     }
