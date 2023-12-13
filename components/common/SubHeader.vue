@@ -48,10 +48,12 @@
     </UiButtonTextUnderline>
 
     <UiButtonTextUnderline to="/" class="md:hover:text-status_red md:hover:before:bg-status_red">
-      Запити
+      {{ $t('subHeader.requests') }}
     </UiButtonTextUnderline>
 
-    <UiButtonTextIconArrowDown> Для користувачів </UiButtonTextIconArrowDown>
+    <UiButtonTextIconArrowDown>
+      {{ $t('subHeader.for_users') }}
+    </UiButtonTextIconArrowDown>
   </div>
 </template>
 

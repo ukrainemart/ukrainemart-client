@@ -180,5 +180,9 @@
     "catalog": "Catalog",
     "back": "Back",
     "all": "All in"
+  },
+  "subHeader": {
+    "requests": "Requests",
+    "for_users": "For users"
   }
 }
