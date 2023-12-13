@@ -193,7 +193,7 @@
   <UiSideModal
     v-if="screenWidth < BREAKPOINTS_LG"
     v-model="isCatalogModal"
-    :label="$t('catalog')"
+    :label="$t('catalog.catalog')"
     @toggleModal="toggleCatalogModal"
   >
     <CommonCatalog :toggleCatalogModal="toggleCatalogModal" />

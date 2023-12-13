@@ -2,7 +2,6 @@
   "welcome": "Ласкаво просимо",
   "signup": "Зареєструватися",
   "login": "Увійти",
-  "catalog": "Каталог",
   "whatIsUkrainemart": "Що таке Ukrainemart?",
   "personalAccount": "Особистий кабінет",
   "ourSocialNetworks": "Наші соц мережі",
@@ -46,7 +45,6 @@
     "new_password": "Новий пароль:",
     "set_password": "Встановити пароль"
   },
-
   "registration": "Реєстрація",
   "alreadyRegistered": "Вже зареєстровані?",
   "repeatPassword": "Повторіть пароль",
@@ -76,7 +74,6 @@
   "delete_product": "Видалити товар?",
   "fill_in_all_fields": "Заповніть усі поля!",
   "the_link_not_active": "Посилання не активне!",
-
   "labels": {
     "title": "Заголовок",
     "enter_title_your_request": "Введіть заголовок вашого запиту",
@@ -99,7 +96,6 @@
     "restore": "Відновити",
     "password_recovery": "Відновлення паролю"
   },
-
   "placeholders": {
     "name": "Іван",
     "last_name": "Петров",
@@ -116,16 +112,10 @@
     "price_type_product": "Тип ціни товару",
     "unit": "кг"
   },
-
-
-
   "email_validate": {
     "email_not_verified": "Email не підтверджено!",
     "there_no_such_email": "Такого email не існує!"
   },
-
-
-
   "add_product": {
     "add_product": "Додати товар",
     "enter_your_product_name": "Введіть назву вашого товару",
@@ -175,20 +165,21 @@
   "password_confirmation": "Будь ласка, підтвердіть ваш пароль",
   "the_old_password_is_wrong": "Невірний старий пароль!",
   "password_successfully_changed": "Пароль успішно змінено!",
-
-
   "validation_inputs": {
     "required": "Це поле обов'язкове!",
     "try_again": "Спробуйте ще раз!"
   },
-
   "validation_create_product": {
     "there_must_be_at_least_1_price": "Повинна бути хоча б 1 ціна!",
     "there_must_be_at_least_one_photo": "Повинна бути хоча б одне фото!"
   },
-
   "text": {
     "send_mail": "На адресу вашої електронної пошти було надіслано посилання для встановлення нового пароля.",
     "check_spam": "Крім папки 'Вхідні' перевірте також папку 'Спам' вашої поштової скриньки. Можливо, лист потрапив туди."
+  },
+  "catalog": {
+    "catalog": "Каталог",
+    "back": "Назад",
+    "all": "Все в"
   }
 }

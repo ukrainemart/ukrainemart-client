@@ -26,7 +26,7 @@
       @mouseover="handleMouseOver"
       @mouseleave="handleMouseLeave"
     >
-      {{ $t('catalog') }}
+      {{ $t('catalog.catalog') }}
       <div
         v-if="screenWidth >= BREAKPOINTS_LG && isCatalogHovered"
         :class="

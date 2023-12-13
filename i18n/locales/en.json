@@ -2,7 +2,6 @@
   "welcome": "welcome",
   "signup": "Sign Up",
   "login": "Log In",
-  "catalog": "Catalog",
   "whatIsUkrainemart": "What is Ukrainemart?",
   "personalAccount": "Personal account",
   "ourSocialNetworks": "Our social networks",
@@ -46,7 +45,6 @@
     "new_password": "New password",
     "set_password": "Set a password"
   },
-
   "registration": "Registration",
   "alreadyRegistered": "Already registered?",
   "repeatPassword": "Repeat password",
@@ -76,7 +74,6 @@
   "delete_product": "Delete a product?",
   "fill_in_all_fields": "Fill in all fields!",
   "the_link_not_active": "The link is not active!",
-
   "labels": {
     "title": "Title",
     "enter_title_your_request": "Enter the title of your request",
@@ -99,7 +96,6 @@
     "restore": "Restore",
     "password_recovery": "Password recovery"
   },
-
   "placeholders": {
     "name": "John",
     "last_name": "Smith",
@@ -116,13 +112,10 @@
     "price_type_product": "Product price type",
     "unit": "pound"
   },
-
   "email_validate": {
     "email_not_verified": "Email not verified!",
     "there_no_such_email": "There is no such email!"
   },
-
-
   "add_product": {
     "add_product": "Add a product",
     "enter_your_product_name": "Enter the name of your product",
@@ -172,18 +165,20 @@
   "password_confirmation": "Please confirm your password",
   "the_old_password_is_wrong": "The old password is wrong!",
   "password_successfully_changed": "Password successfully changed!",
-
   "validation_inputs": {
     "required": "This field is required!",
     "try_again": "Try it again!"
   },
-
   "validation_create_product": {
     "there_must_be_at_least_1_price": "There must be at least 1 price!"
   },
-
   "text": {
     "send_mail": "A link to set a new password has been sent to your email address.",
     "check_spam": "In addition to your inbox, check your spam folder. The email may have ended up there."
+  },
+  "catalog": {
+    "catalog": "Catalog",
+    "back": "Back",
+    "all": "All in"
   }
 }
