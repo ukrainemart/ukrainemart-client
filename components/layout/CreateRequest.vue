@@ -44,7 +44,7 @@
               :placeholder="`${$t('labels.enter_title_your_request')}`"
             />
           </UiLabel>
-          <UiLabel for="" :label="`${$t('category')}`">
+          <UiLabel for="" :label="`${$t('category.singular')}`">
             <PagesCreateRequestSelectCategory
               v-model="inputs.categoryId"
               name="categoryId"

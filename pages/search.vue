@@ -8,8 +8,7 @@
   const categories = ref<Category[]>();
   const products = ref<Product[]>([]);
   const isLoading = ref<boolean>(true);
-
-  useTitle('Пошук | Ukrainemart');
+  useTitle('search_page.search_page_title');
 
   const getSearchResult = async (query: string) => {
     try {
@@ -17,9 +16,11 @@
         `${useUrlApi()}/search/query?search=${query}`
       );
 
-      categories.value = res.categories;
-      products.value = res.products;
-      isLoading.value = false;
+      if (res.products.length || res.categories.length) {
+        categories.value = res.categories;
+        products.value = res.products;
+        isLoading.value = false;
+      }
     } catch (err) {
       console.error(err);
     }
@@ -36,14 +37,14 @@
       <div>
         <div class="mb-5">
           <CommonProductTitle class="mb-5 xl:mb-[30px] 2xl:mb-10">
-            {{ `Результати за пошуком "${param}"` }}
+            {{ $t('search_page.results_for_search') }} "{{ param }}"
           </CommonProductTitle>
 
           <p
             v-if="!isLoading"
             class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
           >
-            {{ `Знайдено ${products.length} товарів` }}
+            {{ $t('search_page.found_products', { count: products.length }) }}
           </p>
         </div>
 

@@ -3,19 +3,31 @@
     product: Product;
   }>();
 
+  type SavedPrices = {
+    minPrice?: number;
+    maxPrice?: number;
+    minAmount?: number;
+    maxAmount?: number;
+  };
+
   const savedPrices = computed(() => {
     if (props.product && props.product.price_type === 'variated') {
-      return props.product?.prices?.map((price, i) => {
-        return {
-          minAmount: i === 0 ? price.min_amount : null,
-          minPrice: i === 0 ? price.price : null,
-          maxAmount: i === props.product.prices.length - 1 ? price.max_amount : null,
-          maxPrice: i === props.product.prices.length - 1 ? price.price : null,
-        };
-      });
+      return props.product.prices.reduce((acc: SavedPrices, price, i) => {
+        if (i === 0) {
+          acc.minPrice = price.price;
+          acc.minAmount = price.min_amount;
+        }
+
+        if (i === props.product.prices.length - 1) {
+          acc.maxPrice = price.price;
+          acc.maxAmount = price.max_amount;
+        }
+
+        return acc;
+      }, {});
     }
 
-    return [];
+    return {};
   });
 </script>
 
@@ -53,14 +65,15 @@
       <div v-if="product?.price_type === 'variated'">
         <div class="price_amount">
           {{
-            `${savedPrices[0]?.minAmount}-${
-              savedPrices[savedPrices.length - 1]?.maxAmount
-            } ${useMultiLang(product?.prices[0]?.unit, 'title')}`
+            `${savedPrices?.minAmount}-${savedPrices?.maxAmount} ${useMultiLang(
+              product?.prices[0]?.unit,
+              'title'
+            )}`
           }}
         </div>
 
         <div class="price_cost">
-          {{ `${savedPrices[0]?.minPrice}-${savedPrices[savedPrices.length - 1]?.maxPrice}` }}
+          {{ `${savedPrices?.minPrice}-${savedPrices?.maxPrice}` }}
           <CommonCurrency />
         </div>
       </div>

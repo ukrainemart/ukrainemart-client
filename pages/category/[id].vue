@@ -5,9 +5,10 @@
   const category = ref<Category>();
   const products = ref<Product[]>([]);
   const isOpenFilterMenu = ref(false);
-  const loading = ref(true);
+  const isLoading = ref(true);
   const titleProduct = computed(() => useMultiLang(category.value, 'title'));
   useTitle(titleProduct);
+  const minAmount = ref(0);
   const priceRange = reactive({
     api: {
       min: 0,
@@ -27,17 +28,23 @@
         priceRange.input.max = filterValue.max;
         break;
       }
+      case 'minAmount': {
+        minAmount.value = filterValue;
+        break;
+      }
       default:
         throw new Error(`Unexpected filterType - ${filterType} or filterValue - ${filterValue}`);
     }
   };
 
   provide('priceRange', { priceRange, handlerFilter });
+  provide('minAmount', { minAmount, handlerFilter });
 
   const updateUrlWithFilters = () => {
     const query: { [key: string]: number | undefined } = {
       min_price: priceRange.input.min,
       max_price: priceRange.input.max,
+      min_amount: minAmount.value,
     };
 
     Object.keys(query).forEach((key) => {
@@ -54,6 +61,7 @@
 
     priceRange.input.min = Number(route.query?.min_price) || priceRange.api.min;
     priceRange.input.max = Number(route.query?.max_price) || priceRange.api.max;
+    minAmount.value = Number(route.query?.min_amount) || minAmount.value;
   };
 
   const getProducts = async () => {
@@ -61,11 +69,12 @@
       const res = await useFetch(
         `${useUrlApi()}/category/products/${categoryId}` +
           `?min_price=${priceRange.input.min}` +
-          `&max_price=${priceRange.input.max}`
+          `&max_price=${priceRange.input.max}` +
+          `&min_amount=${minAmount.value}`
       );
 
       products.value = res.data.value as Product[];
-      loading.value = false;
+      isLoading.value = false;
     } catch (error) {
       console.error(error);
     }
@@ -93,11 +102,11 @@
 
   getCategory();
 
-  watchDeep([priceRange], async () => {
-    loading.value = true;
+  watchDeep([priceRange, minAmount], async () => {
+    isLoading.value = true;
     await getProducts();
     await updateUrlWithFilters();
-    loading.value = false;
+    isLoading.value = false;
   });
 </script>
 
@@ -124,14 +133,14 @@
               class="text-[14px] font-medium md:text-[18px]"
               @click="isOpenFilterMenu = true"
             >
-              Фільтри
+              {{ $t('category.filters') }}
             </button>
           </div>
         </div>
 
         <div>
-          <!-- TODO uncomment it after solving the ssr slow loading problem <div
-            v-if="loading"
+          <!-- TODO uncomment it after solving the ssr slow isLoading problem <div
+            v-if="isLoading"
             class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
           >
             <CommonSkeletonCardProduct
@@ -142,6 +151,7 @@
           </div> -->
 
           <div
+            v-if="!isLoading && products.length"
             class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
           >
             <CommonCardProduct
@@ -151,13 +161,17 @@
               class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-3"
             />
           </div>
+
+          <div v-if="!isLoading && !products.length">
+            {{ $t('search.nothing_found') }}
+          </div>
         </div>
       </div>
     </div>
 
     <UiSideModal
       v-model="isOpenFilterMenu"
-      :label="'Фільтри'"
+      :label="$t('category.filters')"
       class="lg:hidden"
       @toggleModal="isOpenFilterMenu = false"
     >

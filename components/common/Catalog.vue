@@ -76,7 +76,7 @@
       @click="navigateToParentCategory"
     >
       <SvgoArrowNext :fontControlled="false" class="h-full w-[10px] rotate-180 text-transparent" />
-      Назад
+      {{ $t('catalog.back') }}
     </button>
 
     <NuxtLink
@@ -86,7 +86,7 @@
       @click="handleLinkClick(currentMobileParentCategory)"
     >
       <span class="catalog_text">
-        Все в {{ useMultiLang(currentMobileParentCategory, 'title') }}
+        {{ $t('catalog.all') }} {{ useMultiLang(currentMobileParentCategory, 'title') }}
       </span>
     </NuxtLink>
 

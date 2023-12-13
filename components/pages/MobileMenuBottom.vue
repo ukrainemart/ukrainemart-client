@@ -39,7 +39,7 @@
     <PagesMobileMenuItem to="/" :active="route.path === '/'" :label="$t('home')">
       <SvgoHome class="!h-full !w-full" />
     </PagesMobileMenuItem>
-    <PagesMobileMenuItem :label="$t('catalog')" @click="$emit('toggleCatalogModal')">
+    <PagesMobileMenuItem :label="$t('catalog.catalog')" @click="$emit('toggleCatalogModal')">
       <SvgoSearchMobileMenu class="!h-full !w-full" />
     </PagesMobileMenuItem>
     <PagesMobileMenuItem

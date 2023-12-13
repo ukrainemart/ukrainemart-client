@@ -27,7 +27,7 @@
       </li>
       <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
         <UiTextPortalPrimaryXl>
-          {{ $t('category') + ':' }}
+          {{ $t('category.singular') + ':' }}
           <span class="text-status_gray">{{ useMultiLang(request?.category, 'title') }}</span>
         </UiTextPortalPrimaryXl>
       </li>

@@ -104,7 +104,7 @@
         <UiLabel
           v-if="isCompany"
           for=""
-          :label="$t('category') + ':'"
+          :label="$t('category.singular') + ':'"
           class="col-span-2 sm:col-span-1"
         >
           <UiSelectOutline

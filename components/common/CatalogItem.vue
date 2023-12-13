@@ -126,7 +126,7 @@
 
 <style>
   .catalog_item {
-    @apply relative flex w-full items-center justify-between py-[7.5px] text-left before:absolute before:bottom-0 before:left-[-8px] before:top-0 before:rounded-l-[10px] before:bg-[#1111111f] before:content-[''] after:absolute after:bottom-0 after:right-[-8px] after:top-0 after:rounded-r-[10px] after:bg-[#1111111f] after:content-[''] hover:bg-[#1111111f] hover:before:w-2 hover:after:w-2 md:py-[12.5px] md:before:left-[-12px] md:after:right-[-12px] md:hover:before:w-3 md:hover:after:w-3 lg:rounded-[20px] lg:px-[25px] lg:before:content-[none] lg:after:content-[none] 4xl:px-[30px] 4xl:text-[20px] 4xl:leading-[25px];
+    @apply relative flex w-full items-center justify-between py-[7.5px] text-left before:absolute before:bottom-0 before:left-[-8px] before:top-0 before:rounded-l-[10px] before:bg-[#1111111f] before:content-[''] after:absolute after:bottom-0 after:right-[-8px] after:top-0 after:rounded-r-[10px] after:bg-[#1111111f] after:content-[''] md:py-[12.5px] md:before:left-[-12px] md:after:right-[-12px] lg:rounded-[20px] lg:px-[25px] lg:before:content-[none] lg:after:content-[none] lg:hover:bg-[#1111111f] lg:hover:before:w-3 lg:hover:after:w-3 4xl:px-[30px] 4xl:text-[20px] 4xl:leading-[25px];
   }
 
   .catalog_text {

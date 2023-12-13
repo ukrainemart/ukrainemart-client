@@ -4,10 +4,8 @@
   }>();
 
   const auth = useAuthStore();
-
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
-  const isMobileMenu = ref(false);
   const isCatalogModal = ref(false); // mobile catalog state
   const isCatalogHovered = ref(false); // desktop catalog state
   const isSearchModal = ref(false);
@@ -25,8 +23,6 @@
     switchAuthModal(value);
     switchTypeAuth(type);
   };
-
-  const switchMenu = (value: boolean) => (isMobileMenu.value = value);
 
   // Catalog START
   const parentCategories = computed(
@@ -59,13 +55,16 @@
   const getCatalog = async () => {
     try {
       const res = await useFetch(`${useUrlApi()}/catalog`);
+      const data = res?.data?.value as Catalog[];
 
-      catalog.value = res?.data?.value as Catalog[];
-      currentCategories.value = parentCategories.value;
+      if (data.length) {
+        catalog.value = data;
+        currentCategories.value = parentCategories.value;
 
-      if (screenWidth.value >= BREAKPOINTS_LG) {
-        [selectedParentCategory.value] = parentCategories.value;
-        [selectedChildCategory.value] = selectedParentCategory.value.children;
+        if (screenWidth.value >= BREAKPOINTS_LG) {
+          [selectedParentCategory.value] = parentCategories.value;
+          [selectedChildCategory.value] = selectedParentCategory.value.children;
+        }
       }
     } catch (error) {
       console.error(error);
@@ -129,7 +128,7 @@
             />
           </UiButtonOpacity>
 
-          <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
+          <CommonLangSwitcher />
         </div>
       </div>
       <!-- MOBILE END -->
@@ -174,8 +173,6 @@
         </div>
       </div>
       <!-- DESKTOP END -->
-
-      <CommonBurgerMenu :isActive="isMobileMenu" @switchAuth="switchAuth" />
     </div>
 
     <AuthBase
@@ -199,7 +196,7 @@
   <UiSideModal
     v-if="screenWidth < BREAKPOINTS_LG"
     v-model="isCatalogModal"
-    :label="$t('catalog')"
+    :label="$t('catalog.catalog')"
     @toggleModal="toggleCatalogModal"
   >
     <CommonCatalog :toggleCatalogModal="toggleCatalogModal" />

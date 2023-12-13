@@ -36,7 +36,7 @@
       <p
         class="px_search mb-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
       >
-        Категорії
+        {{ $t('category.plural') }}
       </p>
 
       <ul class="flex flex-col">
@@ -68,7 +68,7 @@
       <p
         class="px_search mb-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
       >
-        Товари
+        {{ $t('search.products') }}
       </p>
 
       <ul class="flex flex-col">
@@ -103,7 +103,7 @@
         <span
           class="text-[10px] font-semibold leading-[12px] text-status_red md:text-[14px] md:leading-[17px] lg:hover:underline xl:text-[17px] xl:leading-[21px]"
         >
-          Показати всі результати
+          {{ $t('search.show_all') }}
         </span>
       </NuxtLink>
     </div>
@@ -112,7 +112,7 @@
       <p
         class="px_search text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
       >
-        Нічого не знайдено
+        {{ $t('search.nothing_found') }}
       </p>
     </div>
   </div>
