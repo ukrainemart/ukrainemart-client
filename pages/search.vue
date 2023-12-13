@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  const { t } = useI18n();
   const route = useRoute();
   const { param } = route.query;
   const breadcrumb = {
@@ -10,7 +9,7 @@
   const products = ref<Product[]>([]);
   const isLoading = ref<boolean>(true);
 
-  useTitle(`${t('search.search')} | ${t('logo')}`);
+  useTitle('search.search_page_title');
 
   const getSearchResult = async (query: string) => {
     try {
