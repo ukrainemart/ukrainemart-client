@@ -4,10 +4,8 @@
   }>();
 
   const auth = useAuthStore();
-
   const { width: screenWidth } = useWindowSize();
   const { BREAKPOINTS_LG } = useVariables();
-  const isMobileMenu = ref(false);
   const isCatalogModal = ref(false); // mobile catalog state
   const isCatalogHovered = ref(false); // desktop catalog state
   const isSearchModal = ref(false);
@@ -25,8 +23,6 @@
     switchAuthModal(value);
     switchTypeAuth(type);
   };
-
-  const switchMenu = (value: boolean) => (isMobileMenu.value = value);
 
   // Catalog START
   const parentCategories = computed(
@@ -129,7 +125,7 @@
             />
           </UiButtonOpacity>
 
-          <CommonButtonBurger :isActive="isMobileMenu" @click="switchMenu(!isMobileMenu)" />
+          <CommonLangSwitcher />
         </div>
       </div>
       <!-- MOBILE END -->
@@ -174,8 +170,6 @@
         </div>
       </div>
       <!-- DESKTOP END -->
-
-      <CommonBurgerMenu :isActive="isMobileMenu" class="lg:hidden" @switchAuth="switchAuth" />
     </div>
 
     <AuthBase
