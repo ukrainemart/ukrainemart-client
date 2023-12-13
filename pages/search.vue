@@ -9,7 +9,7 @@
   const products = ref<Product[]>([]);
   const isLoading = ref<boolean>(true);
 
-  useTitle('search.search_page_title');
+  useTitle('search_page.search_page_title');
 
   const getSearchResult = async (query: string) => {
     try {
