@@ -24,9 +24,12 @@ export const useAuthStore = defineStore('authStore', () => {
     isAuthModal.value = value;
   }
 
-  async function fetchUser() {
-    const { data } = await useApiFetch(`${useUrlApi()}/user`);
-    user.value = data.value as User;
+  function fetchUser() {
+    $fetch(`${useUrlApi()}/user`).then((res) => {
+      user.value = res as User;
+      console.log(user.value);
+      console.log(res);
+    });
   }
 
   async function logout() {
