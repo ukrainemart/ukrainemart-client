@@ -8,6 +8,7 @@
   const searchRef = ref(null);
   const searchValue = ref<string>('');
   const isSearchActive = ref(false);
+  const isSearchLoading = ref(false);
   const products = ref<Product[]>([]);
   const categories = ref<Category[]>([]);
 
@@ -15,6 +16,7 @@
   const updateSearchActive = (value: boolean) => (isSearchActive.value = value);
   const updateProducts = (newProducts: Product[]) => (products.value = newProducts);
   const updateCategories = (newCategories: Category[]) => (categories.value = newCategories);
+  const updateSearchLoading = (value: boolean) => (isSearchLoading.value = value);
 
   onClickOutside(searchRef, () => updateSearchActive(false));
 </script>
@@ -32,11 +34,13 @@
     <CommonSearchInput
       :searchValue="searchValue"
       :isSearchActive="isSearchActive"
+      :isSearchLoading="isSearchLoading"
       :isSearchModal="isSearchModal"
       @updateSearchValue="updateSearchValue"
       @updateProducts="updateProducts"
       @updateCategories="updateCategories"
       @updateSearchActive="updateSearchActive"
+      @updateSearchLoading="updateSearchLoading"
     />
 
     <CommonSearchResult
@@ -46,6 +50,7 @@
       :categories="categories"
       :isSearchModal="isSearchModal"
       :toggleSearchModal="toggleSearchModal"
+      :isSearchLoading="isSearchLoading"
     />
 
     <p

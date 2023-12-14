@@ -2,12 +2,12 @@
   const props = defineProps<{
     searchValue: string;
     isSearchActive: boolean;
+    isSearchLoading: boolean;
     products: Product[];
     categories: Category[];
     isSearchModal?: boolean;
     toggleSearchModal?: () => void;
   }>();
-
   const router = useRouter();
 
   const handleClick = (path: string) => {
@@ -20,8 +20,28 @@
 </script>
 
 <template>
+  <!-- SKELETON START -->
   <div
-    v-if="isSearchActive"
+    v-if="isSearchLoading"
+    :class="
+      cn(
+        'absolute inset-x-0 z-10 rounded-b-[15px] bg-white py-[15px] text-left md:rounded-b-[20px] md:py-[18px] xl:py-[25px]',
+        {
+          relative: isSearchModal,
+          'shadow-lg': !isSearchModal,
+        }
+      )
+    "
+  >
+    <UiSkeleton class="mx-[15px] mb-[6px] h-[17px] w-[40%] md:mb-[9px] xl:mb-5" />
+    <UiSkeleton class="mx-[15px] mb-[6px] h-[12px] w-[80%] md:mb-[9px] xl:mb-5" />
+    <UiSkeleton class="mx-[15px] mb-[6px] h-[12px] w-[80%] md:mb-[9px] xl:mb-5" />
+    <UiSkeleton class="mx-[15px] mb-[6px] h-[12px] w-[80%] md:mb-[9px] xl:mb-5" />
+  </div>
+  <!-- SKELETON END -->
+
+  <div
+    v-if="isSearchActive && !isSearchLoading"
     :class="
       cn(
         'absolute inset-x-0 z-10 rounded-b-[15px] bg-white py-[15px] text-left md:rounded-b-[20px] md:py-[18px] xl:py-[25px]',
@@ -34,7 +54,7 @@
   >
     <div v-if="categories.length">
       <p
-        class="px_search mb-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
+        class="mb-[6px] px-[15px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
       >
         {{ $t('category.plural') }}
       </p>
@@ -44,7 +64,7 @@
           <!-- TODO: long title (truncate, gap) -->
           <NuxtLink
             :to="`/category/${category.id}`"
-            class="px_search flex items-center justify-between py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
+            class="flex items-center justify-between px-[15px] py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
             @click="handleClick(`/category/${category.id}`)"
           >
             <span
@@ -66,7 +86,7 @@
 
     <div v-if="products.length">
       <p
-        class="px_search mb-[6px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
+        class="mb-[6px] px-[15px] font-namu text-[14px] leading-[17px] md:mb-[9px] md:text-[18px] md:leading-[22px] xl:mb-5 xl:text-[22px] xl:leading-[26px]"
       >
         {{ $t('search.products') }}
       </p>
@@ -76,7 +96,7 @@
           <!-- TODO: long title (truncate, gap) -->
           <NuxtLink
             :to="`/product/${product.id}`"
-            class="px_search flex items-center justify-between py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
+            class="flex items-center justify-between px-[15px] py-[8px] lg:hover:bg-gray-100 xl:py-[10px]"
             @click="handleClick(`/product/${product.id}`)"
           >
             <span
@@ -94,7 +114,7 @@
       </ul>
     </div>
 
-    <div v-if="products.length || categories.length" class="px_search">
+    <div v-if="products.length || categories.length" class="px-[15px]">
       <NuxtLink
         :to="`/search?param=${searchValue}`"
         class="flex w-fit pt-[4px] xl:pt-[5px]"
@@ -110,7 +130,7 @@
 
     <div v-if="!products.length && !categories.length">
       <p
-        class="px_search text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
+        class="px-[15px] text-[10px] font-medium leading-[12px] md:text-[14px] md:leading-[17px] xl:text-[17px] xl:leading-[21px]"
       >
         {{ $t('search.nothing_found') }}
       </p>
@@ -118,8 +138,4 @@
   </div>
 </template>
 
-<style>
-  .px_search {
-    @apply px-[15px];
-  }
-</style>
+<style></style>

@@ -2,6 +2,7 @@
   const props = defineProps<{
     searchValue: string;
     isSearchActive: boolean;
+    isSearchLoading: boolean;
     isSearchModal?: boolean;
   }>();
 
@@ -11,6 +12,7 @@
     'updateProducts',
     'updateCategories',
     'updateSearchActive',
+    'updateSearchLoading',
   ]);
 
   const getSearchResult = async (query: string) => {
@@ -22,6 +24,7 @@
       emit('updateProducts', res.products);
       emit('updateCategories', res.categories);
       emit('updateSearchActive', true);
+      emit('updateSearchLoading', false);
     } catch (err) {
       console.error(err);
     }
@@ -37,6 +40,7 @@
         router.push(`/search?param=${newSearchValue}`);
         emit('updateSearchActive', false);
       } else {
+        emit('updateSearchLoading', true);
         getSearchResult(newSearchValue.trim());
       }
     } else {
@@ -58,8 +62,8 @@
   <div
     :class="
       cn('relative  border border-solid border-black', {
-        'rounded-[50px]': !isSearchActive,
-        'rounded-t-[15px]': isSearchActive,
+        'rounded-[50px]': !isSearchActive && !isSearchLoading,
+        'rounded-t-[15px]': isSearchActive || isSearchLoading,
         // 'bg-[#bbbbbb]': isSearchModal,
         'bg-white': isSearchModal,
       })

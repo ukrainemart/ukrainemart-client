@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     category: Catalog;
-    isSelectedCategory: boolean;
+    isSelectedCategory?: boolean;
     viewport?: 'mobile' | 'desktop';
     variant?: 'logo' | 'image' | null;
   }>();
