@@ -1,10 +1,13 @@
 <script setup lang="ts">
+  const route = useRoute();
+  const router = useRouter();
+
   const requests = ref<RequestImporter[]>([]);
   const pages = ref<any[]>([]);
-  const page = ref(1);
+  const page = ref(route.query.page ? +route.query.page : 1);
 
   const fetchRequests = () => {
-    useFetch(`${useUrlApi()}/importRequest/get`).then((res: any) => {
+    useFetch(`${useUrlApi()}/importRequest/get?page=${page.value}`).then((res: any) => {
       console.log(res.data.value);
       requests.value = res.data.value.data as RequestImporter[];
       pages.value = res.data.value.links.filter(
@@ -20,6 +23,20 @@
     });
   };
 
+  const updateUrl = () => {
+    const query = {
+      page: page.value,
+    };
+
+    router.push({ query });
+  };
+
+  watchDeep(page, () => {
+    updateUrl();
+    fetchRequests();
+  });
+
+  updateUrl();
   fetchFilters();
   fetchRequests();
 </script>
@@ -30,8 +47,8 @@
     <div class="container">
       <CommonTitleSection>Запити</CommonTitleSection>
       <div class="mt-[15px] flex gap-[30px] md:gap-[50px] xl:gap-[70px]">
-        <UiSelectMultipleCheckbox :label="$t('category.singular')" />
-        <UiSelectMultipleCheckbox :label="$t('labels.country')" />
+        <!-- <UiSelectMultipleCheckbox :label="$t('category.singular')" /> -->
+        <!-- <UiSelectMultipleCheckbox :label="$t('labels.country')" /> -->
       </div>
       <div
         class="mt-[24px] grid grid-cols-12 gap-x-[12px] gap-y-[20px] md:mt-[30px] xl:gap-x-[58px] xl:gap-y-[45px]"
@@ -43,7 +60,12 @@
           :request="request"
         />
       </div>
-      <UiPagination v-model="page" :links="pages" class="mt-[40px] md:mt-[60px] xl:mt-[80px]" />
+      <UiPagination
+        v-if="pages.length > 1"
+        v-model="page"
+        :links="pages"
+        class="mt-[40px] md:mt-[60px] xl:mt-[80px]"
+      />
     </div>
   </div>
 </template>

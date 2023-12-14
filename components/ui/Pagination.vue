@@ -2,8 +2,6 @@
   defineProps<{
     links: any[];
   }>();
-
-  const pageValue = ref(1);
 </script>
 
 <template>

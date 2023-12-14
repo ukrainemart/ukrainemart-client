@@ -1,29 +1,13 @@
 <script setup lang="ts">
   defineProps<{
     label: string;
+    options: {
+      id: number;
+      title: string;
+    };
+    selectedOptions: number[];
   }>();
   const open = ref<boolean>(false);
-
-  const people = [
-    {
-      id: 1,
-      title: 'Wade Cooper',
-    },
-    {
-      id: 2,
-      title: 'Arlene Mccoy',
-    },
-    {
-      id: 3,
-      title: 'Devon Webb',
-    },
-    {
-      id: 4,
-      title: 'Tom Cook',
-    },
-  ];
-
-  const selectedOptions = ref([1, 3]);
 
   const onOpenSelect = () => {
     open.value = true;
@@ -41,7 +25,7 @@
     option-attribute="title"
     :uiMenu="{
       width: 'w-[182px] md:w-[219px] xl:w-[284px]',
-      container: 'left-0',
+      container: '!left-0',
       rounded: 'rounded-[15px]',
       base: 'scroll_bar',
       option: {
@@ -52,7 +36,7 @@
         },
       },
     }"
-    :options="people"
+    :options="options"
     multiple
     placeholder="Select people"
     @open="onOpenSelect"
@@ -60,8 +44,23 @@
   >
     <UiButtonTextOpeningArrow class="normal-case" :open="open" :label="label" />
 
-    <template #option="{ option }">
-      <UiCheckbox disabled class="w-full" :value="true" :label="option.title" />
+    <template #option="{ option, selected }">
+      <div class="flex items-center gap-[10px]">
+        <span
+          :class="
+            cn(
+              'fill_revert_layer block h-[12px] w-[12px] rounded-[2px] border border-black !text-black md:h-[13px] md:w-[13px] xl:h-[16px] xl:w-[16px]',
+              {
+                'bg-black': selected,
+              }
+            )
+          "
+          ><SvgoCheckmark v-if="selected" class="!h-full !w-full !stroke-white"
+        /></span>
+        <span>
+          <UiTextPortalPrimary>{{ option.title }}</UiTextPortalPrimary>
+        </span>
+      </div>
     </template>
   </USelectMenu>
 </template>
