@@ -75,12 +75,22 @@
     <UiSelectMultipleCheckbox
       v-model="categories"
       :options="categoriesOptions"
-      :label="$t('category.singular')"
+      :label="
+        $t('category.singular') +
+        (filtersActive && filtersActive.categories && filtersActive.categories.length > 0
+          ? `(${filtersActive.categories.length})`
+          : '')
+      "
     />
     <UiSelectMultipleCheckbox
       v-model="countries"
       :options="countriesOptions"
-      :label="$t('labels.country')"
+      :label="
+        $t('labels.country') +
+        (filtersActive && filtersActive.countries && filtersActive.countries.length > 0
+          ? `(${filtersActive.countries.length})`
+          : '')
+      "
     />
   </div>
 </template>

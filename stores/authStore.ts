@@ -16,8 +16,6 @@ export const useAuthStore = defineStore('authStore', () => {
   const isGoogleUser = computed(() => !!user.value?.google_id);
   const isPassword = computed(() => !!user.value?.password_status);
 
-
-
   function switchTypeAuth(type: SwitchAuth) {
     typeAuth.value = type;
   }
