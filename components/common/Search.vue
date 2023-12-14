@@ -36,6 +36,7 @@
       :isSearchActive="isSearchActive"
       :isSearchLoading="isSearchLoading"
       :isSearchModal="isSearchModal"
+      :toggleSearchModal="toggleSearchModal"
       @updateSearchValue="updateSearchValue"
       @updateProducts="updateProducts"
       @updateCategories="updateCategories"
