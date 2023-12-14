@@ -25,7 +25,7 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   function fetchUser() {
-    $fetch(`${useUrlApi()}/user`).then((res) => {
+    useApi(`${useUrlApi()}/user`).then((res) => {
       user.value = res as User;
       console.log(user.value);
       console.log(res);
