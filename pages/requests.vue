@@ -6,9 +6,25 @@
   const pages = ref<any[]>([]);
   const page = ref(route.query.page ? +route.query.page : 1);
 
+  const filters = ref({
+    categories:
+      typeof route.query.categories === 'string'
+        ? [route.query.categories]
+        : route.query.categories || [],
+    countries:
+      typeof route.query.countries === 'string'
+        ? [route.query.countries]
+        : route.query.countries || [],
+  });
+
   const fetchRequests = () => {
-    useFetch(`${useUrlApi()}/importRequest/get?page=${page.value}`).then((res: any) => {
-      console.log(res.data.value);
+    useFetch(`${useUrlApi()}/importRequest/get?page=${page.value}`, {
+      method: 'POST',
+      body: {
+        category: filters.value.categories.map((el: any) => +el),
+        country: filters.value.countries,
+      },
+    }).then((res: any) => {
       requests.value = res.data.value.data as RequestImporter[];
       pages.value = res.data.value.links.filter(
         (el: any, ind: number, arr: any[]) => ind !== 0 && ind !== arr.length - 1
@@ -17,27 +33,24 @@
     });
   };
 
-  const fetchFilters = () => {
-    useFetch(`${useUrlApi()}/importRequest/filters`).then((res) => {
-      console.log(res.data.value);
-    });
-  };
-
   const updateUrl = () => {
     const query = {
       page: page.value,
+      categories: [...filters.value.categories],
+      countries: [...filters.value.countries],
     };
 
     router.push({ query });
   };
 
-  watchDeep(page, () => {
+  watchDeep([page, filters], () => {
+    console.log('qwdwqdqwd');
+
     updateUrl();
     fetchRequests();
   });
 
   updateUrl();
-  fetchFilters();
   fetchRequests();
 </script>
 
@@ -46,10 +59,7 @@
     <CommonBreadcrumbs :static="$t('subHeader.requests')" />
     <div class="container">
       <CommonTitleSection>Запити</CommonTitleSection>
-      <div class="mt-[15px] flex gap-[30px] md:gap-[50px] xl:gap-[70px]">
-        <!-- <UiSelectMultipleCheckbox :label="$t('category.singular')" /> -->
-        <!-- <UiSelectMultipleCheckbox :label="$t('labels.country')" /> -->
-      </div>
+      <PagesRequestsFilters v-model:filtersActive="filters" class="mt-[15px]" />
       <div
         class="mt-[24px] grid grid-cols-12 gap-x-[12px] gap-y-[20px] md:mt-[30px] xl:gap-x-[58px] xl:gap-y-[45px]"
       >

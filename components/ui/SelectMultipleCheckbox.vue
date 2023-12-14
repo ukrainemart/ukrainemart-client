@@ -1,11 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     label: string;
-    options: {
-      id: number;
-      title: string;
-    };
-    selectedOptions: number[];
+    options: SelectOption;
   }>();
   const open = ref<boolean>(false);
 
@@ -19,12 +15,11 @@
 
 <template>
   <USelectMenu
-    v-model="selectedOptions"
     class="relative w-fit"
     value-attribute="id"
     option-attribute="title"
     :uiMenu="{
-      width: 'w-[182px] md:w-[219px] xl:w-[284px]',
+      width: 'w-[182px] md:w-[219px] xl:w-[290px]',
       container: '!left-0',
       rounded: 'rounded-[15px]',
       base: 'scroll_bar',
@@ -49,7 +44,7 @@
         <span
           :class="
             cn(
-              'fill_revert_layer block h-[12px] w-[12px] rounded-[2px] border border-black !text-black md:h-[13px] md:w-[13px] xl:h-[16px] xl:w-[16px]',
+              'fill_revert_layer block h-[12px] w-[12px] flex-shrink-0 rounded-[2px] border border-black !text-black md:h-[13px] md:w-[13px] xl:h-[16px] xl:w-[16px]',
               {
                 'bg-black': selected,
               }

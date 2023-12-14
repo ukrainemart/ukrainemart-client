@@ -157,7 +157,10 @@
               />
             </UiLabel>
           </div>
-          <!-- <div class="mt-[24px] flex flex-col gap-[15px] md:mt-[30px] lg:mt-[43px] xl:gap-[25px]">
+          <div
+            v-if="inputs.categoryId"
+            class="mt-[24px] flex flex-col gap-[15px] md:mt-[30px] lg:mt-[43px] xl:gap-[25px]"
+          >
             <div class="flex items-center gap-[20px] md:gap-[35px]">
               <UiLabel :label="$t('add_product.minimum_order') + ':'">
                 <UiInputOutline class="max-w-[110px] md:max-w-[220px] xl:max-w-[200px]" />
@@ -168,7 +171,7 @@
             </div>
             <div class="flex items-center gap-[20px] md:gap-[35px]">
               <UiLabel
-              for=""
+                for=""
                 :label="$t('add_product.type_packaging') + ':'"
                 class="w-full max-w-[150px] md:max-w-[310px] xl:max-w-[235px]"
               >
@@ -178,7 +181,7 @@
                 <UiInputOutline />
               </UiLabel>
             </div>
-          </div>  -->
+          </div>
 
           <CommonInputGroupPrice
             v-model:fixedPrice="inputs.fixedPrice"
