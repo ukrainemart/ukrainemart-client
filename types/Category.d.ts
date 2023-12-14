@@ -16,4 +16,5 @@ declare interface Category {
   same_categories: SameCategories[];
   min_price: number;
   max_price: number;
+  products_count: number;
 }

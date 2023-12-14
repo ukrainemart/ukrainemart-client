@@ -4,6 +4,7 @@
     isSearchActive: boolean;
     isSearchLoading: boolean;
     isSearchModal?: boolean;
+    toggleSearchModal?: () => void;
   }>();
 
   const router = useRouter();
@@ -35,17 +36,23 @@
     const newSearchValue = target.value;
     emit('updateSearchValue', newSearchValue);
 
-    if (newSearchValue.trim().length) {
-      if (event instanceof KeyboardEvent && event.key === 'Enter') {
-        router.push(`/search?param=${newSearchValue}`);
-        emit('updateSearchActive', false);
-      } else {
-        emit('updateSearchLoading', true);
-        getSearchResult(newSearchValue.trim());
-      }
-    } else {
+    if (!newSearchValue.trim().length) {
       emit('updateSearchActive', false);
+      return;
     }
+
+    if (event instanceof KeyboardEvent && event.key === 'Enter') {
+      router.push(`/search?param=${newSearchValue}`);
+      emit('updateSearchActive', false);
+
+      if (props.isSearchModal) {
+        props.toggleSearchModal?.();
+      }
+      return;
+    }
+
+    emit('updateSearchLoading', true);
+    getSearchResult(newSearchValue.trim());
   }, 400);
 
   watch(

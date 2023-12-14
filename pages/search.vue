@@ -56,9 +56,20 @@
             v-for="category in categories"
             :key="category.id"
             :to="`/category/${category.id}`"
-            class="text-[12px] font-medium hover:underline md:text-[14px] lg:text-[16px]"
+            class="group flex items-center gap-x-[7px] 2xl:gap-x-[10px]"
           >
-            {{ useMultiLang(category, 'title') }}
+            <span
+              class="text-[12px] font-medium group-hover:underline md:text-[14px] lg:text-[16px]"
+            >
+              {{ useMultiLang(category, 'title') }}
+            </span>
+
+            <span
+              v-if="category.products_count"
+              class="rounded-full border border-status_gray px-[13px] py-[3px] font-montserrat text-[14px] text-black xl:px-[11px] xl:py-px xl:text-[16px]"
+            >
+              {{ category.products_count }}
+            </span>
           </NuxtLink>
         </div>
 
