@@ -44,8 +44,6 @@
   };
 
   watchDeep([page, filters], () => {
-    console.log('qwdwqdqwd');
-
     updateUrl();
     fetchRequests();
   });
