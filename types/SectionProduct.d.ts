@@ -6,5 +6,6 @@ declare interface SectionProduct {
   updated_at: string;
   data_type: any,
   section_id: number;
-  category_id: number,
+  category_id: number;
+  category_sections: SectionProduct[]
 }

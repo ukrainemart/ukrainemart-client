@@ -50,35 +50,18 @@
       </ul>
     </div>
 
-    <ul class="mb-[15px] flex flex-col gap-2.5 md:mb-[28px] md:gap-[12px] 2xl:gap-5">
-      <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
+    <ul
+      v-for="section in product?.product_sections"
+      :key="section.id"
+      class="mb-[15px] flex flex-col gap-2.5 md:mb-[28px] md:gap-[12px] 2xl:gap-5"
+    >
+      <li
+        v-if="section?.category_sections[0]"
+        class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]"
+      >
         <UiTextPortalPrimaryXl>
-          Мінімальне замовлення:
-          <span class="text-status_gray">10 кг</span>
-        </UiTextPortalPrimaryXl>
-      </li>
-      <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
-        <UiTextPortalPrimaryXl>
-          Тип пакування:
-          <span class="text-status_gray">Мішок</span>
-        </UiTextPortalPrimaryXl>
-      </li>
-      <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
-        <UiTextPortalPrimaryXl>
-          Доступно:
-          <span class="text-status_gray">200 кг</span>
-        </UiTextPortalPrimaryXl>
-      </li>
-      <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
-        <UiTextPortalPrimaryXl>
-          Термін придатності:
-          <span class="text-status_gray">24 місяці</span>
-        </UiTextPortalPrimaryXl>
-      </li>
-      <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
-        <UiTextPortalPrimaryXl>
-          Формат доставки:
-          <span class="text-status_gray">{{ '' }}</span>
+          {{ useMultiLang(section?.category_sections[0], 'title') }}:
+          <span class="text-status_gray">{{ useMultiLang(section, 'title') }}</span>
         </UiTextPortalPrimaryXl>
       </li>
     </ul>

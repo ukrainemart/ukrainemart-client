@@ -21,6 +21,7 @@
   const fetchProduct = async () => {
     const response = await useFetch(`${useUrlApi()}/product/show/${productId}`);
     product.value = response?.data.value as Product;
+    console.log(product.value);
   };
 
   fetchProduct();
