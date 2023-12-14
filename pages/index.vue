@@ -16,7 +16,7 @@
   const getProducts = async () => {
     // REVIEW useFetchApi
     try {
-      const res: any = await useFetch(`${useUrlApi()}/main_page`);
+      const res: any = await useApiFetch(`${useUrlApi()}/main_page`);
       const data: MainPageData = res.data.value;
 
       products.value = data?.products as Product[];
