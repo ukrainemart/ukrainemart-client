@@ -19,23 +19,23 @@
   const categories = ref<any[]>([]);
   const countries = ref<any[]>([]);
 
-  const categoriesOptions = computed(
+  const categoriesOptions = computed<any>(
     () =>
       filters.value?.categories?.map((el: Category) => {
         return {
           id: `${el.id}`,
           title: useMultiLang(el, 'title'),
-        } as SelectOption;
+        };
       })
   );
 
-  const countriesOptions = computed(
+  const countriesOptions = computed<any>(
     () =>
       filters.value?.countries?.map((el: Country) => {
         return {
           id: el.title_en,
           title: useMultiLang(el, 'title'),
-        } as SelectOption;
+        };
       })
   );
 

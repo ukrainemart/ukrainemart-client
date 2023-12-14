@@ -26,6 +26,18 @@
     changeVariated(variated.value);
   });
 
+  const getStartVariated = () => {
+    variated.value = props.variatedPrices;
+  };
+
+  watchDeep(
+    () => props.variatedPrices,
+    () => {
+      getStartVariated();
+    }
+  );
+  getStartVariated();
+
   const addNewPrice = () => {
     const addablePrice = {
       minAmount: '',
@@ -33,6 +45,8 @@
       price: '',
       unitId: props.currentUnitId,
     } as PriceProduct['variatedPrice'];
+
+    console.log(variated.value);
 
     variated.value = [...variated.value, addablePrice];
   };

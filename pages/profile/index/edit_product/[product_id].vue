@@ -24,6 +24,7 @@
     variatedPrices: [],
     productImages: [],
     unitId: '',
+    sections: {},
   } as InputsCreateProduct);
   const product = ref<Product>({} as Product);
   const productId = route.params.product_id;
@@ -42,6 +43,11 @@
       inputs.value.productImages = response.images?.map((el: any) => el.path) || [];
       inputs.value.priceType = response.price_type;
       inputs.value.unitId = response.prices[0].unit_id || '';
+
+      response.product_sections.forEach((el: SectionProduct) => {
+        inputs.value.sections[`section_${el.section_id}_en`] = el.title_en;
+        inputs.value.sections[`section_${el.section_id}_ua`] = el.title_ua;
+      });
 
       if (response.price_type === 'fixed' && inputs.value.fixedPrice) {
         inputs.value.fixedPrice.amount = String(response.prices[0].min_amount) || '';
@@ -92,6 +98,11 @@
         )
       );
     }
+
+    Object.keys(inputs.value.sections).forEach((el) => {
+      data.append(`${el}`, inputs.value.sections[`${el}`]);
+    });
+
     const { productImages } = inputs.value;
 
     productImages.forEach((image, index) => {

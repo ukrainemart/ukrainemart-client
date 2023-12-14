@@ -6,7 +6,7 @@
   "personalAccount": "Особистий кабінет",
   "ourSocialNetworks": "Наші соц мережі",
   "faq": "Питання і відповіді",
-  "technicalSupport": "Технічна підтримка",  
+  "technicalSupport": "Технічна підтримка",
   "contractSupport": "Супровід контрактів",
   "forUaExporters": "Для українських експортерів",
   "forIntlImporters": "Для міжнародних імпортерів",
@@ -81,6 +81,7 @@
   "description_of_your_company": "Опис вашої компанії",
   "delete_product": "Видалити товар?",
   "fill_in_all_fields": "Заповніть усі поля!",
+  "check_multilingual_fields": "Заповніть усі поля! Перевірте різномовні поля!",
   "the_link_not_active": "Посилання не активне!",
   "labels": {
     "title": "Заголовок",

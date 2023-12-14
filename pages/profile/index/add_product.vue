@@ -22,6 +22,7 @@
     variatedPrices: [],
     productImages: [],
     unitId: '',
+    sections: {},
   });
 
   const formData = () => {
@@ -52,6 +53,9 @@
         )
       );
     }
+    Object.keys(inputs.value.sections).forEach((el) => {
+      data.append(`${el}`, inputs.value.sections[`${el}`]);
+    });
 
     const { productImages } = inputs.value;
 

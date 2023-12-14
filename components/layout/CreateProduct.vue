@@ -8,7 +8,7 @@
     message: string;
   }>();
   const loadingRequest = ref(false);
-  const language = ref<Language>();
+  const language = ref<Language>('ua');
   const pageData = ref();
 
   const emits = defineEmits(['update:inputs', 'actionSubmit']);
@@ -157,31 +157,12 @@
               />
             </UiLabel>
           </div>
-          <div
+          <PagesCreateProductAddSections
             v-if="inputs.categoryId"
-            class="mt-[24px] flex flex-col gap-[15px] md:mt-[30px] lg:mt-[43px] xl:gap-[25px]"
-          >
-            <div class="flex items-center gap-[20px] md:gap-[35px]">
-              <UiLabel :label="$t('add_product.minimum_order') + ':'">
-                <UiInputOutline class="max-w-[110px] md:max-w-[220px] xl:max-w-[200px]" />
-              </UiLabel>
-              <UiLabel :label="$t('add_product.unit_measurement') + ':'">
-                <CommonSelectUnitMeasure class="max-w-[70px] md:max-w-[110px]" />
-              </UiLabel>
-            </div>
-            <div class="flex items-center gap-[20px] md:gap-[35px]">
-              <UiLabel
-                for=""
-                :label="$t('add_product.type_packaging') + ':'"
-                class="w-full max-w-[150px] md:max-w-[310px] xl:max-w-[235px]"
-              >
-                <UiSelectOutline />
-              </UiLabel>
-              <UiLabel class="w-full" :label="$t('add_product.expiration_date') + ':'">
-                <UiInputOutline />
-              </UiLabel>
-            </div>
-          </div>
+            v-model="inputs.sections"
+            :categoryId="inputs.categoryId"
+            :language="language"
+          />
 
           <CommonInputGroupPrice
             v-model:fixedPrice="inputs.fixedPrice"

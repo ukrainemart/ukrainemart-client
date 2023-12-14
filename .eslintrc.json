@@ -62,7 +62,8 @@
         "vue/no-mutating-props": "off",
         "consistent-return": "off",
         "vue/require-explicit-emits": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "import/prefer-default-export": "off"
       }
     }
   ]
