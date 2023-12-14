@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     label: string;
-    options: SelectOption;
+    options: SelectOption[];
   }>();
   const open = ref<boolean>(false);
 

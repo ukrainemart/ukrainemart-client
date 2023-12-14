@@ -25,12 +25,8 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   async function fetchUser() {
-    try {
-      const { data } = await useApiFetch(`${useUrlApi()}/user`);
-      user.value = data.value as User;
-    } catch (err) {
-      console.log(err);
-    }
+    const { data } = await useApiFetch(`${useUrlApi()}/user`);
+    user.value = data.value as User;
   }
 
   async function logout() {
