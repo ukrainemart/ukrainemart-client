@@ -18,13 +18,13 @@
   });
 
   const fetchRequests = () => {
-    useFetch(`${useUrlApi()}/importRequest/get?page=${page.value}`, {
-      method: 'POST',
-      body: {
-        category: filters.value.categories.map((el: any) => +el),
-        country: filters.value.countries,
-      },
-    }).then((res: any) => {
+    const categories = filters.value.categories.map((el: any) => +el);
+
+    useApi(
+      `${useUrlApi()}/importRequest/get?page=${page.value}&category=${categories}&country=${
+        filters.value.countries
+      }`
+    ).then((res: any) => {
       requests.value = res.data.value.data as RequestImporter[];
       pages.value = res.data.value.links.filter(
         (el: any, ind: number, arr: any[]) => ind !== 0 && ind !== arr.length - 1

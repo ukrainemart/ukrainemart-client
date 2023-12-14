@@ -16,6 +16,8 @@ export const useAuthStore = defineStore('authStore', () => {
   const isGoogleUser = computed(() => !!user.value?.google_id);
   const isPassword = computed(() => !!user.value?.password_status);
 
+  const token = useCookie('XSRF-TOKEN');
+
   function switchTypeAuth(type: SwitchAuth) {
     typeAuth.value = type;
   }
@@ -43,7 +45,9 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   async function login(credentials: LoginCredentials) {
-    await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
+    if (token.value) {
+      await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
+    }
     try {
       const response: any = await useApiFetch(`${useUrlApi()}/login`, {
         method: 'POST',
