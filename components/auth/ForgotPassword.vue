@@ -13,7 +13,7 @@
     loadingRequest.value = true;
     error.value = '';
 
-    useApiFetch(`${useUrlApi()}/user/password/forgot/`, {
+    useApiFetch(`${useUrlApi()}/user/password/forgot`, {
       method: 'POST',
       body: {
         email: email.value,

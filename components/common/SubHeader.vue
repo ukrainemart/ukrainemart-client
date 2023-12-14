@@ -47,7 +47,10 @@
       </div>
     </UiButtonTextUnderline>
 
-    <UiButtonTextUnderline to="/" class="md:hover:text-status_red md:hover:before:bg-status_red">
+    <UiButtonTextUnderline
+      to="/requests"
+      class="md:hover:text-status_red md:hover:before:bg-status_red"
+    >
       {{ $t('subHeader.requests') }}
     </UiButtonTextUnderline>
 
