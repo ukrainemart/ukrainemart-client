@@ -1,6 +1,6 @@
 <script setup lang="ts">
   defineProps<{
-    to: string;
+    to?: string;
   }>();
   const route = useRoute();
 </script>

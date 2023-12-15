@@ -103,7 +103,9 @@
     "other_inquiries_from_this_category": "Інші запити з цієї категорії",
     "recover_password": "Відновити пароль",
     "restore": "Відновити",
-    "password_recovery": "Відновлення паролю"
+    "password_recovery": "Відновлення паролю",
+    "for_sale": "Продаю",
+    "buying": "Купую"
   },
   "placeholders": {
     "name": "Іван",
@@ -119,7 +121,8 @@
     "title_en_product": "Назва товару англійською мовою",
     "description_en_product": "Опис товару англійською мовою",
     "price_type_product": "Тип ціни товару",
-    "unit": "кг"
+    "unit": "кг",
+    "write_your_message": "Напишіть своє повідомлення..."
   },
   "email_validate": {
     "email_not_verified": "Email не підтверджено!",
@@ -142,6 +145,10 @@
   "profile": {
     "profile": "Профіль",
     "personal_data": "Особисті дані",
+    "message": {
+      "message": "Повідомлення",
+      "my_messages": "Мої повідомлення"
+    },
     "my_orders": "Мої замовлення",
     "my_products": "Мої товари",
     "apply_company_creation": "Подати заявку на створення компанії",

@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="">
+  <div class="lg:pt-[30px]">
     <CommonTitleProfilePage class="mb-[20px] md:mb-[30px] xl:mb-[40px]">
       {{ title }}
     </CommonTitleProfilePage>
