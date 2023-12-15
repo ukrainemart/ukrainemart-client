@@ -102,11 +102,10 @@
 
   getCategory();
 
-  watchDeep([priceRange, minAmount], async () => {
+  watchDeep([priceRange, minAmount], () => {
     isLoading.value = true;
-    await getProducts();
-    await updateUrlWithFilters();
-    isLoading.value = false;
+    getProducts();
+    updateUrlWithFilters();
   });
 </script>
 
