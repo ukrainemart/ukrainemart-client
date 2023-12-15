@@ -14,7 +14,7 @@
 
       <CommonProfileMenuList class="mt-[10px] md:mt-[12px] xl:mt-[15px]" />
     </div>
-    <div class="col-span-12 lg:col-span-9 lg:pl-[20px] lg:pt-[30px] xl:col-span-10 xl:pl-[40px]">
+    <div class="col-span-12 lg:col-span-9 lg:pl-[20px] xl:col-span-10 xl:pl-[40px]">
       <NuxtPage />
     </div>
   </div>

@@ -21,7 +21,6 @@
 
   const sortable = (evt: any) => {
     const { newIndex, oldIndex } = evt;
-
     const copyArray = props.modelValue.slice();
 
     const movedItem = copyArray[oldIndex];
@@ -62,6 +61,12 @@
       checkValidation();
     }
   );
+
+  const onMove = (evt: any) => {
+    if (evt.related.className.includes('non_draggable')) {
+      return false;
+    }
+  };
 </script>
 
 <template>
@@ -75,6 +80,7 @@
         :options="{
           filter: '.non_draggable',
         }"
+        @move.capture="onMove"
         @sort="sortable"
       >
         <template #item="{ element }">
