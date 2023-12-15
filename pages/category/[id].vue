@@ -41,7 +41,7 @@
   provide('minAmount', { minAmount, handlerFilter });
 
   const updateUrlWithFilters = () => {
-    const query: { [key: string]: number | undefined } = {
+    const query: { [key: string]: number } = {
       min_price: priceRange.input.min,
       max_price: priceRange.input.max,
       min_amount: minAmount.value,
@@ -59,8 +59,19 @@
   const getValueQuery = () => {
     if (!route.query) return false;
 
-    priceRange.input.min = Number(route.query?.min_price) || priceRange.api.min;
-    priceRange.input.max = Number(route.query?.max_price) || priceRange.api.max;
+    let minPrice = Number(route.query?.min_price);
+    let maxPrice = Number(route.query?.max_price);
+
+    if (Number.isNaN(minPrice) || minPrice < priceRange.api.min || minPrice > priceRange.api.max) {
+      minPrice = priceRange.api.min;
+    }
+
+    if (Number.isNaN(maxPrice) || maxPrice < priceRange.api.min || maxPrice > priceRange.api.max) {
+      maxPrice = priceRange.api.max;
+    }
+
+    priceRange.input.min = minPrice;
+    priceRange.input.max = maxPrice;
     minAmount.value = Number(route.query?.min_amount) || minAmount.value;
   };
 
@@ -92,7 +103,7 @@
         priceRange.input.min = category.value.min_price;
         priceRange.input.max = category.value.max_price;
 
-        updateUrlWithFilters();
+        // updateUrlWithFilters();
         getValueQuery();
       }
     } catch (error) {
@@ -106,6 +117,7 @@
     isLoading.value = true;
     await getProducts();
     updateUrlWithFilters();
+    // getValueQuery();
   });
 </script>
 
