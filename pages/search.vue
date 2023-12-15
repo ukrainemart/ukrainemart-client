@@ -1,6 +1,6 @@
 <script setup lang="ts">
   const route = useRoute();
-  const { param } = route.query;
+  const param = computed(() => route.query.param);
   const breadcrumb = {
     title_ua: 'Пошук',
     title_en: 'Search',
@@ -16,17 +16,17 @@
         `${useUrlApi()}/search/query?search=${query}`
       );
 
-      if (res.products.length || res.categories.length) {
-        categories.value = res.categories;
-        products.value = res.products;
-        isLoading.value = false;
-      }
+      categories.value = res.categories;
+      products.value = res.products;
+      isLoading.value = false;
     } catch (err) {
       console.error(err);
     }
   };
 
-  getSearchResult(param as string);
+  getSearchResult(param.value as string);
+
+  watch(param, () => getSearchResult(param.value as string));
 </script>
 
 <template>
@@ -40,14 +40,21 @@
         </CommonProductTitle>
 
         <p
-          v-if="!isLoading"
+          v-if="!isLoading && !categories.length && !products.length"
+          class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
+        >
+          {{ $t('search.nothing_found') }}
+        </p>
+
+        <p
+          v-if="!isLoading && categories.length"
           class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
         >
           {{ $t('search_page.found_categories', { count: categories.length }) }}
         </p>
 
         <div
-          v-if="!isLoading"
+          v-if="!isLoading && categories.length"
           class="mb-5 flex flex-wrap gap-x-5 gap-y-[20px] md:mb-[30px] md:gap-[25px] xl:gap-x-[30px]"
         >
           <NuxtLink
@@ -72,13 +79,14 @@
         </div>
 
         <p
-          v-if="!isLoading"
+          v-if="!isLoading && products.length"
           class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
         >
           {{ $t('search_page.found_products', { count: products.length }) }}
         </p>
 
         <div
+          v-if="!isLoading && products.length"
           class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] xl:grid-cols-10 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
         >
           <CommonCardProduct
