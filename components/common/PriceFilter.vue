@@ -123,7 +123,7 @@
   }
 
   .slider_values_item {
-    @apply relative flex w-full max-w-[80px] cursor-pointer justify-center gap-[3px] rounded-[50px] border-[1px] border-black bg-transparent p-[8px] text-center text-[10px] leading-[12px] focus:outline-0 md:max-w-[100px] md:p-[11px] md:text-[12px] md:leading-[15px] 2xl:p-[15px] 2xl:text-[16px] 2xl:leading-[20px];
+    @apply relative flex w-full max-w-[80px] cursor-pointer justify-center gap-[3px] rounded-[50px] border-[1px] border-black bg-transparent p-[8px] text-center text-[10px] leading-[12px] focus:outline-0 md:max-w-[100px] md:p-[6.5px] md:text-[12px] md:leading-[15px] 2xl:p-[15px] 2xl:text-[16px] 2xl:leading-[20px];
   }
 
   .slider-horizontal .slider-handle {
