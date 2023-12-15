@@ -16,30 +16,40 @@
     handlerFilter: (filterValue: any, filterType: string) => void;
   };
 
-  const handlerPriceUpdate = (value: string | number[], type: string) => {
+  const handlerPriceUpdate = useDebounceFn((value: number | number[], type: string) => {
     switch (type) {
       case 'min': {
-        handlerFilter({ min: Number(value), max: priceRange.input.max }, 'price');
+        handlerFilter({ min: value, max: priceRange.input.max }, 'price');
         break;
       }
       case 'max': {
-        handlerFilter({ min: priceRange.input.min, max: Number(value) }, 'price');
+        handlerFilter({ min: priceRange.input.min, max: value }, 'price');
         break;
       }
       case 'range': {
-        handlerFilter({ min: value[0], max: value[1] }, 'price');
+        if (Array.isArray(value)) {
+          handlerFilter({ min: value[0], max: value[1] }, 'price');
+        }
         break;
       }
       default:
         throw new Error(`Unexpected input type: ${type} or value: ${value}`);
     }
-  };
+  }, 400);
 
   const handleInputLength = (value: string, type: string) => {
-    let newValue = value;
+    let newValue = Number(value);
 
-    if (Number(value) > PRICE_MAX_LENGTH) {
-      newValue = value.slice(0, PRICE_MAX_LENGTH);
+    if (newValue > PRICE_MAX_LENGTH) {
+      newValue = Number(value.slice(0, PRICE_MAX_LENGTH));
+    }
+
+    if (type === 'min') {
+      newValue = Math.max(newValue, priceRange.api.min);
+      newValue = Math.min(newValue, priceRange.api.max);
+    } else if (type === 'max') {
+      newValue = Math.max(newValue, priceRange.api.min);
+      newValue = Math.min(newValue, priceRange.api.max);
     }
 
     handlerPriceUpdate(newValue, type);
@@ -47,7 +57,6 @@
 </script>
 
 <template>
-  <!-- REVIEW empty/parent category -->
   <div v-if="priceRange.api.min !== null && priceRange.api.max !== null">
     <div class="flex flex-col gap-2.5 2xl:gap-[15px]">
       <!-- NOTE 8px height of slider button -->

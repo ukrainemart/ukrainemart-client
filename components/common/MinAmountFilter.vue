@@ -9,7 +9,7 @@
 
   const updateMinAmount = useDebounceFn(
     () => handlerFilter(localMinAmount.value, 'minAmount'),
-    300
+    400
   );
 </script>
 
