@@ -8,6 +8,7 @@
   }>();
 
   let abortController = new AbortController();
+  const searchInput = ref<HTMLInputElement | null>(null);
   const router = useRouter();
   const emit = defineEmits([
     'updateSearchValue',
@@ -67,6 +68,8 @@
     emit('updateSearchValue', '');
     emit('updateSearchActive', false);
     emit('updateSearchLoading', false);
+
+    searchInput.value?.focus();
   };
 
   watch(
@@ -110,6 +113,7 @@
     />
 
     <input
+      ref="searchInput"
       :value="searchValue"
       type="text"
       :placeholder="$t('startYourSearch')"
