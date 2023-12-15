@@ -204,6 +204,7 @@
   "search_page": {
     "search_page_title": "Пошук {'|'} Ukrainemart",
     "results_for_search": "Результати за пошуком",
-    "found_products": "Знайдено {count} товар | Знайдено {count} товарів"
+    "found_products": "Знайдено {count} товар | Знайдено {count} товари | Знайдено {count} товарів",
+    "found_categories": "Знайдено {count} категорія | Знайдено {count} категорії | Знайдено {count} категорій"
   }
 }

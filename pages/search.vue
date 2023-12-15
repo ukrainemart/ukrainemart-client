@@ -5,7 +5,7 @@
     title_ua: 'Пошук',
     title_en: 'Search',
   };
-  const categories = ref<Category[]>();
+  const categories = ref<Category[]>([]);
   const products = ref<Product[]>([]);
   const isLoading = ref<boolean>(true);
   useTitle('search_page.search_page_title');
@@ -35,18 +35,16 @@
 
     <div class="container">
       <div>
-        <div class="mb-5">
-          <CommonProductTitle class="mb-5 xl:mb-[30px] 2xl:mb-10">
-            {{ $t('search_page.results_for_search') }} "{{ param }}"
-          </CommonProductTitle>
+        <CommonProductTitle class="mb-5 xl:mb-[30px] 2xl:mb-10">
+          {{ $t('search_page.results_for_search') }} "{{ param }}"
+        </CommonProductTitle>
 
-          <p
-            v-if="!isLoading"
-            class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
-          >
-            {{ $t('search_page.found_products', { count: products.length }) }}
-          </p>
-        </div>
+        <p
+          v-if="!isLoading"
+          class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
+        >
+          {{ $t('search_page.found_categories', { count: categories.length }) }}
+        </p>
 
         <div
           v-if="!isLoading"
@@ -72,6 +70,13 @@
             </span>
           </NuxtLink>
         </div>
+
+        <p
+          v-if="!isLoading"
+          class="mb-[15px] text-[10px] text-status_gray md:text-[12px] xl:mb-5 xl:text-[20px]"
+        >
+          {{ $t('search_page.found_products', { count: products.length }) }}
+        </p>
 
         <div
           class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] xl:grid-cols-10 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
