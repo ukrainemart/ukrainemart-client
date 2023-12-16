@@ -43,6 +43,8 @@
   "show_more": "Show more",
   "about_product": "About the product",
   "about_exporter": "About the exporter",
+  "other_products_from_seller": "Other products from this seller",
+  "other_products_from_category": "Other products from this category",
   "hide": "Hide",
   "password_change": {
     "old_password": "Old password",

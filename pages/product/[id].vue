@@ -77,14 +77,18 @@
       :products="product?.product_company"
       class="!pt-0"
     >
-      <template #title> Інші товари від цього продавця </template>
+      <template #title>
+        {{ $t('other_products_from_seller') }}
+      </template>
     </CommonSectionProductsSlider>
 
     <CommonSectionProductsSlider
       v-if="product && product.product_same_category.length > 0"
       :products="product?.product_same_category"
     >
-      <template #title> Інші товари з цієї категорії </template>
+      <template #title>
+        {{ $t('other_products_from_category') }}
+      </template>
     </CommonSectionProductsSlider>
 
     <CommonSectionCategories />
