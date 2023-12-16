@@ -1,15 +1,16 @@
 <script setup lang="ts">
   const props = defineProps<{
-    breadcrumb?: Breadcrumb;
+    breadcrumb?: Breadcrumb | Category;
     static?: string;
+    productCrumb?: string;
   }>();
 
   const { BREAKPOINTS_MD } = useVariables();
   const { width: screenWidth } = useWindowSize();
 
   const breadcrumbs = computed(() => {
-    const result: Breadcrumb[] = [];
-    let currentBreadcrumb: Breadcrumb | null = props.breadcrumb || null;
+    const result: (Breadcrumb | Category)[] = [];
+    let currentBreadcrumb: Breadcrumb | Category | null = props.breadcrumb || null;
 
     while (currentBreadcrumb) {
       result.unshift(currentBreadcrumb);
@@ -18,10 +19,12 @@
 
     return result;
   });
+
+  console.log(breadcrumbs.value);
 </script>
 
 <template>
-  <!-- screenSize tablet or larger -->
+  <!-- START Tablet and desktop -->
   <div v-if="breadcrumbs.length > 0 && screenWidth >= BREAKPOINTS_MD">
     <ul
       class="container flex gap-[3px] pb-[25px] pt-3 md:gap-[7px] md:pb-[35px] md:pt-5 xl:gap-2.5 2xl:pb-[45px] 2xl:pt-[30px]"
@@ -37,25 +40,34 @@
         :key="crumb?.id"
         :class="
           cn('breadcrumb_item', {
-            '!text-black': i === breadcrumbs.length - 1,
+            '!text-black': i === breadcrumbs.length - 1 && !productCrumb,
           })
         "
       >
-        <NuxtLink v-if="i !== breadcrumbs.length - 1" :to="`/category/${crumb?.id}`">
+        <NuxtLink
+          v-if="i !== breadcrumbs.length - 1 || productCrumb"
+          :to="`/category/${crumb?.id}`"
+        >
           {{ useMultiLang(crumb, 'title') }}
         </NuxtLink>
 
         <span v-else>{{ useMultiLang(crumb, 'title') }}</span>
 
         <SvgoBreadcrumbArrow
-          v-if="i !== breadcrumbs.length - 1"
+          v-if="i !== breadcrumbs.length - 1 || productCrumb"
           class="breadcrumb_arrow"
           :fontControlled="false"
         />
       </li>
+
+      <li v-if="productCrumb" class="breadcrumb_item !text-black">
+        <span>{{ productCrumb }}</span>
+      </li>
     </ul>
   </div>
-  <!-- screenSize mobile -->
+  <!-- END Tablet and desktop -->
+
+  <!-- START mobile -->
   <div v-else>
     <ul
       class="container flex gap-[3px] pb-[25px] pt-3 md:gap-[7px] md:pb-[35px] md:pt-5 xl:gap-2.5 2xl:pb-[45px] 2xl:pt-[30px]"
@@ -68,15 +80,14 @@
 
       <li v-if="static" class="breadcrumb_item !text-black">
         <button disabled>{{ static }}</button>
-
-        <SvgoBreadcrumbArrow class="breadcrumb_arrow" :fontControlled="false" />
       </li>
 
-      <li class="breadcrumb_item !text-black">
+      <li v-else class="breadcrumb_item !text-black">
         <span>{{ useMultiLang(breadcrumbs[breadcrumbs.length - 1], 'title') }}</span>
       </li>
     </ul>
   </div>
+  <!-- END mobile -->
 </template>
 
 <style>
