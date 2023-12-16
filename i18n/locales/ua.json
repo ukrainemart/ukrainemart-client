@@ -42,8 +42,8 @@
   "password": "Пароль",
   "show_more": "Показати більше",
   "hide": "Сховати",
-  "about_product": "About the product",
-  "about_exporter": "About the exporter",
+  "about_product": "Про товар",
+  "about_exporter": "Про експортера",
   "password_change": {
     "old_password": "Старий пароль:",
     "new_password": "Новий пароль:",

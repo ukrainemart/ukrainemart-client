@@ -41,8 +41,8 @@
   "email": "Email",
   "password": "Password",
   "show_more": "Show more",
-  "about_product": "Про товар",
-  "about_exporter": "Про експортера",
+  "about_product": "About the product",
+  "about_exporter": "About the exporter",
   "hide": "Hide",
   "password_change": {
     "old_password": "Old password",
