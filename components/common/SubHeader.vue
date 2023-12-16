@@ -54,6 +54,13 @@
       {{ $t('subHeader.requests') }}
     </UiButtonTextUnderline>
 
+    <UiButtonTextUnderline
+      to="/pricing"
+      class="md:hover:text-status_red md:hover:before:bg-status_red"
+    >
+      Pricing
+    </UiButtonTextUnderline>
+
     <UiButtonTextIconArrowDown>
       {{ $t('subHeader.for_users') }}
     </UiButtonTextIconArrowDown>
