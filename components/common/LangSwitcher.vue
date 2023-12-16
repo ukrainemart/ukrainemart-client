@@ -3,7 +3,10 @@
     isMobile?: boolean;
   }>();
 
-  const { locale } = useI18n();
+  const { locale, locales, setLocale } = useI18n();
+  const selectedLanguage = useCookie('selectedLanguage', {
+    watch: true,
+  });
 
   useHead({
     htmlAttrs: {
@@ -11,8 +14,16 @@
     },
   });
 
-  const locales = ['ua', 'en'];
-  const filteredLocales = computed(() => locales.filter((item) => item !== locale.value));
+  const filteredLocales = computed(() =>
+    locales.value
+      .filter((item) => typeof item !== 'string' && item.code !== locale.value)
+      .map((item) => (typeof item !== 'string' ? item.code : item))
+  );
+
+  const handleLocaleChange = (code: string) => {
+    selectedLanguage.value = code;
+    setLocale(code);
+  };
 </script>
 
 <template>
@@ -35,6 +46,7 @@
       },
     }"
     class="w-fit"
+    @change="handleLocaleChange"
   >
     <UiButtonTextOpeningArrow :label="locale" :open="open" />
   </USelectMenu>
