@@ -19,8 +19,6 @@
 
     return result;
   });
-
-  console.log(breadcrumbs.value);
 </script>
 
 <template>

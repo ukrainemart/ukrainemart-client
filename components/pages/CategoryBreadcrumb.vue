@@ -11,6 +11,7 @@
     if (isAllItemsVisible.value) {
       return props.sameCategories;
     }
+
     return props.sameCategories?.slice(0, ITEMS_TO_SHOW);
   });
 </script>
@@ -36,17 +37,16 @@
 
     <div v-if="sameCategories?.length > ITEMS_TO_SHOW">
       <button
-        class="ml-[14px] flex items-center gap-[3px] md:ml-[18px]"
+        class="group ml-[14px] flex items-center gap-[3px] md:ml-[18px]"
         @click="setIsAllItemsVisible(!isAllItemsVisible)"
       >
         <span class="breadcrumb_item">
-          {{ isAllItemsVisible ? 'Hide' : 'Показати більше' }}
+          {{ isAllItemsVisible ? $t('hide') : $t('show_more') }}
         </span>
 
-        <!-- FIXME hover text-black -->
         <SvgoBreadcrumbArrowDown
           :fontControlled="false"
-          class="h-[3px] w-[5px] text-transparent lg:h-[5px] lg:w-[8px]"
+          class="h-[3px] w-[5px] stroke-status_gray text-transparent group-hover:stroke-black lg:h-[5px] lg:w-[8px]"
         />
       </button>
     </div>

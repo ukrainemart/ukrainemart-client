@@ -14,13 +14,6 @@
       >
         {{ product?.company?.title }}
       </p>
-
-      <!-- REVIEW <div class="flex items-center gap-[5px] md:gap-[10px]">
-        <div class="text-[12px] md:text-[16px] 2xl:text-[20px]">
-          4.2<span class="text-status_gray">/5</span>
-        </div>
-        <CommonStarRating />
-      </div> -->
     </div>
 
     <div class="mb-5 md:mb-0 md:grow 2xl:mb-[30px]">
@@ -31,15 +24,18 @@
           :fonControlled="false"
           class="h-[12px] w-[8px] md:h-[15px] md:w-[10px] 2xl:h-5 2xl:w-[14px]"
         />
+
         <p class="text-[8px] font-medium md:text-[10px] 2xl:text-[14px]">
           Полтава, Полтавська обл., Україна
         </p>
       </div>
+
       <div class="flex items-center gap-[5px] md:gap-[7px] 2xl:gap-[10px]">
         <SvgoCheckmark
           color="transparent"
           class="h-[6px] w-[8px] stroke-[#26BC00] md:h-[8px] md:w-[10px] 2xl:h-[9px] 2xl:w-[12px]"
         />
+
         <p class="text-[8px] font-medium md:text-[10px] 2xl:text-[14px]">
           Верифікований користувач
         </p>
@@ -47,12 +43,15 @@
     </div>
 
     <div class="flex flex-col items-center gap-[8px] md:gap-[10px]">
-      <UiButtonOutlineIconEnvelop>Зв’язатися</UiButtonOutlineIconEnvelop>
+      <UiButtonOutlineIconEnvelop>
+        {{ $t('labels.contact') }}
+      </UiButtonOutlineIconEnvelop>
+
       <NuxtLink
         to="/"
         class="text-[10px] font-medium text-status_gray underline underline-offset-1 md:text-[14px]"
       >
-        Відкрити контакт
+        {{ $t('labels.open_contact') }}
       </NuxtLink>
     </div>
   </div>

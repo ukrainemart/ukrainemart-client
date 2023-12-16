@@ -5,15 +5,16 @@
   const props = defineProps<{
     product: Product;
   }>();
+  const { t } = useI18n();
 
   const items = computed(() => [
     {
-      label: 'Про товар',
+      label: t('about_product'),
       content: TabProduct,
       data: useMultiLang(props.product, 'description'),
     },
     {
-      label: 'Про експортера',
+      label: t('about_exporter'),
       content: TabExporter,
       data: props.product?.company?.description,
     },

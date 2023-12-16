@@ -40,6 +40,10 @@
   "rememberMe": "Remember me",
   "email": "Email",
   "password": "Password",
+  "show_more": "Show more",
+  "about_product": "Про товар",
+  "about_exporter": "Про експортера",
+  "hide": "Hide",
   "password_change": {
     "old_password": "Old password",
     "new_password": "New password",
