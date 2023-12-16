@@ -22,13 +22,17 @@
       v-if="breadcrumb && breadcrumb?.id !== undefined"
       class="mb-[7px] flex items-center gap-[2px] md:mb-2.5"
     >
-      <NuxtLink :to="`/category/${breadcrumb.id}`" class="breadcrumb_item">
+      <NuxtLink :to="`/category/${breadcrumb.id}`" class="category_breadcrumb_item">
         {{ useMultiLang(breadcrumb, 'title') }}
       </NuxtLink>
     </div>
 
     <ul class="mb-[7px] ml-[14px] flex flex-col gap-y-[7px] md:mb-2.5 md:ml-[18px] md:gap-y-2.5">
-      <li v-for="sameCategory in showedItems" :key="sameCategory?.id" class="breadcrumb_item">
+      <li
+        v-for="sameCategory in showedItems"
+        :key="sameCategory?.id"
+        class="category_breadcrumb_item"
+      >
         <NuxtLink :to="`/category/${sameCategory?.id}`">
           {{ useMultiLang(sameCategory, 'title') }}
         </NuxtLink>
@@ -40,13 +44,20 @@
         class="group ml-[14px] flex items-center gap-[3px] md:ml-[18px]"
         @click="setIsAllItemsVisible(!isAllItemsVisible)"
       >
-        <span class="breadcrumb_item">
+        <span class="category_breadcrumb_item">
           {{ isAllItemsVisible ? $t('hide') : $t('show_more') }}
         </span>
 
         <SvgoBreadcrumbArrowDown
           :fontControlled="false"
-          class="h-[3px] w-[5px] stroke-status_gray text-transparent group-hover:stroke-black lg:h-[5px] lg:w-[8px]"
+          :class="
+            cn(
+              'h-[3px] w-[5px] stroke-status_gray text-transparent group-hover:stroke-black lg:h-[5px] lg:w-[8px]',
+              {
+                'rotate-180': isAllItemsVisible,
+              }
+            )
+          "
         />
       </button>
     </div>
@@ -54,7 +65,7 @@
 </template>
 
 <style>
-  .breadcrumb_item {
-    @apply text-[10px] text-status_gray transition-colors duration-200 ease-in-out hover:text-black md:text-[12px] xl:text-[16px];
+  .category_breadcrumb_item {
+    @apply font-montserrat text-[10px] font-medium text-status_gray transition-colors duration-200 ease-in-out hover:text-black md:text-[12px] xl:text-[16px];
   }
 </style>

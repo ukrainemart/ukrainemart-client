@@ -39,6 +39,7 @@
 
   provide('priceRange', { priceRange, handlerFilter });
   provide('minAmount', { minAmount, handlerFilter });
+  provide('products', products);
 
   const updateUrlWithFilters = () => {
     const query: { [key: string]: number } = {
