@@ -1,10 +1,6 @@
 <script setup lang="ts">
   const route = useRoute();
   const param = computed(() => route.query.param);
-  const breadcrumb = {
-    title_ua: 'Пошук',
-    title_en: 'Search',
-  };
   const categories = ref<Category[]>([]);
   const products = ref<Product[]>([]);
   const isLoading = ref<boolean>(true);
@@ -31,7 +27,7 @@
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
-    <CommonBreadcrumbs :breadcrumb="breadcrumb" />
+    <CommonBreadcrumbs :static="$t('search.search')" />
 
     <div class="container">
       <div>

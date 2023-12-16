@@ -1,7 +1,6 @@
 <script lang="ts" setup>
   const route = useRoute();
   const productId = route.params.id;
-  // const product = ref<Product>();
   // const loading = ref(true);
   // const NUM_SKELETON_ITEMS = 7;
   const mainSlider = ref(null);
@@ -10,18 +9,17 @@
   const titleProduct = computed(() => useMultiLang(product.value, 'title'));
   useTitle(titleProduct);
 
-  const setThumbsSwiper = (swiper: any) => {
-    sideSwiper.value = swiper;
-  };
+  const setThumbsSwiper = (swiper: any) => (sideSwiper.value = swiper);
 
-  const setControlledMainSwiper = (swiper: any) => {
-    mainSlider.value = swiper;
-  };
+  const setControlledMainSwiper = (swiper: any) => (mainSlider.value = swiper);
 
   const fetchProduct = async () => {
-    const response = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
-    product.value = response?.data.value as Product;
-    console.log(product.value);
+    try {
+      const response = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
+      product.value = response?.data.value as Product;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   fetchProduct();
@@ -29,7 +27,11 @@
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
-    <CommonBreadcrumbs :breadcrumb="product?.category" />
+    <CommonBreadcrumbs
+      v-if="product"
+      :breadcrumb="product.category"
+      :productCrumb="useMultiLang(product, 'title')"
+    />
 
     <div class="container grid 2xl:grid-cols-[1fr_min-content] 2xl:gap-x-5">
       <div class="flex w-full flex-col md:flex-row md:gap-x-5 xl:w-fit 2xl:gap-x-10">
@@ -45,6 +47,7 @@
             />
           </div> -->
           <CommonProductSideSlider
+            v-if="product?.images"
             class="!hidden md:!block"
             :slides="product?.images"
             @swiper="setThumbsSwiper"
@@ -55,17 +58,18 @@
             class="h-[470px] w-[335px] md:h-[435px] md:w-[330px] 2xl:h-[584px] 2xl:w-[450px]"
           /> -->
           <CommonProductSlider
+            v-if="product?.images"
             :thumbs="{ swiper: sideSwiper }"
             :slides="product?.images"
             @swiper="setControlledMainSwiper"
           />
         </div>
 
-        <CommonProductInfo :product="product" />
+        <CommonProductInfo v-if="product" :product="product" />
       </div>
 
-      <CommonProductDetails :product="product" class="md:order-2 2xl:col-span-2" />
-      <CommonSellerInfo :product="product" />
+      <CommonProductDetails v-if="product" :product="product" class="md:order-2 2xl:col-span-2" />
+      <CommonSellerInfo v-if="product" :product="product" />
     </div>
 
     <CommonSectionProductsSlider
