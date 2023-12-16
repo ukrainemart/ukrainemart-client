@@ -21,9 +21,10 @@
       </h2>
     </div>
     <span
-      class="ml-[20px]  flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-[50%] bg-[#D9D9D9] text-[12px] font-medium text-white md:h-[24px] md:w-[24px] md:text-[13px] xl:h-[28px] xl:w-[28px] xl:text-[16px]"
-      >2</span
+      class="ml-[20px] flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-[50%] bg-status_dark_gray text-[12px] font-medium text-white md:h-[24px] md:w-[24px] md:text-[13px] xl:h-[28px] xl:w-[28px] xl:text-[16px]"
     >
+      2
+    </span>
   </div>
 </template>
 

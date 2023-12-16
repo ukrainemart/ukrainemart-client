@@ -79,6 +79,7 @@ export default <Partial<Config>>{
         black: '#111111',
         status_red: '#CF0000',
         status_gray: '#B6B6B6',
+        status_dark_gray: '#D9D9D9',
         'background-primary': '#F1F1F1',
         'dark-transparent': '#0000001f',
       },

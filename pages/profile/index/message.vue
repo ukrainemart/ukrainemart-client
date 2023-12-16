@@ -35,7 +35,7 @@
       </NuxtScrollbar>
     </UiDivRoundedBg>
     <UiDivRoundedBg class="hidden flex-col xl:col-span-7 xl:flex 4xl:col-span-8">
-      <div class="mx-[-15px] border-b border-[#D9D9D9] md:mx-[-25px] xl:mx-[-30px]">
+      <div class="mx-[-15px] border-b border-status_dark_gray md:mx-[-25px] xl:mx-[-30px]">
         <div
           class="flex items-center justify-between px-[15px] pb-[15px] md:px-[25px] xl:px-[30px] xl:pb-[20px] 3xl:px-[35px]"
         >
@@ -63,7 +63,7 @@
       </div>
       <div class="flex flex-1 flex-col">
         <NuxtScrollbar
-          class="flex flex-1 flex-col gap-[10px] overflow-scroll p-[30px] mx-[-30px] md:gap-[15px] xl:max-h-[60vh] xl:gap-[20px]"
+          class="mx-[-30px] flex flex-1 flex-col gap-[10px] overflow-scroll p-[30px] md:gap-[15px] xl:max-h-[60vh] xl:gap-[20px]"
           tag="div"
           @ps-scroll-y="onScroll"
         >
@@ -93,7 +93,7 @@
           <PagesChatMessageItem user />
         </NuxtScrollbar>
         <div
-          class="mt-[15px] overflow-hidden rounded-[10px] border border-[#D9D9D9] md:mt-[25px] md:rounded-[15px] xl:rounded-[20px]"
+          class="mt-[15px] overflow-hidden rounded-[10px] border border-status_dark_gray md:mt-[25px] md:rounded-[15px] xl:rounded-[20px]"
         >
           <textarea
             :placeholder="$t('placeholders.write_your_message')"

@@ -82,7 +82,10 @@
       </ul>
     </div>
 
-    <div v-if="products.length && categories.length" class="mx-[15px] mb-2.5 h-px bg-[#d9d9d9]" />
+    <div
+      v-if="products.length && categories.length"
+      class="mx-[15px] mb-2.5 h-px bg-status_dark_gray"
+    />
 
     <div v-if="products.length">
       <p

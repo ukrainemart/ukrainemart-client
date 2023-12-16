@@ -10,7 +10,7 @@
       cn(
         'relative mb-[5px] ml-[7px] rounded-[5px] bg-[#535353] p-[8px] md:rounded-[10px] md:p-[10px] xl:p-[12px]',
         {
-          '!ml-[0px] mr-[7px] !bg-[#D9D9D9]': user,
+          '!ml-[0px] mr-[7px] !bg-status_dark_gray': user,
         }
       )
     "
@@ -18,7 +18,7 @@
     <span
       :class="
         cn('triangle_el', {
-          '!left-auto right-[-11px] !rotate-[14deg] !border-l-[#D9D9D9]': user,
+          '!left-auto right-[-11px] !rotate-[14deg] !border-l-status_dark_gray': user,
         })
       "
     />
