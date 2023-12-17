@@ -32,13 +32,15 @@
   };
 
   const onSendMessage = async () => {
-    if (props.loading) return false;
+    if (props.loading || !messageInput.value.trim()) return false;
     await useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: {
         product_id: props.chat.product_id,
         message: messageInput.value,
       },
+    }).then(() => {
+      messageInput.value = '';
     });
   };
 </script>
