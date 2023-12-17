@@ -50,7 +50,7 @@
         option: {
           base: '',
           padding: 'px-[9px] py-[7px] md:px-[14px] xl:px-[19px] xl:py-[10px]',
-          active: 'bg-[#D9D9D9] rounded-none',
+          active: 'bg-status_dark_gray rounded-none',
           selectedIcon: {
             base: 'hidden',
           },

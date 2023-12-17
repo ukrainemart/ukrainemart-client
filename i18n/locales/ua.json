@@ -40,6 +40,12 @@
   "rememberMe": "Запам’ятати мене",
   "email": "Електронна пошта",
   "password": "Пароль",
+  "show_more": "Показати більше",
+  "hide": "Сховати",
+  "about_product": "Про товар",
+  "about_exporter": "Про експортера",
+  "other_products_from_seller": "Інші товари від цього продавця",
+  "other_products_from_category": "Інші товари з цієї категорії",
   "password_change": {
     "old_password": "Старий пароль:",
     "new_password": "Новий пароль:",

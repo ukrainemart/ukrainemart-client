@@ -2,6 +2,8 @@
   defineProps<{
     category: Category;
   }>();
+
+  const products = inject<Product[]>('products');
 </script>
 
 <template>
@@ -17,7 +19,7 @@
       />
     </div>
 
-    <div class="mb-5 md:mb-7">
+    <div v-if="products?.length" class="mb-5 md:mb-7">
       <PagesCategoryFilterTitle>
         {{ $t('category.minimum_order') }}
       </PagesCategoryFilterTitle>
@@ -27,7 +29,7 @@
       </div>
     </div>
 
-    <div class="mb-5">
+    <div v-if="products?.length" class="mb-5">
       <PagesCategoryFilterTitle>
         {{ $t('category.price') }}
       </PagesCategoryFilterTitle>

@@ -4,7 +4,7 @@ const BURGER_MENU_HEIGHT = {
 };
 
 const HEADER_HEIGHT = {
-  HEADER_SM: '82px',
+  HEADER_SM: '146px', // 64px + 82px (header + user menu)
   HEADER_LG: '99px',
   HEADER_4XL: '130px',
 };

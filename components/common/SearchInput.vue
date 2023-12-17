@@ -8,6 +8,7 @@
   }>();
 
   let abortController = new AbortController();
+  const searchInput = ref<HTMLInputElement | null>(null);
   const router = useRouter();
   const emit = defineEmits([
     'updateSearchValue',
@@ -67,6 +68,8 @@
     emit('updateSearchValue', '');
     emit('updateSearchActive', false);
     emit('updateSearchLoading', false);
+
+    searchInput.value?.focus();
   };
 
   watch(
@@ -105,11 +108,12 @@
       v-if="searchValue.length"
       :isActive="true"
       :isSearch="true"
-      styles="absolute z-[1] right-[15px] top-1/2 !mb-0 h-[12px] w-[12px] -translate-y-1/2 cursor-text md:h-[17px] md:w-[17px] lg:h-5 lg:w-5"
+      styles="absolute z-[1] right-[15px] top-1/2 !mb-0 h-[12px] w-[12px] -translate-y-1/2 cursor-pointer md:h-[17px] md:w-[17px] lg:h-5 lg:w-5"
       @click="handleClear"
     />
 
     <input
+      ref="searchInput"
       :value="searchValue"
       type="text"
       :placeholder="$t('startYourSearch')"

@@ -39,6 +39,7 @@
 
   provide('priceRange', { priceRange, handlerFilter });
   provide('minAmount', { minAmount, handlerFilter });
+  provide('products', products);
 
   const updateUrlWithFilters = () => {
     const query: { [key: string]: number } = {
@@ -103,7 +104,6 @@
         priceRange.input.min = category.value.min_price;
         priceRange.input.max = category.value.max_price;
 
-        // updateUrlWithFilters();
         getValueQuery();
       }
     } catch (error) {
@@ -117,7 +117,6 @@
     isLoading.value = true;
     await getProducts();
     updateUrlWithFilters();
-    // getValueQuery();
   });
 </script>
 

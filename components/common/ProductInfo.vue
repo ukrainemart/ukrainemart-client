@@ -6,12 +6,6 @@
 
 <template>
   <div class="mb-[70px] md:mb-0">
-    <!-- <p
-      class="mb-[5px] text-[7px] font-medium text-status_gray md:mb-2.5 md:text-[10px] 2xl:mb-[15px] 2xl:text-[14px]"
-    >
-      Цей продукт купували 250 разів
-    </p> -->
-
     <CommonProductTitle
       styles="mb-[15px] md:mb-[17px] 2xl:mb-5 text-[17px] md:text-[24px] 2xl:text-[30px]"
     >
@@ -67,7 +61,10 @@
     </ul>
 
     <div class="flex items-center gap-[15px] md:gap-[20px] xl:gap-[25px]">
-      <UiButtonPrimaryIconEnvelop>Зв’язатися</UiButtonPrimaryIconEnvelop>
+      <UiButtonPrimaryIconEnvelop>
+        {{ $t('labels.contact') }}
+      </UiButtonPrimaryIconEnvelop>
+
       <CommonButtonFavoritePageProduct :product="product" />
     </div>
   </div>

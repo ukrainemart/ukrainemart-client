@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="col-span-12 grid grid-cols-2 rounded-[20px] bg-[#D9D9D9] px-[20px] py-[15px] md:col-span-6 md:p-[30px] xl:col-span-4"
+    class="col-span-12 grid grid-cols-2 rounded-[20px] bg-status_dark_gray px-[20px] py-[15px] md:col-span-6 md:p-[30px] xl:col-span-4"
   >
     <div class="col-span-1 flex items-center gap-[10px]">
       <UiSkeleton

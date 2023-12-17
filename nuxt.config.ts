@@ -19,7 +19,6 @@ export default defineNuxtConfig({
       },
     ],
     '@vueuse/nuxt',
-    // '@nuxtjs/eslint-module',
     '@nuxt/ui',
     '@nuxtjs/i18n',
     '@vee-validate/nuxt',
@@ -36,6 +35,26 @@ export default defineNuxtConfig({
   },
   i18n: {
     vueI18n: './i18n/i18n.config.ts',
+    defaultLocale: 'en',
+    strategy: 'no_prefix',
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        iso: 'en-US',
+      },
+      {
+        code: 'ua',
+        name: 'Українська',
+        iso: 'ua-UA',
+      },
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'selectedLanguage',
+      alwaysRedirect: true,
+      fallbackLocale: 'en',
+    },
   },
   swiper: {
     modules: [

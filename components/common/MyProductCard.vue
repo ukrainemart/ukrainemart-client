@@ -5,15 +5,13 @@
 
   const emits = defineEmits(['deleteAction']);
 
-  const deleteAction = () => {
-    emits('deleteAction');
-  };
+  const deleteAction = () => emits('deleteAction');
 </script>
 
 <template>
   <NuxtLink :to="`/product/${product.id}`">
     <div
-      class="grid grid-cols-[70px_repeat(11,_1fr)] gap-y-[15px] rounded-[5px] bg-[#d9d9d9] px-2.5 pb-[15px] pt-2.5 font-medium md:grid-cols-[120px_repeat(11,_1fr)] md:grid-rows-[repeat(3,min-content)] md:gap-y-0 md:rounded-[10px] md:p-5 lg:grid-cols-[150px_repeat(11,_1fr)] lg:rounded-[20px] lg:px-[25px] lg:py-[33px]"
+      class="grid grid-cols-[70px_repeat(11,_1fr)] gap-y-[15px] rounded-[5px] border-2 border-transparent bg-status_dark_gray px-2.5 pb-[15px] pt-2.5 font-medium transition-all duration-100 hover:border-[#B6B6B6] md:grid-cols-[120px_repeat(11,_1fr)] md:grid-rows-[repeat(3,min-content)] md:gap-y-0 md:rounded-[10px] md:p-5 lg:grid-cols-[150px_repeat(11,_1fr)] lg:rounded-[20px] lg:px-[25px] lg:py-[33px]"
     >
       <div class="md:row-span-3">
         <img

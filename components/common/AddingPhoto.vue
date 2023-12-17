@@ -107,7 +107,7 @@
         </template>
         <template #footer>
           <div
-            class="non_draggable relative h-0 basis-[25%] overflow-hidden rounded-[3px] bg-[#D9D9D9] pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
+            class="non_draggable relative h-0 basis-[25%] overflow-hidden rounded-[3px] bg-status_dark_gray pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
           >
             <label class="absolute left-0 top-0 z-50 h-full w-full cursor-pointer">
               <UiInputFile class="invisible h-full w-full" @updateInput="updateInput" />

@@ -15,7 +15,7 @@
     :requestLink="requestLink"
     :request="request"
     noButton
-    class="!bg-[#D9D9D9]"
+    class="!bg-status_dark_gray"
   >
     <template #buttons_action>
       <div class="flex justify-end gap-[10px] xl:gap-[15px]">
