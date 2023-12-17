@@ -27,6 +27,7 @@
     "clsx": "^2.0.0",
     "nuxt-swiper": "^1.2.2",
     "pinia": "^2.1.7",
+    "pusher-js": "^8.4.0-rc2",
     "sortablejs": "^1.15.0",
     "sortablejs-vue3": "^1.2.11",
     "tailwind-merge": "^2.0.0",

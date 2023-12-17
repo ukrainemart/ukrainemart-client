@@ -36,6 +36,9 @@ export default <Partial<Config>>{
       width: {
         'screen-4xl': `${VAR.BREAKPOINTS_4XL}px`,
       },
+      translate: {
+        'chat-message-box': 'calc(-100% + 60vh)',
+      },
       height: {
         'header-sm': `calc(100vh - ${VAR.HEADER_SM})`,
         'header-lg': `calc(100vh - ${VAR.HEADER_LG})`,

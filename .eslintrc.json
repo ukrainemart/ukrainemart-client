@@ -63,7 +63,8 @@
         "consistent-return": "off",
         "vue/require-explicit-emits": "off",
         "no-param-reassign": "off",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "vue/no-use-v-if-with-v-for": "off"
       }
     }
   ]
