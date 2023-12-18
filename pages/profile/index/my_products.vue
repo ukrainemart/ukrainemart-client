@@ -55,7 +55,9 @@
     >
       {{ $t('delete_product') }}
     </UiModalWarning>
-
+    <UiAlertProfileEmpty v-if="!isLoading && products.length === 0" class="mt-[20px]">
+      {{ $t('profile.you_dont_have_any_products_yet') }}
+    </UiAlertProfileEmpty>
     <div
       class="mb-[30px] mt-[15px] flex flex-col gap-y-2.5 md:mb-[40px] md:mt-[30px] md:gap-y-[15px] lg:mb-[50px] lg:mt-[25px] lg:gap-y-[25px]"
     >
@@ -63,7 +65,7 @@
         <SkeletonMyProduct
           v-for="i in NUM_SKELETON_ITEMS"
           :key="i"
-          class="grid h-[127px] w-full grid-cols-[max-content_1fr_max-content] gap-y-[15px] rounded-[5px] bg-status_dark_gray px-2.5 pb-[15px] pt-2.5 md:h-[175px] md:rounded-[10px] md:p-5 lg:rounded-[20px] lg:px-[25px] lg:py-[33px] xl:h-[200px]"
+          class="bg-status_dark_gray grid h-[127px] w-full grid-cols-[max-content_1fr_max-content] gap-y-[15px] rounded-[5px] px-2.5 pb-[15px] pt-2.5 md:h-[175px] md:rounded-[10px] md:p-5 lg:rounded-[20px] lg:px-[25px] lg:py-[33px] xl:h-[200px]"
         />
       </div>
 
@@ -75,10 +77,6 @@
         @deleteAction="deleteAction(product.id)"
       />
     </div>
-
-    <UiAlertProfileEmpty v-if="!isLoading && products.length === 0">
-      {{ $t('profile.you_dont_have_any_products_yet') }}
-    </UiAlertProfileEmpty>
   </LayoutProfilePage>
 </template>
 
