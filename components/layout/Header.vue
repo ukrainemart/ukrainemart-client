@@ -127,7 +127,7 @@
               :fontControlled="false"
             />
           </UiButtonOpacity>
-
+          <CommonButtonChat />
           <CommonLangSwitcher />
         </div>
       </div>
@@ -156,7 +156,7 @@
           </UiButtonOpacity>
 
           <UiButtonOpacityHearth @click="onClickFavorites" />
-
+          <CommonButtonChat />
           <CommonLangSwitcher />
 
           <UiButtonTextUnderline v-if="!isLoggedIn()" @click="switchAuth(true, 'register')">
