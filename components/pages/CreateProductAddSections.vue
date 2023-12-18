@@ -7,17 +7,10 @@
   const emits = defineEmits(['update:modelValue']);
 
   const sections = ref<SectionProduct[]>([]);
-
   const valueSections = ref<any>({});
 
   const updateModelValue = (value: any) => {
     emits('update:modelValue', value);
-  };
-
-  const fetchSections = () => {
-    useApiFetch(`${useUrlApi()}/category/sections/${props.categoryId}`).then((res) => {
-      sections.value = res.data.value as SectionProduct[];
-    });
   };
 
   const { value, errorMessage } = useField(
@@ -30,7 +23,12 @@
 
   const checkValidation = () => {
     const values = Object.values(props.modelValue);
+
+    console.log(sections.value);
+
     if (values.length !== sections.value.length * 2) {
+      console.log('1');
+
       value.value = false;
       return false;
     }
@@ -38,6 +36,7 @@
     const valid = values.every((val) => typeof val === 'string' && val.trim() !== '');
 
     if (!valid) {
+      console.log('2');
       value.value = false;
       return false;
     }
@@ -45,17 +44,21 @@
     value.value = true;
   };
 
+  const fetchSections = () => {
+    useApiFetch(`${useUrlApi()}/category/sections/${props.categoryId}`).then((res) => {
+      sections.value = res.data.value as SectionProduct[];
+      checkValidation();
+    });
+  };
+
   const getStartValue = () => {
     valueSections.value = props.modelValue;
   };
-
   watchDeep(
     () => props.modelValue,
     () => {
-      console.log(props.modelValue);
-
-      checkValidation();
       getStartValue();
+      checkValidation();
     }
   );
 
