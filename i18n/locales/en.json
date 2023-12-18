@@ -111,7 +111,8 @@
     "restore": "Restore",
     "password_recovery": "Password recovery",
     "for_sale": "For sale",
-    "buying": "Buying"
+    "buying": "Buying",
+    "verified_user": "Verified user"
   },
   "placeholders": {
     "name": "John",

@@ -35,7 +35,7 @@
           class="h-[6px] w-[8px] stroke-[#26BC00] md:h-[8px] md:w-[10px] 2xl:h-[9px] 2xl:w-[12px]"
         />
         <p class="text-[8px] font-medium md:text-[10px] 2xl:text-[14px]">
-          Верифікований користувач
+          {{ $t('labels.verified_user') }}
         </p>
       </div>
     </div>

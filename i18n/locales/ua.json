@@ -111,7 +111,8 @@
     "restore": "Відновити",
     "password_recovery": "Відновлення паролю",
     "for_sale": "Продаю",
-    "buying": "Купую"
+    "buying": "Купую",
+    "verified_user": "Верифікований користувач"
   },
   "placeholders": {
     "name": "Іван",
