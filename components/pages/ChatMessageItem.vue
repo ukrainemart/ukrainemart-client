@@ -26,7 +26,7 @@
       <p
         :class="
           cn(
-            'break-words text-left text-[7px] font-medium text-white md:text-[10px] xl:text-[14px]',
+            'relative z-40 break-words  text-left text-[7px] font-medium text-white md:text-[10px] xl:text-[14px]',
             {
               '!text-black': user,
             }

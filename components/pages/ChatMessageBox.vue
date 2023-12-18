@@ -50,7 +50,7 @@
 </script>
 
 <template>
-  <UiDivRoundedBg class="flex flex-col xl:col-span-7 4xl:col-span-8">
+  <UiDivRoundedBg class="flex flex-col self-start xl:col-span-7 4xl:col-span-8">
     <div class="mx-[-15px] border-b border-[#D9D9D9] md:mx-[-25px] xl:mx-[-30px]">
       <div
         class="flex items-center justify-between px-[15px] pb-[15px] md:px-[25px] xl:px-[30px] xl:pb-[20px] 3xl:px-[35px]"
@@ -88,11 +88,11 @@
           </UiButtonOpacityIconTemplate>
           <UiSkeleton
             v-if="loading"
-            class="h-[30px] w-[30px] shrink-0 rounded-[50%] md:h-[40px] md:w-[40px]"
+            class="h-[30px] w-[30px] shrink-0 rounded-[50%] !p-0 md:h-[40px] md:w-[40px]"
           />
           <UiSkeleton
             v-if="loading"
-            class="h-[30px] w-[30px] shrink-0 rounded-[50%] md:h-[40px] md:w-[40px]"
+            class="h-[30px] w-[30px] shrink-0 rounded-[50%] !p-0 md:h-[40px] md:w-[40px]"
           />
         </div>
       </div>
@@ -100,19 +100,25 @@
     <div class="flex flex-1 flex-col">
       <NuxtScrollbar
         ref="scrollbar"
-        class="custom_scrollbar mx-[-30px] flex max-h-[60vh] flex-1 flex-col p-[30px] !pb-0"
+        class="custom_scrollbar mx-[-30px] flex max-h-[569px] min-h-[35vh] flex-1 flex-col p-[30px] !pb-0"
         tag="div"
       >
         <div class="flex flex-1 flex-col justify-end gap-[10px] md:gap-[15px] xl:gap-[20px]">
-          <UiSkeleton v-if="loading" class="h-[60px] w-[50%] rounded-[5px] md:rounded-[10px]" />
           <UiSkeleton
             v-if="loading"
-            class="h-[60px] w-[50%] self-end rounded-[5px] md:rounded-[10px]"
+            class="h-[60px] w-[50%] rounded-[5px] !p-0 md:rounded-[10px]"
           />
-          <UiSkeleton v-if="loading" class="h-[60px] w-[50%] rounded-[5px] md:rounded-[10px]" />
           <UiSkeleton
             v-if="loading"
-            class="h-[60px] w-[50%] self-end rounded-[5px] md:rounded-[10px]"
+            class="h-[60px] w-[50%] self-end rounded-[5px] !p-0 md:rounded-[10px]"
+          />
+          <UiSkeleton
+            v-if="loading"
+            class="h-[60px] w-[50%] rounded-[5px] !p-0 md:rounded-[10px]"
+          />
+          <UiSkeleton
+            v-if="loading"
+            class="h-[60px] w-[50%] self-end rounded-[5px] !p-0 md:rounded-[10px]"
           />
           <PagesChatMessageItem
             v-for="message in chat.messages"

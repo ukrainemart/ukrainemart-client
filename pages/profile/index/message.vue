@@ -55,15 +55,15 @@
       const pusherChannel = pusher.subscribe(`chat${chat.id}`);
 
       pusherChannel.bind('message', (data: any) => {
-        console.log(data);
-
         currentChat.value?.messages?.push(data);
       });
     });
   };
 
-  watchDeep(chatSwitch, () => {
+  watch(chatSwitch, () => {
+    currentChat.value = null;
     currentIdChat.value = null;
+    loadingChat.value = false;
   });
 
   watchDeep([buyChats, sellChats], () => {
@@ -89,11 +89,15 @@
       <CommonBusinessSwitcher v-if="isExporter" v-model="chatSwitch" />
       <NuxtScrollbar
         v-if="chatSwitch === 'for_sale'"
-        class="mx-[-20px] mt-[20px] flex flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px] xl:max-h-[60vh]"
+        class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px]"
         tag="div"
       >
         <div v-if="loadingChats">
-          <UiSkeletonChatItem v-for="item in 6" :key="item" />
+          <UiSkeletonChatItem
+            v-for="item in 6"
+            :key="item"
+            class="px-[15px] py-[10px] md:py-[14px]"
+          />
         </div>
 
         <UiAlertProfileEmpty v-if="!loadingChats && sellChats.length === 0">
@@ -110,11 +114,15 @@
       </NuxtScrollbar>
       <NuxtScrollbar
         v-if="chatSwitch === 'buying'"
-        class="mx-[-20px] mt-[20px] flex flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px] xl:max-h-[60vh]"
+        class="mx-[-20px] mt-[20px] flex h-[50vh] max-h-[569px] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px]"
         tag="div"
       >
         <div v-if="loadingChats">
-          <UiSkeletonChatItem v-for="item in 6" :key="item" />
+          <UiSkeletonChatItem
+            v-for="item in 6"
+            :key="item"
+            class="px-[15px] py-[10px] md:py-[14px]"
+          />
         </div>
 
         <UiAlertProfileEmpty v-if="!loadingChats && buyChats.length === 0">
