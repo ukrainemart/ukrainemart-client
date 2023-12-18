@@ -56,7 +56,7 @@
   <div class="pb-[70px] md:pb-[100px] xl:pb-[130px]">
     <CommonBreadcrumbs :static="$t('subHeader.requests')" />
     <div class="container">
-      <CommonTitleSection>Запити</CommonTitleSection>
+      <CommonTitleSection>{{ $t('subHeader.requests') }}</CommonTitleSection>
       <PagesRequestsFilters v-model:filtersActive="filters" class="mt-[15px]" />
       <div
         class="mt-[24px] grid grid-cols-12 gap-x-[12px] gap-y-[20px] md:mt-[30px] xl:gap-x-[58px] xl:gap-y-[45px]"
