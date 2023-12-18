@@ -39,7 +39,6 @@
 
   provide('priceRange', { priceRange, handlerFilter });
   provide('minAmount', { minAmount, handlerFilter });
-  provide('products', products);
 
   const updateUrlWithFilters = () => {
     const query: { [key: string]: number } = {
@@ -96,15 +95,18 @@
     try {
       const res = await useFetch(`${useUrlApi()}/category/get/${categoryId}`);
 
-      if (res) {
-        category.value = res.data.value as Category;
+      category.value = res.data.value as Category;
 
-        priceRange.api.min = category.value.min_price;
-        priceRange.api.max = category.value.max_price;
-        priceRange.input.min = category.value.min_price;
-        priceRange.input.max = category.value.max_price;
+      // NOTE - if category has no price, then turn off loading to show nothing found
+      if (category.value.min_price) {
+        priceRange.api.min = category.value.min_price ?? 0;
+        priceRange.api.max = category.value.max_price ?? 0;
+        priceRange.input.min = category.value.min_price ?? 0;
+        priceRange.input.max = category.value.max_price ?? 0;
 
         getValueQuery();
+      } else {
+        isLoading.value = false;
       }
     } catch (error) {
       console.error(error);
