@@ -96,7 +96,7 @@
     <div class="flex flex-1 flex-col">
       <NuxtScrollbar
         ref="scrollbar"
-        class="custom_scrollbar mx-[-30px] flex flex-1 flex-col p-[30px] !pb-0 xl:max-h-[60vh]"
+        class="custom_scrollbar mx-[-30px] flex max-h-[60vh] flex-1 flex-col p-[30px] !pb-0"
         tag="div"
       >
         <div class="flex flex-1 flex-col justify-end gap-[10px] md:gap-[15px] xl:gap-[20px]">

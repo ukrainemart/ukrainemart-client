@@ -7,7 +7,6 @@
 
   const buyChats = ref<Chat[]>([]);
   const sellChats = ref<Chat[]>([]);
-  const pusherChannels = ref<any>([]);
   const currentIdChat = ref<number | null>(null);
   const currentChat = ref<Chat | null>(null);
   const loadingChats = ref(true);
@@ -18,11 +17,15 @@
   };
 
   const fetchChatList = () => {
-    useApiFetch(`${useUrlApi()}/chat/list`).then((res: any) => {
-      buyChats.value = res.data.value.buyChats || [];
-      sellChats.value = res.data.value.sellChats || [];
-      loadingChats.value = false;
-    });
+    useApiFetch(`${useUrlApi()}/chat/list`)
+      .then((res: any) => {
+        buyChats.value = res.data.value.buyChats || [];
+        sellChats.value = res.data.value.sellChats || [];
+        loadingChats.value = false;
+      })
+      .catch((res) => {
+        loadingChats.value = false;
+      });
   };
 
   const fetchCurrentChat = () => {
