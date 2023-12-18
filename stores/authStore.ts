@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('authStore', () => {
 
   async function fetchUser() {
     const res = await useApi(`${useUrlApi()}/user`);
-    user.value = res.data.value as User;
+    user.value = res as User;
   }
 
   async function logout() {
