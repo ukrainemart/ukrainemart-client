@@ -37,7 +37,9 @@
       loadingChat.value = false;
     });
   };
+
   fetchCurrentChat();
+
   watch(currentIdChat, () => {
     fetchCurrentChat();
   });
@@ -109,6 +111,7 @@
           :key="chat.id"
           :chat="chat"
           :active="chat.id === currentIdChat"
+          :chatType="chatSwitch"
           @click="changeCurrentId(chat.id)"
         />
       </NuxtScrollbar>
@@ -133,6 +136,7 @@
           v-for="chat in buyChats"
           :key="chat.id"
           :active="chat.id === currentIdChat"
+          :chatType="chatSwitch"
           :chat="chat"
           @click="changeCurrentId(chat.id)"
         />

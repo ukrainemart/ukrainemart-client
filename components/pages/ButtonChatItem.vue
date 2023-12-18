@@ -2,6 +2,7 @@
   defineProps<{
     chat: Chat;
     active: boolean;
+    chatType: 'for_sale' | 'buying';
   }>();
 </script>
 
@@ -24,7 +25,7 @@
       <h2
         class="mt-[5px] inline-block w-full truncate text-[14px] font-medium text-[#B6B6B6] md:text-[16px]"
       >
-        {{ chat?.company?.title }}
+        {{ chatType === 'buying' ? chat?.company?.title : chat.user.name }}
       </h2>
     </div>
     <span
