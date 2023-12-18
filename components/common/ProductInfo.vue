@@ -7,10 +7,6 @@
   const emits = defineEmits(['switchChat']);
 
   const switchChat = (value: boolean) => {
-    if (props.product.chat) {
-      navigateTo({ path: '/profile/message', query: { chatId: props.product.chat } });
-      return false;
-    }
     emits('switchChat', value);
   };
 </script>
@@ -72,9 +68,17 @@
     </ul>
 
     <div class="flex items-center gap-[15px] md:gap-[20px] xl:gap-[25px]">
-      <UiButtonPrimaryIconEnvelop v-if="isChatOpenBtn" @click="switchChat(true)">
-        {{ $t('labels.contact') }}
-      </UiButtonPrimaryIconEnvelop>
+      <PagesProductContactButton
+        v-if="isChatOpenBtn"
+        :chatId="product.chat"
+        @switchChat="switchChat(true)"
+      >
+        <template #button="{ handlerClick }">
+          <UiButtonPrimaryIconEnvelop @click="handlerClick">
+            {{ $t('labels.contact') }}
+          </UiButtonPrimaryIconEnvelop>
+        </template>
+      </PagesProductContactButton>
 
       <CommonButtonFavoritePageProduct :product="product" />
     </div>

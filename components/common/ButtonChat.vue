@@ -27,9 +27,9 @@
       cluster: 'eu',
     });
 
-    const pusherChannel = pusher.subscribe(`global-chat`);
+    const pusherChannel = pusher.subscribe(`userUnreadMessages${auth.user?.id}`);
 
-    pusherChannel.bind(`userUnreadMessages${auth.user?.id}`, (data: any) => {
+    pusherChannel.bind('notReadMessage', (data: any) => {
       console.log(data);
     });
   };
