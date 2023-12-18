@@ -7,6 +7,7 @@ declare interface Product {
   description_ua: string;
   priority: any;
   views: any;
+  chat: number;
   created_at: string;
   updated_at: string;
   title_en: string;

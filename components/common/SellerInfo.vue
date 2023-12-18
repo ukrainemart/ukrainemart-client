@@ -1,7 +1,17 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     product: Product;
+    isChatOpenBtn: boolean;
   }>();
+  const emits = defineEmits(['switchChat']);
+
+  const switchChat = (value: boolean) => {
+    if (props.product.chat) {
+      navigateTo({ path: '/profile/message', query: { chatId: props.product.chat } });
+      return false;
+    }
+    emits('switchChat', value);
+  };
 </script>
 
 <template>
@@ -43,7 +53,7 @@
     </div>
 
     <div class="flex flex-col items-center gap-[8px] md:gap-[10px]">
-      <UiButtonOutlineIconEnvelop>
+      <UiButtonOutlineIconEnvelop v-if="isChatOpenBtn" @click="switchChat(true)">
         {{ $t('labels.contact') }}
       </UiButtonOutlineIconEnvelop>
 

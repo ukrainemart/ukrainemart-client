@@ -2,9 +2,12 @@
   const props = defineProps<{
     chat: Chat;
     loading: boolean;
+    chatType: 'for_sale' | 'buying';
   }>();
   const auth = useAuthStore();
   const userId = computed(() => auth.user?.id);
+  const companyId = computed(() => auth.user?.company.id);
+
   const messageInput = ref('');
   const scrollbar = ref();
 
@@ -38,6 +41,7 @@
       body: {
         product_id: props.chat.product_id,
         message: messageInput.value,
+        chat_id: props.chatType === 'for_sale' ? props.chat.id : false,
       },
     }).then(() => {
       messageInput.value = '';
@@ -114,7 +118,9 @@
             v-for="message in chat.messages"
             v-if="!loading"
             :key="message?.id"
-            :user="message.user_id === userId"
+            :user="
+              chatType === 'buying' ? message.user_id === userId : message.company_id === companyId
+            "
             >{{ message.content }}</PagesChatMessageItem
           >
         </div>

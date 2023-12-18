@@ -1,7 +1,18 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     product: Product;
+    isChatOpenBtn: boolean;
   }>();
+
+  const emits = defineEmits(['switchChat']);
+
+  const switchChat = (value: boolean) => {
+    if (props.product.chat) {
+      navigateTo({ path: '/profile/message', query: { chatId: props.product.chat } });
+      return false;
+    }
+    emits('switchChat', value);
+  };
 </script>
 
 <template>
@@ -21,7 +32,7 @@
           {{ `${product?.prices[0].min_amount} ${useMultiLang(product.prices[0].unit, 'title')}` }}
         </span>
         <span class="text-[18px] font-semibold md:text-[24px] xl:text-[30px]">
-          {{ product?.prices[0].price }}$
+          {{ product?.prices[0].price }}<CommonCurrency />
         </span>
       </div>
 
@@ -61,7 +72,7 @@
     </ul>
 
     <div class="flex items-center gap-[15px] md:gap-[20px] xl:gap-[25px]">
-      <UiButtonPrimaryIconEnvelop>
+      <UiButtonPrimaryIconEnvelop v-if="isChatOpenBtn" @click="switchChat(true)">
         {{ $t('labels.contact') }}
       </UiButtonPrimaryIconEnvelop>
 

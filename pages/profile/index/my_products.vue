@@ -65,7 +65,7 @@
         <SkeletonMyProduct
           v-for="i in NUM_SKELETON_ITEMS"
           :key="i"
-          class="bg-status_dark_gray grid h-[127px] w-full grid-cols-[max-content_1fr_max-content] gap-y-[15px] rounded-[5px] px-2.5 pb-[15px] pt-2.5 md:h-[175px] md:rounded-[10px] md:p-5 lg:rounded-[20px] lg:px-[25px] lg:py-[33px] xl:h-[200px]"
+          class="grid h-[127px] w-full grid-cols-[max-content_1fr_max-content] gap-y-[15px] rounded-[5px] bg-status_dark_gray px-2.5 pb-[15px] pt-2.5 md:h-[175px] md:rounded-[10px] md:p-5 lg:rounded-[20px] lg:px-[25px] lg:py-[33px] xl:h-[200px]"
         />
       </div>
 

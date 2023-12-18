@@ -153,7 +153,8 @@
     "personal_data": "Personal data",
     "message": {
       "message": "Message",
-      "my_messages": "My messages"
+      "my_messages": "My messages",
+      "you_have_no_chats_this_category": "You have no chats in this category!"
     },
     "my_orders": "My orders",
     "my_products": "My products",

@@ -1,12 +1,20 @@
 <script setup lang="ts">
   defineProps<{
     chat: Chat;
+    active: boolean;
   }>();
 </script>
 
 <template>
   <button
-    class="flex items-center justify-between rounded-[20px] px-[15px] py-[10px] text-left duration-hover hover:bg-[#e8e8e8] md:py-[14px]"
+    :class="
+      cn(
+        'flex items-center justify-between rounded-[20px] px-[15px] py-[10px] text-left duration-hover hover:bg-[#e8e8e8] md:py-[14px]',
+        {
+          'bg-[#e8e8e8]': active,
+        }
+      )
+    "
   >
     <UiIconCircleLetter class="shrink-0" :letter="useMultiLang(chat?.product, 'title')[0]" />
     <div class="ml-[8px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">

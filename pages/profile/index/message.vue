@@ -2,12 +2,13 @@
   import Pusher from 'pusher-js';
 
   const auth = useAuthStore();
+  const route = useRoute();
   const isExporter = computed(() => auth.isExporter);
   const chatSwitch = ref<'for_sale' | 'buying'>('buying');
 
   const buyChats = ref<Chat[]>([]);
   const sellChats = ref<Chat[]>([]);
-  const currentIdChat = ref<number | null>(null);
+  const currentIdChat = ref<number | null>(route.query.chatId ? +route.query.chatId : null);
   const currentChat = ref<Chat | null>(null);
   const loadingChats = ref(true);
   const loadingChat = ref(false);
@@ -36,7 +37,7 @@
       loadingChat.value = false;
     });
   };
-
+  fetchCurrentChat();
   watch(currentIdChat, () => {
     fetchCurrentChat();
   });
@@ -46,8 +47,6 @@
   const pusherFunc = () => {
     const allChats = [...buyChats.value, ...sellChats.value];
 
-    Pusher.logToConsole = true;
-
     const pusher = new Pusher('0325bd905569ce837132', {
       cluster: 'eu',
     });
@@ -56,8 +55,8 @@
       const pusherChannel = pusher.subscribe(`chat${chat.id}`);
 
       pusherChannel.bind('message', (data: any) => {
-        console.log(currentChat.value);
         console.log(data);
+
         currentChat.value?.messages?.push(data);
       });
     });
@@ -93,10 +92,15 @@
           <UiSkeletonChatItem v-for="item in 6" :key="item" />
         </div>
 
+        <UiAlertProfileEmpty v-if="!loadingChats && sellChats.length === 0">
+          {{ $t('profile.message.you_have_no_chats_this_category') }}
+        </UiAlertProfileEmpty>
+
         <PagesButtonChatItem
           v-for="chat in sellChats"
           :key="chat.id"
           :chat="chat"
+          :active="chat.id === currentIdChat"
           @click="changeCurrentId(chat.id)"
         />
       </NuxtScrollbar>
@@ -109,9 +113,14 @@
           <UiSkeletonChatItem v-for="item in 6" :key="item" />
         </div>
 
+        <UiAlertProfileEmpty v-if="!loadingChats && buyChats.length === 0">
+          {{ $t('profile.message.you_have_no_chats_this_category') }}
+        </UiAlertProfileEmpty>
+
         <PagesButtonChatItem
           v-for="chat in buyChats"
           :key="chat.id"
+          :active="chat.id === currentIdChat"
           :chat="chat"
           @click="changeCurrentId(chat.id)"
         />
@@ -119,6 +128,7 @@
     </UiDivRoundedBg>
     <PagesChatMessageBox
       v-if="currentChat"
+      :chatType="chatSwitch"
       :class="
         cn('hidden xl:!flex', {
           flex: currentIdChat && currentChat,

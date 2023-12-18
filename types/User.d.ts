@@ -11,18 +11,6 @@ declare interface User {
   google_id: any;
   last_name: string;
   password_status: boolean;
-  company: {
-    id: number,
-    category_id: number;
-    title: string,
-    user_id:number,
-    email: string,
-    phone: string,
-    description: string,
-    status: '0' | '1' | '-1' | null,
-    created_at: string,
-    updated_at: string,
-    legal_code: number,
-    type: CompanyType
-  },
+  notReadMessages: number
+  company: Company;
 }
