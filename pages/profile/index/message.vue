@@ -62,6 +62,10 @@
     });
   };
 
+  watchDeep(chatSwitch, () => {
+    currentIdChat.value = null;
+  });
+
   watchDeep([buyChats, sellChats], () => {
     pusherFunc();
   });
