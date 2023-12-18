@@ -19,7 +19,7 @@
       max: 0,
     },
   });
-  // const NUM_SKELETON_ITEMS = 20;
+  const NUM_SKELETON_ITEMS = 20;
 
   const handlerFilter = (filterValue: any, filterType: string) => {
     switch (filterType) {
@@ -151,16 +151,16 @@
         </div>
 
         <div>
-          <!-- TODO uncomment it after solving the ssr slow isLoading problem <div
+          <div
             v-if="isLoading"
             class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
           >
-            <CommonSkeletonCardProduct
+            <SkeletonCardProduct
               v-for="i in NUM_SKELETON_ITEMS"
               :key="i"
               class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-3"
             />
-          </div> -->
+          </div>
 
           <div
             v-if="!isLoading && products.length"
