@@ -23,6 +23,11 @@
     setTimeout(() => {
       loadingRequest.value = false;
     }, 100);
+    if (status === 0) {
+      error.value = t('email_validate.the_data_incorrect');
+      return false;
+    }
+
     if (!status) {
       error.value = t('validation_inputs.try_again');
       return false;

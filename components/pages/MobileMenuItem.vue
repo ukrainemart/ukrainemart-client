@@ -9,7 +9,7 @@
   <UiButtonOpacity
     :class="
       cn(
-        'flex h-full min-w-[57px] flex-col items-center justify-center gap-[3px] border-b-[5px] border-transparent md:min-w-[82px] md:border-b-[6px]',
+        'flex h-full min-w-[57px] flex-col items-center justify-center gap-[3px] border-b-[5px] border-transparent hover:!opacity-100 md:min-w-[82px] md:border-b-[6px]',
         {
           'border-black': active,
         }

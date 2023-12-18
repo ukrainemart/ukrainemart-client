@@ -190,7 +190,8 @@
   "password_successfully_changed": "Пароль успішно змінено!",
   "validation_inputs": {
     "required": "Це поле обов'язкове!",
-    "try_again": "Спробуйте ще раз!"
+    "try_again": "Спробуйте ще раз!",
+    "the_data_incorrect": "Дані не коректні!"
   },
   "validation_create_product": {
     "there_must_be_at_least_1_price": "Повинна бути хоча б 1 ціна!",

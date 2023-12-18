@@ -16,7 +16,7 @@
           v-if="!isFavoritesProduct"
           :class="
             cn(
-              'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-black duration-hover group-hover/favorites:text-status_red'
+              'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-black duration-hover is-hover:group-hover/favorites:text-status_red'
             )
           "
         />
@@ -24,7 +24,7 @@
           v-else
           :class="
             cn(
-              'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-status_red duration-hover group-hover:text-status_red'
+              'absolute left-[50%] top-[50%] !h-[46%] !w-[46%] translate-x-[-50%] translate-y-[-40%] text-status_red duration-hover is-hover:group-hover:text-status_red'
             )
           "
         />
