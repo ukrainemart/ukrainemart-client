@@ -145,9 +145,7 @@
             <UiButtonOpacity type="button" class="h-[16px] w-[8px] xl:h-[22px] xl:w-[11px]">
               <SvgoPaperClip class="!h-[full] !w-full" />
             </UiButtonOpacity>
-            <UiButtonOpacity type="submit" class="h-[16px] w-[17px] xl:h-[25px] xl:w-[26px]">
-              <SvgoSendArrow class="!h-[full] !w-full" />
-            </UiButtonOpacity>
+            <UiButtonOpacitySend type="submit" />
           </div>
         </div>
       </form>

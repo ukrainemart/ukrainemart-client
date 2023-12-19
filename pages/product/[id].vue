@@ -39,7 +39,11 @@
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
-    <CommonModalChat v-model="isChat" :productId="product?.id" />
+    <CommonModalChat
+      v-model="isChat"
+      :recipientName="product?.company?.title"
+      :productId="product?.id"
+    />
     <CommonBreadcrumbs
       v-if="product"
       :breadcrumb="product.category"
