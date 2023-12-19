@@ -31,6 +31,7 @@
 
     pusherChannel.bind('notReadMessage', (data: any) => {
       console.log(data);
+      countNotReadMessages.value = data.countMessages;
     });
   };
 

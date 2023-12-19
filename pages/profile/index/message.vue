@@ -17,35 +17,6 @@
     currentIdChat.value = id;
   };
 
-  const fetchChatList = () => {
-    useApiFetch(`${useUrlApi()}/chat/list`)
-      .then((res: any) => {
-        buyChats.value = res.data.value.buyChats || [];
-        sellChats.value = res.data.value.sellChats || [];
-        loadingChats.value = false;
-      })
-      .catch((res) => {
-        loadingChats.value = false;
-      });
-  };
-
-  const fetchCurrentChat = () => {
-    loadingChat.value = true;
-    if (!currentIdChat.value) return false;
-    useApiFetch(`${useUrlApi()}/chat/messages/${currentIdChat.value}`).then((res: any) => {
-      currentChat.value = res.data.value;
-      loadingChat.value = false;
-    });
-  };
-
-  fetchCurrentChat();
-
-  watch(currentIdChat, () => {
-    fetchCurrentChat();
-  });
-
-  fetchChatList();
-
   const pusherFunc = () => {
     const allChats = [...buyChats.value, ...sellChats.value];
 
@@ -56,23 +27,53 @@
     allChats.forEach((chat: Chat) => {
       const pusherChannel = pusher.subscribe(`chat${chat.id}`);
 
-      pusherChannel.bind('message', (data: any) => {
-        currentChat.value?.messages?.push(data);
+      pusherChannel.bind('message', async (data: any) => {
+        await currentChat.value?.messages?.push(data);
+        fetchChatList();
       });
     });
   };
+
+  function fetchChatList() {
+    return useApiFetch(`${useUrlApi()}/chat/list`)
+      .then((res: any) => {
+        buyChats.value = res.data.value.buyChats || [];
+        sellChats.value = res.data.value.sellChats || [];
+        loadingChats.value = false;
+      })
+      .catch((res) => {
+        loadingChats.value = false;
+      });
+  }
+
+  const fetchCurrentChat = () => {
+    loadingChat.value = true;
+    if (!currentIdChat.value) return false;
+    useApiFetch(`${useUrlApi()}/chat/messages/${currentIdChat.value}`).then((res: any) => {
+      currentChat.value = res.data.value as Chat;
+      loadingChat.value = false;
+      fetchChatList();
+      // setTimeout(() => {
+      // currentChat.value.not_readable_client_messages_count = 0;
+      // console.log(currentChat.value);
+      // }, 10);
+    });
+  };
+
+  fetchCurrentChat();
+
+  watch(currentIdChat, () => {
+    fetchCurrentChat();
+  });
+
+  fetchChatList().then(() => {
+    pusherFunc();
+  });
 
   watch(chatSwitch, () => {
     currentChat.value = null;
     currentIdChat.value = null;
     loadingChat.value = false;
-  });
-
-  watchDeep([buyChats, sellChats], () => {
-    pusherFunc();
-  });
-  onMounted(() => {
-    pusherFunc();
   });
 </script>
 

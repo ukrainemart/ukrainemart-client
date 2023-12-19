@@ -17,7 +17,11 @@
       )
     "
   >
-    <UiIconCircleLetter class="shrink-0" :letter="useMultiLang(chat?.product, 'title')[0]" />
+    <img
+      class="h-[34px] w-[34px] shrink-0 rounded-[50%] object-cover md:h-[43px] md:w-[43px] xl:h-[50px] xl:w-[50px]"
+      :src="chat?.product?.main_image?.path"
+      alt=""
+    />
     <div class="ml-[8px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">
       <h2 class="inline-block w-full truncate text-[14px] font-medium text-black md:text-[16px]">
         {{ useMultiLang(chat?.product, 'title') }}

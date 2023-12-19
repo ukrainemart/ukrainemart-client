@@ -55,17 +55,18 @@
       <div
         class="flex items-center justify-between px-[15px] pb-[15px] md:px-[25px] xl:px-[30px] xl:pb-[20px] 3xl:px-[35px]"
       >
-        <UiIconCircleLetter
-          v-if="!loading"
-          class="shrink-0"
-          :letter="useMultiLang(chat?.product, 'title')[0]"
+        <img
+          class="h-[34px] w-[34px] shrink-0 rounded-[50%] object-cover md:h-[43px] md:w-[43px] xl:h-[50px] xl:w-[50px]"
+          :src="chat?.product?.main_image?.path"
+          alt=""
         />
         <div v-if="!loading" class="ml-[8px] mr-[20px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">
-          <h2
+          <nuxtLink
+            :to="'/product/' + chat.product_id"
             class="inline-block w-full truncate text-[14px] font-medium text-black md:text-[16px]"
           >
             {{ useMultiLang(chat?.product, 'title') }}
-          </h2>
+          </nuxtLink>
           <!-- <h2
             class="mt-[5px] inline-block w-full truncate text-[7px] font-medium text-[#B6B6B6] md:text-[12px]"
           >

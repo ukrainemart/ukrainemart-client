@@ -51,9 +51,9 @@ export const useAuthStore = defineStore('authStore', () => {
       if (response.data.value.status === 1) {
         await fetchUser();
         switchAuthModal(false);
-        navigateTo('/profile');
         return true;
       }
+      return response.data.value.status;
     } catch (err) {
       console.log(err);
       return false;

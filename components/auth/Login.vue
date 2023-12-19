@@ -23,8 +23,9 @@
     setTimeout(() => {
       loadingRequest.value = false;
     }, 100);
+
     if (status === 0) {
-      error.value = t('email_validate.the_data_incorrect');
+      error.value = t('validation_inputs.the_data_incorrect');
       return false;
     }
 
