@@ -19,7 +19,7 @@
       max: 0,
     },
   });
-  // const NUM_SKELETON_ITEMS = 20;
+  const NUM_SKELETON_ITEMS = 20;
 
   const handlerFilter = (filterValue: any, filterType: string) => {
     switch (filterType) {
@@ -39,7 +39,6 @@
 
   provide('priceRange', { priceRange, handlerFilter });
   provide('minAmount', { minAmount, handlerFilter });
-  provide('products', products);
 
   const updateUrlWithFilters = () => {
     const query: { [key: string]: number } = {
@@ -96,15 +95,18 @@
     try {
       const res = await useFetch(`${useUrlApi()}/category/get/${categoryId}`);
 
-      if (res) {
-        category.value = res.data.value as Category;
+      category.value = res.data.value as Category;
 
-        priceRange.api.min = category.value.min_price;
-        priceRange.api.max = category.value.max_price;
-        priceRange.input.min = category.value.min_price;
-        priceRange.input.max = category.value.max_price;
+      // NOTE - if category has no price, then turn off loading to show nothing found
+      if (category.value.min_price) {
+        priceRange.api.min = category.value.min_price ?? 0;
+        priceRange.api.max = category.value.max_price ?? 0;
+        priceRange.input.min = category.value.min_price ?? 0;
+        priceRange.input.max = category.value.max_price ?? 0;
 
         getValueQuery();
+      } else {
+        isLoading.value = false;
       }
     } catch (error) {
       console.error(error);
@@ -149,16 +151,16 @@
         </div>
 
         <div>
-          <!-- TODO uncomment it after solving the ssr slow isLoading problem <div
+          <div
             v-if="isLoading"
             class="mb-[30px] grid grid-cols-12 gap-x-[25px] gap-y-5 md:mb-[40px] md:gap-x-[32px] md:gap-y-10 lg:mb-[50px] 4xl:gap-x-[44px] 4xl:gap-y-[60px]"
           >
-            <CommonSkeletonCardProduct
+            <SkeletonCardProduct
               v-for="i in NUM_SKELETON_ITEMS"
               :key="i"
               class="col-span-6 sm:col-span-4 md:col-span-3 lg:col-span-4 xl:col-span-3"
             />
-          </div> -->
+          </div>
 
           <div
             v-if="!isLoading && products.length"
