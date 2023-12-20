@@ -29,11 +29,15 @@
     </div>
 
     <CommonSectionRequestsImporters
-      :title="$t('labels.other_inquiries_from_this_importer')"
+      :title="$t('labels.other_inquiries_from_this_importer', { name: request?.company?.title })"
       :requests="request?.company_requests"
     />
     <CommonSectionRequestsImporters
-      :title="$t('labels.other_inquiries_from_this_category')"
+      :title="
+        $t('labels.other_inquiries_from_this_category', {
+          name: useMultiLang(request?.category, 'title'),
+        })
+      "
       :requests="request?.same_category"
     />
 

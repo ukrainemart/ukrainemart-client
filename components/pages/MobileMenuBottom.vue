@@ -39,12 +39,19 @@
     <PagesMobileMenuItem to="/" :active="route.path === '/'" :label="$t('home')">
       <SvgoHome class="!h-full !w-full" />
     </PagesMobileMenuItem>
+
     <PagesMobileMenuItem :label="$t('catalog.catalog')" @click="$emit('toggleCatalogModal')">
       <SvgoSearchMobileMenu class="!h-full !w-full" />
     </PagesMobileMenuItem>
-    <PagesMobileMenuItem to="/requests" :label="$t('subHeader.requests')">
+
+    <PagesMobileMenuItem
+      :active="route.path === '/requests'"
+      to="/requests"
+      :label="$t('subHeader.requests')"
+    >
       <SvgoRequestsIcon class="!h-full !w-full" />
     </PagesMobileMenuItem>
+
     <PagesMobileMenuItem
       :label="$t('favorites')"
       :active="route.path === '/profile/favorites'"
@@ -52,6 +59,7 @@
     >
       <SvgoFavorites class="!h-full !w-full" />
     </PagesMobileMenuItem>
+
     <PagesMobileMenuItem :label="$t('myAccount')" @click="onClickProfile">
       <SvgoUser class="!h-full !w-full" />
     </PagesMobileMenuItem>

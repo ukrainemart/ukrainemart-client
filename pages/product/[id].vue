@@ -110,7 +110,7 @@
       class="!pt-0"
     >
       <template #title>
-        {{ $t('other_products_from_seller') }}
+        {{ $t('other_products_from_seller', { name: product.company?.title }) }}
       </template>
     </CommonSectionProductsSlider>
 
@@ -119,7 +119,7 @@
       :products="product?.product_same_category"
     >
       <template #title>
-        {{ $t('other_products_from_category') }}
+        {{ $t('other_products_from_category', { name: useMultiLang(product.category, 'title') }) }}
       </template>
     </CommonSectionProductsSlider>
 
