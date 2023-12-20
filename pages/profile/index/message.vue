@@ -54,7 +54,7 @@
       loadingChat.value = false;
       fetchChatList();
       // setTimeout(() => {
-      // currentChat.value.not_readable_client_messages_count = 0;
+      // currentChat.value.not_readable_messages_count = 0;
       // console.log(currentChat.value);
       // }, 10);
     });

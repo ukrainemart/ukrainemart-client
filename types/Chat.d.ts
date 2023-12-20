@@ -9,6 +9,6 @@ declare interface Chat {
   user: User;
   last_message: string | null;
   product: Product;
-  not_readable_client_messages_count: number;
+  not_readable_messages_count: number;
   messages: MessageChat[];
 }
