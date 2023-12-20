@@ -98,8 +98,8 @@
           currentCategoryLevel === LAST_CATEGORY_LEVEL
             ? 'image'
             : currentCategoryLevel === MIDDLE_CATEGORY_LEVEL
-            ? 'logo'
-            : null
+              ? 'logo'
+              : null
         "
         @handleLinkClick="handleLinkClick"
         @showChildren="showChildren"
