@@ -17,6 +17,18 @@
     currentIdChat.value = id;
   };
 
+  function fetchChatList() {
+    return useApiFetch(`${useUrlApi()}/chat/list`)
+      .then((res: any) => {
+        buyChats.value = res.data.value.buyChats || [];
+        sellChats.value = res.data.value.sellChats || [];
+        loadingChats.value = false;
+      })
+      .catch((res) => {
+        loadingChats.value = false;
+      });
+  }
+
   const pusherFunc = () => {
     const allChats = [...buyChats.value, ...sellChats.value];
 
@@ -33,18 +45,6 @@
       });
     });
   };
-
-  function fetchChatList() {
-    return useApiFetch(`${useUrlApi()}/chat/list`)
-      .then((res: any) => {
-        buyChats.value = res.data.value.buyChats || [];
-        sellChats.value = res.data.value.sellChats || [];
-        loadingChats.value = false;
-      })
-      .catch((res) => {
-        loadingChats.value = false;
-      });
-  }
 
   const fetchCurrentChat = () => {
     loadingChat.value = true;
@@ -144,7 +144,7 @@
       </NuxtScrollbar>
     </UiDivRoundedBg>
     <PagesChatMessageBox
-      v-if="currentChat"
+      v-if="currentIdChat"
       :chatType="chatSwitch"
       :class="
         cn('hidden xl:!flex', {

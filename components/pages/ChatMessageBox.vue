@@ -1,6 +1,6 @@
 <script setup lang="ts">
   const props = defineProps<{
-    chat: Chat;
+    chat?: Chat | null;
     loading: boolean;
     chatType: 'for_sale' | 'buying';
   }>();
@@ -35,13 +35,13 @@
   };
 
   const onSendMessage = async () => {
-    if (props.loading || !messageInput.value.trim()) return false;
+    if (!props.chat || props.loading || !messageInput.value.trim()) return false;
     await useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: {
-        product_id: props.chat.product_id,
+        product_id: props?.chat.product_id,
         message: messageInput.value,
-        chat_id: props.chatType === 'for_sale' ? props.chat.id : false,
+        chat_id: props.chatType === 'for_sale' ? props?.chat.id : false,
       },
     }).then(() => {
       messageInput.value = '';
@@ -62,7 +62,7 @@
         />
         <div v-if="!loading" class="ml-[8px] mr-[20px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">
           <nuxtLink
-            :to="'/product/' + chat.product_id"
+            :to="'/product/' + chat?.product_id"
             class="inline-block w-full truncate text-[14px] font-medium text-black md:text-[16px]"
           >
             {{ useMultiLang(chat?.product, 'title') }}
@@ -122,7 +122,7 @@
             class="h-[60px] w-[50%] self-end rounded-[5px] !p-0 md:rounded-[10px]"
           />
           <PagesChatMessageItem
-            v-for="message in chat.messages"
+            v-for="message in chat?.messages"
             v-if="!loading"
             :key="message?.id"
             :user="
