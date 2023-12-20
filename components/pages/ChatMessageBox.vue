@@ -56,6 +56,7 @@
         class="flex items-center justify-between px-[15px] pb-[15px] md:px-[25px] xl:px-[30px] xl:pb-[20px] 3xl:px-[35px]"
       >
         <img
+          v-if="!loading"
           class="h-[34px] w-[34px] shrink-0 rounded-[50%] object-cover md:h-[43px] md:w-[43px] xl:h-[50px] xl:w-[50px]"
           :src="chat?.product?.main_image?.path"
           alt=""

@@ -148,7 +148,7 @@
       :chatType="chatSwitch"
       :class="
         cn('hidden xl:!flex', {
-          flex: currentIdChat && currentChat,
+          flex: currentIdChat,
         })
       "
       :loading="loadingChat"
