@@ -3,6 +3,7 @@
 
   const auth = useAuthStore();
   const route = useRoute();
+  const router = useRouter();
   const isExporter = computed(() => auth.isExporter);
   const chatSwitch = ref<'for_sale' | 'buying'>('buying');
 
@@ -36,6 +37,11 @@
       cluster: 'eu',
     });
 
+    const globalChat = pusher.subscribe(`global-chat`);
+    globalChat.bind('chat', (data: any) => {
+      fetchChatList();
+    });
+
     allChats.forEach((chat: Chat) => {
       const pusherChannel = pusher.subscribe(`chat${chat.id}`);
 
@@ -53,17 +59,20 @@
       currentChat.value = res.data.value as Chat;
       loadingChat.value = false;
       fetchChatList();
-      // setTimeout(() => {
-      // currentChat.value.not_readable_messages_count = 0;
-      // console.log(currentChat.value);
-      // }, 10);
     });
+  };
+
+  const clearQueryChatId = () => {
+    console.log(route);
+
+    router.push({ query: {} });
   };
 
   fetchCurrentChat();
 
   watch(currentIdChat, () => {
     fetchCurrentChat();
+    clearQueryChatId();
   });
 
   fetchChatList().then(() => {

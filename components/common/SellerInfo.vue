@@ -23,7 +23,7 @@
     </div>
 
     <div class="mb-5 md:mb-0 md:grow 2xl:mb-[30px]">
-      <div
+      <!-- <div
         class="mb-[7px] flex items-center gap-[5px] md:mb-[10px] md:gap-[7px] 2xl:mb-[16px] 2xl:gap-[10px]"
       >
         <SvgoMapMarker
@@ -34,7 +34,7 @@
         <p class="text-[8px] font-medium md:text-[10px] 2xl:text-[14px]">
           Полтава, Полтавська обл., Україна
         </p>
-      </div>
+      </div> -->
 
       <div class="flex items-center gap-[5px] md:gap-[7px] 2xl:gap-[10px]">
         <SvgoCheckmark
