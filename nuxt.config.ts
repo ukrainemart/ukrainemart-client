@@ -37,6 +37,11 @@ export default defineNuxtConfig({
     vueI18n: './i18n/i18n.config.ts',
     defaultLocale: 'en',
     strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'selectedLanguage',
+      redirectOn: 'root',
+    },
     locales: [
       {
         code: 'en',
@@ -46,15 +51,9 @@ export default defineNuxtConfig({
       {
         code: 'ua',
         name: 'Українська',
-        iso: 'ua-UA',
+        iso: 'uk-UA',
       },
     ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'selectedLanguage',
-      alwaysRedirect: true,
-      fallbackLocale: 'en',
-    },
   },
   swiper: {
     modules: [
