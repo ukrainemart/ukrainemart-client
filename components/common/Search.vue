@@ -56,7 +56,7 @@
 
     <p
       v-if="isExample"
-      class="ld:mt-[5px] ml-[18px] mt-[3px] text-left text-[7px] font-medium text-black md:mt-[7px] md:text-[13px] lg:text-[17px]"
+      class="ld:mt-[5px] ml-[18px] mt-[3px] text-left text-[10px] font-medium text-black md:mt-[7px] md:text-[13px] lg:text-[17px]"
     >
       {{ `${$t('example')}:` }} <span class="underline">{{ $t('grain') }}</span> {{ $t('or') }}
       <span class="underline">{{ $t('oil') }}</span>
