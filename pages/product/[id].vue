@@ -5,6 +5,7 @@
   const NUM_SKELETON_ITEMS = 7;
   const mainSlider = ref(null);
   const sideSwiper = ref(null);
+  const thumbsSwiper = ref(null);
   const isChat = ref<boolean>(false);
   const product = ref<Product>();
   const auth = useAuthStore();
@@ -21,18 +22,21 @@
     isChat.value = value;
   };
 
+  const checkLoading = () => {
+    if (process.client) {
+      loading.value = false;
+    }
+  };
+
   const fetchProduct = async () => {
     try {
-      const response = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
+      const response = await useFetch(`${useUrlApi()}/product/show/${productId}`);
       product.value = response?.data.value as Product;
+      checkLoading();
     } catch (error) {
       console.error(error);
     }
   };
-
-  onMounted(() => {
-    loading.value = false;
-  });
 
   fetchProduct();
 </script>
@@ -65,6 +69,7 @@
           </div>
           <CommonProductSideSlider
             v-if="product?.images && !loading"
+            ref="thumbsSwiper"
             class="!hidden md:!block"
             :slides="product?.images"
             @swiper="setThumbsSwiper"
@@ -72,7 +77,7 @@
 
           <UiSkeleton
             v-if="loading"
-            class="h-[470px] w-[335px] md:h-[435px] md:w-[330px] 2xl:h-[584px] 2xl:w-[450px]"
+            class="mx-auto h-[470px] w-[335px] md:h-[435px] md:w-[330px] 2xl:h-[584px] 2xl:w-[450px]"
           />
           <CommonProductSlider
             v-if="product?.images && !loading"
