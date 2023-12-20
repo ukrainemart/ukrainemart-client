@@ -30,7 +30,7 @@
 
   const fetchProduct = async () => {
     try {
-      const response = await useFetch(`${useUrlApi()}/product/show/${productId}`);
+      const response = await useApiFetch(`${useUrlApi()}/product/show/${productId}`);
       product.value = response?.data.value as Product;
       checkLoading();
     } catch (error) {
