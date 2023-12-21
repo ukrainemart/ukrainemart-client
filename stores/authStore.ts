@@ -42,6 +42,7 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   async function login(credentials: LoginCredentials) {
+    deleteCookie('XSRF-TOKEN');
     await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
     try {
       const response: any = await useApiFetch(`${useUrlApi()}/login`, {
