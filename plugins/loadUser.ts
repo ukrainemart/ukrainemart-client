@@ -11,7 +11,9 @@ export default defineNuxtPlugin(async () => {
     if (!token.value) {
       await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
     }
-    deleteCookie('XSRF-TOKEN', 'ukrainemart.com');
+    setTimeout(() => {
+      deleteCookie('XSRF-TOKEN', 'ukrainemart.com');
+    }, 5000);
   }
 
   if (!auth.isLoggedIn) {
