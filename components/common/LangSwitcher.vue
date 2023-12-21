@@ -1,12 +1,18 @@
 <script setup lang="ts">
+  import type { LocaleObject } from 'yup';
+
   defineProps<{
     isMobile?: boolean;
   }>();
 
   const { locale, locales, setLocale } = useI18n();
-  const displayLocale = computed(() =>
-    locale.value === 'ru' || locale.value === 'ua' ? 'ua' : 'en'
-  );
+  const displayLocale = computed(() => {
+    if (locale.value === 'ru') {
+      setLocale('ua');
+    }
+
+    return locale.value === 'ru' || locale.value === 'ua' ? 'ua' : 'en';
+  });
   const selectedLanguage = useCookie('selectedLanguage', {
     watch: true,
   });
