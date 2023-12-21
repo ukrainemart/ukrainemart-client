@@ -16,8 +16,6 @@
   const loadingChat = ref(false);
 
   const getBusinessFromCookies = () => {
-    console.log(business.value);
-
     chatSwitch.value = business.value || 'buying';
   };
 
