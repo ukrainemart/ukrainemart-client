@@ -1,5 +1,7 @@
 export default defineNuxtPlugin(async (app) => {
-  // let defaultLanguage = 'en';
+  // const defaultLanguage = 'en';
+  // console.log(app);
+
   // if (app.req.headers['accept-language']) {
   //   const browserLanguage = context.req.headers['accept-language'].split(',')[0];
   //   if (browserLanguage.startsWith('uk')) {
@@ -7,5 +9,5 @@ export default defineNuxtPlugin(async (app) => {
   //   }
   // }
 
-  // app.app.i18n.locale = defaultLanguage;
+  // app.$i18n.locale = defaultLanguage;
 });
