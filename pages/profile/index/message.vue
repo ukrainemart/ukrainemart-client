@@ -6,6 +6,7 @@
   const router = useRouter();
   const isExporter = computed(() => auth.isExporter);
   const chatSwitch = ref<'for_sale' | 'buying'>('buying');
+  const business = useCookie<'for_sale' | 'buying'>('business');
 
   const buyChats = ref<Chat[]>([]);
   const sellChats = ref<Chat[]>([]);
@@ -13,6 +14,12 @@
   const currentChat = ref<Chat | null>(null);
   const loadingChats = ref(true);
   const loadingChat = ref(false);
+
+  const getBusinessFromCookies = () => {
+    console.log(business.value);
+
+    chatSwitch.value = business.value || 'buying';
+  };
 
   const changeCurrentId = (id: number) => {
     currentIdChat.value = id;
@@ -84,6 +91,8 @@
     currentIdChat.value = null;
     loadingChat.value = false;
   });
+
+  getBusinessFromCookies();
 </script>
 
 <template>
@@ -98,7 +107,7 @@
       <CommonTitleProfilePage class="mb-[20px] md:mb-[30px] xl:mb-[40px]">
         {{ $t('profile.message.my_messages') }}
       </CommonTitleProfilePage>
-      <CommonBusinessSwitcher v-if="isExporter" v-model="chatSwitch" />
+      <CommonBusinessSwitcher v-if="isExporter" v-model="chatSwitch" :currentValue="chatSwitch" />
       <NuxtScrollbar
         v-if="chatSwitch === 'for_sale'"
         class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px]"

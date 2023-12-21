@@ -1,4 +1,10 @@
 <script setup lang="ts">
+  const props = defineProps<{
+    currentValue: 'for_sale' | 'buying';
+  }>();
+
+  const business = useCookie('business');
+
   const { t } = useI18n();
 
   const chatOptions = computed(() => {
@@ -13,6 +19,17 @@
       },
     ];
   });
+
+  const setCookie = () => {
+    business.value = props.currentValue;
+  };
+
+  watchDeep(
+    () => props.currentValue,
+    () => {
+      setCookie();
+    }
+  );
 </script>
 
 <template>

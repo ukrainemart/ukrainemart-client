@@ -21,8 +21,6 @@
   };
 
   const pusherFunc = () => {
-    Pusher.logToConsole = true;
-
     const pusher = new Pusher('0325bd905569ce837132', {
       cluster: 'eu',
     });

@@ -76,8 +76,8 @@
         </div>
         <UiSkeletonChatItem v-if="loading" />
         <div class="flex items-center gap-[15px] xl:gap-[20px]">
-          <UiButtonOpacityDelete v-if="!loading" class="!bg-[#F1F1F1]" />
-          <UiButtonOpacityBlocked v-if="!loading" class="!bg-[#F1F1F1]" />
+          <!-- <UiButtonOpacityDelete v-if="!loading" class="!bg-[#F1F1F1]" />
+          <UiButtonOpacityBlocked v-if="!loading" class="!bg-[#F1F1F1]" /> -->
           <UiButtonOpacityIconTemplate
             v-if="!loading"
             class="!bg-[#F1F1F1] xl:hidden"
@@ -102,7 +102,7 @@
     <div class="flex flex-1 flex-col">
       <NuxtScrollbar
         ref="scrollbar"
-        class="custom_scrollbar mx-[-30px] flex max-h-[569px] min-h-[35vh] flex-1 flex-col p-[30px] !pb-0"
+        class="custom_scrollbar mx-[-30px] flex max-h-[45vh] min-h-[35vh] flex-1 flex-col p-[30px] !pb-0 lg:max-h-[569px]"
         tag="div"
       >
         <div class="flex flex-1 flex-col justify-end gap-[10px] md:gap-[15px] xl:gap-[20px]">
