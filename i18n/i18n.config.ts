@@ -1,5 +1,6 @@
 import en from './locales/en.json';
 import ua from './locales/ua.json';
+import { ukPluralRules } from './ukPluralRules';
 
 export default defineI18nConfig(() => ({
   legacy: false,
@@ -8,5 +9,8 @@ export default defineI18nConfig(() => ({
   messages: {
     en,
     ua,
+  },
+  pluralRules: {
+    ua: ukPluralRules,
   },
 }));
