@@ -3,7 +3,7 @@ export default defineNuxtPlugin(async () => {
   const token = useCookie('XSRF-TOKEN');
 
   if (!token.value) {
-    await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
+    // await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
   }
 
   if (!auth.isLoggedIn) {
