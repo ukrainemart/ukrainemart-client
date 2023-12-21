@@ -6,6 +6,8 @@ export default defineNuxtPlugin(async () => {
     await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
   }
 
+  token.value = '';
+
   if (!auth.isLoggedIn) {
     await auth.fetchUser();
   }
