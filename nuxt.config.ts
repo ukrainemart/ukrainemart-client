@@ -53,6 +53,11 @@ export default defineNuxtConfig({
         name: 'Українська',
         iso: 'uk-UA',
       },
+      {
+        code: 'ru',
+        name: 'Русский',
+        iso: 'ru-RU',
+      },
     ],
   },
   swiper: {

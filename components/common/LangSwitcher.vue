@@ -4,19 +4,24 @@
   }>();
 
   const { locale, locales, setLocale } = useI18n();
+  const displayLocale = computed(() =>
+    locale.value === 'ru' || locale.value === 'ua' ? 'ua' : 'en'
+  );
   const selectedLanguage = useCookie('selectedLanguage', {
     watch: true,
   });
 
   useHead({
     htmlAttrs: {
-      lang: locale,
+      lang: displayLocale,
     },
   });
 
   const filteredLocales = computed(() =>
     locales.value
-      .filter((item) => typeof item !== 'string' && item.code !== locale.value)
+      .filter(
+        (item) => typeof item !== 'string' && item.code !== locale.value && item.code !== 'ru'
+      )
       .map((item) => (typeof item !== 'string' ? item.code : item))
   );
 
@@ -29,7 +34,7 @@
 <template>
   <USelectMenu
     v-slot="{ open }"
-    v-model="locale"
+    v-model="displayLocale"
     :options="filteredLocales"
     :uiMenu="{
       background: isMobile
@@ -48,7 +53,7 @@
     class="w-fit"
     @change="handleLocaleChange"
   >
-    <UiButtonTextOpeningArrow :label="locale" :open="open" />
+    <UiButtonTextOpeningArrow :label="displayLocale" :open="open" />
   </USelectMenu>
 </template>
 

@@ -9,8 +9,10 @@ export default defineI18nConfig(() => ({
   messages: {
     en,
     ua,
+    ru: ua,
   },
   pluralRules: {
     ua: ukPluralRules,
+    ru: ukPluralRules,
   },
 }));
