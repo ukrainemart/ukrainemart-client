@@ -8,12 +8,12 @@ export default defineNuxtPlugin(async () => {
 
   // Remove the unwanted XSRF-TOKEN cookie for ukrainemart.com
   if (process.client) {
+    if (!token.value) {
+      await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
+    }
     deleteCookie('XSRF-TOKEN', 'ukrainemart.com');
   }
 
-  if (!token.value) {
-    await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
-  }
   if (!auth.isLoggedIn) {
     await auth.fetchUser();
   }
