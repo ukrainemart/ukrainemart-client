@@ -5,6 +5,15 @@
 body {
   font-family: 'Montserrat', sans-serif;
   @apply bg-background-primary;
+  height: 100vh;
+}
+
+/* Avoid Chrome to see Safari hack */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* The hack for Safari */
+    height: -webkit-fill-available;
+  }
 }
 
 * {
@@ -28,7 +37,7 @@ body {
 
 .scroll_bar {
   scrollbar-width: 3px;
-  scrollbar-color: #B6B6B6 #dedede;
+  scrollbar-color: #b6b6b6 #dedede;
 }
 .scroll_bar::-webkit-scrollbar {
   width: 0;
@@ -38,7 +47,7 @@ body {
   height: 10px;
 }
 .scroll_bar::-webkit-scrollbar-thumb {
-  background-color: #B6B6B6;
+  background-color: #b6b6b6;
   border-radius: 20px;
 }
 
@@ -65,7 +74,7 @@ input[type='number'] {
 }
 
 .input_outline {
-  @apply input_outline_text input_outline_padding input_outline_height rounded-[50px] border border-black bg-transparent  focus:outline-none;
+  @apply input_outline_text input_outline_padding input_outline_height rounded-[50px] border border-black bg-transparent focus:outline-none;
 }
 
 .input_outline_text {
