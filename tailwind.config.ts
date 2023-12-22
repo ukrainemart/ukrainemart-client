@@ -40,9 +40,9 @@ export default <Partial<Config>>{
         'chat-message-box': 'calc(-100% + 60vh)',
       },
       height: {
-        'header-sm': `calc(100dvh - ${VAR.HEADER_SM})`,
-        'header-lg': `calc(100dvh - ${VAR.HEADER_LG})`,
-        'header-4xl': `calc(100dvh - ${VAR.HEADER_4XL})`,
+        'header-sm': `calc(100svh - ${VAR.HEADER_SM})`,
+        'header-lg': `calc(100svh - ${VAR.HEADER_LG})`,
+        'header-4xl': `calc(100svh - ${VAR.HEADER_4XL})`,
 
         'mobile-menu': `${VAR.MOBILE_BOTTOM_MENU_HEIGHT}`,
       },
