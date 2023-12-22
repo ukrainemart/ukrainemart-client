@@ -1,6 +1,6 @@
 <script setup lang="ts">
   const props = defineProps<{
-    products: Product[];
+    products?: Product[];
   }>();
 
   const { width } = useWindowSize();

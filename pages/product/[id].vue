@@ -104,22 +104,15 @@
       />
     </div>
 
-    <CommonSectionProductsSlider
-      v-if="product && product.product_company.length > 0"
-      :products="product?.product_company"
-      class="!pt-0"
-    >
+    <CommonSectionProductsSlider :products="product?.product_company" class="!pt-0">
       <template #title>
-        {{ $t('other_products_from_seller', { name: product.company?.title }) }}
+        {{ $t('other_products_from_seller', { name: product?.company?.title }) }}
       </template>
     </CommonSectionProductsSlider>
 
-    <CommonSectionProductsSlider
-      v-if="product && product.product_same_category.length > 0"
-      :products="product?.product_same_category"
-    >
+    <CommonSectionProductsSlider :products="product?.product_same_category">
       <template #title>
-        {{ $t('other_products_from_category', { name: useMultiLang(product.category, 'title') }) }}
+        {{ $t('other_products_from_category', { name: useMultiLang(product?.category, 'title') }) }}
       </template>
     </CommonSectionProductsSlider>
 
