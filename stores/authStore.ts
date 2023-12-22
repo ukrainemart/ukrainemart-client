@@ -31,22 +31,22 @@ export const useAuthStore = defineStore('authStore', () => {
     user.value = res as User;
   }
 
-  function deleteCookie(name) {
-    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.yourdomain.com`;
-  }
+  // function deleteCookie(name) {
+  //   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.yourdomain.com`;
+  // }
 
   async function logout() {
     await useApiFetch(`${useUrlApi()}/logout`, {
       method: 'POST',
     }).then(() => {
-      token.value = '';
+      token.value = null;
       navigateTo('/');
       user.value = null;
     });
   }
 
   async function login(credentials: LoginCredentials) {
-    deleteCookie('XSRF-TOKEN');
+    // deleteCookie('XSRF-TOKEN');
     await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
     try {
       const response: any = await useApiFetch(`${useUrlApi()}/login`, {
