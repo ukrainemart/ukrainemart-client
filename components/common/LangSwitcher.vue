@@ -1,10 +1,4 @@
 <script setup lang="ts">
-  import type { LocaleObject } from 'yup';
-
-  defineProps<{
-    isMobile?: boolean;
-  }>();
-
   const { locale, locales, setLocale } = useI18n();
   const displayLocale = computed(() => {
     if (locale.value === 'ru') {
@@ -43,23 +37,26 @@
     v-model="displayLocale"
     :options="filteredLocales"
     :uiMenu="{
-      background: isMobile
-        ? 'bg-white dark:bg-white left-[-5px]'
-        : 'bg-transparent dark:bg-transparent',
+      trigger: 'lg:p-[5px]',
+      background: 'bg-transparent dark:bg-transparent',
       ring: 'ring-0',
       shadow: 'shadow-transparent',
-      padding: isMobile ? 'p-[5px]' : 'p-0',
+      padding: 'p-0',
       option: {
-        base: 'uppercase cursor-pointer font-medium text-[12px] leading-[15px] md:text-[16px] md:leading-[19px] 4xl:text-[20px] 4xl:leading-6',
-        padding: 'p-0',
+        base: 'uppercase cursor-pointer font-medium text-[14px] leading-[15px] md:text-[16px] md:leading-[19px] 4xl:text-[20px] 4xl:leading-6',
+        padding: 'p-0 lg:p-[5px]',
         active: 'bg-transparent dark:bg-transparent text-black',
         inactive: 'text-status_gray',
       },
     }"
-    class="w-fit"
+    class="flex h-full w-fit"
     @change="handleLocaleChange"
   >
-    <UiButtonTextOpeningArrow :label="displayLocale" :open="open" />
+    <UiButtonTextOpeningArrow
+      class="cursor-pointer text-[14px] font-medium uppercase leading-[15px] md:text-[16px] md:leading-[19px] 4xl:text-[20px] 4xl:leading-6"
+      :label="displayLocale"
+      :open="open"
+    />
   </USelectMenu>
 </template>
 
