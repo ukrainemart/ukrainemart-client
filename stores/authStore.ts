@@ -16,6 +16,8 @@ export const useAuthStore = defineStore('authStore', () => {
   const isGoogleUser = computed(() => !!user.value?.google_id);
   const isPassword = computed(() => !!user.value?.password_status);
 
+  const token = useCookie('XSRF-TOKEN');
+
   function switchTypeAuth(type: SwitchAuth) {
     typeAuth.value = type;
   }
@@ -28,17 +30,19 @@ export const useAuthStore = defineStore('authStore', () => {
     const res = await useApi(`${useUrlApi()}/user`);
     user.value = res as User;
   }
+
   function deleteCookie(name) {
-    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.yourdomain.com";
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.yourdomain.com`;
   }
+
   async function logout() {
     await useApiFetch(`${useUrlApi()}/logout`, {
       method: 'POST',
     }).then(() => {
+      token.value = '';
       navigateTo('/');
       user.value = null;
     });
-    deleteCookie('XSRF-TOKEN');
   }
 
   async function login(credentials: LoginCredentials) {
