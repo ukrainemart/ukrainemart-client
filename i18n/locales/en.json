@@ -168,7 +168,7 @@
       "my_requests": "My requests",
       "add_request": "Add a request",
       "edit_request": "Edit request",
-      "you_have_no_requests_yet": "У ваc ще немає запитів.",
+      "you_have_no_requests_yet": "You have no requests yet.",
       "delete_request_question": "Delete a request?",
       "date_the_request_was_created": "Date the request was created"
     }
