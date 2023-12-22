@@ -5,14 +5,13 @@
 body {
   font-family: 'Montserrat', sans-serif;
   @apply bg-background-primary;
-  height: 100vh;
 }
 
 /* Avoid Chrome to see Safari hack */
 @supports (-webkit-touch-callout: none) {
-  body {
+  .h_screen_ios {
     /* The hack for Safari */
-    height: -webkit-fill-available;
+    @apply !h-[-webkit-fill-available];
   }
 }
 
