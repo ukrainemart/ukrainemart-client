@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     products: Product[];
   }>();
 
@@ -8,7 +8,7 @@
   const loading = ref(true);
 
   const setLoading = () => {
-    if (process.client) {
+    if (process.client && props.products) {
       loading.value = false;
     }
   };
@@ -20,7 +20,12 @@
     return true;
   });
 
-  setLoading();
+  watchDeep(
+    () => props.products,
+    () => {
+      setLoading();
+    }
+  );
 </script>
 
 <template>
