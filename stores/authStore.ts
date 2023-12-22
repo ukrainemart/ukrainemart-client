@@ -31,10 +31,6 @@ export const useAuthStore = defineStore('authStore', () => {
     user.value = res as User;
   }
 
-  // function deleteCookie(name) {
-  //   document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.yourdomain.com`;
-  // }
-
   async function logout() {
     await useApiFetch(`${useUrlApi()}/logout`, {
       method: 'POST',
