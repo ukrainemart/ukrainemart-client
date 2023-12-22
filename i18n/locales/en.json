@@ -195,7 +195,8 @@
     "the_data_incorrect": "The data is incorrect!"
   },
   "validation_create_product": {
-    "there_must_be_at_least_1_price": "There must be at least 1 price!"
+    "there_must_be_at_least_1_price": "There must be at least 1 price!",
+    "there_must_be_at_least_one_photo": "There must be at least 1 photo!"
   },
   "text": {
     "send_mail": "A link to set a new password has been sent to your email address.",

@@ -84,10 +84,24 @@
     >
       <div v-for="section in sections" :key="section.id">
         <UiLabel v-show="language === 'ua'" :label="useMultiLang(section, 'title') + ':'">
-          <UiInputOutline v-model="valueSections[`section_${section.id}_ua`]" class="w-full" />
+          <UiInputOutline
+            v-model="valueSections[`section_${section.id}_ua`]"
+            :class="
+              cn('w-full', {
+                '!border-status_red': errorMessage && !valueSections[`section_${section.id}_ua`],
+              })
+            "
+          />
         </UiLabel>
         <UiLabel v-show="language === 'en'" :label="useMultiLang(section, 'title') + ':'">
-          <UiInputOutline v-model="valueSections[`section_${section.id}_en`]" class="w-full" />
+          <UiInputOutline
+            v-model="valueSections[`section_${section.id}_en`]"
+            :class="
+              cn('w-full', {
+                '!border-status_red': errorMessage && !valueSections[`section_${section.id}_en`],
+              })
+            "
+          />
         </UiLabel>
       </div>
     </div>

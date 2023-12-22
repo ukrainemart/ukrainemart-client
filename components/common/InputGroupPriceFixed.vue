@@ -31,7 +31,11 @@
             placeholder="12"
             required
             type="number"
-            class="w-full"
+            :class="
+              cn('w-full', {
+                '!border-status_red': errorMessage && !price.amount,
+              })
+            "
           />
         </div>
       </UiLabel>
@@ -40,7 +44,13 @@
         :label="$t('add_product.unit_measurement') + ':'"
         class="ml-[10px] justify-items-start whitespace-nowrap md:ml-[20px]"
       >
-        <PagesCreateProductSelectUnit class="max-w-[90px] md:max-w-[110px]" />
+        <PagesCreateProductSelectUnit
+          :class="
+            cn('max-w-[90px] md:max-w-[110px]', {
+              '!border-status_red': errorMessage && !price.unitId,
+            })
+          "
+        />
       </UiLabel>
     </div>
     <div class="col-span-5 md:col-span-2 lg:col-span-5 4xl:col-span-2">
@@ -49,7 +59,14 @@
         class="relative z-50 4xl:max-w-none"
         :label="$t('add_product.enter_price') + ':'"
       >
-        <CommonPriceInputOutline v-model:price="price.price" />
+        <CommonPriceInputOutline
+          v-model:price="price.price"
+          :class="
+            cn('', {
+              '!border-status_red': errorMessage && !price.price,
+            })
+          "
+        />
       </UiLabel>
     </div>
   </div>
