@@ -14,7 +14,6 @@
   const requests = ref<Request[]>([]);
 
   const getProducts = async () => {
-    // REVIEW useFetchApi
     try {
       const res: any = await useApiFetch(`${useUrlApi()}/main_page`);
       const data: MainPageData = res.data.value;
@@ -32,14 +31,19 @@
 <template>
   <div>
     <CommonHeroSection />
+
     <CommonSectionProductsSlider :products="products">
       <template #title>
         {{ $t('goodsFromUaExporters') }}
       </template>
     </CommonSectionProductsSlider>
+
     <CommonSectionRequestsImporters :title="$t('requestsFromIntlImporters')" :requests="requests" />
+
     <CommonSectionPopularCategories />
+
     <CommonSectionFaq />
+
     <CommonSectionOurPartners />
   </div>
 </template>
