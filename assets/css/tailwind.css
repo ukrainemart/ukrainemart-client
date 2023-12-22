@@ -7,14 +7,6 @@ body {
   @apply bg-background-primary;
 }
 
-/* Avoid Chrome to see Safari hack */
-@supports (-webkit-touch-callout: none) {
-  .h_screen_ios {
-    /* The hack for Safari */
-    @apply !h-[-webkit-fill-available];
-  }
-}
-
 * {
   line-height: 100%;
 }
