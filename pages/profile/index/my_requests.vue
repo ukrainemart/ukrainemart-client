@@ -59,7 +59,7 @@
       v-if="loading"
       class="mb-[30px] mt-[15px] grid grid-cols-12 gap-[10px] md:mb-[40px] md:mt-[30px] md:gap-[16px] md:gap-y-[15px] lg:mb-[50px] lg:mt-[25px] xl:gap-[30px]"
     >
-      <SkeletonRequestImporter v-for="i in NUM_SKELETON_ITEMS" :key="i" />
+      <SkeletonMyRequest v-for="i in NUM_SKELETON_ITEMS" :key="i" />
     </div>
 
     <div

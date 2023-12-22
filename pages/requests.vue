@@ -5,6 +5,8 @@
   const requests = ref<RequestImporter[]>([]);
   const pages = ref<any[]>([]);
   const page = ref(route.query.page ? +route.query.page : 1);
+  const isLoading = ref(true);
+  const NUM_SKELETON_ITEMS = 3;
 
   const filters = ref({
     categories:
@@ -30,6 +32,7 @@
         (el: any, ind: number, arr: any[]) => ind !== 0 && ind !== arr.length - 1
       );
       page.value = res.data.value.current_page;
+      isLoading.value = false;
     });
   };
 
@@ -55,12 +58,17 @@
 <template>
   <div class="pb-[70px] md:pb-[100px] xl:pb-[130px]">
     <CommonBreadcrumbs :static="$t('subHeader.requests')" />
+
     <div class="container">
       <CommonTitleSection>{{ $t('subHeader.requests') }}</CommonTitleSection>
+
       <PagesRequestsFilters v-model:filtersActive="filters" class="mt-[15px]" />
+
       <div
         class="mt-[24px] grid grid-cols-12 gap-x-[12px] gap-y-[20px] md:mt-[30px] xl:gap-x-[58px] xl:gap-y-[45px]"
       >
+        <SkeletonRequest v-for="n in NUM_SKELETON_ITEMS" v-if="isLoading" :key="n" />
+
         <CommonRequestImportersItem
           v-for="request in requests"
           :key="request.id"
@@ -68,6 +76,7 @@
           :request="request"
         />
       </div>
+
       <UiPagination
         v-if="pages.length > 1"
         v-model="page"
