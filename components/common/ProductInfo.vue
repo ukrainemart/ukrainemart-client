@@ -80,7 +80,7 @@
         </template>
       </PagesProductContactButton>
 
-      <CommonButtonFavoritePageProduct :product="product" />
+      <CommonButtonFavoritePageProduct v-if="isChatOpenBtn" :product="product" />
     </div>
   </div>
 </template>

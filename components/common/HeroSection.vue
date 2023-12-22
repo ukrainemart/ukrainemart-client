@@ -17,8 +17,6 @@
 
       <CommonSearch :isExample="true" />
     </div>
-
-    <CommonSectionCategories />
   </div>
 </template>
 
