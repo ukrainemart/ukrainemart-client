@@ -1,15 +1,10 @@
-import type { UseFetchOptions } from 'nuxt/app';
-
-export function useApiFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
+export function useApi<T>(url: string, options: any = {}) {
   let headers: any = {};
 
-  const token = useCookie('XSRF-TOKEN', {domain:'.ukrainemart.com'});
+  const token = useCookie('XSRF-TOKEN');
 
   if (token.value) {
-    // Only set the X-XSRF-TOKEN header if it doesn't exist in the headers already
-    if (!headers['X-XSRF-TOKEN']) {
-      headers['X-XSRF-TOKEN'] = token.value as string;
-    }
+    headers['X-XSRF-TOKEN'] = token.value as string;
   }
 
   if (process.server) {
@@ -19,9 +14,8 @@ export function useApiFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
     };
   }
 
-  return useFetch(url, {
+  return $fetch<T>(url, {
     credentials: 'include',
-    watch: false,
     ...options,
     headers: {
       ...headers,
