@@ -1,4 +1,4 @@
-export function useApi<T>(url: string, options: any = {}) {
+export function useApiFetch<T>(url: string, options: any = {}) {
   let headers: any = {};
 
   const token = useCookie('XSRF-TOKEN');
