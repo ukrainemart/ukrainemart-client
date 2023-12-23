@@ -23,6 +23,7 @@
     productImages: [],
     unitId: '',
     sections: {},
+    certificates: [],
   });
 
   const formData = () => {

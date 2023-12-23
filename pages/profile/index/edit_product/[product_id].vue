@@ -25,6 +25,7 @@
     productImages: [],
     unitId: '',
     sections: {},
+    certificates: [],
   } as InputsCreateProduct);
   const product = ref<Product>({} as Product);
   const productId = route.params.product_id;
@@ -108,6 +109,11 @@
     productImages.forEach((image, index) => {
       const fieldName = `product_images[${index + 1}]`;
       data.append(fieldName, image);
+    });
+
+    inputs.value.certificates.forEach((certificate, index) => {
+      const fieldName = `certificates[${index + 1}]`;
+      data.append(fieldName, certificate);
     });
 
     return data;

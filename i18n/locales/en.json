@@ -112,7 +112,9 @@
     "password_recovery": "Password recovery",
     "for_sale": "For sale",
     "buying": "Buying",
-    "verified_user": "Verified user"
+    "verified_user": "Verified user",
+    "photo": "Photo",
+    "certificates": "Certificates"
   },
   "placeholders": {
     "name": "John",
@@ -147,7 +149,8 @@
     "enter_price": "Enter the price",
     "select_price_format": "Select a price format",
     "add_new_price": "Add a new price",
-    "edit_product": "Edit a product"
+    "edit_product": "Edit a product",
+    "add_certificate": "Add a certificate"
   },
   "profile": {
     "profile": "Profile",

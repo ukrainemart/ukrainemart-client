@@ -112,7 +112,9 @@
     "password_recovery": "Відновлення паролю",
     "for_sale": "Продаю",
     "buying": "Купую",
-    "verified_user": "Верифікований користувач"
+    "verified_user": "Верифікований користувач",
+    "photo": "Фото",
+    "certificates": "Сертифікати"
   },
   "placeholders": {
     "name": "Іван",
@@ -147,7 +149,8 @@
     "enter_price": "Введіть ціну",
     "select_price_format": "Оберіть формат ціни",
     "add_new_price": "Додати нову ціну",
-    "edit_product": "Редагувати товар"
+    "edit_product": "Редагувати товар",
+    "add_certificate": "Додати сертифікат"
   },
   "profile": {
     "profile": "Профіль",

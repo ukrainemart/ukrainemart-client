@@ -173,6 +173,11 @@
         </div>
         <div class="w-full 2xl:basis-[50%] 4xl:basis-[30%]">
           <CommonAddingPhoto v-model="inputs.productImages" />
+
+          <CommonAddingCertificate
+            v-model="inputs.certificates"
+            class="mt-[29px] md:mt-[35px] xl:mt-[50px]"
+          />
         </div>
       </div>
       <UiAlertTextDanger v-if="error" class="mt-[15px] xl:mt-[20px]">{{ error }}</UiAlertTextDanger>

@@ -10,4 +10,5 @@ declare interface InputsCreateProduct {
   productImages: any[] | [],
   unitId: any;
   sections: any;
+  certificates: any[] | []
 }
