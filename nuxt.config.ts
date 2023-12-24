@@ -7,7 +7,6 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/profile/**': { ssr: false },
-    '/**': { ssr: false },
   },
   modules: [
     '@nuxt/image',
