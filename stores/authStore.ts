@@ -16,7 +16,7 @@ export const useAuthStore = defineStore('authStore', () => {
   const isGoogleUser = computed(() => !!user.value?.google_id);
   const isPassword = computed(() => !!user.value?.password_status);
 
-  const token = useCookie('XSRF-TOKEN');
+  const token = useCookie('XSRF-TOKEN', {domain: 'ukrainemart.com'});
 
   function switchTypeAuth(type: SwitchAuth) {
     typeAuth.value = type;
