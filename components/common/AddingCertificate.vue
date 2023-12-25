@@ -90,9 +90,13 @@
           </button>
         </div>
 
-        <CommonButtonInputFile class="non_draggable" @updateInput="updateInput">{{
-          $t('add_product.add_certificate')
-        }}</CommonButtonInputFile>
+        <CommonButtonInputFile
+          v-if="props.modelValue.length < 3"
+          class="non_draggable"
+          accept="application/pdf"
+          @updateInput="updateInput"
+          >{{ $t('add_product.add_certificate') }}</CommonButtonInputFile
+        >
       </div>
     </div>
   </ClientOnly>

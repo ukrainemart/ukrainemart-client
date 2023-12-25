@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  defineProps<{
+    accept?: string;
+  }>();
+
   const emits = defineEmits(['updateInput']);
 
   const updateInput = (value: any) => {
@@ -11,7 +15,7 @@
     class="non_draggable relative h-0 basis-[25%] overflow-hidden rounded-[3px] bg-status_dark_gray pt-[100%] md:rounded-[5px] xl:rounded-[10px]"
   >
     <label class="absolute left-0 top-0 z-50 h-full w-full cursor-pointer">
-      <UiInputFile class="invisible h-full w-full" @updateInput="updateInput" />
+      <UiInputFile :accept="accept" class="invisible h-full w-full" @updateInput="updateInput" />
     </label>
 
     <div

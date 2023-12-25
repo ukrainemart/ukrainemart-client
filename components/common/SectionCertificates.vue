@@ -47,7 +47,7 @@
             :key="certificate.id"
             class="!h-[275px] !w-fit overflow-hidden rounded-[5px] lg:!h-[131px]"
           >
-            <a :href="certificate.path" class="block">
+            <a target="blank" :href="certificate.path" class="block">
               <vue-pdf-embed
                 :width="widthSlide"
                 :height="heightSlide"

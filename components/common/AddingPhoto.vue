@@ -112,9 +112,13 @@
           </div>
         </template>
         <template #footer>
-          <CommonButtonInputFile class="non_draggable" @updateInput="updateInput">{{
-            $t('add_photo')
-          }}</CommonButtonInputFile>
+          <CommonButtonInputFile
+            v-if="props.modelValue.length < 10"
+            accept="image/*"
+            class="non_draggable"
+            @updateInput="updateInput"
+            >{{ $t('add_photo') }}</CommonButtonInputFile
+          >
         </template>
       </Sortable>
     </ClientOnly>
