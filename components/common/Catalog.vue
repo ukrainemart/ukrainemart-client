@@ -1,7 +1,7 @@
 <script setup lang="ts">
   const props = defineProps<{
     toggleCatalogModal: () => void;
-    closeCatalog: () => void;
+    closeCatalog?: () => void;
   }>();
 
   const router = useRouter();
@@ -59,7 +59,7 @@
     if (screenWidth.value < BREAKPOINTS_LG) {
       props.toggleCatalogModal();
     }
-    if (screenWidth.value >= BREAKPOINTS_LG) {
+    if (screenWidth.value >= BREAKPOINTS_LG && props.closeCatalog) {
       props.closeCatalog();
     }
 

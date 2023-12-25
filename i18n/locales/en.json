@@ -46,6 +46,8 @@
   "other_products_from_seller": "Other products from the seller: {name}",
   "other_products_from_category": "Other products in the category: {name}",
   "hide": "Hide",
+  "pageNotFound": "Page not found...",
+  "error404": "404",
   "password_change": {
     "old_password": "Old password",
     "new_password": "New password",
