@@ -10,6 +10,7 @@
   const loadingRequest = ref(false);
   const language = ref<Language>('ua');
   const pageData = ref();
+  const errorEn = ref(false);
 
   const emits = defineEmits(['update:inputs', 'actionSubmit']);
   const actionSubmit = async () => {
@@ -98,7 +99,7 @@
     <VForm :validation-schema="validationCreateProductForm" @submit="actionSubmit">
       <div class="flex flex-col items-start gap-[25px] md:gap-[40px] xl:gap-[100px] 2xl:flex-row">
         <div class="flex w-full max-w-[700px] flex-col 2xl:basis-[50%] 4xl:basis-[70%]">
-          <CommonLangSwitcherInputs v-model="language" />
+          <CommonLangSwitcherInputs v-model="language" :errorEn="errorEn" />
 
           <div class="mt-[15px] flex flex-col gap-[15px] md:mt-[20px] xl:mt-[26px] xl:gap-[25px]">
             <UiLabel
@@ -182,9 +183,12 @@
       </div>
       <UiAlertTextDanger v-if="error" class="mt-[15px] xl:mt-[20px]">{{ error }}</UiAlertTextDanger>
       <div class="mt-[30px] flex justify-center md:mt-[40px] xl:mt-[80px]">
-        <UiButtonPrimaryLoading :loading="loadingRequest" type="submit">{{
-          labelButtonSubmit
-        }}</UiButtonPrimaryLoading>
+        <PagesCreateProductButtonSendForm
+          v-model:errorEn="errorEn"
+          :inputs="inputs"
+          :loading="loadingRequest"
+          >{{ labelButtonSubmit }}</PagesCreateProductButtonSendForm
+        >
       </div>
     </VForm>
   </LayoutProfilePage>

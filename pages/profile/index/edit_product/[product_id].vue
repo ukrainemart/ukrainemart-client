@@ -42,6 +42,7 @@
       inputs.value.titleEn = response.title_en;
       inputs.value.titleUa = response.title_ua;
       inputs.value.productImages = response.images?.map((el: any) => el.path) || [];
+      inputs.value.certificates = response.certificates?.map((el: any) => el.path) || [];
       inputs.value.priceType = response.price_type;
       inputs.value.unitId = response.prices[0].unit_id || '';
 

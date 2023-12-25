@@ -20,5 +20,6 @@ declare interface Product {
   favorites_count: number;
   product_company: Product[];
   product_same_category: Product[];
-  product_sections: SectionProduct[]
+  product_sections: SectionProduct[];
+  certificates: Certificate[]
 }

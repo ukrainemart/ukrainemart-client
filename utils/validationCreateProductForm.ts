@@ -12,6 +12,10 @@ export const validationCreateProductForm = Yup.object().shape({
     .required('check_multilingual_fields')
     .oneOf([true], 'check_multilingual_fields'),
 
+  multiLangValid: Yup.boolean()
+    .required('check_multilingual_fields')
+    .oneOf([false], 'check_multilingual_fields'),
+
   price: Yup.boolean().required('fill_in_all_fields').oneOf([true], 'fill_in_all_fields'),
 
   productImages: Yup.boolean()

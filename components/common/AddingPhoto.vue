@@ -32,6 +32,9 @@
   };
 
   const updateInput = (value: any) => {
+    if (!useCheckImage(value)) {
+      return false;
+    }
     handleChangePhoto(value);
   };
 

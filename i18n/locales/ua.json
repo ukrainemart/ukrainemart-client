@@ -150,7 +150,7 @@
     "select_price_format": "Оберіть формат ціни",
     "add_new_price": "Додати нову ціну",
     "edit_product": "Редагувати товар",
-    "add_certificate": "Додати сертифікат"
+    "add_certificate": "Додати PDF"
   },
   "profile": {
     "profile": "Профіль",

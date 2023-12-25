@@ -5,74 +5,97 @@
     modelValue: any[];
   }>();
   const emits = defineEmits(['update:modelValue']);
+  const addedCertificate = ref<any[]>([]);
 
   function convertToBase64(file: any, callback: Function) {
     const reader = new FileReader();
 
     reader.onload = function () {
-      const base64String = reader?.result?.split(',')[1];
+      const result = reader?.result as string;
+      const base64String = result?.split(',')[1];
       callback(base64String);
     };
 
     reader.readAsDataURL(file);
   }
 
-  const updateValue = (value: any) => {
+  const renderPdf = async () => {
+    const promises = props.modelValue.map((el) => {
+      if (typeof el === 'string') {
+        return el;
+      }
+
+      return new Promise((resolve) => {
+        convertToBase64(el, (base64: string) => {
+          const src = `data:application/pdf;base64,${base64}`;
+          resolve(src);
+        });
+      });
+    });
+
+    addedCertificate.value = await Promise.all(promises);
+  };
+
+  const updateModelValue = (value: any) => {
     emits('update:modelValue', value);
   };
 
-  const addedCertificate = ref<any[]>([]);
-  const test = ref();
-
   const updateInput = (value: any) => {
-    console.log(value);
+    if (value.type !== 'application/pdf') return false;
+    if (props.modelValue.length === 3) return false;
 
-    addedCertificate.value.push(value);
-
-    // convertToBase64(value, function (base64String: any) {
-    //   const src = `data:application/pdf;base64,${base64String}`;
-    //   addedCertificate.value.push(src);
-    // });
+    updateModelValue([...props.modelValue, value]);
   };
 
-  watchDeep(addedCertificate, () => {
-    updateValue(addedCertificate.value);
-  });
+  const deleteCertificate = (index: number) => {
+    const newFilsArray: any[] = props.modelValue.filter((el: any, ind: number) => ind !== index);
+    updateModelValue(newFilsArray);
+  };
+
+  watchDeep(
+    () => props.modelValue,
+    () => {
+      renderPdf();
+    }
+  );
+
+  renderPdf();
 </script>
 
 <template>
-  <div class="">
-    <UiTextPortalPrimary class="mb-[10px] 2xl:mb-[15px]">{{
-      $t('labels.certificates')
-    }}</UiTextPortalPrimary>
+  <ClientOnly>
+    <div class="">
+      <UiTextPortalPrimary class="mb-[10px] 2xl:mb-[15px]">{{
+        $t('labels.certificates')
+      }}</UiTextPortalPrimary>
 
-    <div
-      ref="test"
-      class="relative grid w-full basis-[25%] grid-cols-4 gap-[5px] md:grid-cols-5 md:gap-[10px] 2xl:grid-cols-3"
-    >
       <div
-        v-for="(item, index) in addedCertificate"
-        :key="index"
-        class="group relative h-0 overflow-hidden rounded-[5px] pt-[100%] xl:rounded-[10px]"
+        ref="test"
+        class="relative grid w-full basis-[25%] grid-cols-4 gap-[5px] md:grid-cols-5 md:gap-[10px] 2xl:grid-cols-3"
       >
-        <div class="absolute left-0 top-0 z-10 h-full w-full">
-          <!-- <vue-pdf-embed class="block h-full w-full object-cover" :source="item" /> -->
-          <!-- <img :src="item" class="block h-full w-full object-cover" alt="" /> -->
-          <p>{{ item.name }}</p>
-        </div>
-        <button
-          type="button"
-          class="absolute left-0 top-0 z-10 flex h-full w-full items-start justify-end bg-[#0000003e] p-[8px] group-hover:visible is-hover:invisible is-hover:items-center is-hover:justify-center is-hover:!bg-[#0000005e]"
+        <div
+          v-for="(item, index) in addedCertificate"
+          :key="index"
+          class="group relative h-0 overflow-hidden rounded-[5px] pt-[100%] xl:rounded-[10px]"
         >
-          <SvgoDelete class="!h-[20%] !w-[20%] text-white" />
-        </button>
-      </div>
+          <div class="absolute left-0 top-0 z-10 h-full w-full">
+            <vue-pdf-embed class="block h-full w-full object-cover" :source="item" />
+          </div>
+          <button
+            type="button"
+            class="absolute left-0 top-0 z-10 flex h-full w-full items-start justify-end bg-[#0000003e] p-[8px] group-hover:visible is-hover:invisible is-hover:items-center is-hover:justify-center is-hover:!bg-[#0000005e]"
+            @click="deleteCertificate(index)"
+          >
+            <SvgoDelete class="!h-[20%] !w-[20%] text-white" />
+          </button>
+        </div>
 
-      <CommonButtonInputFile class="non_draggable" @updateInput="updateInput">{{
-        $t('add_product.add_certificate')
-      }}</CommonButtonInputFile>
+        <CommonButtonInputFile class="non_draggable" @updateInput="updateInput">{{
+          $t('add_product.add_certificate')
+        }}</CommonButtonInputFile>
+      </div>
     </div>
-  </div>
+  </ClientOnly>
 </template>
 
 <style scoped></style>

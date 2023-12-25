@@ -65,6 +65,11 @@
       data.append(fieldName, image);
     });
 
+    inputs.value.certificates.forEach((certificate, index) => {
+      const fieldName = `certificates[${index + 1}]`;
+      data.append(fieldName, certificate);
+    });
+
     return data;
   };
 

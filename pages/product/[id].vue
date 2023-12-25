@@ -103,6 +103,7 @@
         @switchChat="switchChat"
       />
     </div>
+    <CommonSectionCertificates :certificates="product?.certificates" />
 
     <CommonSectionProductsSlider :products="product?.product_company" class="!pt-0">
       <template #title>

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     options: SelectOption[];
     modelValue?: string;
+    error?: boolean;
   }>();
 
   const emits = defineEmits(['update:modelValue']);
@@ -13,7 +14,14 @@
 
 <template>
   <div
-    class="relative flex w-fit overflow-hidden rounded-[5px] border border-black md:rounded-[7px] xl:rounded-[10px]"
+    :class="
+      cn(
+        'relative flex w-fit overflow-hidden rounded-[5px] border border-black md:rounded-[7px] xl:rounded-[10px]',
+        {
+          '!border-status_red': error,
+        }
+      )
+    "
   >
     <span
       :class="

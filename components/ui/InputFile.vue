@@ -13,6 +13,7 @@
     file.value = file;
 
     emits('updateInput', file.value, props?.typeInput);
+    fileUpload.value.value = '';
   };
 </script>
 

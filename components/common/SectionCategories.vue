@@ -43,11 +43,6 @@
               />
             </CommonCategoryItem>
           </SwiperSlide>
-          <!-- <SwiperSlide class="!h-auto !w-fit">
-            <CommonCategoryItem title="Більше категорій" class="flex-row-reverse text-right">
-              <SvgoArrowRightSecond class="!h-full !w-full" />
-            </CommonCategoryItem>
-          </SwiperSlide> -->
         </Swiper>
       </div>
     </div>

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+  defineProps<{
+    errorEn: boolean;
+  }>();
+
   const options = [
     {
       id: 'ua',
@@ -12,7 +16,7 @@
 </script>
 
 <template>
-  <UiSwitcher :options="options" />
+  <UiSwitcher :options="options" :error="errorEn" />
 </template>
 
 <style scoped></style>
