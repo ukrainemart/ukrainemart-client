@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  useTitle('Error');
+  const { t } = useI18n();
+  useTitle('pageNotFound');
 </script>
 
 <template>
