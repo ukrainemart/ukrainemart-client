@@ -2,8 +2,8 @@ import type { UseFetchOptions } from 'nuxt/app';
 
 export function useApiFetch<T>(url: string, options: UseFetchOptions<T> = {}) {
   let headers: any = {};
-  const tokenNotCorrect = useCookie('XSRF-TOKEN', {domain: 'ukrainemart.com'});
-  tokenNotCorrect.value = null
+  const tokenNotCorrect = useCookie('XSRF-TOKEN', { domain: 'ukrainemart.com' });
+  tokenNotCorrect.value = null;
   const token = useCookie('XSRF-TOKEN');
 
   if (token.value) {
