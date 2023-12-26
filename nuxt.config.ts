@@ -28,7 +28,7 @@ export default defineNuxtConfig({
     'nuxt-simple-sitemap',
   ],
   sitemap: {
-    exclude: ['/profile/**', '/profile'],
+    exclude: ['/profile/**', '/profile', '/password', '/password/**'],
     urls: async () => {
       const baseUrl = process.env.NUXT_URL || 'https://ukrainemart.com';
       const res = await axios.get(`${baseUrl}/api/sitemap`);
