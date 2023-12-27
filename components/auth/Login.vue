@@ -62,13 +62,13 @@
         </UiLabel>
       </div>
 
-      <div class="mt-[14px] flex items-center justify-between md:mt-[20px]">
-        <UiLabel :label="$t('rememberMe')" class="!flex-row-reverse items-center justify-end">
+      <div class="mt-[14px] flex items-center justify-end md:mt-[20px]">
+        <!-- <UiLabel :label="$t('rememberMe')" class="!flex-row-reverse items-center justify-end">
           <UiCheckbox tabindex="3" />
-        </UiLabel>
+        </UiLabel> -->
         <UiButtonText
           class="!text-[7px] text-status_gray md:!text-[10px] xl:!text-[14px]"
-          tabindex="4"
+          tabindex="3"
           @click="switchTypeAuth('forgotPassword')"
         >
           {{ $t('forgotPassword') }}
@@ -80,11 +80,11 @@
         :loading="loadingRequest"
         type="submit"
         class="mt-[20px] md:mt-[25px] xl:mt-[30px]"
-        tabindex="5"
+        tabindex="4"
       >
         {{ $t('login') }}
       </UiButtonPrimaryLoading>
-      <CommonButtonGoogle type="button" tabindex="6">
+      <CommonButtonGoogle type="button" tabindex="5">
         {{ $t('logInWithGoogle') }}
       </CommonButtonGoogle>
 
@@ -96,7 +96,7 @@
         </span>
         <UiButtonText
           class="gap-[5px] !text-[7px] font-semibold md:!text-[10px] xl:!text-[14px]"
-          tabindex="7"
+          tabindex="6"
           @click="switchTypeAuth('register')"
         >
           {{ $t('signup') }}
