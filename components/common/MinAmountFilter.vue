@@ -14,12 +14,12 @@
 </script>
 
 <template>
-  <UiInputOutline
+  <input
     :value="localMinAmount"
     type="number"
-    customClass="input_outline_category"
+    class="input_outline_category"
     :placeholder="$t('category.minimum_order_placeholder')"
-    @input="localMinAmount = Number($event.target.value)"
+    @input="localMinAmount = Number(($event.target as HTMLInputElement)?.value)"
     @keyup.enter="updateMinAmount"
   />
 
