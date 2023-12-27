@@ -21,8 +21,12 @@
       .register(credentials)
       .then((res: any) => {
         loadingRequest.value = false;
-        if (res.data.value.status === 2) {
+        if (res.data.value.status === 1) {
           switchTypeAuth('successRegister');
+          return false;
+        }
+        if (res.data.value.status === 2) {
+          switchTypeAuth('messageRestorePassword');
         } else {
           error.value = t('validation_inputs.try_again');
         }
