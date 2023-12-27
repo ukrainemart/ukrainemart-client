@@ -55,7 +55,7 @@
     </UiButtonTextUnderline>
 
     <UiButtonTextUnderline
-      to="/pricing"
+      to="/subscriptions"
       class="md:hover:text-status_red md:hover:before:bg-status_red"
     >
       {{ $t('subHeader.subscriptions') }}
