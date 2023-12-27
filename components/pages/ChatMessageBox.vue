@@ -37,7 +37,7 @@
   };
 
   const onSendMessage = () => {
-    if (!props.chat || props.loading || !messageInput.value.trim()) return false;
+    if (!props.chat || props.loading || !messageInput.value.trim() || loadingSendMessage.value) return false;
     loadingSendMessage.value = true;
     useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
