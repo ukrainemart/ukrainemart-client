@@ -10,7 +10,7 @@
   <button
     :class="
       cn(
-        'flex items-center justify-between rounded-[20px] px-[15px] py-[10px] text-left duration-hover hover:bg-[#e8e8e8] md:py-[14px]',
+        'flex items-center justify-between rounded-[20px] px-[15px] py-[10px] text-left duration-hover md:py-[14px] lg:hover:bg-[#e8e8e8]',
         {
           'bg-[#e8e8e8]': active,
         }
