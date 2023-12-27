@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
@@ -23,7 +25,17 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@vee-validate/nuxt',
     '@davestewart/nuxt-scrollbar',
+    'nuxt-simple-sitemap',
   ],
+  sitemap: {
+    exclude: ['/profile/**', '/profile', '/password', '/password/**'],
+    urls: async () => {
+      const baseUrl = process.env.NUXT_URL || 'https://ukrainemart.com';
+      const res = await axios.get(`${baseUrl}/api/sitemap`);
+
+      return res.data;
+    },
+  },
   veeValidate: {
     autoImports: true,
     componentNames: {
