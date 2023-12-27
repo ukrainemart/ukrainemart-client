@@ -39,7 +39,7 @@
       </p>
       <UiImageOpening
         v-if="message.type === 'image'"
-        class="max-h-[100px] max-w-[80px]"
+        class="max-h-[100px] max-w-[80px] overflow-hidden"
         :image="message.content"
       />
       <UiButtonOpacity

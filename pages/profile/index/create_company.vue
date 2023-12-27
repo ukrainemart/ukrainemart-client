@@ -125,7 +125,7 @@
               v-model="inputs.description"
               :placeholder="$t('placeholders.description_company')"
               class="h-[125px] md:h-[159px] xl:h-[147px]"
-              :error="error && !inputs.description"
+              :error="(error && !inputs.phone) || false"
           /></UiLabel>
 
           <UiLabel

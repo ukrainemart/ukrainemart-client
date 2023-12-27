@@ -6,13 +6,14 @@
 
 <template>
   <URadio
-    class="ui_radio"
+    class="ui_radio !cursor-pointer"
     :ui="{
-      wrapper: 'items-center',
+      wrapper: 'items-center !cursor-pointer',
       border: '!border-black',
+      base: '!cursor-pointer',
       background: 'bg-transparent',
       color: '!text-transparent',
-      label: 'font-medium text-[12px] md:text-[14px]',
+      label: 'font-medium !cursor-pointer text-[12px] md:text-[14px]',
       ...ui,
     }"
   />
