@@ -8,6 +8,7 @@
 
   const error = ref('');
   const message = ref('');
+  const loading = ref(true);
 
   const inputs = ref<InputsCreateProduct>({
     titleUa: '',
@@ -33,7 +34,6 @@
   const getProductData = () => {
     useApiFetch(`${useUrlApi()}/product/show/${productId}`).then((res) => {
       const response: Product = res.data.value as Product;
-      console.log(response);
 
       inputs.value.categoryId = String(response.category_id);
       inputs.value.descriptionEn = response.description_en;
@@ -69,6 +69,7 @@
           return variatedPrice;
         });
       }
+      loading.value = false;
     });
   };
 
@@ -139,15 +140,19 @@
 </script>
 
 <template>
-  <LayoutCreateProduct
-    v-model:inputs="inputs"
-    :product="product"
-    :error="error"
-    :message="message"
-    :title="$t('add_product.edit_product')"
-    :labelButtonSubmit="$t('add_product.edit_product')"
-    @actionSubmit="onEditProduct"
-  />
+  <div>
+    <SkeletonPageInputs v-if="loading" />
+    <LayoutCreateProduct
+      v-else
+      v-model:inputs="inputs"
+      :product="product"
+      :error="error"
+      :message="message"
+      :title="$t('add_product.edit_product')"
+      :labelButtonSubmit="$t('add_product.edit_product')"
+      @actionSubmit="onEditProduct"
+    />
+  </div>
 </template>
 
 <style scoped></style>

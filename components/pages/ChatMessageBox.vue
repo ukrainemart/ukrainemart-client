@@ -10,6 +10,7 @@
 
   const messageInput = ref('');
   const scrollbar = ref();
+  const file = ref();
 
   const scrollEnd = () => {
     if (scrollbar.value) {
@@ -46,6 +47,27 @@
     });
     messageInput.value = '';
   };
+
+  const formData = () => {
+    const data = new FormData();
+    data.append('product_id', String(props?.chat?.product_id));
+    data.append('chat_id', String(props.chatType === 'for_sale' ? props?.chat?.id : false));
+    data.append('file', file.value);
+    return data;
+  };
+  const onSendFile = () => {
+    if (!props.chat || props.loading || !file.value) return false;
+
+    useApiFetch(`${useUrlApi()}/chat/message/sent`, {
+      method: 'POST',
+      body: formData(),
+    });
+    messageInput.value = '';
+  };
+
+  watchDeep(file, () => {
+    onSendFile();
+  });
 </script>
 
 <template>
@@ -142,9 +164,7 @@
             class="min-h-[75px] w-full resize-none px-[15px] py-[10px] text-[7px] focus:outline-none md:min-h-[60px] md:text-[10px] xl:min-h-[80px] xl:text-[14px]"
           />
           <div class="flex justify-between px-[15px] py-[10px]">
-            <UiButtonOpacity type="button" class="h-[16px] w-[8px] xl:h-[22px] xl:w-[11px]">
-              <SvgoPaperClip class="!h-[full] !w-full" />
-            </UiButtonOpacity>
+            <CommonChatInputFile v-model="file" />
             <UiButtonOpacitySend type="submit" />
           </div>
         </div>

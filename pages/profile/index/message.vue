@@ -51,6 +51,8 @@
       const pusherChannel = pusher.subscribe(`chat${chat.id}`);
 
       pusherChannel.bind('message', async (data: any) => {
+        console.log(data);
+
         await currentChat.value?.messages?.push(data);
         fetchChatList();
       });

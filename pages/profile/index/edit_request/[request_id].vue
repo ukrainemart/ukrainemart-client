@@ -7,6 +7,7 @@
   const route = useRoute();
   const error = ref('');
   const requestId = route.params.request_id;
+  const loading = ref(true);
 
   const inputs = ref<InputsCreateRequest>({
     title: '',
@@ -32,6 +33,8 @@
       inputs.value.count = data?.count;
       inputs.value.countType = data?.count_type;
       inputs.value.activeBefore = data?.active_before;
+
+      loading.value = false;
     });
   };
 
@@ -66,12 +69,16 @@
 </script>
 
 <template>
-  <LayoutCreateRequest
-    :inputs="inputs"
-    :error="error"
-    :title="`${$t('profile.my_requests.edit_request')}`"
-    @actionSubmit="onEditRequest"
-  />
+  <div>
+    <SkeletonPageInputs v-if="loading" />
+    <LayoutCreateRequest
+      v-else
+      :inputs="inputs"
+      :error="error"
+      :title="`${$t('profile.my_requests.edit_request')}`"
+      @actionSubmit="onEditRequest"
+    />
+  </div>
 </template>
 
 <style scoped></style>
