@@ -121,7 +121,7 @@
     "photo": "Photo",
     "certificates": "Certificates",
     "tags": "Tags",
-    "enter_tags": "Enter tags"
+    "enter_tags": "Enter keywords separated by a space"
   },
   "placeholders": {
     "name": "John",
