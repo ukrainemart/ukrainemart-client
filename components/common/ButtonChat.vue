@@ -28,7 +28,6 @@
     const pusherChannel = pusher.subscribe(`userUnreadMessages${auth.user?.id}`);
 
     pusherChannel.bind('notReadMessage', (data: any) => {
-      console.log(data);
       countNotReadMessages.value = data.countMessages;
     });
   };

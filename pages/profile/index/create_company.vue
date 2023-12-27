@@ -27,6 +27,10 @@
     type: 'exporter',
   });
 
+  watchDeep(inputs, () => {
+    console.log(inputs);
+  });
+
   const checkStatus = () => {
     useApiFetch(`${useUrlApi()}/company/request/check`).then((res: any) => {
       isCheck.value = true;
@@ -88,11 +92,18 @@
             <UiInputOutline
               v-model="inputs.name"
               :placeholder="$t('placeholders.name_company')"
+              :error="(error && !inputs.name) || false"
               required
             />
           </UiLabel>
           <UiLabel :label="$t('create_company.enter_edrpou_code') + ':'" type="text" class="">
-            <UiInputOutline v-model="inputs.code" placeholder="12345678" type="number" required />
+            <UiInputOutline
+              v-model="inputs.code"
+              placeholder="12345678"
+              type="number"
+              :error="(error && !inputs.code) || false"
+              required
+            />
           </UiLabel>
 
           <UiLabel
@@ -101,6 +112,7 @@
           >
             <CommonPhoneInputOutline
               v-model="inputs.phone"
+              :error="(error && !inputs.phone) || false"
               :placeholder="$t('placeholders.phone_number')"
             />
           </UiLabel>
@@ -113,6 +125,7 @@
               v-model="inputs.description"
               :placeholder="$t('placeholders.description_company')"
               class="h-[125px] md:h-[159px] xl:h-[147px]"
+              :error="error && !inputs.description"
           /></UiLabel>
 
           <UiLabel

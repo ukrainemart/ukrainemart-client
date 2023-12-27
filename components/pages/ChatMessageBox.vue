@@ -34,18 +34,17 @@
     emits('changeCurrentIdChat', value);
   };
 
-  const onSendMessage = async () => {
+  const onSendMessage = () => {
     if (!props.chat || props.loading || !messageInput.value.trim()) return false;
-    await useApiFetch(`${useUrlApi()}/chat/message/sent`, {
+    useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: {
         product_id: props?.chat.product_id,
         message: messageInput.value,
         chat_id: props.chatType === 'for_sale' ? props?.chat.id : false,
       },
-    }).then(() => {
-      messageInput.value = '';
     });
+    messageInput.value = '';
   };
 </script>
 

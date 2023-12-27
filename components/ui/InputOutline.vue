@@ -1,8 +1,8 @@
 <script setup lang="ts">
   defineProps<{
-    modelValue?: string;
-    customClass?: string;
+    modelValue: string;
     placeholder?: string;
+    error?: boolean;
   }>();
 
   const emits = defineEmits(['update:modelValue']);
@@ -16,7 +16,8 @@
 <template>
   <input
     :value="modelValue"
-    :class="customClass ? customClass : 'input_outline'"
+    class="input_outline"
+    :class="{ '!border-status_red': error }"
     :placeholder="placeholder ? placeholder : ''"
     @input="handleInput"
   />

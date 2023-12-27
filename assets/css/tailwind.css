@@ -69,7 +69,7 @@ input[type='number'] {
 }
 
 .input_outline_text {
-  @apply !text-[7px] font-medium text-black md:!text-[10px] xl:!text-[14px];
+  @apply !text-[12px] font-medium text-black  xl:!text-[14px];
 }
 
 .input_outline_padding {

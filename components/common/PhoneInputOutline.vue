@@ -2,6 +2,7 @@
   defineProps<{
     modelValue?: string;
     placeholder?: string;
+    error?: boolean;
   }>();
 
   const emits = defineEmits(['update:modelValue']);
@@ -13,7 +14,7 @@
 </script>
 
 <template>
-  <div class="input_outline flex items-center !p-0">
+  <div class="input_outline flex items-center !p-0" :class="{ '!border-status_red': error }">
     <UiButtonTextOpacity class="input_outline_padding h-full border-r border-black pr-[20px]"
       >+</UiButtonTextOpacity
     >
