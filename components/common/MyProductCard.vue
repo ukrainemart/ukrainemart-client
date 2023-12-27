@@ -45,7 +45,7 @@
               `${product?.prices[0]?.min_amount} ${useMultiLang(product.prices[0].unit, 'title')}`
             }}
           </span>
-          {{ product?.prices[0]?.price }}
+          <span> {{ product?.prices[0]?.price }}<CommonCurrency /> </span>
         </div>
 
         <ul
@@ -65,7 +65,7 @@
                 )}`
               }}
             </span>
-            {{ price?.price }}
+            <span> {{ price?.price }}<CommonCurrency /> </span>
           </li>
         </ul>
       </div>
