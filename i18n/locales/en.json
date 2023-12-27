@@ -119,7 +119,9 @@
     "buying": "Buying",
     "verified_user": "Verified user",
     "photo": "Photo",
-    "certificates": "Certificates"
+    "certificates": "Certificates",
+    "tags": "Tags",
+    "enter_tags": "Enter tags"
   },
   "placeholders": {
     "name": "John",

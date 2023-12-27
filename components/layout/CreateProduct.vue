@@ -109,6 +109,7 @@
               <UiInputOutlineValidate
                 v-model="inputs.titleUa"
                 :placeholder="$t('placeholders.title_ua_product')"
+                :validateOnValueUpdate="false"
                 name="titleUa"
               />
             </UiLabel>
@@ -118,6 +119,7 @@
             >
               <UiInputOutlineValidate
                 v-model="inputs.titleEn"
+                :validateOnValueUpdate="false"
                 :placeholder="$t('placeholders.title_en_product')"
                 name="titleEn"
               />
@@ -127,6 +129,7 @@
                 v-model="inputs.categoryId"
                 :placeholder="$t('placeholders.category')"
                 name="categoryId"
+                :validateOnValueUpdate="false"
                 :options="categoryOptions"
                 :currentValue="getCurrentCategory.title"
                 value-attribute="id"
@@ -139,6 +142,7 @@
             >
               <UiTextareaOutlineValidate
                 v-model="inputs.descriptionUa"
+                :validateOnValueUpdate="false"
                 :placeholder="$t('placeholders.description_ua_product')"
                 name="descriptionUa"
                 required
@@ -151,6 +155,7 @@
             >
               <UiTextareaOutlineValidate
                 v-model="inputs.descriptionEn"
+                :validateOnValueUpdate="false"
                 :placeholder="$t('placeholders.description_en_product')"
                 name="descriptionEn"
                 required
@@ -171,6 +176,13 @@
             v-model:priceType="inputs.priceType"
             :currentUnitId="currentUnitId"
           />
+          <UiLabel class="mt-[15px] xl:mt-[25px]" :label="$t('labels.tags') + ':'">
+            <UiTextareaOutline
+              v-model="inputs.tags"
+              :placeholder="$t('labels.enter_tags')"
+              class="min-h-[120px] md:min-h-[179px]"
+            />
+          </UiLabel>
         </div>
         <div class="w-full 2xl:basis-[50%] 4xl:basis-[30%]">
           <CommonAddingPhoto v-model="inputs.productImages" />

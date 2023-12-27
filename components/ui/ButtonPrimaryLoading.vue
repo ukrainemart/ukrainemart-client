@@ -19,7 +19,7 @@
     <UiSpinner
       v-if="loading"
       role="status"
-      class="absolute py-[5px]"
+      class="!absolute py-[5px]"
       classSvg="fill-white text-gray-600 group-hover:fill-black group-hover:text-gray-300"
     />
   </UiButtonPrimary>

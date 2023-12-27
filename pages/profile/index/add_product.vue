@@ -24,6 +24,7 @@
     unitId: '',
     sections: {},
     certificates: [],
+    tags: '',
   });
 
   const formData = () => {
@@ -34,6 +35,7 @@
     data.append('description_en', inputs.value.descriptionEn);
     data.append('category_id', `${inputs.value.categoryId}`);
     data.append('price_type', inputs.value.priceType);
+    data.append('tags', inputs.value.tags);
     if (inputs.value.priceType === 'fixed' && inputs.value.fixedPrice) {
       data.append('amount', inputs.value.fixedPrice.amount);
       data.append('price', inputs.value.fixedPrice.price);

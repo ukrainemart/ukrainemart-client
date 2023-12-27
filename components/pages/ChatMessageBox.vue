@@ -22,7 +22,7 @@
     }
   };
 
-  watchDeep([() => props.chat, () => props.loading], () => {
+  watchDeep([() => props.chat, () => props.loading, file], () => {
     scrollEnd();
   });
 

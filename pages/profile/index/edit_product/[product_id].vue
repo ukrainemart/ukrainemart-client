@@ -27,7 +27,8 @@
     unitId: '',
     sections: {},
     certificates: [],
-  } as InputsCreateProduct);
+    tags: '',
+  });
   const product = ref<Product>({} as Product);
   const productId = route.params.product_id;
 
@@ -39,6 +40,7 @@
       inputs.value.descriptionEn = response.description_en;
       inputs.value.descriptionUa = response.description_ua;
       inputs.value.descriptionEn = response.description_en;
+      inputs.value.tags = response?.tags;
       inputs.value.titleEn = response.title_en;
       inputs.value.titleUa = response.title_ua;
       inputs.value.productImages = response.images?.map((el: any) => el.path) || [];
@@ -81,6 +83,7 @@
     data.append('description_en', inputs.value.descriptionEn);
     data.append('category_id', `${inputs.value.categoryId}`);
     data.append('price_type', inputs.value.priceType);
+    data.append('tags', inputs.value.tags);
     if (inputs.value.priceType === 'fixed' && inputs.value.fixedPrice) {
       data.append('amount', inputs.value.fixedPrice.amount);
       data.append('price', inputs.value.fixedPrice.price);

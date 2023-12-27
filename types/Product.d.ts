@@ -22,4 +22,5 @@ declare interface Product {
   product_same_category: Product[];
   product_sections: SectionProduct[];
   certificates: Certificate[]
+  tags: string;
 }

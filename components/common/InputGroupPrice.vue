@@ -97,7 +97,12 @@
 
     <UiLabel for="" :label="$t('add_product.select_price_format') + ':'">
       <div class="flex items-center gap-[10px] md:gap-[15px] xl:gap-[20px]">
-        <CommonSelectPriceVariant v-model="type" name="priceType" :selected="priceType" />
+        <CommonSelectPriceVariant
+          v-model="type"
+          name="priceType"
+          :validateOnValueUpdate="false"
+          :selected="priceType"
+        />
         <UiButtonOpacityAdding
           v-if="priceType === 'variated' && props.variatedPrices.length < 5"
           type="button"

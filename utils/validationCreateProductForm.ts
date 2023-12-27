@@ -5,7 +5,7 @@ export const validationCreateProductForm = Yup.object().shape({
   titleEn: Yup.string().required('validation_inputs.required'),
   descriptionUa: Yup.string().required('validation_inputs.required'),
   descriptionEn: Yup.string().required('validation_inputs.required'),
-  categoryId: Yup.number().required('validation_inputs.required'),
+  categoryId: Yup.number('validation_inputs.required').required('validation_inputs.required'),
   priceType: Yup.string().required('validation_create_product.there_must_be_at_least_1_price'),
 
   section: Yup.boolean()

@@ -119,7 +119,9 @@
     "buying": "Купую",
     "verified_user": "Верифікований користувач",
     "photo": "Фото",
-    "certificates": "Сертифікати"
+    "certificates": "Сертифікати",
+    "tags": "Теги",
+    "enter_tags": "Введіть теги"
   },
   "placeholders": {
     "name": "Іван",

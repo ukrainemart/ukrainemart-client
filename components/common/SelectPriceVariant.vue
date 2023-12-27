@@ -7,14 +7,17 @@
 
   const value = ref<PriceProduct['type']>('');
 
-  watchDeep(
-    () => props.selected,
-    () => {
-      console.log(props.modelValue);
+  const getStartValue = () => {
+    value.value = props.selected;
+  };
 
-      value.value = props.selected;
+  watchDeep(
+    () => props.modelValue,
+    () => {
+      getStartValue();
     }
   );
+  getStartValue();
 
   const emits = defineEmits(['update:modelValue']);
 
@@ -55,6 +58,7 @@
   <UiSelectOutlineValidate
     v-model="value"
     :name="name"
+    :message="false"
     :placeholder="$t('placeholders.price_type_product')"
     :currentValue="selectedTitle"
     :options="variants"

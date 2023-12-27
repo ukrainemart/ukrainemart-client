@@ -64,7 +64,7 @@
       checkValidation();
     }
   );
-
+  checkValidation();
   const onMove = (evt: any) => {
     if (evt.related.className.includes('non_draggable')) {
       return false;
