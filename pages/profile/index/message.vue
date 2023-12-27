@@ -6,7 +6,7 @@
   const router = useRouter();
   const isExporter = computed(() => auth.isExporter);
   const chatSwitch = ref<'for_sale' | 'buying'>('buying');
-  const business = useCookie<'for_sale' | 'buying'>('business');
+  const business = useCookie<'for_sale' | 'buying' | ''>('business');
 
   const buyChats = ref<Chat[]>([]);
   const sellChats = ref<Chat[]>([]);
