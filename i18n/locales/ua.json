@@ -93,7 +93,6 @@
   "the_link_not_active": "Посилання не активне!",
   "user_already_exists": "Користувач уже існує!",
   "file": "Файл",
-
   "labels": {
     "title": "Заголовок",
     "enter_title_your_request": "Введіть заголовок вашого запиту",
@@ -219,6 +218,7 @@
   },
   "subHeader": {
     "requests": "Запити",
+    "subscriptions": "Підписки",
     "for_users": "Для користувачів"
   },
   "search": {

@@ -93,7 +93,6 @@
   "the_link_not_active": "The link is not active!",
   "user_already_exists": "User already exists!",
   "file": "File",
-
   "labels": {
     "title": "Title",
     "enter_title_your_request": "Enter the title of your request",
@@ -219,6 +218,7 @@
   },
   "subHeader": {
     "requests": "Requests",
+    "subscriptions": "Subscriptions",
     "for_users": "For users"
   },
   "search": {
