@@ -17,6 +17,12 @@ export const useAuthStore = defineStore('authStore', () => {
   const isPassword = computed(() => !!user.value?.password_status);
 
   const token = useCookie('XSRF-TOKEN', { domain: 'ukrainemart.com' });
+  const business = useCookie('business');
+
+  const clearCookies = () => {
+    business.value = null;
+    token.value = null;
+  };
 
   function switchTypeAuth(type: SwitchAuth) {
     typeAuth.value = type;
@@ -35,7 +41,7 @@ export const useAuthStore = defineStore('authStore', () => {
     await useApiFetch(`${useUrlApi()}/logout`, {
       method: 'POST',
     }).then(() => {
-      token.value = null;
+      clearCookies();
       navigateTo('/');
       user.value = null;
     });

@@ -11,6 +11,7 @@
   const messageInput = ref('');
   const scrollbar = ref();
   const file = ref();
+  const loadingSendMessage = ref(false);
 
   const scrollEnd = () => {
     if (scrollbar.value) {
@@ -37,6 +38,7 @@
 
   const onSendMessage = () => {
     if (!props.chat || props.loading || !messageInput.value.trim()) return false;
+    loadingSendMessage.value = true;
     useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: {
@@ -44,6 +46,8 @@
         message: messageInput.value,
         chat_id: props.chatType === 'for_sale' ? props?.chat.id : false,
       },
+    }).then(() => {
+      loadingSendMessage.value = false;
     });
     messageInput.value = '';
   };
@@ -57,10 +61,12 @@
   };
   const onSendFile = () => {
     if (!props.chat || props.loading || !file.value) return false;
-
+    loadingSendMessage.value = true;
     useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: formData(),
+    }).then(() => {
+      loadingSendMessage.value = false;
     });
     messageInput.value = '';
   };
@@ -147,11 +153,11 @@
             v-for="message in chat?.messages"
             v-if="!loading"
             :key="message?.id"
+            :message="message"
             :user="
               chatType === 'buying' ? message.user_id === userId : message.company_id === companyId
             "
-            >{{ message.content }}</PagesChatMessageItem
-          >
+          />
         </div>
       </NuxtScrollbar>
       <form action="#" @submit.prevent="onSendMessage">
@@ -165,7 +171,7 @@
           />
           <div class="flex justify-between px-[15px] py-[10px]">
             <CommonChatInputFile v-model="file" />
-            <UiButtonOpacitySend type="submit" />
+            <UiButtonOpacitySend :loading="loadingSendMessage" type="submit" />
           </div>
         </div>
       </form>

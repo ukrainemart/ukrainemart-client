@@ -7,21 +7,34 @@
     styles?: string;
     class?: string;
     message?: boolean;
+    validateOnValueUpdate?: boolean;
     placeholder?: string;
   }
   const props = withDefaults(defineProps<Props>(), {
     message: true,
     placeholder: '',
+    validateOnValueUpdate: true,
   });
 
-  const { value, errorMessage } = useField(() => props.name);
+  const { value, errorMessage } = useField(
+    () => props.name,
+    {},
+    {
+      validateOnValueUpdate: props.validateOnValueUpdate,
+    }
+  );
+
+  const getStartValue = () => {
+    value.value = props.modelValue;
+  };
 
   watchDeep(
     () => props.modelValue,
     () => {
-      value.value = props.modelValue;
+      getStartValue();
     }
   );
+  getStartValue();
 
   const getClasses = computed(() => {
     return `${props.class} ' ' ${props.styles} ' ' ${
@@ -50,7 +63,7 @@
     <UiAlertInputError
       v-if="message"
       class="absolute left-0 top-full mt-[5px] normal-case"
-      :error="errorMessage"
+      :error="errorMessage || ''"
     />
   </div>
 </template>

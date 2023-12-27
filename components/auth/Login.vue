@@ -50,7 +50,12 @@
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
         <UiLabel :label="`${$t('email')}:`" type="text" class="!text-status_gray">
-          <UiInputOutlineValidate v-model="credentials.email" name="email" tabindex="1" />
+          <UiInputOutlineValidate
+            v-model="credentials.email"
+            :validateOnValueUpdate="false"
+            name="email"
+            tabindex="1"
+          />
         </UiLabel>
         <UiLabel for="" :label="`${$t('password')}:`" class="!text-status_gray">
           <UiInputOutlinePassword

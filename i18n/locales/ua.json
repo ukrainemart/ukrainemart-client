@@ -91,6 +91,9 @@
   "fill_in_all_fields": "Заповніть усі поля!",
   "check_multilingual_fields": "Заповніть усі поля! Перевірте різномовні поля!",
   "the_link_not_active": "Посилання не активне!",
+  "user_already_exists": "Користувач уже існує!",
+  "file": "Файл",
+
   "labels": {
     "title": "Заголовок",
     "enter_title_your_request": "Введіть заголовок вашого запиту",

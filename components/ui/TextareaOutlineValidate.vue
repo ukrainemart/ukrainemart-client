@@ -14,12 +14,17 @@
 
   const { value, errorMessage } = useField(() => props.name);
 
+  const getStartValue = () => {
+    value.value = props.modelValue;
+  };
+
   watchDeep(
     () => props.modelValue,
     () => {
-      value.value = props.modelValue;
+      getStartValue();
     }
   );
+  getStartValue();
 
   const getClasses = computed(() => {
     return `${props.class} ${errorMessage.value ? '!border-status_red' : ''}`;
@@ -43,7 +48,7 @@
     <UiAlertInputError
       v-if="message"
       class="absolute left-0 top-full mt-[5px] normal-case"
-      :error="errorMessage"
+      :error="errorMessage || ''"
     />
   </div>
 </template>

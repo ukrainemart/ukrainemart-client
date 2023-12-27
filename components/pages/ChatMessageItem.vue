@@ -1,6 +1,7 @@
 <script setup lang="ts">
   defineProps<{
     user?: boolean;
+    message: MessageChat;
   }>();
 </script>
 
@@ -24,6 +25,7 @@
         "
       />
       <p
+        v-if="message.type === 'text'"
         :class="
           cn(
             'relative z-40 break-words  text-left text-[7px] font-medium text-white md:text-[10px] xl:text-[14px]',
@@ -33,8 +35,27 @@
           )
         "
       >
-        <slot />
+        {{ message.content }}
       </p>
+      <UiImageOpening
+        v-if="message.type === 'image'"
+        class="max-h-[100px] max-w-[80px]"
+        :image="message.content"
+      />
+      <NuxtLink
+        v-if="message.type === 'file'"
+        target="blank"
+        :class="
+          cn(
+            'relative z-40 break-words text-left text-[7px] font-medium text-white hover:underline md:text-[10px] xl:text-[14px]',
+            {
+              '!text-black': user,
+            }
+          )
+        "
+        :to="message.content"
+        >{{ $t('file') }}</NuxtLink
+      >
     </div>
   </div>
 </template>

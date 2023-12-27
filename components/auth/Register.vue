@@ -27,6 +27,11 @@
         }
         if (res.data.value.status === 2) {
           switchTypeAuth('messageRestorePassword');
+          return false;
+        }
+
+        if (res.data.value.status === 3) {
+          error.value = t('user_already_exists');
         } else {
           error.value = t('validation_inputs.try_again');
         }
@@ -57,11 +62,23 @@
     <div class="flex flex-col">
       <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
         <UiLabel :label="`${$t('name')}:`" type="text" class="!text-status_gray">
-          <UiInputOutlineValidate v-model="credentials.name" name="name" tabindex="1" required />
+          <UiInputOutlineValidate
+            v-model="credentials.name"
+            :validateOnValueUpdate="false"
+            name="name"
+            tabindex="1"
+            required
+          />
         </UiLabel>
 
         <UiLabel :label="`${$t('email')}:`" type="email" class="!text-status_gray">
-          <UiInputOutlineValidate v-model="credentials.email" name="email" tabindex="2" required />
+          <UiInputOutlineValidate
+            v-model="credentials.email"
+            :validateOnValueUpdate="false"
+            name="email"
+            tabindex="2"
+            required
+          />
         </UiLabel>
 
         <UiLabel for="" :label="`${$t('password')}:`" class="!text-status_gray">
