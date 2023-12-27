@@ -60,10 +60,6 @@
     >
       {{ $t('subHeader.subscriptions') }}
     </UiButtonTextUnderline>
-
-    <UiButtonTextIconArrowDown>
-      {{ $t('subHeader.for_users') }}
-    </UiButtonTextIconArrowDown>
   </div>
 </template>
 
