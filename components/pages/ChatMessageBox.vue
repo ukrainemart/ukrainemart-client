@@ -2,7 +2,6 @@
   const props = defineProps<{
     chat?: Chat | null;
     loading: boolean;
-    chatType: 'for_sale' | 'buying';
   }>();
   const auth = useAuthStore();
   const userId = computed(() => auth.user?.id);
@@ -43,9 +42,9 @@
     useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: {
-        product_id: props?.chat.product_id,
+        product_id: props?.chat?.product_id,
         message: messageInput.value,
-        chat_id: props.chatType === 'for_sale' ? props?.chat.id : false,
+        chat_id: props?.chat?.id,
       },
     }).then(() => {
       loadingSendMessage.value = false;
@@ -55,8 +54,8 @@
 
   const formData = () => {
     const data = new FormData();
-    data.append('product_id', String(props?.chat?.product_id));
-    data.append('chat_id', String(props.chatType === 'for_sale' ? props?.chat?.id : false));
+    // data.append('product_id', String(props?.chat?.product_id));
+    data.append('chat_id', String(props?.chat?.id));
     data.append('file', file.value);
     return data;
   };
@@ -72,6 +71,10 @@
     messageInput.value = '';
   };
 
+  const titleChat = computed(
+    () => props.chat?.companion[0]?.company?.title || props.chat?.companion[0]?.name
+  );
+
   watchDeep(file, () => {
     onSendFile();
   });
@@ -83,18 +86,13 @@
       <div
         class="flex items-center justify-between px-[15px] pb-[15px] md:px-[25px] xl:px-[30px] xl:pb-[20px] 3xl:px-[35px]"
       >
-        <img
-          v-if="!loading"
-          class="h-[34px] w-[34px] shrink-0 rounded-[50%] object-cover md:h-[43px] md:w-[43px] xl:h-[50px] xl:w-[50px]"
-          :src="chat?.product?.main_image?.path"
-          alt=""
-        />
+        <UiIconCircleLetter v-if="titleChat" class="shrink-0" :letter="titleChat[0]" />
         <div v-if="!loading" class="ml-[8px] mr-[20px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">
           <nuxtLink
             :to="'/product/' + chat?.product_id"
             class="inline-block w-full truncate text-[14px] font-medium text-black md:text-[16px]"
           >
-            {{ useMultiLang(chat?.product, 'title') }}
+            {{ titleChat }}
           </nuxtLink>
           <!-- <h2
             class="mt-[5px] inline-block w-full truncate text-[7px] font-medium text-[#B6B6B6] md:text-[12px]"
@@ -155,9 +153,7 @@
             v-if="!loading"
             :key="message?.id"
             :message="message"
-            :user="
-              chatType === 'buying' ? message.user_id === userId : message.company_id === companyId
-            "
+            :user="message.user_id === userId"
           />
         </div>
       </NuxtScrollbar>

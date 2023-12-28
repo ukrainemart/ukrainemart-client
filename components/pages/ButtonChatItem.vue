@@ -1,9 +1,12 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     chat: Chat;
     active: boolean;
-    chatType: 'for_sale' | 'buying';
   }>();
+
+  const titleChat = computed(
+    () => props.chat?.companion[0]?.company?.title || props.chat?.companion[0]?.name
+  );
 </script>
 
 <template>
@@ -17,21 +20,17 @@
       )
     "
   >
-    <img
-      class="h-[34px] w-[34px] shrink-0 rounded-[50%] object-cover md:h-[43px] md:w-[43px] xl:h-[50px] xl:w-[50px]"
-      :src="chat?.product?.main_image?.path"
-      alt=""
-    />
+    <UiIconCircleLetter class="shrink-0" :letter="titleChat[0]" />
     <div class="ml-[8px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">
       <h2
         class="inline-block w-full truncate text-[14px] font-medium leading-[120%] text-black md:text-[16px]"
       >
-        {{ useMultiLang(chat?.product, 'title') }}
+        {{ titleChat }}
       </h2>
       <h2
         class="mt-[5px] inline-block w-full truncate text-[14px] font-medium leading-[120%] text-[#B6B6B6] md:text-[16px]"
       >
-        {{ chatType === 'buying' ? chat?.company?.title : chat.user.name }}
+        {{ chat?.last_message?.content }}
       </h2>
     </div>
     <span

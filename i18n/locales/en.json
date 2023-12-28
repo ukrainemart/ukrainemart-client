@@ -191,7 +191,7 @@
     "have__experience_export_import": "Do you have any experience in export/import?",
     "your_application_moderated": "Your application is being moderated"
   },
-  "password_length_min": "Password must be at least 8 characters long",
+  "password_length_min": "Password must be at least 6 characters long",
   "password_length_max": "Password must not exceed 22 characters",
   "password_match": "Password confirmation does not match",
   "password_required": "Password is required",

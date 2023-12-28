@@ -7,5 +7,6 @@ declare interface MessageChat {
   is_read: number;
   updated_at: string;
   user_id: number;
-  type: 'text' | 'file' | 'image';
+  product?: Product;
+  type: 'text' | 'file' | 'image' | 'product';
 }

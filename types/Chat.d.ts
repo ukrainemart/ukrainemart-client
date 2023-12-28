@@ -7,8 +7,9 @@ declare interface Chat {
   updated_at: Category;
   company: Company;
   user: User;
-  last_message: string | null;
+  last_message: MessageChat;
   product: Product;
   not_readable_messages_count: number;
   messages: MessageChat[];
+  companion: User[];
 }

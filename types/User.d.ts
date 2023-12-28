@@ -13,4 +13,7 @@ declare interface User {
   password_status: boolean;
   notReadMessages: number
   company: Company;
+  skype: string;
+  whatsapp: string;
+  telegram: string;
 }

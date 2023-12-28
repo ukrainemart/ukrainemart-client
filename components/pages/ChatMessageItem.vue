@@ -24,6 +24,11 @@
           })
         "
       />
+      <CommonCardProduct
+        v-if="message.type === 'product' && message.product"
+        class="h-auto w-full max-w-[300px]"
+        :product="message.product"
+      />
       <p
         v-if="message.type === 'text'"
         :class="

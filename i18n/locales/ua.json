@@ -191,7 +191,7 @@
     "have__experience_export_import": "Чи мали ви досвід у експорті/імпорті?",
     "your_application_moderated": "Ваша заявка знаходиться на модерації"
   },
-  "password_length_min": "Пароль повинен містити щонайменше 8 символів",
+  "password_length_min": "Пароль повинен містити щонайменше 6 символів",
   "password_length_max": "Пароль не повинен перевищувати 22 символи",
   "password_match": "Підтвердження паролю не співпадає",
   "password_required": "Пароль обов'язковий",

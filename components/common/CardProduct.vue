@@ -10,6 +10,8 @@
     maxAmount?: number;
   };
 
+  const auth = useAuthStore();
+  const user = computed(() => auth.user);
   const savedPrices = computed(() => {
     if (props.product && props.product.price_type === 'variated') {
       return props.product.prices.reduce((acc: SavedPrices, price, i) => {
@@ -43,8 +45,10 @@
         :alt="useMultiLang(product, 'title')"
       />
     </div>
-
-    <CommonButtonFavoriteCardProduct :product="product" />
+    <CommonButtonFavoriteCardProduct
+      v-if="product.company_id !== user?.company?.id"
+      :product="product"
+    />
 
     <h5
       class="mb-[5px] truncate text-[13px] font-medium leading-[15px] md:text-[16px] md:leading-[20px] 4xl:mb-2.5 4xl:text-[20px] 4xl:leading-[24px]"

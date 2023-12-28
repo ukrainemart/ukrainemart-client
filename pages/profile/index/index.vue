@@ -42,6 +42,9 @@
     inputs.value.companyTitle = user.value?.company?.title || '';
     inputs.value.companyDescription = user.value?.company?.description || '';
     inputs.value.companyCategory = String(user.value?.company?.category_id) || '';
+    inputs.value.whatsApp = user.value?.whatsapp || '';
+    inputs.value.telegram = user.value?.telegram || '';
+    inputs.value.skype = user.value?.skype || '';
 
     if (!isCompany.value) return false;
 
@@ -58,6 +61,9 @@
       last_name: inputs.value.lastName,
       phone: inputs.value.phone,
       email: inputs.value.email,
+      whatsapp: inputs.value.whatsApp,
+      telegram: inputs.value.telegram,
+      skype: inputs.value.skype,
     };
 
     if (isCompany.value) {
