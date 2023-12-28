@@ -15,6 +15,9 @@
     companyTitle: '',
     companyCategory: '',
     companyDescription: '',
+    whatsApp: '',
+    telegram: '',
+    skype: '',
   });
 
   const categories = ref<Category[]>([]);
@@ -135,6 +138,15 @@
             v-model="inputs.phone"
             :placeholder="$t('placeholders.phone_number')"
           />
+        </UiLabel>
+        <UiLabel :label="$t('WhatsApp') + ':'" class="col-span-2 sm:col-span-1">
+          <UiInputOutline v-model="inputs.whatsApp" />
+        </UiLabel>
+        <UiLabel :label="$t('Telegram') + ':'" class="col-span-2 sm:col-span-1">
+          <UiInputOutline v-model="inputs.telegram" />
+        </UiLabel>
+        <UiLabel :label="$t('Skype') + ':'" class="col-span-2 sm:col-span-1">
+          <UiInputOutline v-model="inputs.skype" />
         </UiLabel>
         <UiAlertTextSuccess v-if="messageUserData" class="col-span-2">
           {{ messageUserData }}

@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 export const validationRegister = Yup.object().shape({
   name: Yup.string().required('validation_inputs.required'),
   email: Yup.string().required('validation_inputs.required'),
+  phone: Yup.string().required('validation_inputs.required'),
   password: Yup.string()
     .required('password_required')
     .trim()

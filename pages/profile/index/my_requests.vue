@@ -1,8 +1,5 @@
 <script setup lang="ts">
   useTitle('profile.my_requests.my_requests');
-  definePageMeta({
-    middleware: ['importer', 'company'],
-  });
   const loading = ref(true);
   const NUM_SKELETON_ITEMS = 6;
 

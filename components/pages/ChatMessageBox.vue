@@ -37,7 +37,8 @@
   };
 
   const onSendMessage = () => {
-    if (!props.chat || props.loading || !messageInput.value.trim() || loadingSendMessage.value) return false;
+    if (!props.chat || props.loading || !messageInput.value.trim() || loadingSendMessage.value)
+      return false;
     loadingSendMessage.value = true;
     useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
@@ -60,7 +61,7 @@
     return data;
   };
   const onSendFile = () => {
-    if (!props.chat || props.loading || !file.value) return false;
+    if (!props.chat || props.loading || !file.value || loadingSendMessage.value) return false;
     loadingSendMessage.value = true;
     useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',

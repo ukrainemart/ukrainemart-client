@@ -1,8 +1,5 @@
 <script setup lang="ts">
   useTitle('profile.my_requests.add_request');
-  definePageMeta({
-    middleware: ['importer'],
-  });
   const { t } = useI18n();
   const error = ref('');
 

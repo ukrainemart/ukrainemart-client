@@ -1,6 +1,7 @@
 <script setup lang="ts">
   const route = useRoute();
   const router = useRouter();
+  const auth = useAuthStore();
 
   const requests = ref<RequestImporter[]>([]);
   const pages = ref<any[]>([]);
@@ -46,6 +47,14 @@
     router.push({ query });
   };
 
+  const onClickAddRequest = () => {
+    if (!isLoggedIn()) {
+      auth.switchAuthModal(true);
+      return false;
+    }
+    navigateTo('/profile/add_request');
+  };
+
   watchDeep([page, filters], () => {
     updateUrl();
     fetchRequests();
@@ -60,7 +69,12 @@
     <CommonBreadcrumbs :static="$t('subHeader.requests')" />
 
     <div class="container">
-      <CommonTitleSection>{{ $t('subHeader.requests') }}</CommonTitleSection>
+      <div class="flex items-center justify-between">
+        <CommonTitleSection>{{ $t('subHeader.requests') }}</CommonTitleSection>
+        <UiButtonPrimary @click="onClickAddRequest">{{
+          $t('profile.my_requests.add_request')
+        }}</UiButtonPrimary>
+      </div>
 
       <PagesRequestsFilters v-model:filtersActive="filters" class="mt-[15px]" />
 

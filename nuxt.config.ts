@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       url: process.env.NUXT_URL,
+      domain: process.env.DOMAIN,
     },
   },
   routeRules: {
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
   sitemap: {
     exclude: ['/profile/**', '/profile', '/password', '/password/**'],
     urls: async () => {
-      const baseUrl = process.env.NUXT_URL || 'https://ukrainemart.com';
+      const baseUrl = process.env.NUXT_URL || process.env.DOMAIN;
       const res = await axios.get(`${baseUrl}/api/sitemap`);
 
       return res.data;

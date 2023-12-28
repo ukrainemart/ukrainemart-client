@@ -40,6 +40,7 @@
           <UiLabel :label="`${$t('labels.title')}`">
             <UiInputOutlineValidate
               v-model="inputs.title"
+              :validateOnValueUpdate="false"
               name="title"
               :placeholder="`${$t('labels.enter_title_your_request')}`"
             />
@@ -48,12 +49,14 @@
             <PagesCreateRequestSelectCategory
               v-model="inputs.categoryId"
               name="categoryId"
+              :validateOnValueUpdate="false"
               :categories="pageData?.categories"
             />
           </UiLabel>
           <UiLabel :label="`${$t('labels.enter_description')}`">
             <UiTextareaOutlineValidate
               v-model="inputs.description"
+              :validateOnValueUpdate="false"
               name="description"
               :placeholder="`${$t('labels.enter_description')}`"
               class="min-h-[120px] md:min-h-[179px]"
@@ -64,6 +67,7 @@
           <UiLabel for="" class="relative z-[60]" :label="`${$t('labels.country')}`">
             <PagesCreateRequestSelectCountry
               v-model="inputs.country"
+              :validateOnValueUpdate="false"
               name="country"
               :countries="pageData?.countries"
             />
@@ -112,6 +116,7 @@
                 v-model="inputs.count"
                 name="count"
                 :message="false"
+                :validateOnValueUpdate="false"
                 type="number"
                 :placeholder="`20`"
               />
@@ -123,6 +128,7 @@
             >
               <PagesCreateRequestSelectUnit
                 v-model="inputs.countType"
+                :validateOnValueUpdate="false"
                 name="countType"
                 :units="pageData?.units"
               />

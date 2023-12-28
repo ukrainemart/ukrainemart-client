@@ -7,6 +7,7 @@
     email: '',
     password: '',
     c_password: '',
+    phone: '',
   });
 
   const error = ref('');
@@ -60,10 +61,11 @@
 
   <VForm action="#" :validation-schema="validationRegister" @submit="register">
     <div class="flex flex-col">
-      <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
-        <UiLabel :label="`${$t('name')}:`" type="text" class="!text-status_gray">
+      <div class="flex flex-col gap-[13px] md:gap-[15px] xl:gap-[20px]">
+        <UiLabel :label="`${$t('name')}:`" class="!text-status_gray">
           <UiInputOutlineValidate
             v-model="credentials.name"
+            type="text"
             :validateOnValueUpdate="false"
             name="name"
             tabindex="1"
@@ -71,11 +73,22 @@
           />
         </UiLabel>
 
-        <UiLabel :label="`${$t('email')}:`" type="email" class="!text-status_gray">
+        <UiLabel :label="`${$t('email')}:`" class="!text-status_gray">
           <UiInputOutlineValidate
             v-model="credentials.email"
+            type="email"
             :validateOnValueUpdate="false"
             name="email"
+            tabindex="2"
+            required
+          />
+        </UiLabel>
+        <UiLabel :label="`${$t('phone_number')}:`" class="!text-status_gray">
+          <UiInputOutlineValidate
+            v-model="credentials.phone"
+            type="number"
+            :validateOnValueUpdate="false"
+            name="phone"
             tabindex="2"
             required
           />

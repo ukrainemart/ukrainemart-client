@@ -48,7 +48,7 @@
   </UiTitleNamu>
   <VForm :validation-schema="validationLogin" action="#" @submit="login">
     <div class="flex flex-col">
-      <div class="flex flex-col gap-[10px] md:gap-[12px] xl:gap-[15px]">
+      <div class="flex flex-col gap-[13px] md:gap-[15px] xl:gap-[20px]">
         <UiLabel :label="`${$t('email')}:`" type="text" class="!text-status_gray">
           <UiInputOutlineValidate
             v-model="credentials.email"

@@ -6,11 +6,13 @@
 
 <template>
   <div class="mb-[70px] md:mb-0">
-    <CommonProductTitle
-      styles="mb-[20px] md:mb-[30px] 2xl:mb-[50px] text-[17px] md:text-[24px] 2xl:text-[30px]"
-    >
-      {{ request?.title }}
-    </CommonProductTitle>
+    <div>
+      <CommonProductTitle
+        styles="mb-[20px] md:mb-[30px] 2xl:mb-[50px] text-[17px] md:text-[24px] 2xl:text-[30px]"
+      >
+        {{ request?.title }}
+      </CommonProductTitle>
+    </div>
 
     <ul class="mb-[15px] flex flex-col gap-2.5 md:mb-[28px] md:gap-[12px] 2xl:gap-5">
       <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">

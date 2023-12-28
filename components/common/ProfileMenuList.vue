@@ -38,7 +38,7 @@
         $t('profile.my_products')
       }}</CommonProfileMenuLink>
     </li>
-    <li v-if="isImporter && isCompany">
+    <li>
       <CommonProfileMenuLink to="/profile/my_requests" @click="closeMenu">{{
         $t('profile.my_requests.my_requests')
       }}</CommonProfileMenuLink>
