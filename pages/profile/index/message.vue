@@ -15,6 +15,9 @@
   const loadingChats = ref(true);
   const loadingChat = ref(false);
 
+  const hideOverflow = () => (document.body.style.overflow = 'hidden');
+  const showOverflow = () => (document.body.style.overflow = 'auto');
+
   const getBusinessFromCookies = () => {
     chatSwitch.value = business.value || 'buying';
   };
@@ -103,11 +106,15 @@
           block: !currentIdChat,
         })
       "
+      @mouseover="hideOverflow"
+      @mouseout="showOverflow"
     >
       <CommonTitleProfilePage class="mb-[20px] md:mb-[30px] xl:mb-[40px]">
         {{ $t('profile.message.my_messages') }}
       </CommonTitleProfilePage>
+
       <CommonBusinessSwitcher v-if="isExporter" v-model="chatSwitch" :currentValue="chatSwitch" />
+
       <NuxtScrollbar
         v-if="chatSwitch === 'for_sale'"
         class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px]"
@@ -134,6 +141,7 @@
           @click="changeCurrentId(chat.id)"
         />
       </NuxtScrollbar>
+
       <NuxtScrollbar
         v-if="chatSwitch === 'buying'"
         class="mx-[-20px] mt-[20px] flex h-[50vh] max-h-[569px] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px]"
@@ -161,6 +169,7 @@
         />
       </NuxtScrollbar>
     </UiDivRoundedBg>
+
     <PagesChatMessageBox
       v-if="currentIdChat"
       :chatType="chatSwitch"
@@ -172,6 +181,8 @@
       :loading="loadingChat"
       :chat="currentChat"
       @changeCurrentIdChat="changeCurrentId"
+      @mouseover="hideOverflow"
+      @mouseout="showOverflow"
     />
   </div>
 </template>
