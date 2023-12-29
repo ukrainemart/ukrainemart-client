@@ -9,9 +9,23 @@
   const currentChat = ref<Chat | null>(null);
   const loadingChats = ref(true);
   const loadingChat = ref(false);
+  const isMacOS = navigator.userAgent.includes('Mac');
 
-  const hideOverflow = () => (document.body.style.overflow = 'hidden');
-  const showOverflow = () => (document.body.style.overflow = 'auto');
+  const hideOverflow = () => {
+    if (!isMacOS) {
+      document.body.style.marginRight = '16px';
+    }
+
+    document.body.style.overflow = 'hidden';
+  };
+
+  const showOverflow = () => {
+    if (!isMacOS) {
+      document.body.style.marginRight = '0px';
+    }
+
+    document.body.style.overflow = 'auto';
+  };
 
   const changeCurrentId = (id: number) => {
     currentIdChat.value = id;
