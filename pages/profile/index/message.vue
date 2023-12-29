@@ -11,9 +11,11 @@
   const loadingChat = ref(false);
   const isMacOS = navigator.userAgent.includes('Mac');
 
+  const getScrollbarWidth = () => window.innerWidth - document.documentElement.clientWidth;
+
   const hideOverflow = () => {
     if (!isMacOS) {
-      document.body.style.marginRight = '16px';
+      document.body.style.marginRight = `${getScrollbarWidth()}px`;
     }
 
     document.body.style.overflow = 'hidden';
