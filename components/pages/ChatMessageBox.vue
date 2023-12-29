@@ -86,7 +86,7 @@
       <div
         class="flex items-center justify-between px-[15px] pb-[15px] md:px-[25px] xl:px-[30px] xl:pb-[20px] 3xl:px-[35px]"
       >
-        <UiIconCircleLetter v-if="titleChat" class="shrink-0" :letter="titleChat[0]" />
+        <UiIconCircleLetter v-if="titleChat && !loading" class="shrink-0" :letter="titleChat[0]" />
         <div v-if="!loading" class="ml-[8px] mr-[20px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">
           <nuxtLink
             :to="'/product/' + chat?.product_id"

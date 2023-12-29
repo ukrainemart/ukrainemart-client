@@ -17,10 +17,14 @@
       :ui="{
         container: 'items-center !p-0',
         base: '!px-[20px] !bg-transparent !shadow-none',
-        width: '!max-w-[1000px] !max-h-[1000px] 4xl:!max-w-[30%] 4xl:!max-h-[40%]',
+        width: '',
       }"
     >
-      <img :src="image" alt="" class="inline-block h-full w-full object-contain" />
+      <img
+        :src="image"
+        alt=""
+        class="inline-block !max-h-[90vh] !max-w-[90vh] object-contain object-center 4xl:!max-h-[40%]"
+      />
     </UiModal>
   </div>
 </template>
