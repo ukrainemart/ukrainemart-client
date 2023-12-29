@@ -23,7 +23,7 @@
       <img
         :src="image"
         alt=""
-        class="inline-block !max-h-[90vh] !max-w-[90vh] object-contain object-center 4xl:!max-h-[40%]"
+        class="inline-block !max-h-[90vh] !max-w-[1000px] object-contain object-center"
       />
     </UiModal>
   </div>
