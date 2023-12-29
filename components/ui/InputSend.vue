@@ -3,6 +3,7 @@
     btnType?: string;
     modelValue: string;
     placeholder?: string;
+    loading?: boolean;
   }>();
   const emits = defineEmits(['update:modelValue']);
   const value = ref('');
@@ -24,7 +25,7 @@
       @input="updateValue"
     />
     <div class="relative z-10 pr-[10px]">
-      <UiButtonOpacitySend :type="btnType" />
+      <UiButtonOpacitySend :loading="loading" :type="btnType" />
     </div>
   </div>
 </template>

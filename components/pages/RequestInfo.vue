@@ -1,7 +1,14 @@
 <script setup lang="ts">
   defineProps<{
     request: RequestImporter;
+    isChatOpenBtn: boolean;
   }>();
+
+  const emits = defineEmits(['switchChat']);
+
+  const switchChat = (value: boolean) => {
+    emits('switchChat', value);
+  };
 </script>
 
 <template>
@@ -47,7 +54,13 @@
       </li>
     </ul>
 
-    <UiButtonPrimaryIconEnvelop>{{ $t('labels.contact') }}</UiButtonPrimaryIconEnvelop>
+    <CommonButtonContact v-if="isChatOpenBtn" @switchChat="switchChat(true)">
+      <template #button="{ handlerClick }">
+        <UiButtonPrimaryIconEnvelop @click="handlerClick">
+          {{ $t('labels.contact') }}
+        </UiButtonPrimaryIconEnvelop>
+      </template>
+    </CommonButtonContact>
   </div>
 </template>
 

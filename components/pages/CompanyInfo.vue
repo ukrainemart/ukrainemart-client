@@ -1,7 +1,14 @@
 <script setup lang="ts">
   defineProps<{
     request: RequestImporter;
+    isChatOpenBtn: boolean;
   }>();
+
+  const emits = defineEmits(['switchChat']);
+
+  const switchChat = (value: boolean) => {
+    emits('switchChat', value);
+  };
 </script>
 
 <template>
@@ -41,9 +48,13 @@
     </div>
 
     <div class="flex flex-col items-center gap-[8px] md:gap-[10px]">
-      <UiButtonOutlineIconEnvelop class="max-h-[45px]">{{
-        $t('labels.contact')
-      }}</UiButtonOutlineIconEnvelop>
+      <CommonButtonContact v-if="isChatOpenBtn" @switchChat="switchChat(true)">
+        <template #button="{ handlerClick }">
+          <UiButtonPrimaryIconEnvelop @click="handlerClick">
+            {{ $t('labels.contact') }}
+          </UiButtonPrimaryIconEnvelop>
+        </template>
+      </CommonButtonContact>
       <NuxtLink
         to="/"
         class="text-[10px] font-medium text-status_gray underline underline-offset-1 md:text-[14px]"

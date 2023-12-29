@@ -1,6 +1,6 @@
 <script setup lang="ts">
   const props = defineProps<{
-    requests: Request[];
+    requests?: Request[];
     title: string;
   }>();
 
@@ -34,7 +34,7 @@
     </div>
   </div>
   <UiSectionTitleSlider
-    v-if="requests && requests.length > 0"
+    v-if="requests && requests.length > 0 && !loading"
     :showAll="true"
     :slides="requests"
     :breakpoints="{

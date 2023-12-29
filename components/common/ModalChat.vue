@@ -3,8 +3,10 @@
     modelValue: boolean;
     productId?: number;
     recipientName?: string;
+    requestId?: number;
   }>();
   const messageInput = ref('');
+  const loading = ref(false);
 
   const emits = defineEmits(['update:modelValue']);
 
@@ -13,17 +15,32 @@
   };
 
   const onSendMessage = async () => {
-    if (!messageInput.value.trim()) return false;
+    if (!messageInput.value.trim() || loading.value) return false;
+    loading.value = true;
+
+    const requestBody = {
+      message: messageInput.value,
+    };
+
+    if (props.productId) {
+      Object.assign(requestBody, {
+        product_id: props.productId,
+      });
+    }
+    if (props.requestId) {
+      Object.assign(requestBody, {
+        request_id: props.requestId,
+      });
+    }
+
     await useApiFetch(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
-      body: {
-        product_id: props.productId,
-        message: messageInput.value,
-      },
+      body: requestBody,
     }).then((res: any) => {
       if (res.data.value.status === 1) {
         messageInput.value = '';
         navigateTo({ path: '/profile/message', query: { chatId: res.data.value.chat_id } });
+        loading.value = false;
       }
     });
   };
@@ -49,6 +66,7 @@
         <form class="w-full" @submit.prevent="onSendMessage">
           <UiInputSend
             v-model="messageInput"
+            :loading="loading"
             btnType="submit"
             :placeholder="$t('placeholders.write_your_message')"
           />

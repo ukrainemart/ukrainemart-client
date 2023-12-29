@@ -68,17 +68,13 @@
     </ul>
 
     <div class="flex items-center gap-[15px] md:gap-[20px] xl:gap-[25px]">
-      <PagesProductContactButton
-        v-if="isChatOpenBtn"
-        :chatId="product.chat"
-        @switchChat="switchChat(true)"
-      >
+      <CommonButtonContact v-if="isChatOpenBtn" @switchChat="switchChat(true)">
         <template #button="{ handlerClick }">
           <UiButtonPrimaryIconEnvelop @click="handlerClick">
             {{ $t('labels.contact') }}
           </UiButtonPrimaryIconEnvelop>
         </template>
-      </PagesProductContactButton>
+      </CommonButtonContact>
 
       <CommonButtonFavoritePageProduct v-if="isChatOpenBtn" :product="product" />
     </div>

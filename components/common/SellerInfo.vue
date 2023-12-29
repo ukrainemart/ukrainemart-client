@@ -49,17 +49,13 @@
     </div>
 
     <div class="flex flex-col items-center gap-[8px] md:gap-[10px]">
-      <PagesProductContactButton
-        v-if="isChatOpenBtn"
-        :chatId="product.chat"
-        @switchChat="switchChat(true)"
-      >
+      <CommonButtonContact v-if="isChatOpenBtn" @switchChat="switchChat(true)">
         <template #button="{ handlerClick }">
-          <UiButtonOutlineIconEnvelop v-if="isChatOpenBtn" @click="handlerClick">
+          <UiButtonPrimaryIconEnvelop @click="handlerClick">
             {{ $t('labels.contact') }}
-          </UiButtonOutlineIconEnvelop>
+          </UiButtonPrimaryIconEnvelop>
         </template>
-      </PagesProductContactButton>
+      </CommonButtonContact>
 
       <NuxtLink
         to="/"

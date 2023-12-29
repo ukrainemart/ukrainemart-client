@@ -1,7 +1,4 @@
 <script setup lang="ts">
-  const props = defineProps<{
-    chatId: number;
-  }>();
   const auth = useAuthStore();
   const openAuth = () => {
     auth.switchTypeAuth('login');
@@ -13,10 +10,6 @@
   const switchChat = () => {
     if (!isLoggedIn()) {
       openAuth();
-      return false;
-    }
-    if (props.chatId) {
-      navigateTo({ path: '/profile/message', query: { chatId: props.chatId } });
       return false;
     }
     emits('switchChat');
