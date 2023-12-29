@@ -24,6 +24,11 @@
           })
         "
       />
+      <CommonRequestImportersItem
+        v-if="message.type === 'request' && message.request"
+        class="h-auto w-full max-w-[300px]"
+        :request="message.request"
+      />
       <CommonCardProduct
         v-if="message.type === 'product' && message.product"
         class="h-auto w-full max-w-[300px]"
