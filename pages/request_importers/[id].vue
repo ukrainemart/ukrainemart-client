@@ -6,8 +6,8 @@
   const titleRequest = computed(() => request.value?.title);
   const isChat = ref<boolean>(false);
   const auth = useAuthStore();
-  const userCompanyId = computed(() => auth.user?.company?.id);
-  const isChatOpenBtn = computed(() => userCompanyId.value !== request.value?.company?.id);
+  const userId = computed(() => auth.user?.id);
+  const isChatOpenBtn = computed(() => userId.value !== request.value?.user?.id);
   useTitle(titleRequest);
 
   const switchChat = (value: boolean) => {
