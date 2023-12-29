@@ -23,7 +23,7 @@
   const fetchRequests = () => {
     const categories = filters.value.categories.map((el: any) => +el);
 
-    useFetch(
+    useApiFetch(
       `${useUrlApi()}/importRequest/get?page=${page.value}&category=${categories}&country=${
         filters.value.countries
       }`
