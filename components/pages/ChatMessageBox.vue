@@ -127,15 +127,13 @@
         </div>
       </div>
     </div>
-    <div
-      class="flex flex-1 flex-col overflow-hidden"
-      @mouseover="hideOverflow"
-      @mouseout="showOverflow"
-    >
+    <div class="flex flex-1 flex-col overflow-hidden">
       <NuxtScrollbar
         ref="scrollbar"
         class="custom_scrollbar mx-[-30px] flex max-h-[45vh] min-h-[35vh] flex-1 flex-col p-[30px] !pb-0 xl:max-h-[570px] xl:min-h-[auto]"
         tag="div"
+        @mouseover="hideOverflow"
+        @mouseout="showOverflow"
       >
         <div class="flex flex-1 flex-col justify-end gap-[10px] md:gap-[15px] xl:gap-[20px]">
           <UiSkeleton
