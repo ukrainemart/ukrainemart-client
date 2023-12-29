@@ -11,6 +11,7 @@ declare interface RequestImporter {
   same_category: Request[];
   count: number;
   count_type: string;
+  user?: User;
   active_before: string;
   id: number;
   created_at: string;

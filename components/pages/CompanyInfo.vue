@@ -19,7 +19,7 @@
       <p
         class="mb-[5px] text-[12px] font-medium md:mb-[7px] md:text-[16px] 2xl:mb-[12px] 2xl:text-[20px]"
       >
-        {{ request?.company?.title }}
+        {{ request?.company?.title || request?.user?.name }}
       </p>
     </div>
 

@@ -17,6 +17,7 @@
   const fetchProduct = async () => {
     const response = await useFetch(`${useUrlApi()}/importRequest/show/${requestId}`);
     request.value = response?.data.value as RequestImporter;
+    console.log(request.value);
   };
 
   fetchProduct();
@@ -27,7 +28,7 @@
     <CommonModalChat
       v-if="request"
       v-model="isChat"
-      :recipientName="request.company.title"
+      :recipientName="request?.company?.title || request?.user?.name"
       :requestId="request.id"
     />
 
