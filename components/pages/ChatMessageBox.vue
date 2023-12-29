@@ -2,6 +2,8 @@
   const props = defineProps<{
     chat?: Chat | null;
     loading: boolean;
+    hideOverflow: () => void;
+    showOverflow: () => void;
   }>();
   const auth = useAuthStore();
   const userId = computed(() => auth.user?.id);
@@ -125,7 +127,11 @@
         </div>
       </div>
     </div>
-    <div class="flex flex-1 flex-col overflow-hidden">
+    <div
+      class="flex flex-1 flex-col overflow-hidden"
+      @mouseover="hideOverflow"
+      @mouseout="showOverflow"
+    >
       <NuxtScrollbar
         ref="scrollbar"
         class="custom_scrollbar mx-[-30px] flex max-h-[45vh] min-h-[35vh] flex-1 flex-col p-[30px] !pb-0 xl:max-h-[570px] xl:min-h-[auto]"
@@ -159,7 +165,7 @@
       </NuxtScrollbar>
       <form action="#" @submit.prevent="onSendMessage">
         <div
-          class="mt-[15px] overflow-hidden rounded-[10px] border border-[#D9D9D9] md:mt-[25px] md:rounded-[15px] xl:rounded-[20px]"
+          class="mt-2.5 overflow-hidden rounded-[10px] border border-status_dark_gray md:rounded-[15px] xl:rounded-[20px]"
         >
           <textarea
             v-model="messageInput"

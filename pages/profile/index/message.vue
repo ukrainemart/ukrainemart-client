@@ -10,6 +10,9 @@
   const loadingChats = ref(true);
   const loadingChat = ref(false);
 
+  const hideOverflow = () => (document.body.style.overflow = 'hidden');
+  const showOverflow = () => (document.body.style.overflow = 'auto');
+
   const changeCurrentId = (id: number) => {
     currentIdChat.value = id;
   };
@@ -110,6 +113,8 @@
           :chat="chat"
           :active="chat.id === currentIdChat"
           @click="changeCurrentId(chat.id)"
+          @mouseover="hideOverflow"
+          @mouseout="showOverflow"
         />
       </NuxtScrollbar>
     </UiDivRoundedBg>
@@ -123,6 +128,8 @@
       "
       :loading="loadingChat"
       :chat="currentChat"
+      :hideOverflow="hideOverflow"
+      :showOverflow="showOverflow"
       @changeCurrentIdChat="changeCurrentId"
     />
   </div>
