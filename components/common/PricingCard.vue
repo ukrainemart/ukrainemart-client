@@ -10,8 +10,8 @@
   >
     <h3 class="mb-4 text-2xl font-semibold">{{ useMultiLang(subscription, 'title') }}</h3>
     <div class="my-8 flex items-baseline">
-      <span class="mr-2 text-5xl font-extrabold"><CommonCurrency />{{ subscription.price }}</span>
-      <span class="text-gray-500 dark:text-gray-400">/{{ subscription.date_type }}</span>
+      <span class="mr-2 text-5xl font-extrabold"><CommonCurrency />{{ subscription?.price }}</span>
+      <span class="text-gray-500 dark:text-gray-400">/{{ subscription?.date_type }}</span>
     </div>
     <ul role="list" class="mb-8 space-y-4 text-left">
       <li v-for="item in subscription.features" :key="item.id" class="flex items-center space-x-3">
