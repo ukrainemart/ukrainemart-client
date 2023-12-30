@@ -120,7 +120,8 @@
     "photo": "Фото",
     "certificates": "Сертифікати",
     "tags": "Теги",
-    "enter_tags": "Вводьте ключові слова через пропуск"
+    "enter_tags": "Вводьте ключові слова через пропуск",
+    "sign_up_for_subscription": "Оформити підписку"
   },
   "placeholders": {
     "name": "Іван",

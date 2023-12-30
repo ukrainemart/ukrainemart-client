@@ -1,4 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  const subscriptions = ref<Subscription[]>([]);
+  const loading = ref(true);
+
+  const fetchSubscriptions = () => {
+    useApiFetch(`${useUrlApi()}/subscription/plan/list`).then((res) => {
+      subscriptions.value = res.data.value as Subscription[];
+      loading.value = false;
+      console.log(subscriptions.value);
+    });
+  };
+
+  fetchSubscriptions();
+</script>
 
 <template>
   <div class="pb-[70px] md:pb-[100px] 2xl:pb-[130px]">
@@ -9,10 +22,18 @@
         {{ $t('subHeader.subscriptions') }}
       </CommonProductTitle>
 
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-        <CommonPricingCard />
-        <CommonPricingCard />
-        <CommonPricingCard />
+      <div
+        v-if="loading"
+        class="grid grid-cols-1 gap-[10px] sm:grid-cols-2 md:grid-cols-4 md:gap-[20px] xl:gap-[30px]"
+      >
+        <SkeletonPricingCard v-for="item in [1, 2, 3, 4]"></SkeletonPricingCard>
+      </div>
+      <div v-if="!loading" class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+        <CommonPricingCard
+          v-for="subscription in subscriptions"
+          :key="subscription.id"
+          :subscription="subscription"
+        />
       </div>
     </div>
   </div>

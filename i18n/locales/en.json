@@ -120,7 +120,8 @@
     "photo": "Photo",
     "certificates": "Certificates",
     "tags": "Tags",
-    "enter_tags": "Enter keywords separated by a space"
+    "enter_tags": "Enter keywords separated by a space",
+    "sign_up_for_subscription": "Sign up for a subscription"
   },
   "placeholders": {
     "name": "John",
