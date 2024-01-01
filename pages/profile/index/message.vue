@@ -108,7 +108,6 @@
           :key="chat.id"
           :chat="chat"
           :active="chat.id === currentIdChat"
-          @touchstart="changeCurrentId(chat.id)"
           @click="changeCurrentId(chat.id)"
         />
       </div>
