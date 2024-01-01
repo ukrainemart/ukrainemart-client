@@ -108,7 +108,7 @@
       </CommonTitleProfilePage>
 
       <NuxtScrollbar
-        class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px] xl:h-[420px]"
+        class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px] xl:h-[560px] 3xl:h-[665px]"
         tag="div"
       >
         <div v-if="loadingChats">
