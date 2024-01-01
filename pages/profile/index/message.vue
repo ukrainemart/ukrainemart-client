@@ -9,25 +9,6 @@
   const currentChat = ref<Chat | null>(null);
   const loadingChats = ref(true);
   const loadingChat = ref(false);
-  const isMacOS = navigator.userAgent.includes('Mac');
-
-  const getScrollbarWidth = () => window.innerWidth - document.documentElement.clientWidth;
-
-  const hideOverflow = () => {
-    if (!isMacOS) {
-      document.body.style.marginRight = `${getScrollbarWidth()}px`;
-    }
-
-    document.body.style.overflow = 'hidden';
-  };
-
-  const showOverflow = () => {
-    if (!isMacOS) {
-      document.body.style.marginRight = '0px';
-    }
-
-    document.body.style.overflow = 'auto';
-  };
 
   const changeCurrentId = (id: number) => {
     currentIdChat.value = id;
@@ -107,9 +88,8 @@
         {{ $t('profile.message.my_messages') }}
       </CommonTitleProfilePage>
 
-      <NuxtScrollbar
-        class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px] xl:h-[560px] 3xl:h-[665px]"
-        tag="div"
+      <div
+        class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden overscroll-contain px-[20px] md:mt-[27px] xl:mt-[41px] xl:h-[560px] 3xl:h-[665px]"
       >
         <div v-if="loadingChats">
           <UiSkeletonChatItem
@@ -130,10 +110,8 @@
           :active="chat.id === currentIdChat"
           @touchstart="changeCurrentId(chat.id)"
           @click="changeCurrentId(chat.id)"
-          @mouseover="hideOverflow"
-          @mouseout="showOverflow"
         />
-      </NuxtScrollbar>
+      </div>
     </UiDivRoundedBg>
 
     <PagesChatMessageBox
@@ -145,8 +123,6 @@
       "
       :loading="loadingChat"
       :chat="currentChat"
-      :hideOverflow="hideOverflow"
-      :showOverflow="showOverflow"
       @changeCurrentIdChat="changeCurrentId"
     />
   </div>
