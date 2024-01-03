@@ -11,7 +11,7 @@
     if(props.message.type === 'request') {
       return  !!props.message?.request
     }
-    return props.message.content
+    return !!props.message?.content
   })
 </script>
 
