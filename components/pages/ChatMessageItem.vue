@@ -26,10 +26,12 @@
       />
       <CommonRequestImportersItem
         v-if="message.type === 'request' && message.request"
+        target="blank"
         class="h-auto w-full max-w-[300px]"
         :request="message.request"
       />
       <CommonCardProduct
+        target="blank"
         v-if="message.type === 'product' && message.product"
         class="h-auto w-full max-w-[300px]"
         :product="message.product"
