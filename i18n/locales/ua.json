@@ -121,7 +121,9 @@
     "certificates": "Сертифікати",
     "tags": "Теги",
     "enter_tags": "Вводьте ключові слова через пропуск",
-    "sign_up_for_subscription": "Оформити підписку"
+    "sign_up_for_subscription": "Оформити підписку",
+    "enter_name": "Введіть ім'я",
+    "enter_last_name": "Введіть прізвище"
   },
   "placeholders": {
     "name": "Іван",

@@ -45,9 +45,6 @@
       price: '',
       unitId: props.currentUnitId,
     } as PriceProduct['variatedPrice'];
-
-    console.log(variated.value);
-
     variated.value = [...variated.value, addablePrice];
   };
 

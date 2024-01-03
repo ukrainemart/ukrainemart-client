@@ -16,10 +16,6 @@
     activeBefore: '',
   });
 
-  watchDeep(inputs, () => {
-    console.log(inputs.value);
-  });
-
   const onCreateRequest = () => {
     useApiFetch(`${useUrlApi()}/importRequest/create`, {
       method: 'POST',

@@ -19,7 +19,6 @@ export const useFavoritesStore = defineStore('favoritesStore', () => {
     useApiFetch(`${useUrlApi()}/favorite/change/${product.id}`).then((res: any) => {
       if (res.data.value.status === 1) {
         favorites.value.push(product);
-        console.log(favorites.value);
         disabledBtn.value = false;
       }
     });

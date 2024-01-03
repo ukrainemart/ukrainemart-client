@@ -121,7 +121,9 @@
     "certificates": "Certificates",
     "tags": "Tags",
     "enter_tags": "Enter keywords separated by a space",
-    "sign_up_for_subscription": "Sign up for a subscription"
+    "sign_up_for_subscription": "Sign up for a subscription",
+    "enter_name": "Enter a name",
+    "enter_last_name": "Enter your last name"
   },
   "placeholders": {
     "name": "John",

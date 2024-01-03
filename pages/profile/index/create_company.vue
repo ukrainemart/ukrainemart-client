@@ -27,10 +27,6 @@
     type: 'exporter',
   });
 
-  watchDeep(inputs, () => {
-    console.log(inputs);
-  });
-
   const checkStatus = () => {
     useApiFetch(`${useUrlApi()}/company/request/check`).then((res: any) => {
       isCheck.value = true;

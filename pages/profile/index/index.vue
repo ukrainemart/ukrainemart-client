@@ -95,7 +95,7 @@
         class="grid grid-cols-1 gap-y-[15px] sm:grid-cols-2 sm:gap-x-[50px] md:gap-x-[84px] md:gap-y-[20px] 2xl:gap-x-[150px] 2xl:gap-y-[25px]"
       >
         <UiLabel :label="$t('name') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline v-model="inputs.name" :placeholder="$t('placeholders.name')" />
+          <UiInputOutline v-model="inputs.name" :placeholder="$t('labels.enter_name')" />
         </UiLabel>
         <UiLabel
           v-if="isCompany"
@@ -108,7 +108,7 @@
           />
         </UiLabel>
         <UiLabel :label="$t('last_name') + ':'" class="col-span-2 sm:col-span-1">
-          <UiInputOutline v-model="inputs.lastName" :placeholder="$t('placeholders.last_name')" />
+          <UiInputOutline v-model="inputs.lastName" :placeholder="$t('labels.enter_last_name')" />
         </UiLabel>
         <UiLabel
           v-if="isCompany"

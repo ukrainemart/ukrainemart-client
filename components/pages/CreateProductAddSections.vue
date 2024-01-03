@@ -24,11 +24,7 @@
   const checkValidation = () => {
     const values = Object.values(props.modelValue);
 
-    console.log(sections.value);
-
     if (values.length !== sections.value.length * 2) {
-      console.log('1');
-
       value.value = false;
       return false;
     }
@@ -36,7 +32,6 @@
     const valid = values.every((val) => typeof val === 'string' && val.trim() !== '');
 
     if (!valid) {
-      console.log('2');
       value.value = false;
       return false;
     }

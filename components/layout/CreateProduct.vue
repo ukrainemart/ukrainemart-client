@@ -51,13 +51,6 @@
       return false;
     }
   };
-
-  watchDeep(
-    () => props.inputs,
-    () => {
-      console.log(props.inputs);
-    }
-  );
   const categoryOptions = computed(
     () =>
       pageData.value?.categories?.map((el: Category) => {

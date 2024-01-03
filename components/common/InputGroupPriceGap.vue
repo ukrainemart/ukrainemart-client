@@ -18,12 +18,10 @@
   );
 
   const checkValidation = () => {
-    console.log(props.price.unitId);
 
     if (props.price.maxAmount && props.price.minAmount && props.price.price && props.price.unitId) {
       value.value = true;
     } else {
-      console.log(props.price);
 
       value.value = false;
     }

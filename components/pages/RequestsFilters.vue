@@ -41,8 +41,6 @@
 
   const fetchFilters = () => {
     useFetch(`${useUrlApi()}/importRequest/filters`).then((res) => {
-      console.log(res.data.value);
-
       filters.value = res.data.value as Filters;
     });
   };

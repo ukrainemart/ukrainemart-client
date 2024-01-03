@@ -16,10 +16,6 @@
     await favorites.addToFavorites(props.product, isDisabledFavoritesBtn);
   };
 
-  watch(isDisabledFavoritesBtn, () => {
-    console.log(isDisabledFavoritesBtn.value);
-  });
-
   const checkExistInFavorites = () => {
     isFavoritesProduct.value = !!favorites.favorites.find((el) => el.id === props?.product?.id);
   };

@@ -4,8 +4,6 @@
   const fetchCategories = () => {
     const { data } = useFetch(`${useUrlApi()}/category/popular`);
     categories.value = data.value as Category[];
-
-    console.log(categories.value);
   };
 
   fetchCategories();

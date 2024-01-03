@@ -6,7 +6,6 @@
     useApiFetch(`${useUrlApi()}/subscription/plan/list`).then((res) => {
       subscriptions.value = res.data.value as Subscription[];
       loading.value = false;
-      console.log(subscriptions.value);
     });
   };
 

@@ -84,7 +84,6 @@
         if (res.data.value.status === 1) {
           navigateTo('/profile/my_products');
         }
-        console.log(res);
       })
       .catch((err) => {
         error.value = t('fill_in_all_fields');

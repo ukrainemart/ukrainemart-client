@@ -6,8 +6,6 @@
   const emits = defineEmits(['update:modelValue']);
 
   const updateInput = (value: File) => {
-    console.log(value);
-
     emits('update:modelValue', value);
   };
 </script>

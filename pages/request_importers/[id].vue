@@ -17,7 +17,6 @@
   const fetchProduct = async () => {
     const response = await useFetch(`${useUrlApi()}/importRequest/show/${requestId}`);
     request.value = response?.data.value as RequestImporter;
-    console.log(request.value);
   };
 
   fetchProduct();
