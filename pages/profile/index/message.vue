@@ -9,25 +9,7 @@
   const currentChat = ref<Chat | null>(null);
   const loadingChats = ref(true);
   const loadingChat = ref(false);
-  const isMacOS = navigator.userAgent.includes('Mac');
-
-  const getScrollbarWidth = () => window.innerWidth - document.documentElement.clientWidth;
-
-  const hideOverflow = () => {
-    if (!isMacOS) {
-      document.body.style.marginRight = `${getScrollbarWidth()}px`;
-    }
-
-    document.body.style.overflow = 'hidden';
-  };
-
-  const showOverflow = () => {
-    if (!isMacOS) {
-      document.body.style.marginRight = '0px';
-    }
-
-    document.body.style.overflow = 'auto';
-  };
+  const MAX_CHAT_DISPLAY = 7;
 
   const changeCurrentId = (id: number) => {
     currentIdChat.value = id;
@@ -100,6 +82,7 @@
       :class="
         cn('col-span-12 hidden self-start xl:col-span-5 xl:!block 4xl:col-span-4', {
           block: !currentIdChat,
+          'px-[23px]': chats.length > MAX_CHAT_DISPLAY,
         })
       "
     >
@@ -107,9 +90,9 @@
         {{ $t('profile.message.my_messages') }}
       </CommonTitleProfilePage>
 
-      <NuxtScrollbar
-        class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-scroll !overflow-x-hidden px-[20px] md:mt-[27px] xl:mt-[41px] xl:h-[420px]"
-        tag="div"
+      <div
+        class="mx-[-20px] mt-[20px] flex h-[50vh] flex-col overflow-hidden overscroll-contain px-[20px] md:mt-[27px] xl:mt-[41px] xl:h-[560px] 3xl:h-[635px]"
+        :class="{ 'overflow-y-scroll': chats.length > MAX_CHAT_DISPLAY }"
       >
         <div v-if="loadingChats">
           <UiSkeletonChatItem
@@ -128,12 +111,9 @@
           :key="chat.id"
           :chat="chat"
           :active="chat.id === currentIdChat"
-          @touchstart="changeCurrentId(chat.id)"
           @click="changeCurrentId(chat.id)"
-          @mouseover="hideOverflow"
-          @mouseout="showOverflow"
         />
-      </NuxtScrollbar>
+      </div>
     </UiDivRoundedBg>
 
     <PagesChatMessageBox
@@ -145,8 +125,6 @@
       "
       :loading="loadingChat"
       :chat="currentChat"
-      :hideOverflow="hideOverflow"
-      :showOverflow="showOverflow"
       @changeCurrentIdChat="changeCurrentId"
     />
   </div>

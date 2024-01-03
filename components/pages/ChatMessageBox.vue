@@ -2,8 +2,6 @@
   const props = defineProps<{
     chat?: Chat | null;
     loading: boolean;
-    hideOverflow: () => void;
-    showOverflow: () => void;
   }>();
   const auth = useAuthStore();
   const userId = computed(() => auth.user?.id);
@@ -125,12 +123,9 @@
       </div>
     </div>
     <div class="flex flex-1 flex-col overflow-hidden">
-      <NuxtScrollbar
+      <div
         ref="scrollbar"
-        class="custom_scrollbar mx-[-30px] flex max-h-[45vh] min-h-[35vh] flex-1 flex-col p-[30px] !pb-0 xl:max-h-[570px] xl:min-h-[auto]"
-        tag="div"
-        @mouseover="hideOverflow"
-        @mouseout="showOverflow"
+        class="custom_scrollbar mx-[-30px] flex max-h-[45vh] min-h-[35vh] flex-1 flex-col overflow-y-scroll overscroll-contain p-[30px] !pb-0 xl:max-h-[570px] xl:min-h-[auto]"
       >
         <div class="flex flex-1 flex-col justify-end gap-[10px] md:gap-[15px] xl:gap-[20px]">
           <UiSkeleton
@@ -157,7 +152,7 @@
             :user="message.user_id === userId"
           />
         </div>
-      </NuxtScrollbar>
+      </div>
       <form action="#" @submit.prevent="onSendMessage">
         <div
           class="mt-2.5 overflow-hidden rounded-[10px] border border-status_dark_gray md:rounded-[15px] xl:rounded-[20px]"
