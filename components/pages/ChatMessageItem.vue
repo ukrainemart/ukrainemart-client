@@ -1,12 +1,14 @@
 <script setup lang="ts">
-  defineProps<{
+  const props = defineProps<{
     user?: boolean;
     message: MessageChat;
   }>();
+
+  const showMessage = computed(() => props.message.content || props.message.product || props.message.product)
 </script>
 
 <template>
-  <div :class="{ 'text-right': user }">
+  <div v-if="showMessage"  :class="{ 'text-right': user }">
     <div
       :class="
         cn(

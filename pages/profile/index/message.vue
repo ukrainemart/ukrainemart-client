@@ -1,15 +1,15 @@
 <script setup lang="ts">
   import Pusher from 'pusher-js';
 
-  const route = useRoute();
-  const router = useRouter();
-
   const chats = ref<Chat[]>([]);
-  const currentIdChat = ref<number | null>(route.query.chatId ? +route.query.chatId : null);
+  const currentIdChat = ref<number | null>(null);
   const currentChat = ref<Chat | null>(null);
   const loadingChats = ref(true);
   const loadingChat = ref(false);
   const MAX_CHAT_DISPLAY = 7;
+
+  let controller = new AbortController();
+  let signal = controller.signal;
 
   const changeCurrentId = (id: number) => {
     currentIdChat.value = id;
@@ -50,23 +50,22 @@
   const fetchCurrentChat = () => {
     loadingChat.value = true;
     if (!currentIdChat.value) return false;
-    useFetchSubscribe(`${useUrlApi()}/chat/messages/${currentIdChat.value}`).then((res: any) => {
+    controller.abort();
+    controller = new AbortController();
+    signal = controller.signal;
+    useFetchSubscribe(`${useUrlApi()}/chat/messages/${currentIdChat.value}`, { signal }).then((res: any) => {
       currentChat.value = res.data.value as Chat;
       loadingChat.value = false;
       fetchChatList();
     });
   };
 
-  const clearQueryChatId = () => {
-    router.push({ query: {} });
-  };
 
   fetchCurrentChat();
 
   watch(currentIdChat, () => {
     currentChat.value = null;
     fetchCurrentChat();
-    clearQueryChatId();
   });
 
   fetchChatList().then(() => {
