@@ -16,12 +16,12 @@
   };
 
   function fetchChatList() {
-    return useApiFetch(`${useUrlApi()}/chat/list`)
+    return useFetchSubscribe(`${useUrlApi()}/chat/list`)
       .then((res: any) => {
         chats.value = res.data.value.chats || [];
         loadingChats.value = false;
       })
-      .catch((res) => {
+      .catch(() => {
         loadingChats.value = false;
       });
   }
@@ -51,7 +51,7 @@
   const fetchCurrentChat = () => {
     loadingChat.value = true;
     if (!currentIdChat.value) return false;
-    useApiFetch(`${useUrlApi()}/chat/messages/${currentIdChat.value}`).then((res: any) => {
+    useFetchSubscribe(`${useUrlApi()}/chat/messages/${currentIdChat.value}`).then((res: any) => {
       currentChat.value = res.data.value as Chat;
       loadingChat.value = false;
       fetchChatList();

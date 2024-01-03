@@ -5,6 +5,7 @@
   useTitle('profile.my_products');
   const products = ref<Product[]>([]);
   const isLoading = ref(true);
+  const statusSubscribe = ref<any>();
   const NUM_SKELETON_ITEMS = 5;
 
   const currentIdProduct = ref();
@@ -15,9 +16,10 @@
 
   const getProducts = async () => {
     try {
-      const res = await useApiFetch(`${useUrlApi()}/product/list`);
+      const res: any = await useApiFetch(`${useUrlApi()}/product/list`);
 
-      products.value = res.data.value as Product[];
+      products.value = res.data.value?.products as Product[];
+      statusSubscribe.value = res.data.value.status;
       isLoading.value = false;
     } catch (error) {
       console.error(error);
@@ -38,12 +40,20 @@
     switchModalRemove(true);
   };
 
+  const onClickAddProduct = () => {
+    if (statusSubscribe.value !== 5) {
+      navigateTo('add_product');
+      return false;
+    }
+    navigateTo('/subscriptions');
+  };
+
   getProducts();
 </script>
 
 <template>
   <LayoutProfilePage :title="`${$t('profile.my_products')}`">
-    <UiButtonPrimary to="add_product">
+    <UiButtonPrimary to="add_product" @click="onClickAddProduct">
       {{ $t('add_product.add_product') }}
     </UiButtonPrimary>
 

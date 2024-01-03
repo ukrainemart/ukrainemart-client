@@ -39,7 +39,7 @@
     if (!props.chat || props.loading || !messageInput.value.trim() || loadingSendMessage.value)
       return false;
     loadingSendMessage.value = true;
-    useApiFetch(`${useUrlApi()}/chat/message/sent`, {
+    useFetchSubscribe(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: {
         product_id: props?.chat?.product_id,
@@ -62,7 +62,7 @@
   const onSendFile = () => {
     if (!props.chat || props.loading || !file.value || loadingSendMessage.value) return false;
     loadingSendMessage.value = true;
-    useApiFetch(`${useUrlApi()}/chat/message/sent`, {
+    useFetchSubscribe(`${useUrlApi()}/chat/message/sent`, {
       method: 'POST',
       body: formData(),
     }).then(() => {

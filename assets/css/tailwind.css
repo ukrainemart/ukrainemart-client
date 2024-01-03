@@ -83,3 +83,7 @@ input[type='number'] {
 .text_xs {
   @apply text-[7px] md:text-[10px] xl:text-[14px];
 }
+
+input[type='password'] {
+  font-family: sans-serif;
+}
