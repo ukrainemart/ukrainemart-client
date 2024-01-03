@@ -4,7 +4,15 @@
     message: MessageChat;
   }>();
 
-  const showMessage = computed(() => props.message.content || props.message.product || props.message.product)
+  const showMessage = computed(() =>{
+    if(props.message.type === 'product') {
+      return  !!props.message?.product
+    }
+    if(props.message.type === 'request') {
+      return  !!props.message?.request
+    }
+    return props.message.content
+  })
 </script>
 
 <template>
