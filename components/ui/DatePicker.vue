@@ -58,6 +58,7 @@
     :locale="langDatePicker"
     :enable-time-picker="false"
     auto-apply
+    :min-date="new Date()"
     :format="format"
   >
     <template #dp-input="{ value }">

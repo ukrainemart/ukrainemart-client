@@ -90,12 +90,9 @@
       >
         <UiIconCircleLetter v-if="titleChat && !loading" class="shrink-0" :letter="titleChat[0]" />
         <div v-if="!loading" class="ml-[8px] mr-[20px] w-[50%] flex-1 md:ml-[10px] xl:ml-[13px]">
-          <nuxtLink
-            :to="'/product/' + chat?.product_id"
-            class="inline-block w-full truncate text-[14px] font-medium text-black md:text-[16px]"
-          >
+          <p class="inline-block w-full truncate text-[14px] font-medium text-black md:text-[16px]">
             {{ titleChat }}
-          </nuxtLink>
+          </p>
           <!-- <h2
             class="mt-[5px] inline-block w-full truncate text-[7px] font-medium text-[#B6B6B6] md:text-[12px]"
           >

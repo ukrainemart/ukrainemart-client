@@ -45,6 +45,7 @@
     <div class="col-span-2 flex justify-center">
       <UiButtonOutline
         v-if="!noButton"
+        target="blank"
         :to="'/request_importers/' + request.id"
         class="mt-[15px] self-center md:mt-[35px] 4xl:mt-[25px]"
       >
@@ -53,6 +54,7 @@
     </div>
     <nuxt-link
       v-if="noButton"
+      target="blank"
       class="absolute left-0 top-0 z-10 h-full w-full"
       :to="'/request_importers/' + request.id"
     />
