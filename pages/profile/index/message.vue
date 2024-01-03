@@ -55,8 +55,10 @@
     signal = controller.signal;
     useFetchSubscribe(`${useUrlApi()}/chat/messages/${currentIdChat.value}`, { signal }).then((res: any) => {
       currentChat.value = res.data.value as Chat;
-      loadingChat.value = false;
-      fetchChatList();
+      if(currentChat.value) {
+        loadingChat.value = false;
+        fetchChatList();
+      }
     });
   };
 
