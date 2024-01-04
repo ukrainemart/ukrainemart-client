@@ -55,7 +55,7 @@
   </CommonButtonGoogle>
 
   <UiDivider
-    :label="'або'"
+    :label="$t('or')"
     class="my-[10px] w-[100px] self-center md:my-[17px] md:w-[139px] xl:my-[15px] xl:w-[181px]"
   />
 
