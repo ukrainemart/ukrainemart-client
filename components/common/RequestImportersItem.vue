@@ -32,7 +32,7 @@
     >
       <UiTextPortalPrimaryXl>
         {{ `${$t('name_company')}:` }}
-        <span class="text-status_gray">{{ request?.company?.title }}</span>
+        <span class="text-status_gray">{{ request?.company?.title || request?.user?.name  }}</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
         {{ `${$t('quantity')}:` }}
