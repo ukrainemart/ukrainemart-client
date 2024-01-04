@@ -2,7 +2,7 @@
   defineProps<{
     noButton?: boolean;
     request: RequestImporter;
-    target: string;
+    target?: string;
   }>();
 </script>
 

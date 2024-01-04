@@ -8,6 +8,7 @@
   const page = ref(route.query.page ? +route.query.page : 1);
   const isLoading = ref(true);
   const NUM_SKELETON_ITEMS = 3;
+  const isFilters = ref(false);
 
   const filters = ref({
     categories:
@@ -28,11 +29,17 @@
         filters.value.countries
       }`
     ).then((res: any) => {
-      requests.value = res.data.value.data as RequestImporter[];
-      pages.value = res.data.value.links.filter(
+      if(res.data.value.data) {
+        requests.value = res.data.value.data as RequestImporter[];
+        pages.value = res.data.value.links.filter(
         (el: any, ind: number, arr: any[]) => ind !== 0 && ind !== arr.length - 1
-      );
-      page.value = res.data.value.current_page;
+        );
+        page.value = res.data.value.current_page;
+        isFilters.value = true;
+        isLoading.value = false;
+        return false;
+      }
+      requests.value = res.data.value as RequestImporter[];
       isLoading.value = false;
     });
   };
@@ -76,7 +83,7 @@
         }}</UiButtonPrimary>
       </div>
 
-      <PagesRequestsFilters v-model:filtersActive="filters" class="mt-[15px]" />
+      <PagesRequestsFilters v-if="isFilters" v-model:filtersActive="filters" class="mt-[15px]" />
 
       <div
         class="mt-[24px] grid grid-cols-12 gap-x-[12px] gap-y-[20px] md:mt-[30px] xl:gap-x-[58px] xl:gap-y-[45px]"
