@@ -43,7 +43,9 @@
       <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
         <UiTextPortalPrimaryXl>
           {{ $t('quantity') + ':' }}
-          <span class="text-status_gray">{{ request?.count }}</span>
+          <span class="text-status_gray"
+            >{{ request?.count }} {{ useMultiLang(request?.unit, 'title') }}</span
+          >
         </UiTextPortalPrimaryXl>
       </li>
       <li class="flex gap-[5px] font-medium text-black md:gap-2.5 2xl:gap-[15px]">
