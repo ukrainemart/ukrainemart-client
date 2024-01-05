@@ -33,6 +33,7 @@
         v-if="type === 'messageRestorePassword'"
         @switchModal="switchModal"
       />
+      <AuthMessageSubscribe v-if="type === 'messageSubscribe'" @switchModal="switchModal" />
     </div>
   </UiModal>
 </template>

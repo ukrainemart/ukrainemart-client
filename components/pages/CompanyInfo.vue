@@ -48,7 +48,7 @@
     </div>
 
     <div class="flex flex-col items-center gap-[8px] md:gap-[10px]">
-      <CommonButtonContact v-if="isChatOpenBtn" @switchChat="switchChat(true)">
+      <CommonButtonContact v-if="isChatOpenBtn" type="request" @switchChat="switchChat(true)">
         <template #button="{ handlerClick }">
           <UiButtonPrimaryIconEnvelop @click="handlerClick">
             {{ $t('labels.contact') }}

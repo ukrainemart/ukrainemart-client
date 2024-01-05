@@ -124,7 +124,8 @@
     "sign_up_for_subscription": "Sign up for a subscription",
     "enter_name": "Enter a name",
     "enter_last_name": "Enter your last name",
-    "user_name": "User name"
+    "user_name": "User name",
+    "learn_more": "Learn more"
   },
   "placeholders": {
     "name": "John",
@@ -213,7 +214,8 @@
   },
   "text": {
     "send_mail": "A link to set a new password has been sent to your email address.",
-    "check_spam": "In addition to your inbox, check your spam folder. The email may have ended up there."
+    "check_spam": "In addition to your inbox, check your spam folder. The email may have ended up there.",
+    "get_access_to_export": "Get access to export opportunities by subscribing to Ukrainemart."
   },
   "catalog": {
     "catalog": "Catalog",

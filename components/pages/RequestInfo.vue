@@ -54,7 +54,7 @@
       </li>
     </ul>
 
-    <CommonButtonContact v-if="isChatOpenBtn" @switchChat="switchChat(true)">
+    <CommonButtonContact v-if="isChatOpenBtn" type="request" @switchChat="switchChat(true)">
       <template #button="{ handlerClick }">
         <UiButtonPrimaryIconEnvelop @click="handlerClick">
           {{ $t('labels.contact') }}

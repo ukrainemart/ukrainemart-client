@@ -1,1 +1,1 @@
-declare type SwitchAuth = 'login' | 'register' | 'successRegister' | 'forgotPassword' | 'messageRestorePassword';
+declare type SwitchAuth = 'login' | 'register' | 'successRegister' | 'forgotPassword' | 'messageRestorePassword' | "messageSubscribe";
