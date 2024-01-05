@@ -30,7 +30,7 @@
 
       <div
         v-if="!loading"
-        class="grid auto-rows-fr grid-cols-1 gap-y-[15px] md:grid-cols-2 md:gap-6 md:gap-x-[12px] md:gap-y-[20px] lg:grid-cols-3 2xl:grid-cols-4 2xl:gap-x-[30px] 2xl:gap-y-[40px]"
+        class="grid auto-rows-fr grid-cols-1 gap-y-[28px] md:grid-cols-2 md:gap-6 md:gap-x-[12px] md:gap-y-[30px] lg:grid-cols-3 2xl:grid-cols-4 2xl:gap-x-[30px] 2xl:gap-y-[40px]"
       >
         <CommonPricingCard
           v-for="subscription in subscriptions"

@@ -11,6 +11,11 @@ declare interface Subscription {
     updated_at: string;
   }[];
   id: number;
+  payment: {
+    action: string;
+    data: string;
+    signature: string;
+  };
   plan_key: string;
   price: number;
   status: number;

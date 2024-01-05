@@ -127,7 +127,8 @@
     "user_name": "User name",
     "learn_more": "Learn more",
     "year": "year",
-    "month": "month"
+    "month": "month",
+    "top_sales": "Top sales"
   },
   "placeholders": {
     "name": "John",
