@@ -3,6 +3,10 @@
 
   const closeModal = () => {
     auth.switchAuthModal(false);
+  };
+
+  const navigateEvent = () => {
+    auth.switchAuthModal(false);
     navigateTo('/subscriptions');
   };
 </script>
@@ -16,7 +20,7 @@
       class="mt-[20px] text-center md:mt-[25px] xl:mt-[30px] 2xl:text-[20px]"
       >{{ $t('text.get_access_to_export') }}</UiTextPortalPrimaryXl
     >
-    <UiButtonPrimary class="mt-[35px] md:mt-[40px] xl:mt-[50px]" @click="closeModal">{{
+    <UiButtonPrimary class="mt-[35px] md:mt-[40px] xl:mt-[50px]" @click="navigateEvent">{{
       $t('labels.learn_more')
     }}</UiButtonPrimary>
   </div>

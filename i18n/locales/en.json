@@ -121,11 +121,13 @@
     "certificates": "Certificates",
     "tags": "Tags",
     "enter_tags": "Enter keywords separated by a space",
-    "sign_up_for_subscription": "Sign up for a subscription",
+    "subscribe": "Subscribe",
     "enter_name": "Enter a name",
     "enter_last_name": "Enter your last name",
     "user_name": "User name",
-    "learn_more": "Learn more"
+    "learn_more": "Learn more",
+    "year": "year",
+    "month": "month"
   },
   "placeholders": {
     "name": "John",

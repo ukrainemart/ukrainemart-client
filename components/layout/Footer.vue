@@ -31,7 +31,7 @@
         <li>
           <UiButtonOpacity>
             <PagesFooterText>
-              {{ $t('catalog.catalog') }}
+              {{ $t('subHeader.subscriptions') }}
             </PagesFooterText>
           </UiButtonOpacity>
         </li>

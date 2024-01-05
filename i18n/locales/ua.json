@@ -121,11 +121,13 @@
     "certificates": "Сертифікати",
     "tags": "Теги",
     "enter_tags": "Вводьте ключові слова через пропуск",
-    "sign_up_for_subscription": "Оформити підписку",
+    "subscribe": "Оформити підписку",
     "enter_name": "Введіть ім'я",
     "enter_last_name": "Введіть прізвище",
     "user_name": "Ім'я користувача",
-    "learn_more": "Дізнатися більше"
+    "learn_more": "Дізнатися більше",
+    "year": "рiк",
+    "month": "місяць"
   },
   "placeholders": {
     "name": "Іван",
