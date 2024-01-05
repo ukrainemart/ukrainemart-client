@@ -49,7 +49,7 @@
     </div>
   </div>
   <UiSectionTitleSlider
-    v-if="!loading"
+    v-if="!loading && products && products.length > 0"
     :showAll="showAllSlides"
     :slides="products"
     :centeredSlides="showAllSlides"
