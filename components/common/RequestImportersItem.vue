@@ -31,7 +31,7 @@
       class="col-span-2 mt-[7px] flex flex-col gap-[5px] md:mt-[20px] md:gap-[10px] 4xl:mt-[30px] 4xl:gap-[15px]"
     >
       <UiTextPortalPrimaryXl>
-        {{ `${$t('name_company')}:` }}
+        {{ request.company ? `${$t('name_company')}:` : `${$t('labels.user_name')}:` }}
         <span class="text-status_gray">{{ request?.company?.title || request?.user?.name }}</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>

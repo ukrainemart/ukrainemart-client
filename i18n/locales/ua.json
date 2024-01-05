@@ -123,7 +123,8 @@
     "enter_tags": "Вводьте ключові слова через пропуск",
     "sign_up_for_subscription": "Оформити підписку",
     "enter_name": "Введіть ім'я",
-    "enter_last_name": "Введіть прізвище"
+    "enter_last_name": "Введіть прізвище",
+    "user_name": "Ім'я користувача"
   },
   "placeholders": {
     "name": "Іван",
