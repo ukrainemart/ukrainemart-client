@@ -31,12 +31,14 @@
       class="col-span-2 mt-[7px] flex flex-col gap-[5px] md:mt-[20px] md:gap-[10px] 4xl:mt-[30px] 4xl:gap-[15px]"
     >
       <UiTextPortalPrimaryXl>
-        {{ `${$t('name_company')}:` }}
-        <span class="text-status_gray">{{ request?.company?.title || request?.user?.name  }}</span>
+        {{ request.company ? `${$t('name_company')}:` : `${$t('labels.user_name')}:` }}
+        <span class="text-status_gray">{{ request?.company?.title || request?.user?.name }}</span>
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
         {{ `${$t('quantity')}:` }}
-        <span class="text-status_gray">{{ request?.count }}</span>
+        <span class="text-status_gray"
+          >{{ request?.count }} {{ useMultiLang(request.unit, 'title') }}</span
+        >
       </UiTextPortalPrimaryXl>
       <UiTextPortalPrimaryXl>
         {{ `${$t('requestIsValid')}:` }}
@@ -45,8 +47,8 @@
     </div>
     <div class="col-span-2 flex justify-center">
       <UiButtonOutline
-        :target="target"
         v-if="!noButton"
+        :target="target"
         :to="'/request_importers/' + request.id"
         class="mt-[15px] self-center md:mt-[35px] 4xl:mt-[25px]"
       >
@@ -54,8 +56,8 @@
       </UiButtonOutline>
     </div>
     <nuxt-link
-      :target="target"
       v-if="noButton"
+      :target="target"
       class="absolute left-0 top-0 z-10 h-full w-full"
       :to="'/request_importers/' + request.id"
     />

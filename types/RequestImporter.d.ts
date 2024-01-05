@@ -15,4 +15,5 @@ declare interface RequestImporter {
   active_before: string;
   id: number;
   created_at: string;
+  unit: Unit;
 }
