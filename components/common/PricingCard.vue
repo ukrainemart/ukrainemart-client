@@ -7,7 +7,7 @@
 <template>
   <form
     method="POST"
-    :action="subscription?.payment.action"
+    :action="subscription?.payment?.action"
     :class="
       cn(
         'relative mx-auto flex max-w-[350px] flex-col rounded-[20px] border border-transparent bg-white px-[15px] pb-[30px] pt-5 shadow-xl md:px-5 md:pb-10 md:pt-[25px] 2xl:px-[25px] 2xl:pb-[50px] 2xl:pt-[30px]',
@@ -67,8 +67,8 @@
       </li>
     </ul>
 
-    <input type="hidden" name="data" :value="subscription?.payment.data" />
-    <input type="hidden" name="signature" :value="subscription?.payment.signature" />
+    <input type="hidden" name="data" :value="subscription?.payment?.data" />
+    <input type="hidden" name="signature" :value="subscription?.payment?.signature" />
 
     <UiButtonPrimary styles="self-center" type="submit" :disabled="subscription?.payment === null">
       {{ $t('labels.subscribe') }}
