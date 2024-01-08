@@ -17,7 +17,10 @@
   const emits = defineEmits(['switchChat']);
 
   const switchChat = () => {
-    if (props.type === 'request' && !isLoggedIn()) {
+    if (
+      (props.type === 'request' && !isLoggedIn()) ||
+      (props.type === 'request' && !auth.user?.subscription)
+    ) {
       openMessage();
       return false;
     }

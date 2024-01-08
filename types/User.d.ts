@@ -16,4 +16,5 @@ declare interface User {
   skype: string;
   whatsapp: string;
   telegram: string;
+  subscription: null | 'basic' | 'pro' | 'premium';
 }
