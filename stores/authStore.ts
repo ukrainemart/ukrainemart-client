@@ -71,6 +71,7 @@ export const useAuthStore = defineStore('authStore', () => {
   }
 
   async function register(credentials: RegisterCredentials) {
+    await useApiFetch(`${useUrl()}/sanctum/csrf-cookie`);
     try {
       const response = await useApiFetch(`${useUrlApi()}/register`, {
         method: 'POST',
