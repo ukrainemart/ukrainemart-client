@@ -5,8 +5,8 @@ const BURGER_MENU_HEIGHT = {
 
 const HEADER_HEIGHT = {
   HEADER_SM: '82px',
-  HEADER_LG: '99px',
-  HEADER_4XL: '130px',
+  HEADER_LG: '87px',
+  HEADER_4XL: '98px',
 };
 
 const VAR = {

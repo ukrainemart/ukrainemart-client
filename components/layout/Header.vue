@@ -101,7 +101,7 @@
       @toggleCatalogModal="toggleCatalogModal"
     />
 
-    <div class="container mx-auto py-[25px] md:px-10 md:py-[30px] 4xl:py-10">
+    <div class="container mx-auto py-[25px] md:px-10 md:py-[24px]">
       <!-- MOBILE START -->
       <div class="flex justify-between lg:hidden">
         <CommonLogo v-if="isLogo" to="/" />

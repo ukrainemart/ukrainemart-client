@@ -31,8 +31,8 @@
         v-if="screenWidth >= BREAKPOINTS_LG && isCatalogHovered"
         :class="
           cn('fixed inset-x-0 z-[200] text-black', {
-            'top-[110px] 4xl:top-[145px]': isLogo,
-            'top-[60px] 4xl:top-[80px]': !isLogo,
+            'top-[98px] 4xl:top-[112px]': isLogo,
+            'top-[48px] 4xl:top-[56px]': !isLogo,
           })
         "
       >
